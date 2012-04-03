@@ -1,11 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://verdammelt.heroku.com/blog/2012/02/03/the-delete-refactoring/</loc>
+        <lastmod>2012-04-01T18:20:20-04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://verdammelt.heroku.com/blog/2012/02/21/my-thoughts-derived-from-the-talk-given-by-at-chadfowler-at-at-bostonrb-2012-02-21/
+        </loc>
+        <lastmod>2012-04-01T15:11:44-04:00</lastmod>
+    </url>
+    <url>
         <loc>http://verdammelt.heroku.com/blog/archives/</loc>
-        <lastmod>2012-03-30T21:09:38-04:00</lastmod>
+        <lastmod>2012-04-01T18:20:20-04:00</lastmod>
     </url>
     <url>
         <loc>http://verdammelt.heroku.com/</loc>
-        <lastmod>2012-03-30T21:09:38-04:00</lastmod>
+        <lastmod>2012-04-01T18:20:20-04:00</lastmod>
     </url>
 </urlset>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: pattern | My Octopress Blog]]></title>
+  <link href="http://verdammelt.heroku.com/blog/categories/pattern/atom.xml" rel="self"/>
+  <link href="http://verdammelt.heroku.com/"/>
+  <updated>2012-04-01T18:20:26-04:00</updated>
+  <id>http://verdammelt.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The Delete Refactoring]]></title>
+    <link href="http://verdammelt.heroku.com/blog/2012/02/03/the-delete-refactoring/"/>
+    <updated>2012-02-03T11:22:00-05:00</updated>
+    <id>http://verdammelt.heroku.com/blog/2012/02/03/the-delete-refactoring</id>
+    <content type="html"><![CDATA[<p style="text-align: center;">The Code is unnecessary.</p>
+
+
+<p style="text-align: center;"><em>Delete it.</em></p>
+
+
+<pre><code>void printLog (String msg) {                   
+    int logLevel = 2;                   
+    LOG.printLine(msg);          
+}        
+</code></pre>
+
+<p style="text-align: center;">=></p>
+
+
+<pre><code>void printLog (String msg) {                   
+    LOG.printLine(msg);          
+}    
+</code></pre>
+
+<h2>Motivation</h2>
+
+<p>Sometimes code doesn't do anything.  Maybe a variable is no longer used, or a
+whole function or class is no longer referenced by the rest of the code.  If
+that happens, delete it.</p>
+
+<h2>Mechanics</h2>
+
+<ul>
+<li>select unused code</li>
+<li>press the delete key</li>
+<li>compile and test</li>
+</ul>
+
+
+<h2>Example</h2>
+
+<p>I start with the following code:</p>
+
+<pre><code>// This method is no longer used          
+// int getErrorLevel() {          
+//     return -1;          
+// }    
+</code></pre>
+
+<p>Select the text and hit delete.  I now have the resulting code:</p>
+
+<p>&nbsp;</p>
+
+]]></content>
+  </entry>
+  
+</feed>

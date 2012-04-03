@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>My Octopress Blog</title>
+  <title>The Delete Refactoring - My Octopress Blog</title>
   <meta name="author" content="Mark Simpson">
 
   
-  <meta name="description" content="Overview (I finally went to another Boston Ruby meetup. Only my second -
-hopefully it will be less than ~9 months before I go to my third.) Chad &hellip;">
+  <meta name="description" content="The Code is unnecessary. Delete it. void printLog (String msg) { int logLevel = 2; LOG.printLine(msg); } => void printLog (String msg) { LOG. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@ hopefully it will be less than ~9 months before I go to my third.) Chad &hellip;
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://verdammelt.heroku.com">
+  <link rel="canonical" href="http://verdammelt.heroku.com/blog/2012/02/03/the-delete-refactoring">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -61,125 +60,12 @@ hopefully it will be less than ~9 months before I go to my third.) Chad &hellip;
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/02/21/my-thoughts-derived-from-the-talk-given-by-at-chadfowler-at-at-bostonrb-2012-02-21/">My Thoughts Derived From the Talk Given by @chadfowler at @bostonrb 2012-02-21</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-21T22:36:00-05:00" pubdate data-updated="true">Feb 21<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Overview</h2>
-
-<p>(I finally went to <em>another</em> Boston Ruby meetup.  Only my second -
-hopefully it will be less than ~9 months before I go to my third.)</p>
-
-<p>Chad Fowler gave a talk entitled &#8220;Measuring &amp; Analyzing Things That
-Matter When You Have Too Many Things To Keep Track Of&#8221; at tonights
-Boston Ruby Meetup.  It was <em>the</em> reason why I went to the meetup.(But I
-did enjoy the other two talks - but they are not the topic of this post)</p>
-
-<p>His talk was, self-described, half-baked ideas.  Which is fine by me.
-At @boston_sc we&#8217;ve started doing &#8220;half-baked&#8221; ideas talks and they have
-been great - I only wish that this talk was more discussion style like
-the ones we have at @boston_sc.</p>
-
-<p>He talked about how even with a team of very good developers, good code
-is not guaranteed.  The bad stuff builds up, even without people
-noticing, via bad habits and laziness.  His person example of gaining a
-lot of weight hits very solidly with me and I am again working to drop
-my weight which keeps just sneaking back (due to bad habits and laziness
-on my part).</p>
-
-<h2>How to measure how readable code is</h2>
-
-<p>He mentioned several thoughts about how to fight the bad
-habits/laziness, but the one that got me thinking was about the
-<a href="http://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_test">Flesch-Kincaid Readability
-Scale</a>.</p>
-
-<p>Basically in a nutshell Rudolph Flesch devised a algorithm for English
-which let you compute a score which then equates to what level of
-English reader could easily read and understand your English.  He
-suggested that perhaps some combination of metrics (e.g. flog, flag,
-roodi, churn, reek, (i.e. things from metric-fu)) might render a
-<em>number</em> which would equate to a level of developer (his scale topped
-out at Rich Hickey) that could understand your code.</p>
-
-<p>The reason that this got me thinking especially was because it fits into
-a less-than-half-baked idea I&#8217;ve had.  A few months ago I was working
-with a junior developer at my job and while she was away I had
-implemented a nice little bit of Groovy code to do something.  It
-involved a chain of collection functions (<em>e.g.</em> map, inject, collect
-etc.).  I thought it was great.  When she came back and saw it she
-couldn&#8217;t understand it.  I explained it to her and she <em>started</em> to
-understand.  I explained again and she <em>sort of</em> understood.  Then I
-said &#8220;ok, hold on&#8230;&#8221; and replaced it with 2 for loops.  Totally dumb
-un-cool code that did the same thing.  She immediately understood! So
-that is what we committed.</p>
-
-<p>The problem was that I was at a higher level of understanding of that
-sort of pseudo-function collection function chaining.  (and also it
-the code might have been a bit &#8216;clever&#8217; <em>shudder</em>).  By shifting to
-<em>ordinary</em> code it was easy to understand.</p>
-
-<p>The thing I am interested in is if this scale of code comprehensibility
-is if it is absolute or relative.  My first thought it is relative.  If
-one can raise the base skill of a team then that team can understand
-more esoteric code.</p>
-
-<h2>Other thoughts</h2>
-
-<p>There were other interesting points in there - obviously rather ruby
-specific:</p>
-
-<ul>
-<li>Mention of tools like flog, flay, roodi, reek, etc all good
-at giving numbers about your code.</li>
-<li>Measuring whatever worries you</li>
-<li>Graphing everything you can</li>
-<li>(again) Getting information from your commit history</li>
-</ul>
-
-
-<p>These are also things that will keep me thinking for a bit.  I can use
-these ideas both in my for-pay coding and my for-free/me coding.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/02/03/the-delete-refactoring/">The Delete Refactoring</a></h1>
+      <h1 class="entry-title">The Delete Refactoring</h1>
     
     
       <p class="meta">
@@ -202,7 +88,7 @@ these ideas both in my for-pay coding and my for-free/me coding.</p>
   </header>
 
 
-  <div class="entry-content"><p style="text-align: center;">The Code is unnecessary.</p>
+<div class="entry-content"><p style="text-align: center;">The Code is unnecessary.</p>
 
 
 <p style="text-align: center;"><em>Delete it.</em></p>
@@ -252,18 +138,59 @@ that happens, delete it.</p>
 <p>&nbsp;</p>
 
 </div>
+
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Mark Simpson</span></span>
+
+      
+
+
+
+
+
+
+
+
   
 
 
-    </article>
+<time datetime="2012-02-03T11:22:00-05:00" pubdate data-updated="true">Feb 3<span>rd</span>, 2012</time>
+      
+
+<span class="categories">
   
-  <div class="pagination">
+    <a class='category' href='/blog/categories/pattern/'>pattern</a>, <a class='category' href='/blog/categories/refactoring/'>refactoring</a>
+  
+</span>
+
+
+    </p>
     
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://verdammelt.heroku.com/blog/2012/02/03/the-delete-refactoring/" data-via="verdammelt" data-counturl="http://verdammelt.heroku.com/blog/2012/02/03/the-delete-refactoring/" >Tweet</a>
+  
+  
+  
 </div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/02/21/my-thoughts-derived-from-the-talk-given-by-at-chadfowler-at-at-bostonrb-2012-02-21/" title="Next Post: My thoughts derived from the talk given by @chadfowler at @bostonrb 2012-02-21">My thoughts derived from the talk given by @chadfowler at @bostonrb 2012-02-21 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -284,7 +211,7 @@ that happens, delete it.</p>
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/verdammelt">@verdammelt</a> on GitHub
@@ -314,7 +241,7 @@ that happens, delete it.</p>
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -330,7 +257,7 @@ that happens, delete it.</p>
 
 <section>
   <h1>My Pinboard</h1>
-  <ul id="pinboard_linkroll">Fetching linkroll&#8230;</ul>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
   <p><a href="http://pinboard.in/u:verdammelt">My Pinboard Bookmarks &raquo;</a></p>
 </section>
 <script type="text/javascript">
@@ -349,6 +276,7 @@ that happens, delete it.</p>
 
   
 </aside>
+
 
     </div>
   </div>

@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>My Octopress Blog</title>
+  <title>My thoughts derived from the talk given by @chadfowler at @bostonrb 2012-02-21 - My Octopress Blog</title>
   <meta name="author" content="Mark Simpson">
 
   
@@ -19,7 +19,7 @@ hopefully it will be less than ~9 months before I go to my third.) Chad &hellip;
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://verdammelt.heroku.com">
+  <link rel="canonical" href="http://verdammelt.heroku.com/blog/2012/02/21/my-thoughts-derived-from-the-talk-given-by-at-chadfowler-at-at-bostonrb-2012-02-21">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -61,15 +61,12 @@ hopefully it will be less than ~9 months before I go to my third.) Chad &hellip;
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/02/21/my-thoughts-derived-from-the-talk-given-by-at-chadfowler-at-at-bostonrb-2012-02-21/">My Thoughts Derived From the Talk Given by @chadfowler at @bostonrb 2012-02-21</a></h1>
+      <h1 class="entry-title">My Thoughts Derived From the Talk Given by @chadfowler at @bostonrb 2012-02-21</h1>
     
     
       <p class="meta">
@@ -92,7 +89,7 @@ hopefully it will be less than ~9 months before I go to my third.) Chad &hellip;
   </header>
 
 
-  <div class="entry-content"><h2>Overview</h2>
+<div class="entry-content"><h2>Overview</h2>
 
 <p>(I finally went to <em>another</em> Boston Ruby meetup.  Only my second -
 hopefully it will be less than ~9 months before I go to my third.)</p>
@@ -168,22 +165,16 @@ at giving numbers about your code.</li>
 <p>These are also things that will keep me thinking for a bit.  I can use
 these ideas both in my for-pay coding and my for-free/me coding.</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/02/03/the-delete-refactoring/">The Delete Refactoring</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Mark Simpson</span></span>
+
+      
 
 
 
@@ -195,75 +186,38 @@ these ideas both in my for-pay coding and my for-free/me coding.</p>
   
 
 
-<time datetime="2012-02-03T11:22:00-05:00" pubdate data-updated="true">Feb 3<span>rd</span>, 2012</time>
-        
-      </p>
+<time datetime="2012-02-21T22:36:00-05:00" pubdate data-updated="true">Feb 21<span>st</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/bostonrb/'>bostonrb</a>, <a class='category' href='/blog/categories/meetup/'>meetup</a>, <a class='category' href='/blog/categories/metrics/'>metrics</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://verdammelt.heroku.com/blog/2012/02/21/my-thoughts-derived-from-the-talk-given-by-at-chadfowler-at-at-bostonrb-2012-02-21/" data-via="verdammelt" data-counturl="http://verdammelt.heroku.com/blog/2012/02/21/my-thoughts-derived-from-the-talk-given-by-at-chadfowler-at-at-bostonrb-2012-02-21/" >Tweet</a>
+  
+  
+  
+</div>
 
-
-  <div class="entry-content"><p style="text-align: center;">The Code is unnecessary.</p>
-
-
-<p style="text-align: center;"><em>Delete it.</em></p>
-
-
-<pre><code>void printLog (String msg) {                   
-    int logLevel = 2;                   
-    LOG.printLine(msg);          
-}        
-</code></pre>
-
-<p style="text-align: center;">=></p>
-
-
-<pre><code>void printLog (String msg) {                   
-    LOG.printLine(msg);          
-}    
-</code></pre>
-
-<h2>Motivation</h2>
-
-<p>Sometimes code doesn&#8217;t do anything.  Maybe a variable is no longer used, or a
-whole function or class is no longer referenced by the rest of the code.  If
-that happens, delete it.</p>
-
-<h2>Mechanics</h2>
-
-<ul>
-<li>select unused code</li>
-<li>press the delete key</li>
-<li>compile and test</li>
-</ul>
-
-
-<h2>Example</h2>
-
-<p>I start with the following code:</p>
-
-<pre><code>// This method is no longer used          
-// int getErrorLevel() {          
-//     return -1;          
-// }    
-</code></pre>
-
-<p>Select the text and hit delete.  I now have the resulting code:</p>
-
-<p>&nbsp;</p>
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/02/03/the-delete-refactoring/" title="Previous Post: The Delete Refactoring">&laquo; The Delete Refactoring</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -284,7 +238,7 @@ that happens, delete it.</p>
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/verdammelt">@verdammelt</a> on GitHub
@@ -314,7 +268,7 @@ that happens, delete it.</p>
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -330,7 +284,7 @@ that happens, delete it.</p>
 
 <section>
   <h1>My Pinboard</h1>
-  <ul id="pinboard_linkroll">Fetching linkroll&#8230;</ul>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
   <p><a href="http://pinboard.in/u:verdammelt">My Pinboard Bookmarks &raquo;</a></p>
 </section>
 <script type="text/javascript">
@@ -349,6 +303,7 @@ that happens, delete it.</p>
 
   
 </aside>
+
 
     </div>
   </div>

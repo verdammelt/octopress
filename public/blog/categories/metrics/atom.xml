@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://verdammelt.heroku.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: metrics | My Octopress Blog]]></title>
+  <link href="http://verdammelt.heroku.com/blog/categories/metrics/atom.xml" rel="self"/>
   <link href="http://verdammelt.heroku.com/"/>
   <updated>2012-04-01T18:20:26-04:00</updated>
   <id>http://verdammelt.heroku.com/</id>
@@ -23,13 +23,13 @@
 <p>(I finally went to <em>another</em> Boston Ruby meetup.  Only my second -
 hopefully it will be less than ~9 months before I go to my third.)</p>
 
-<p>Chad Fowler gave a talk entitled &#8220;Measuring &amp; Analyzing Things That
-Matter When You Have Too Many Things To Keep Track Of&#8221; at tonights
+<p>Chad Fowler gave a talk entitled "Measuring &amp; Analyzing Things That
+Matter When You Have Too Many Things To Keep Track Of" at tonights
 Boston Ruby Meetup.  It was <em>the</em> reason why I went to the meetup.(But I
 did enjoy the other two talks - but they are not the topic of this post)</p>
 
 <p>His talk was, self-described, half-baked ideas.  Which is fine by me.
-At @boston_sc we&#8217;ve started doing &#8220;half-baked&#8221; ideas talks and they have
+At @boston_sc we've started doing "half-baked" ideas talks and they have
 been great - I only wish that this talk was more discussion style like
 the ones we have at @boston_sc.</p>
 
@@ -56,20 +56,20 @@ roodi, churn, reek, (i.e. things from metric-fu)) might render a
 out at Rich Hickey) that could understand your code.</p>
 
 <p>The reason that this got me thinking especially was because it fits into
-a less-than-half-baked idea I&#8217;ve had.  A few months ago I was working
+a less-than-half-baked idea I've had.  A few months ago I was working
 with a junior developer at my job and while she was away I had
 implemented a nice little bit of Groovy code to do something.  It
 involved a chain of collection functions (<em>e.g.</em> map, inject, collect
 etc.).  I thought it was great.  When she came back and saw it she
-couldn&#8217;t understand it.  I explained it to her and she <em>started</em> to
+couldn't understand it.  I explained it to her and she <em>started</em> to
 understand.  I explained again and she <em>sort of</em> understood.  Then I
-said &#8220;ok, hold on&#8230;&#8221; and replaced it with 2 for loops.  Totally dumb
+said "ok, hold on..." and replaced it with 2 for loops.  Totally dumb
 un-cool code that did the same thing.  She immediately understood! So
 that is what we committed.</p>
 
 <p>The problem was that I was at a higher level of understanding of that
 sort of pseudo-function collection function chaining.  (and also it
-the code might have been a bit &#8216;clever&#8217; <em>shudder</em>).  By shifting to
+the code might have been a bit 'clever' <em>shudder</em>).  By shifting to
 <em>ordinary</em> code it was easy to understand.</p>
 
 <p>The thing I am interested in is if this scale of code comprehensibility
@@ -93,63 +93,6 @@ at giving numbers about your code.</li>
 
 <p>These are also things that will keep me thinking for a bit.  I can use
 these ideas both in my for-pay coding and my for-free/me coding.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[The Delete Refactoring]]></title>
-    <link href="http://verdammelt.heroku.com/blog/2012/02/03/the-delete-refactoring/"/>
-    <updated>2012-02-03T11:22:00-05:00</updated>
-    <id>http://verdammelt.heroku.com/blog/2012/02/03/the-delete-refactoring</id>
-    <content type="html"><![CDATA[<p style="text-align: center;">The Code is unnecessary.</p>
-
-
-<p style="text-align: center;"><em>Delete it.</em></p>
-
-
-<pre><code>void printLog (String msg) {                   
-    int logLevel = 2;                   
-    LOG.printLine(msg);          
-}        
-</code></pre>
-
-<p style="text-align: center;">=></p>
-
-
-<pre><code>void printLog (String msg) {                   
-    LOG.printLine(msg);          
-}    
-</code></pre>
-
-<h2>Motivation</h2>
-
-<p>Sometimes code doesn&#8217;t do anything.  Maybe a variable is no longer used, or a
-whole function or class is no longer referenced by the rest of the code.  If
-that happens, delete it.</p>
-
-<h2>Mechanics</h2>
-
-<ul>
-<li>select unused code</li>
-<li>press the delete key</li>
-<li>compile and test</li>
-</ul>
-
-
-<h2>Example</h2>
-
-<p>I start with the following code:</p>
-
-<pre><code>// This method is no longer used          
-// int getErrorLevel() {          
-//     return -1;          
-// }    
-</code></pre>
-
-<p>Select the text and hit delete.  I now have the resulting code:</p>
-
-<p>&nbsp;</p>
-
 ]]></content>
   </entry>
   
