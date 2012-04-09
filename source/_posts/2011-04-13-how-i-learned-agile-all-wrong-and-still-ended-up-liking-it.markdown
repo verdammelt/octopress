@@ -84,7 +84,7 @@ not to be able to hide behind the buffered schedule, or the layers of
 management, but in the end I think it is better to be open and up-front
 about everything going on in a project.  If there are problems it is
 best to get them out in the open earlier, so that they can be addressed
-earlier (when it is generally earlier to address them).
+earlier (when it is generally easier to address them).
 
 I like working incrementally. Working on small stories in time-boxed
 iterations help me to keep focused.  Each iteration I have to make sure
