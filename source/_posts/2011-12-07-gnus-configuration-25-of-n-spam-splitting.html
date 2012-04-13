@@ -1,0 +1,45 @@
+---
+layout: post
+title: Gnus configuration (2.5 of N) - Spam Splitting
+published: true
+date: 2011-12-07
+categories:
+- emacs
+- gnus
+posterous_url: http://verdammelt.posterous.com/gnus-configuration-25-of-n-spam-splitting
+posterous_slug: gnus-configuration-25-of-n-spam-splitting
+---
+<p>An addendum to follow up on how to fix an item that was giving me a
+problem before.</p>
+
+<p>In order to get ham &amp; spam moved and processed as such when you mark it
+you need to set up additional group parameters:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>'((&quot;nnfolder.*&quot;
+ (spam-contents gnus-group-spam-classification-ham)
+ (spam-process (ham spam-use-bogofilter)
+           (spam spam-use-bogofilter))
+ (spam-process-destination &quot;nnfolder:spam.spam&quot;))
+(&quot;spam.spam&quot;
+ (spam-contents gnus-group-spam-classification-spam)
+ (spam-process (spam spam-use-bogofilter)
+           (ham spam-use-bogofilter))
+ (ham-process-destination &quot;nnfolder:mail.misc&quot;))</pre></div>
+</div>
+
+
+<p>Specifically the <code>spam-process-destination</code> and
+<code>ham-process-destination</code> pair.  These cause the mail to be moved from
+the ham to spam groups and /visa versa/.</p>
+
+<p>One problem still remains &ndash; the bogofilter still doesn&rsquo;t seem to be
+doing anything.  I don&rsquo;t see any evidence that it is being called in the
+`<em>Messages</em> buffer either.</p>
+
+<p>So the score is:</p>
+
+<ol>
+<li>Bogofilter not being called when groups exited</li>
+<li>Wish I could get BBDB to work.</li>
+</ol>

@@ -1,0 +1,70 @@
+---
+layout: post
+title: Gnus configuration (2 of N) - Spam splitting
+published: true
+date: 2011-12-06
+categories:
+- emacs
+- gnus
+posterous_url: http://verdammelt.posterous.com/gnus-configuration-2-of-n-spam-splitting
+posterous_slug: gnus-configuration-2-of-n-spam-splitting
+---
+<h2>Setting up Splitting</h2>
+
+<p>The next thing I felt I needed to set up was spam splitting.  I didn&rsquo;t
+want obvious spam being dumped into my inbox anymore.</p>
+
+<p>To set up spam splitting you need to be using <a href="http://www.gnu.org/s/emacs/manual/html_node/gnus/Fancy-Mail-Splitting.html#Fancy-Mail-Splitting">Fancy
+Splitting</a>.  Then you add <code>(: spam-split)</code> to you fancy split
+rules. At this point you have something like:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>(setq nnmail-split-methods 'nnmail-split-fancy
+         nnmail-split-fancy '(| (: spam-split)
+                                &quot;mail.misc&quot;))</pre></div>
+</div>
+
+
+<p>You also have to call <code>spam-initialize</code> to make it start working.</p>
+
+<p>/However/ one has to do a little more.  You have to specify which spam
+back ends you want to use.  Since my <a href="http://theworld.com/">ISP</a> runs
+<a href="http://spamassassin.apache.org/">SpamAssassin</a> I chose to use
+<code>spam-use-spamassassin-headers</code>.  Setting this to <code>t</code> makes the spam
+package check for the <code>X-Spam-Status: YES</code> header.  (There are plenty of
+choices so check out the <a href="http://www.gnu.org/s/emacs/manual/html_node/gnus/Spam-Back-Ends.html#Spam-Back-Ends">doc</a>)</p>
+
+<h2>What didn&rsquo;t work quite right</h2>
+
+<p>I also wanted to use <a href="http://bogofilter.sourceforge.net/">Bogofilter</a> so that my local machine
+could learn to identify stuff that my upstream Spamassassin did not.
+However I&rsquo;m not sure if that is working correctly.  My Bogofilter
+database file is still zero size.</p>
+
+<p>To get a spam back end to process spam and ham when you are done reading
+a group you need to add some group parameters.  So I set:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>(setq gnus-parameters
+       '((&quot;nnfolder.*&quot;
+          (spam-contents gnus-group-spam-classification-ham)
+          (spam-process (ham spam-use-bogofilter)))
+         (&quot;spam.spam&quot;
+          (spam-contents gnus-group-spam-classification-spam)
+          (spam-process (spam spam-use-bogofilter)))
+        ...</pre></div>
+</div>
+
+
+<p>But like I said that doesn&rsquo;t appear to be working.  I&rsquo;m probably just
+missing something small that is mentioned in the documentation.</p>
+
+<h2>What seems to be broken</h2>
+
+<p>Before my nuke and pave (and upgrade to emacs v24) I was using
+<a href="http://bbdb.sourceforge.net/">BBDB</a> as a whitelist.  So if you were not in my BBDB then you
+went to spam.  However with v24 when I try to use BBDB I get an error
+saying that <code>bbdb-search</code> is undefined.  It /is/ defined in
+<code>bbdb-com.el</code> however so I am not sure what is wrong.  I&rsquo;m going to
+investigate a bit more and post a question on <code>gmane.emacs.gnus.general</code>
+and <code>gmane.emacs.gnus.user</code> (maybe also <code>gmane.emacs.bbdb.user</code>).</p>

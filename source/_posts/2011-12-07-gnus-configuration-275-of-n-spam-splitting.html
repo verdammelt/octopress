@@ -1,0 +1,26 @@
+---
+layout: post
+title: Gnus configuration (2.75 of N) - Spam Splitting
+published: true
+date: 2011-12-07
+categories: []
+posterous_url: http://verdammelt.posterous.com/gnus-configuration-275-of-n-spam-splitting
+posterous_slug: gnus-configuration-275-of-n-spam-splitting
+---
+<p>I think I have no solved the problem of Bogofilter not running after
+group exit.  I had my <code>spam-process</code> group parameter written wrong.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>(spam-process ((spam spam-use-bogofilter)
+        (ham spam-use-bogofilter)))</pre></div>
+</div>
+
+
+<p>Note that this is a <code>sexpr</code> of two elements, the second one being a
+list.  I had it being a <code>sexpr</code> of three elements.</p>
+
+<p>Oh the joy of silent failure.</p>
+
+<p>I have also found mention of the <code>BBDB</code> problem on the mailing list &ndash; so
+there is a possible fix there if I get a new copy of <code>spam.el</code> from the
+repository or something like that.</p>

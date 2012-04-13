@@ -1,0 +1,46 @@
+---
+layout: post
+title: GNUS configuration note 1 (of N)
+published: true
+date: 2011-12-02
+categories: emacs gnus
+posterous_url: http://verdammelt.posterous.com/gnus-configuration-note-1-of-n
+posterous_slug: gnus-configuration-note-1-of-n
+---
+<p>So far I have flailed around moving my email to a different structure.
+I have been using <code>nnmail-use-long-file-names</code> set to <code>t</code> up until now.
+But I decided to try it out with the default value of <code>nil</code>.</p>
+
+<p>I had several problems this evening</p>
+
+<ul>
+<li><p>Sent mail was going to <code>nnfolder+nnfolder</code> instead of
+<code>nnfolder+archive</code> as advertised.  I think that this may have been
+caused by old settings in my <code>.newsrc.eld</code>.  After mucking about in
+there I started getting my sent mail in the right place.</p></li>
+<li><p>Not sure how it happened but the system acted as if
+<code>nnfolder-directory</code> was set to <code>~/News/nnfolder</code> but then suddenly
+switched to <code>~/Mail/</code>.  I got that all sorted out (now set to
+<code>~/News/mail</code>) but it took some time and my brain didn&rsquo;t figure out
+how it was working for while.  The important part here is if you move
+a mail file you must also move/edit the <code>active</code> file to list that
+mail group.</p></li>
+</ul>
+
+
+<p>Some of the problems may have been caused by a rather cavalier attitude
+to the task.  If I had sat down to do it more carefully and slowly it
+could have gone more smoothly.</p>
+
+<p>No mail was lost so I am happy. But the system as it is currently
+configured is definitely not the way I want to keep it.  Things to do
+next:</p>
+
+<ul>
+<li>spam handling</li>
+<li>expiry for archving (which I conflate that with sent mail processing)</li>
+<li>splitting (but less splitting than I was doing previously)</li>
+</ul>
+
+
+<p>But now&hellip; time for sleep.</p>

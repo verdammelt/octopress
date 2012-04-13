@@ -1,0 +1,11 @@
+---
+layout: post
+title: Digging through large contribution to my TNEF project from someone in France.
+  Wow this guy did his homework! - and now i must do mine!
+published: true
+date: 2009-01-01
+categories: []
+posterous_url: http://verdammelt.posterous.com/digging-through-large-contribu
+posterous_slug: digging-through-large-contribu
+---
+First he explained all this work he did to find out that my TNEF <br />application was not in fact wrong for the recent spate of 'wrong <br />checksum' and 'bogus size' bugs but instead is a problem with the MIME <br />decoding. At least for his environment he finds that mimedecode is <br />assuming Unix line endings (!?) so the decoded file is messed up - then <br />of course, tnef gets very confused. <p />&nbsp;Then he goes on to offer a bunch of bug fixes (embarrassing) and new <br />features with respect to MAPI properties. <p />&nbsp;>From his email i found that Microsoft has published a new copy of the <br />TNEF spec (not a new _version_ just a nice PDF copy - which is written <br />differently). So i need to review this and make sure my tnef <br />application is working correctly - i can use this in my TDD rewrite! <p />&nbsp;So now I've got some work to do - digging through his contributions and <br />seeing which are worth integrating (probably all!)

@@ -1,0 +1,70 @@
+---
+layout: post
+title: ! 'Parody & Analogy: Naresh Jain v. Robert Martin'
+published: true
+date: 2011-11-09
+categories:
+- tdd
+posterous_url: http://verdammelt.posterous.com/parody-analogy-naresh-jain-v-robert-martin
+posterous_slug: parody-analogy-naresh-jain-v-robert-martin
+---
+<p>Recently there was a blog posting and a rebuttal and I found that I
+agreed and disagreed with both. I&rsquo;d like to briefly discuss them and my
+opinions on them.</p>
+
+<h2>The Party of the First Part</h2>
+
+<p>Naresh Jain <a href="http://blogs.agilefaqs.com/2011/11/01/unit-testing-dilemma-should-i-invest-or-not/">posted</a> about his opinion about TDD and his
+&lsquo;dilemma&rsquo;. He discusses what he sees as the costs of unit testing, both
+the obvious (writing, running, maintaining), and ones he lists as
+&lsquo;subtle&rsquo;.</p>
+
+<p>These subtle ones I recognize but perhaps do not entirely agree with:
+<em>illusion of safety</em>, <em>opportunity cost</em>, <em>getting in the way</em>,
+<em>obscuring simpler design</em>.</p>
+
+<p>He concludes with:</p>
+
+<blockquote class="posterous_short_quote"><p>Its easy to say always write unit tests, but it takes years of
+first-hand experience to judge where to draw the line.</p></blockquote>
+
+<p>I do not find this unreasonable.</p>
+
+<h2>The Party of the Second Part</h2>
+
+<p>In response Robert Martin posted his <a href="http://blog.8thlight.com/uncle-bob/2011/11/06/Double-Entry-Bookkeeping-Dilemma-Should-I-Invest-or-Not.html">riposte</a>. It is a piece of
+parody and while amusing I think is a smidge off the mark. He again
+draws the analogy between unit testing and double-entry bookkeeping. He
+uses the same obvious and subtle costs for double-entry bookkeeping (my
+understanding of double-entry bookkeeping is limited but his parody
+seems accurate).</p>
+
+<p>It is obvious that Martin does not believe Jain&rsquo;s conclusion is
+reasonable.</p>
+
+<h2><a href="http://en.wikiquote.org/wiki/Petronius">Moderation in all Things&hellip;</a></h2>
+
+<p>To me Jain&rsquo;s post is mostly reasonable. I have a minor disagreement with
+his <em>obvious</em> cost of &lsquo;&hellip;understanding other’s unit tests&rsquo;. To me this
+is <em>NOT</em> a problem of unit testing at all but of <em>ANY</em> code. Concerning
+his <em>subtle</em> costs I can agree with this first, understand his second
+but disagree with his third and fourth. Unit tests are a safety net. But
+this do not <em>make</em> you safe from all danger. You need to know what they
+cover and what they don&rsquo;t. There are opportunity costs, I would not unit
+test a spike and a several spikes, each of which I throw away, may
+definitely be a better use of time then a single attempt at unit testing
+a solution from scratch. <em>However</em> I will then unit test the final
+solution. His third and fourth points are again not a problem of TDD but
+a problem of all code.</p>
+
+<p>Martin&rsquo;s riposte is amusing and I can imagine him speaking it in his
+particular style. <em>However</em> I ultimately feel it is a flippant response.
+I don&rsquo;t think Jain&rsquo;s position is worthy of <em>ridicule</em>. I think it is
+worthy of <em>disagreement</em>.</p>
+
+<h2><a href="http://en.wikiquote.org/wiki/Petronius">&hellip; including moderation.</a></h2>
+
+<p>I am not suggesting some sort of PC-ish self-censoring or to <a href="http://controversy.wearscience.com/">&lsquo;Teach the
+Controversy&rsquo;</a>. I disagree with Jain&rsquo;s post. I have found
+(warning anecdote:) that TDD outweighs the costs 95% of the time, and in
+fact the remaining 5% is shrinking as I continue to learn.  </p>
