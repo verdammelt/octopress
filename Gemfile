@@ -12,6 +12,7 @@ gem 'rubypants'
 gem 'stringex'
 gem 'liquid', '2.2.2'
 gem 'sinatra', '1.2.6'
+gem 'rubypython', '= 0.5.1'
 
 group :development do
   gem 'rb-fsevent'
