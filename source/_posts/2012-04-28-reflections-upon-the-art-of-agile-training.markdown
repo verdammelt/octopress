@@ -91,11 +91,11 @@ Duh. I just needed to be reminded of this.
 Diana and Jim presented an idea of 'Fluency' in Agile Practices. Each level is
 useful, none of them are 'bad'.  They are:
 
- 0. We build code.
+ 1. We build code.
  1. We create business value.
- 2. We *deliver* business value.
- 3. We *optimize* business value.
- 4. We optimize *our organization's* business value.
+ 1. We *deliver* business value.
+ 1. We *optimize* business value.
+ 1. We optimize *our organization's* business value.
 
 The idea is that you are 'fluent' at a level, as with a language, when you can
 easily work at that level, even under pressure. I think our current team, and
