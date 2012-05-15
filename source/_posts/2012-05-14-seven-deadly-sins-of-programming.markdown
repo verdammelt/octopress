@@ -3,7 +3,7 @@ layout: post
 title: "Seven Deadly Sins of Programming"
 date: 2012-05-14 22:14
 comments: true
-categories: presentation pdf slides @boston_sc programming sin
+categories: presentation pdf slides @boston_sc programming sin latex
 ---
 
 At tonight's Boston Software Craftstmanship meetup I presented my lightning
