@@ -8,8 +8,8 @@ categories: cocktail
 
 From the [Odyssey][odysseus]:
 
->    but gave them to eat of the lotus, which was so delicious that those who ate
->    of it left off caring about home
+>    ...but gave them to eat of the lotus, which was so delicious that those
+>    who ate of it left off caring about home
 
 I believe that the [Sazerac](sazerac) may be my 'lotus' - what is yours?
 
