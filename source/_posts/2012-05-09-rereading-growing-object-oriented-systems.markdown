@@ -3,7 +3,7 @@ layout: post
 title: "Rereading Growing Object Oriented Systems"
 date: 2012-05-09 20:22
 comments: true
-categories: goos tdd design oo
+categories: goos tdd design oo goosreview
 ---
 
 ## Why
