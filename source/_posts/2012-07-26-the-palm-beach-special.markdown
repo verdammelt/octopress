@@ -13,6 +13,11 @@ I decided to try a new-to-me cocktail tonight and asked
 [cocktaildb][] for cocktails which contain grapefruit and gin.  It suggested,
 amongst others, the [Palm Beach Special][recipe].
 
+* 2 1/2 oz. gin
+* 3/4 oz. grapefruit juice
+* 1/2 oz. sweet vermouth
+* shake well with ice, strain into cocktail glass.
+
 I enjoy the combination of gin and grapefruit in this drink but I have two
 issues with it which I'd like to experiment with:
 
