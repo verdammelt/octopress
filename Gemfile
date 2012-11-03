@@ -4,7 +4,6 @@
 source "http://rubygems.org"
 
 group :development do
-  gem 'heroku'
   gem 'rb-fsevent', '~> 0.9'
 end
 
