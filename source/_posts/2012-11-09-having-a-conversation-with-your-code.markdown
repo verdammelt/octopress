@@ -23,12 +23,13 @@ but later when misunderstandings between the parties of the conversation cause
 problems.
 
 Listening is not easy however. To really listen you have to:
-    - Decide to listen
-    - Listen for the whole message
-    - Let go of your personal agenda
-    - Be patient
-    - Be curious
-    - Test for understanding
+
+ - Decide to listen
+ - Listen for the whole message
+ - Let go of your personal agenda
+ - Be patient
+ - Be curious
+ - Test for understanding
 
 I personally have problems with listening patiently for the whole message.  I
 tend to jump in, trying to add things, perhaps of my own agenda, saying things
