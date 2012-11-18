@@ -8,4 +8,9 @@
 - thoughts on : http://www.jbrains.ca/permalink/a-proven-path-to-effectiveness
 - opinionated statement on how to read code
 - amateur ideas on how to stock a home cocktail bar
-        
+- GOOS: ch 14 & 15
+    - ch14 - new feature fits right in - no big deal
+    - ch15 - OO - really
+    - ch15 - refactorings bit by bit
+    - ch15 - saw that something would be annoying/boring - fixed it so that it
+             wouldn't be
