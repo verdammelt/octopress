@@ -14,3 +14,5 @@
     - ch15 - refactorings bit by bit
     - ch15 - saw that something would be annoying/boring - fixed it so that it
              wouldn't be
+- recipe: Mama's Potato Salad
+- recipe: Chicken 'Pot Pie' from skillet recipes
