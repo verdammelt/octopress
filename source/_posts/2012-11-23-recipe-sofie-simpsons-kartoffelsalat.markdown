@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Recipe: Mama Simpson's Kartofflesalad"
+title: "Recipe: Mama Simpson's Kartoffelsalat"
 date: 2012-11-23 15:49
 comments: true
 categories: food recipe 
 ---
 
-My [Mother's][mama] Kartofflesalad (Potato Salad) recipe is a German style
+My [Mother's][mama] Kartoffelsalat (Potato Salad) recipe is a German style
 potato salad; not one with mayonnaise. This is the type I grew up with and I
 think the other type is just *wrong*.
 
