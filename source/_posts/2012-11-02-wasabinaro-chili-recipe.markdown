@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Washabinaro Chili Recipe"
+title: "Recipe: Washabinaro Chili"
 date: 2012-11-02 20:33
 comments: true
 categories: food recipe
