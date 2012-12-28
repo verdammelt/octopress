@@ -1,18 +1,14 @@
+# Current #
 - Lyf Too Short, Craft Too Long (pIE of notebook)
+
+# BackLog #
+- opinionated statement on how to read code
 - SCNA after thoughts: 
     - listen to code / tests (really listen)
     - functional core / imperative shell
     - profesionalism
     - don't hold yourself back (@rubybuddha talk)
     - community (discussions with @sandromarcuso)
-- thoughts on : http://www.jbrains.ca/permalink/a-proven-path-to-effectiveness
-- opinionated statement on how to read code
 - amateur ideas on how to stock a home cocktail bar
-- GOOS: ch 14 & 15
-    - ch14 - new feature fits right in - no big deal
-    - ch15 - OO - really
-    - ch15 - refactorings bit by bit
-    - ch15 - saw that something would be annoying/boring - fixed it so that it
-             wouldn't be
-- recipe: Mama's Potato Salad
 - recipe: Chicken 'Pot Pie' from skillet recipes
+- thoughts on : http://www.jbrains.ca/permalink/a-proven-path-to-effectiveness
