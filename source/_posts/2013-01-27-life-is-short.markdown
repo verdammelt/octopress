@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Life is Short, and the Craft is Long"
-date: 2012-12-27 21:00
+date: 2013-01-27 19:30
 comments: true
-categories: 
+categories: personal life craft
 ---
 
 $$
