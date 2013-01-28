@@ -3,7 +3,7 @@ layout: post
 title: "\\LaTeX blog posting - a test post."
 date: 2011-11-30 07:40
 comments: true
-categories: blog latex markdown posterous 
+categories: blog LaTeX markdown posterous 
 ---
 
 I have had some annoying problems recently making [posterous][posterous]

@@ -3,7 +3,7 @@ layout: post
 title: "The Delete Refactoring"
 date: 2012-02-03 11:22
 comments: true
-categories: pattern refactoring
+categories: patterns refactoring
 ---
 
 <p style="text-align: center;">The Code is unnecessary.</p>
