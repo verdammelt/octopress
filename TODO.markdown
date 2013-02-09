@@ -1,5 +1,5 @@
 # Current #
-- Lyf Too Short, Craft Too Long (pIE of notebook)
+- amateur ideas on how to stock a home cocktail bar
 
 # BackLog #
 - opinionated statement on how to read code
@@ -9,6 +9,5 @@
     - profesionalism
     - don't hold yourself back (@rubybuddha talk)
     - community (discussions with @sandromarcuso)
-- amateur ideas on how to stock a home cocktail bar
 - recipe: Chicken 'Pot Pie' from skillet recipes
 - thoughts on : http://www.jbrains.ca/permalink/a-proven-path-to-effectiveness
