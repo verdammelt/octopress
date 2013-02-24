@@ -11,4 +11,3 @@
     - community (discussions with @sandromarcuso)
 - recipe: Chicken 'Pot Pie' from skillet recipes
 - thoughts on : http://www.jbrains.ca/permalink/a-proven-path-to-effectiveness
-
