@@ -1,7 +1,7 @@
 # Current #
-- amateur ideas on how to stock a home cocktail bar
 
 # BackLog #
+- Thoughts on SQL re: Abstraction & Composition
 - opinionated statement on how to read code
 - SCNA after thoughts: 
     - listen to code / tests (really listen)
