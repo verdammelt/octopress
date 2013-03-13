@@ -1,4 +1,4 @@
 # needed for a fix on heroku
 require 'rubypython'
 
-RubyPython.configure :python_exe => 'python2.6'
+RubyPython.start :python_exe => 'python2.6'

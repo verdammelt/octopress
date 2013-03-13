@@ -22,5 +22,5 @@ gem 'kramdown', '~> 0.13.7'
 
 # NOTE: due to current issues on heroku stack I need to lock these versions -
 # this combo works on heroku - but newer ones do not.
-gem 'pygments.rb', '= 0.2.3'
-gem 'rubypython', '= 0.5.1'
+gem 'pygments.rb', '~> 0.4.2'
+gem 'rubypython', '~> 0.6.3'
