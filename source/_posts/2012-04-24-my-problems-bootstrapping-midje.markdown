@@ -103,7 +103,7 @@ down wild chases to determine if I had all the right modules required etc.
 Fortunately/unfortunately the problems resolved themselves (I hate that) and I
 got my first [real test running][first-real-test]: 
 
-{% codeblock A Small Step for One Programmer lang:clojure https://github.com/verdammelt/defdrink/blob/dfc494f7b4ea50b67138605308be1967d9d8dcd4/test/defdrink/test/models/drinks.clj defdrink/test/defdrink/test/models/drinks.clj %}
+{% codeblock A Small Step for One Programmer https://github.com/verdammelt/defdrink/blob/dfc494f7b4ea50b67138605308be1967d9d8dcd4/test/defdrink/test/models/drinks.clj defdrink/test/defdrink/test/models/drinks.clj %}
 (fact (all) => [...drink1... ...drink2...]
       (provided (sql/select :drinks) => [...drink1... ...drink2...]))
 {% endcodeblock %}
@@ -130,7 +130,7 @@ expectation on my mock object that the `sql/insert` method was called with the
 correct parameters. Unfortunatly for me, I could not figure out how to do that
 in Midje. I ended with the following unhappy test: 
 
-{% codeblock An Unhappy Test lang:clojure https://github.com/verdammelt/defdrink/blob/9fbb73b327e7509e2612932dfedc97e8e55330ce/test/defdrink/test/models/drinks.clj defdrink/test/defdrink/test/models/drinks.clj %}
+{% codeblock An Unhappy Test https://github.com/verdammelt/defdrink/blob/9fbb73b327e7509e2612932dfedc97e8e55330ce/test/defdrink/test/models/drinks.clj defdrink/test/defdrink/test/models/drinks.clj %}
 (fact
      (insert ...name...) => ...not-important...
      (provided (sql/insert :drinks {:name ...name...}) => ...not-important...))
