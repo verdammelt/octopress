@@ -381,3 +381,12 @@ task :list do
   puts "Tasks: #{(Rake::Task.tasks - [Rake::Task[:list]]).join(', ')}"
   puts "(type rake -T for more detail)\n\n"
 end
+
+desc "push to heroku"
+task :push do
+    system "git push heroku master"
+    puts "---"
+    puts "if that was successful now go and remigrate discqus threads"
+    system "open http://codeandcocktails.disqus.com/admin/tools/migrate/"
+    puts "click through to webcrawler"
+    puts "---"
