@@ -9,7 +9,7 @@ ssh_port       = "22"
 document_root  = "~/website.com/"
 rsync_delete   = false
 rsync_args     = ""  # Any extra arguments to pass to rsync
-deploy_default = "rsync"
+deploy_default = "heroku"
 
 # This will be configured for you when you run config_deploy
 deploy_branch  = "gh-pages"
@@ -383,10 +383,11 @@ task :list do
 end
 
 desc "push to heroku"
-task :push do
+task :heroku do
     system "git push heroku master"
     puts "---"
     puts "if that was successful now go and remigrate discqus threads"
     system "open http://codeandcocktails.disqus.com/admin/tools/migrate/"
     puts "click through to webcrawler"
     puts "---"
+end
