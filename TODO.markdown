@@ -1,4 +1,5 @@
 # Current #
+- 'Giving up' is the most important lesson/skill for developers
 
 # BackLog #
 - Thoughts on SQL re: Abstraction & Composition
