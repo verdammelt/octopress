@@ -12,8 +12,8 @@ This year's SCNA Conference seemed to have several talks which touched upon
 the idea of experts having implicit knowledge. That is to say: they know
 things but can't necessarily explain what they know, or why. Ken Auer and Dave
 Thomas touched upon it; during the panel on Software Quality it was also
-brought up (e.g.  Corey Haines amazing reference to Chicken Sexing[sexing]).
-But I felt that Brian's talk took the idea and then added to it.
+brought up (e.g.  Corey Haines' amazing reference to [Chicken Sexing][sexing]).
+But I felt that Brian Marick's talk took the idea and then added to it.
 
 ## Bright vs. Dull Cows ##
 
@@ -22,30 +22,30 @@ an example. His wife (a veterinary professor) teaches her students to
 determine if a cow is 'bright' or 'dull' (a subjective diagnosis). Her
 students specify, day-after-day, if cows are dull or bright. She then corrects
 them. They usually ask how she could tell and she tells them something
-(drooping ears, nose-cleaning, etc.). But really these specific clues are not
-*really the way to tell*. Those who can diagnose a cow as bright or dull
+(drooping ears, nose-cleaning, etc.). But actually these specific clues are
+not *really the way to tell*. Those who can diagnose a cow as bright or dull
 cannot explain why.
 
 This anecdote seems to show that the implicit knowledge of the expert is
-something that can be trained. When discussing this idea Corey Haines
-mentioned a conference session which Michael Feathers gave where he had the
-attendees give quick good/bad judgement calls on snippets of code. Then
+something that can be trained. When discussing this idea after the talk Corey
+Haines mentioned a conference session in which Michael Feathers gave where he
+had the attendees give quick good/bad judgment calls on snippets of code. Then
 tallied those up and found that some snippets had a large amount of agreement
 as to their good-/bad-ness. They then discussed and tried to determine why.
-In light of Marick's anecdote however it seems that they might never find out
+In light of Brian's anecdote however it seems that they might never find out
 *why*, but maybe they could train themselves by looking at a lot of code and
-being corrected when they get the judgement wrong.
+being corrected when they get the judgment wrong.
 
-(Marick hopes to use this sort of idea to be able to train himself to have a
+(Brian hopes to use this sort of idea to be able to train himself to have a
 nearly physical reaction to bad code. While that sounds cool, I worry about a
-'Ludovico Technique' for code.
+'Ludovico Technique' for code.)
 
 ## Effortful vs. Automatic ##
 
 Brian then talked about two types of thinking: Effortful and Automatic.
-Effortful is the sort when you need to do a non-trivial arithmetic, or a tough
-parking job. Automatic is when you do simple math like 2+2 or easy driving
-where you are sort of on autopilot. When you use the Effortful way, it
+Effortful is the sort when you need to do a non-trivial arithmetic, or a
+parking in a tight spot. Automatic is when you do simple math like 2+2 or easy
+driving where you are sort of on autopilot. When you use the Effortful way, it
 actually takes *effort*. It is slower seems to be only possible to do it
 serially. Automatic thinking is faster, takes little effort, and seems to be
 parallelizable.
@@ -56,7 +56,7 @@ it, you can put stuff into your Automatic cache.
 
 ## Switching to Automatic ##
 
-So how can this be done? While Marick offers the usual 'practice, practice,
+So how can this be done? While Brian offers the usual 'practice, practice,
 practice', he adds to it an interesting idea about 'Set and Setting'. 'Set and
 Setting' is an idea from Timothy Leary about why drugs such as LSD seem to
 have very different effects in different people. The mindset (Set) of the
