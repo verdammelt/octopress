@@ -1,10 +1,17 @@
 # Current #
-- opinionated statement on how to read code
+- thoughts on: 
+** From "Programming as Experience: The Inspiration of Self"
+*** Randall B. Smith and David Ungar (1995)
+     When there is only one way of doing things, it is easier to
+     modify and reuse code. When code is reused, programs are easier
+     to change and most importantly, shrink. When a program shrinks
+     its construction and maintenance requires fewer people which
+     allows for more opportunities for reuse to be found. Consistency
+     leads to reuse, reuse leads to conciseness, conciseness leads to
+     understanding.
 
 # BackLog #
 - Thoughts on SQL re: Abstraction & Composition
-- recipe: Chicken 'Pot Pie' from skillet recipes
-- thoughts on : http://www.jbrains.ca/permalink/a-proven-path-to-effectiveness
 - what makes good software (user perspective vs. developer perspective)
 - thoughts on check pattern language quotes:
 		- Do not expect your domain model to handle string or numeric
@@ -16,15 +23,5 @@
 		  expressed.
 		- A person reaches through a program's interface to manipulate the
 		  domain model.
-- thoughts on: 
-** From "Programming as Experience: The Inspiration of Self"
-*** Randall B. Smith and David Ungar (1995)
-     When there is only one way of doing things, it is easier to
-     modify and reuse code. When code is reused, programs are easier
-     to change and most importantly, shrink. When a program shrinks
-     its construction and maintenance requires fewer people which
-     allows for more opportunities for reuse to be found. Consistency
-     leads to reuse, reuse leads to conciseness, conciseness leads to
-     understanding.
 
 
