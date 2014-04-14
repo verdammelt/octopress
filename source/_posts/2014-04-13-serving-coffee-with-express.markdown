@@ -47,24 +47,30 @@ app.listen app.get('port'), ->
 
 {% endcodeblock %}
 
-The part that concerns us is lines 12-18.
+The part that concerns us are lines 12-18. This section is telling
+Express that if a request comes in with a path starting with `/client`
+that we will want to do some special processing on it. 
 
-First, the code is saying that if a file with path staring with
-`/client` is requested then we'll serve up the coffeescript file of
-the same name in the `../client` directory. Of note here is that
-`request.path` does not contain the `/client` part of the path and
-`__dirname` is the directory of the currently executing file.
+* Line 13 determines the path to the CoffeeScript file (which is in
+the `../client` directory relative to our current directory).  Of note
+here is that `request.path` does not contain the `/client` part of the
+path and `__dirname` is the directory of the currently executing file.
 
-Line 14 sets up the reading of this CoffeeScript file. (It is
+* Line 14 sets up the reading of this CoffeeScript file. It is
 important to specify the encoding otherwise the Coffeescript compile
-will throw an error.) If there is an error reading the file, such as
-the file not existing, then we tell express to run whatever is the
-next rule (eventually if no other rules work Express will send a `404`
-for us). If we can read the file then we use CoffeeScript to compile
-that file and send that data back as the response. (Of note here is
-that we set the content type to be `text/javascript` to make sure that
-the browser does the right thing; it doesn't appear necessary with
-Chrome at least, but probably best to do it.).
+will throw an error.
+
+* If there is an error reading the file (line 15), such as the file not
+existing, then we tell express to run whatever is the next rule
+(eventually if no other rules work Express will send a `404` for
+us).
+
+* If we can read the file then we use CoffeeScript to compile that file
+(line 18) and send that data back as the response (lines 16-18). (Of
+note here is that we set the content type to be `text/javascript`
+(line 17) to make sure that the browser does the right thing (it
+doesn't appear necessary with Chrome at least, but probably best to do
+it.)).
 
 Congratulations, we've just written an Express Middleware! 
 
@@ -80,4 +86,6 @@ Congratulations, we've just written an Express Middleware!
 [^3]: The toy app bootstrapping kit I mentioned at the top of this
       post is in my
       [expressular-kit](https://github.com/verdammelt/expressular-kit).
+      The code here is not a direct copy of the code there in
+      `app/server/app.coffee`.
 
