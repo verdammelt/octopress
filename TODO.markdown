@@ -1,8 +1,4 @@
 # Current #
-
-# BackLog #
-- Thoughts on SQL re: Abstraction & Composition
-- what makes good software (user perspective vs. developer perspective)
 - thoughts on check pattern language quotes:
 		- Do not expect your domain model to handle string or numeric
 		  representations of the same information.
@@ -13,5 +9,9 @@
 		  expressed.
 		- A person reaches through a program's interface to manipulate the
 		  domain model.
+
+# BackLog #
+- Thoughts on SQL re: Abstraction & Composition
+- what makes good software (user perspective vs. developer perspective)
 
 
