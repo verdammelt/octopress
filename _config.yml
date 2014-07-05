@@ -66,7 +66,7 @@ default_asides: [ custom/asides/about.html,
 
 # Github repositories
 github_user: verdammelt
-github_repo_count: 2
+github_repo_count: 5
 github_show_profile_link: true
 github_skip_forks: false
 
