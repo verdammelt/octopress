@@ -61,6 +61,7 @@ because our system depends upon it. This is where QuickLisp makes things
 simple since that is its job and it does a fine one at that.
 
 Next is the definition of our components:
+
 {% codeblock Defining the Components lang:common-lisp %}
   :components ((:module "src"
 			:serial t
