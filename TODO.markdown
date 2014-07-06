@@ -1,5 +1,4 @@
 # Current #
-- What have I (re)learned from SICP
 
 # BackLog #
 - Thoughts on SQL re: Abstraction & Composition
