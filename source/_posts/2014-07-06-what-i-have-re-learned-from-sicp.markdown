@@ -77,8 +77,17 @@ that are just now realizing are good/possible - but we act like they
 are *new*. Reality has caught up to where the 1960's thought was
 possible[^9].
 
+## The Back to the Future
+
 One last thing I (re)learned: The fun of learning and working through
-problems. 
+problems. And that leads to what is yet to come.
+
+I'm going to start looking at the old texts of our practice. The
+ancients knew things that we have forgotten. I will see what I can
+learn from them. I will strive to avoid Argument from Antiquity
+however, that is always a danger with this sort of thing.
+
+I can only see so far because I stand upon the shoulders of Giants[^10].
 
 ----
 [^1]: http://mitpress.mit.edu/sicp/
@@ -104,3 +113,5 @@ problems.
 [^8]: http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-33.html#%_sec_5.3
 
 [^9]: http://www-formal.stanford.edu/jmc/recursive.pdf
+
+[^10]: with apologies to Newton.
