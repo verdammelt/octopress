@@ -1,5 +1,5 @@
 # Current #
-- Agile: Estimate bugs or not?
+- Cocktails as Design Patters
 
 # BackLog #
 - Thoughts on SQL re: Abstraction & Composition
@@ -11,6 +11,5 @@ memory and no audit trail, almost impossible to debug.
 - at the very end of video 10b - sussman's issues with top-down desgign.
 Is TDD top-down or bottom-up?
 - REPL vs. TDD (and how to use them together)?
-- Cocktails as Design Patters
 
 
