@@ -1,5 +1,4 @@
 # Current #
-- Cocktails as Design Patters
 
 # BackLog #
 - Thoughts on SQL re: Abstraction & Composition
