@@ -12,16 +12,17 @@ gem 'jekyll-date-format', '~> 1.0'
 gem 'jekyll-page-hooks', '~> 1.2'
 gem 'jekyll-sitemap'
 gem 'kramdown', '~> 1.3.0'
+gem 'octopress-date-format', '~> 2.0'
+gem 'octopress-hooks', '~> 2.2'
 gem 'rake', '~> 10.0'
+gem 'rdiscount', '~> 2.0'
 gem 'rubypants', '~> 0.2.0'
 gem 'sass', '~> 3.2'
 gem 'sass-globbing', '~> 1.0.0'
 gem 'sinatra', '~> 1.4.2'
 gem 'stringex', '~> 1.4.0'
 
-
 group :development do
   gem 'rb-fsevent', '~> 0.9'
   gem 'directory_watcher', '1.4.1'
 end
-
