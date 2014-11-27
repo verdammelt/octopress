@@ -28,5 +28,5 @@ Is TDD top-down or bottom-up?
   A Rational Design Process: How and Why to Fake It
   PARNAS, CLEMENTS
 
-
-
+- short post about mocking python constructors and what that made me
+  realize about modules (that they are objects)
