@@ -1,10 +1,7 @@
 # Current #
 
-- short post about mocking python constructors and what that made me
-  realize about modules (that they are objects)
-
 # BackLog #
-- Thoughts on SQL re: Abstraction & Composition
+- How to create new exception in Clojure / Leiningen
 
 - what makes good software (user perspective vs. developer perspective)
 
