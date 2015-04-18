@@ -1,7 +1,8 @@
 # Current #
 
+- Bootstrapping a Lisp unit testing library.
+
 # BackLog #
-- How to create new exception in Clojure / Leiningen
 
 - what makes good software (user perspective vs. developer perspective)
 
