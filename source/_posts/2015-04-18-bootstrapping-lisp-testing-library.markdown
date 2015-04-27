@@ -10,7 +10,7 @@ categories: tdd lisp
 
 What's a person to do when one prefers developing in a TDD style and
 decides to start a project where nothing not directly in the language
-needs to be written? Why write a testing library of course! But...
+needs to be written? Why, write a testing library of course! But...
 without a testing library how can one write this testing library in a
 TDD fashion? Herein is how I went about doing it.
 
