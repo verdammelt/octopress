@@ -2,7 +2,6 @@
 # everything in the development group!
 #
 source "http://rubygems.org"
-ruby "1.9.3"
 
 gem 'RedCloth', '~> 4.2.9'
 gem 'compass', '~> 0.12.2'
