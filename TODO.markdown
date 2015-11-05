@@ -1,8 +1,14 @@
 # Current #
 
-- Bootstrapping a Lisp unit testing library.
-
 # BackLog #
+
+- different word than 'code'.
+
+- Pictures of info radiator for remote people
+
+- delete code if it is no longer working (esp. tests)
+
+- Start with retros.
 
 - what makes good software (user perspective vs. developer perspective)
 
