@@ -1,0 +1,51 @@
+https://keybase.io/mjs
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://code-and-cocktails.herokuapp.com
+  * I am mjs (https://keybase.io/mjs) on keybase.
+  * I have a public key ASDwGdl_JqdmJbijxCjhi3DwNGjnIO8t0qN0DCxG5Xjl4go
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101e71d549ce31278b63effe55b712b1f6a1445a97058be33dc51ae7170885b727d0a",
+            "host": "keybase.io",
+            "kid": "0120f019d97f26a76625b8a3c428e18b70f03468e720ef2dd2a3740c2c46e578e5e20a",
+            "uid": "1b99e630919795e3174e8b8ebff34700",
+            "username": "mjs"
+        },
+        "service": {
+            "hostname": "code-and-cocktails.herokuapp.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.6"
+    },
+    "ctime": 1451143163,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1451142306,
+        "hash": "acdcf3155bbd0aefbe9b84e5fc9b6f5c9b14bd1eeaf5bfe4f5edc7873e74711716173a3b896707daaf997cede074d9891c21c44f9ecea26c8272bfd27ef04505",
+        "seqno": 338792
+    },
+    "prev": "cd5b012a5c65333967a54df3aed6708ca6b0a3c4472d81c48d5dcccae003396a",
+    "seqno": 27,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+g6Rib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg8BnZfyanZiW4o8Qo4Ytw8DRo5yDvLdKjdAwsRuV45eIKp3BheWxvYWTFAwN7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTAxZTcxZDU0OWNlMzEyNzhiNjNlZmZlNTViNzEyYjFmNmExNDQ1YTk3MDU4YmUzM2RjNTFhZTcxNzA4ODViNzI3ZDBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwZjAxOWQ5N2YyNmE3NjYyNWI4YTNjNDI4ZTE4YjcwZjAzNDY4ZTcyMGVmMmRkMmEzNzQwYzJjNDZlNTc4ZTVlMjBhIiwidWlkIjoiMWI5OWU2MzA5MTk3OTVlMzE3NGU4YjhlYmZmMzQ3MDAiLCJ1c2VybmFtZSI6Im1qcyJ9LCJzZXJ2aWNlIjp7Imhvc3RuYW1lIjoiY29kZS1hbmQtY29ja3RhaWxzLmhlcm9rdWFwcC5jb20iLCJwcm90b2NvbCI6Imh0dHBzOiJ9LCJ0eXBlIjoid2ViX3NlcnZpY2VfYmluZGluZyIsInZlcnNpb24iOjF9LCJjbGllbnQiOnsibmFtZSI6ImtleWJhc2UuaW8gZ28gY2xpZW50IiwidmVyc2lvbiI6IjEuMC42In0sImN0aW1lIjoxNDUxMTQzMTYzLCJleHBpcmVfaW4iOjUwNDU3NjAwMCwibWVya2xlX3Jvb3QiOnsiY3RpbWUiOjE0NTExNDIzMDYsImhhc2giOiJhY2RjZjMxNTViYmQwYWVmYmU5Yjg0ZTVmYzliNmY1YzliMTRiZDFlZWFmNWJmZTRmNWVkYzc4NzNlNzQ3MTE3MTYxNzNhM2I4OTY3MDdkYWFmOTk3Y2VkZTA3NGQ5ODkxYzIxYzQ0ZjllY2VhMjZjODI3MmJmZDI3ZWYwNDUwNSIsInNlcW5vIjozMzg3OTJ9LCJwcmV2IjoiY2Q1YjAxMmE1YzY1MzMzOTY3YTU0ZGYzYWVkNjcwOGNhNmIwYTNjNDQ3MmQ4MWM0OGQ1ZGNjY2FlMDAzMzk2YSIsInNlcW5vIjoyNywidGFnIjoic2lnbmF0dXJlIn2jc2lnxECkkVCmc5nVP28dbFQGW1jDN7DUUd+EilGuUXmSsaViuzjraA/NTdChaJOtzc8orehc4lCyBwlfNp+sWdZr0F4CqHNpZ190eXBlIKN0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mjs
