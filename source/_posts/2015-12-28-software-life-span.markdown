@@ -6,6 +6,8 @@ comments: true
 categories: software maintenance
 ---
 
+<small>(Cross posted to the [Cyrus Innovation Blog](http://www.cyrusinnovation.com/software-life-span/))</small>
+
 > Software maintenance is an extremely important but highly neglected
 > activity.
 
