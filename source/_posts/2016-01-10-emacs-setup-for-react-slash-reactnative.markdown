@@ -19,17 +19,18 @@ file along with snippets of code.
 
 The first thing that needed to be set up was a mode for React code.
 React code files can mix Javascript with HTML markup and it does not
-appear that js-mode (the built-in JavaScript mode handles that). After
-a short Googling it looks like [web-mode](http://web-mode.org/) is a
-mode that can handle it. After some brief testing it does appear to
-work reasonably. It appears that the React/ReactNative community has
-not decided to use `*.js` or `*.jsx` as the extension for the code
-files and since `web-mode` appears to handle JavaScript just fine I
-chose to use it in all cases.
+appear that `js-mode` (the built-in JavaScript mode) handles that.
+After a short Googling it looks like
+[`web-mode`](http://web-mode.org/) is a mode that can handle it. After
+some brief testing it does appear to work reasonably. It appears that
+the React/ReactNative community has not decided to use `*.js` or
+`*.jsx` as the extension for the code files and since `web-mode`
+appears to handle JavaScript just fine I chose to use it in all cases.
 
 ```lisp
 (add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode))
 ```
+
 The next thing I wanted to get set up was a linter. I thought this
 especially important as React uses an ES6 dialect of JavaScript which I
 am not entirely familiar with yet and a linter can help me "do the
@@ -48,10 +49,10 @@ in use for JSON files.)
 ```
 
 Setting up the linter to run via [flycheck](http://www.flycheck.org/)
-took a small amount of work since I don't like to install tools used
-by a project globally. (I know that this is contrary to current mores,
-but I have been tripped up by global vs. local installations before so
-I shy away from them when I can.) 
+took a small amount of work since I don't like to install project
+specific tools globally. (I know that this is contrary to current
+mores, but I have been tripped up by global vs. local installations
+before so I shy away from them when I can.)
 
 First I needed to integrate NVM with Emacs so that Emacs could run
 ESLint at all.
@@ -60,13 +61,14 @@ ESLint at all.
 (require 'nvm)
 (nvm-use (caar (last (nvm--installed-versions))))
 ```
-The choice to use the last version found is totally arbitrary. If and
+
+(The choice to use the last version found is totally arbitrary. If and
 when I get more versions of Node.js on my machine I'll have to make a
-more careful choice.
+more careful choice.)
 
 Next I hooked into [projectile](http://batsov.com/projectile/) to look
 for a locally installed ESLint and use it if found. The
-`projectile-after-switch-project-hook` functions are called after
+`projectile-after-switch-project-hook` functions are called *after*
 Projectile has switched directories to the project so one can simply
 check the project for the desired file.
 
