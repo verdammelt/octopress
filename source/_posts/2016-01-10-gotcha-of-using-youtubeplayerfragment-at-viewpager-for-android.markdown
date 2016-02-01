@@ -11,11 +11,11 @@ for a client. It was a great opportunity to learn the platform and how
 "easy" it is to write an app. I ran into one 'gotcha' that I thought
 might be valuable to others.
 
-One feature that was needed as a swipeable carousel of YouTube
+One feature that was needed was a swipeable carousel of YouTube
 videos. Google provides some widgets for showing YouTube videos on an
 Android device and
 [YouTubePlayerFragment](https://developers.google.com/youtube/android/player/reference/com/google/android/youtube/player/YouTubePlayerFragment?hl=en)
-was a (almost) perfect fit form my needs[^1]. Also
+was a (almost) perfect fit for my needs[^1]. Also
 [ViewPager](http://developer.android.com/reference/android/support/v4/view/ViewPager.html)
 was just the thing for creating the swipeable list of items. It was
 easy enough to create a subclass of
@@ -43,7 +43,7 @@ it will request multiple views from the ViewPageAdapter, so that other
 views are "ready to go". But why did they all respond when I clicked
 on one of them?
 
-More debugging did not solve the mystery but solidified by hypothesis:
+More debugging did not solve the mystery but solidified my hypothesis:
 The YouTubePlayer and/or YouTubePlayerFragment has state shared
 between all their instances. That is the only explanation that would
 fit the observed behavior.
