@@ -6,6 +6,8 @@ comments: true
 categories: emacs react reactnative
 ---
 
+<small>(Cross posted to the [Cyrus Innovation Blog](http://www.cyrusinnovation.com/initial-emacs-setup-for-reactreactnative/))</small>
+
 It looks likely that I'll be doing some ReactNative work soon so I
 took some time to start setting up my Emacs environment. All my
 relevant setup can be found in the
