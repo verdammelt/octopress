@@ -6,6 +6,8 @@ comments: true
 categories: android
 ---
 
+<small>(Cross posted to the [Cyrus Innovation Blog](http://www.cyrusinnovation.com/gotcha-of-using-youtubeplayerfragment-and-viewpager-for-android/))</small>
+
 Recently I learned some Android programming by writing a simple app
 for a client. It was a great opportunity to learn the platform and how
 "easy" it is to write an app. I ran into one 'gotcha' that I thought
