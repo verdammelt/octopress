@@ -2,11 +2,12 @@
 # everything in the development group!
 #
 source "http://rubygems.org"
+ruby '2.2.2'
 
 gem 'RedCloth', '~> 4.2.9'
 gem 'compass', '~> 0.12.2'
 gem 'haml', '~> 4.0'
-gem 'jekyll', '~> 2.0'
+gem 'jekyll', '~> 2.1'
 gem 'jekyll-sitemap'
 gem 'kramdown', '~> 1.3.0'
 gem 'octopress-date-format', '~> 2.0'
