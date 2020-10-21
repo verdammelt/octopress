@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: bostonrb | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/bostonrb/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[My thoughts derived from the talk given by @chadfowler at @bostonrb 2012-02-21]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/02/21/my-thoughts-derived-from-the-talk-given-by-at-chadfowler-at-at-bostonrb-2012-02-21/"/>
+    <updated>2012-02-21T22:36:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/02/21/my-thoughts-derived-from-the-talk-given-by-at-chadfowler-at-at-bostonrb-2012-02-21</id>
+    <content type="html"><![CDATA[<h2 id="overview">Overview</h2>
+
+<p>(I finally went to <em>another</em> Boston Ruby meetup.  Only my second -
+hopefully it will be less than ~9 months before I go to my third.)</p>
+
+<p>Chad Fowler gave a talk entitled “Measuring &amp; Analyzing Things That
+Matter When You Have Too Many Things To Keep Track Of” at tonights
+Boston Ruby Meetup.  It was <em>the</em> reason why I went to the meetup.(But I
+did enjoy the other two talks - but they are not the topic of this post)</p>
+
+<p>His talk was, self-described, half-baked ideas.  Which is fine by me.
+At @boston_sc we’ve started doing “half-baked” ideas talks and they have
+been great - I only wish that this talk was more discussion style like
+the ones we have at @boston_sc.</p>
+
+<p>He talked about how even with a team of very good developers, good code
+is not guaranteed.  The bad stuff builds up, even without people
+noticing, via bad habits and laziness.  His person example of gaining a
+lot of weight hits very solidly with me and I am again working to drop
+my weight which keeps just sneaking back (due to bad habits and laziness
+on my part).</p>
+
+<h2 id="how-to-measure-how-readable-code-is">How to measure how readable code is</h2>
+
+<p>He mentioned several thoughts about how to fight the bad
+habits/laziness, but the one that got me thinking was about the
+<a href="http://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_test">Flesch-Kincaid Readability
+Scale</a>.</p>
+
+<p>Basically in a nutshell Rudolph Flesch devised a algorithm for English
+which let you compute a score which then equates to what level of
+English reader could easily read and understand your English.  He
+suggested that perhaps some combination of metrics (e.g. flog, flag,
+roodi, churn, reek, (i.e. things from metric-fu)) might render a
+<em>number</em> which would equate to a level of developer (his scale topped
+out at Rich Hickey) that could understand your code.</p>
+
+<p>The reason that this got me thinking especially was because it fits into
+a less-than-half-baked idea I’ve had.  A few months ago I was working
+with a junior developer at my job and while she was away I had
+implemented a nice little bit of Groovy code to do something.  It
+involved a chain of collection functions (<em>e.g.</em> map, inject, collect
+etc.).  I thought it was great.  When she came back and saw it she
+couldn’t understand it.  I explained it to her and she <em>started</em> to
+understand.  I explained again and she <em>sort of</em> understood.  Then I
+said “ok, hold on…” and replaced it with 2 for loops.  Totally dumb
+un-cool code that did the same thing.  She immediately understood! So
+that is what we committed.</p>
+
+<p>The problem was that I was at a higher level of understanding of that
+sort of pseudo-function collection function chaining.  (and also it
+the code might have been a bit ‘clever’ <em>shudder</em>).  By shifting to
+<em>ordinary</em> code it was easy to understand.</p>
+
+<p>The thing I am interested in is if this scale of code comprehensibility
+is if it is absolute or relative.  My first thought it is relative.  If
+one can raise the base skill of a team then that team can understand
+more esoteric code.</p>
+
+<h2 id="other-thoughts">Other thoughts</h2>
+
+<p>There were other interesting points in there - obviously rather ruby
+specific:</p>
+
+<ul>
+  <li>Mention of tools like flog, flay, roodi, reek, etc all good
+at giving numbers about your code.</li>
+  <li>Measuring whatever worries you</li>
+  <li>Graphing everything you can</li>
+  <li>(again) Getting information from your commit history</li>
+</ul>
+
+<p>These are also things that will keep me thinking for a bit.  I can use
+these ideas both in my for-pay coding and my for-free/me coding.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

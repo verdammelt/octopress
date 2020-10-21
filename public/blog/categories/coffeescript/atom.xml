@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: coffeescript | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/coffeescript/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Serving Coffee with Express]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2014/04/13/serving-coffee-with-express/"/>
+    <updated>2014-04-13T19:45:58-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2014/04/13/serving-coffee-with-express</id>
+    <content type="html"><![CDATA[<p>A few weeks ago I was playing around with a new stack:
+Node-Express-Angular all in CoffeeScript<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. I found it quite easy to
+have the Express server compile my CoffeeScript files and then return
+the JavaScript to the browser. I then found myself last week in a
+position at work where I wanted a little test page to hang the Angular
+directives I was working on so I quickly used the same trick.</p>
+
+<p>I’m not saying this trick is bullet-proof, or even a necessarily good
+idea for production. But it seems like a good thing for testing and
+perhaps for getting a project off the ground with some prototyping. It
+also serves as a small example of how to write an Express
+Middleware<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>.</p>
+
+<p>With that caveat I will present you with the code and explanation of
+it<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">express = </span><span class="nx">require</span> <span class="err">‘</span><span class="nx">express</span><span class="err">’</span>
+</span><span class='line'><span class="nv">coffee = </span><span class="nx">require</span> <span class="err">‘</span><span class="nx">coffee</span><span class="o">-</span><span class="nx">script</span><span class="err">’</span>
+</span><span class='line'><span class="nv">fs = </span><span class="nx">require</span> <span class="err">‘</span><span class="nx">fs</span><span class="err">’</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nv">app = </span><span class="nx">express</span><span class="p">()</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="o">-&amp;</span><span class="nx">gt</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">app</span><span class="p">.</span><span class="nx">set</span> <span class="err">‘</span><span class="nx">port</span><span class="err">’</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">?</span> <span class="mi">3000</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">logger</span><span class="p">()</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="err">‘</span><span class="o">/</span><span class="nx">client</span><span class="err">’</span><span class="p">,</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">-&amp;</span><span class="nx">gt</span><span class="p">;</span>
+</span><span class='line'>  <span class="nv">coffeeFile = </span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span> <span class="nx">__dirname</span><span class="p">,</span> <span class="err">“</span><span class="p">..</span><span class="o">/</span><span class="nx">client</span><span class="err">”</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">path</span>
+</span><span class='line'>  <span class="nv">file = </span><span class="nx">fs</span><span class="p">.</span><span class="nx">read</span> <span class="nx">coffeeFile</span><span class="p">,</span> <span class="err">“</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span><span class="err">”</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="o">-&amp;</span><span class="nx">gt</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">next</span><span class="p">()</span> <span class="k">if</span> <span class="nx">err</span><span class="o">?</span>
+</span><span class='line'>    <span class="nx">response</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">contentType</span><span class="p">(</span><span class="err">‘</span><span class="nx">text</span><span class="o">/</span><span class="nx">javascript</span><span class="err">’</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">send</span> <span class="nx">coffee</span><span class="p">.</span><span class="nx">compile</span> <span class="nx">data</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span> <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="err">‘</span><span class="nx">port</span><span class="err">’</span><span class="p">),</span> <span class="o">-&amp;</span><span class="nx">gt</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="err">‘</span><span class="nx">listening</span> <span class="kc">on</span> <span class="nx">port</span> <span class="o">%</span><span class="nx">d</span><span class="err">’</span><span class="p">,</span> <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="err">‘</span><span class="nx">port</span><span class="err">’</span><span class="p">)</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The part that concerns us are lines 12-18. This section is telling
+Express that if a request comes in with a path starting with <code>/client</code>
+that we will want to do some special processing on it.</p>
+
+<ul>
+  <li>
+    <p>Line 13 determines the path to the CoffeeScript file (which is in
+the <code>../client</code> directory relative to our current directory).  Of note
+here is that <code>request.path</code> does not contain the <code>/client</code> part of the
+path and <code>__dirname</code> is the directory of the currently executing file.</p>
+  </li>
+  <li>
+    <p>Line 14 sets up the reading of this CoffeeScript file. It is
+important to specify the encoding otherwise the Coffeescript compile
+will throw an error.</p>
+  </li>
+  <li>
+    <p>If there is an error reading the file (line 15), such as the file not
+existing, then we tell express to run whatever is the next rule
+(eventually if no other rules work Express will send a <code>404</code> for
+us).</p>
+  </li>
+  <li>
+    <p>If we can read the file then we use CoffeeScript to compile that file
+(line 18) and send that data back as the response (lines 16-18). (Of
+note here is that we set the content type to be <code>text/javascript</code>
+(line 17) to make sure that the browser does the right thing (it
+doesn’t appear necessary with Chrome at least, but probably best to do
+it.)).</p>
+  </li>
+</ul>
+
+<p>Congratulations, we’ve just written an Express Middleware!</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>It is my current opinion that CoffeeScript is better than
+  writing directly in JavaScript. It saves the developer from
+  making some very basic stupid mistakes with JavaScript and also
+  removes some of the syntatic noise. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="http://expressjs.com/4x/api.html#middleware"></a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>The toy app bootstrapping kit I mentioned at the top of this
+  post is in my
+  <a href="https://github.com/verdammelt/expressular-kit">expressular-kit</a>.
+  The code here is not a direct copy of the code there in
+  <code>app/server/app.coffee</code>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
+  
+</feed>

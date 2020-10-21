@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: retrospective | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/retrospective/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Is your retro done?]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2015/11/05/is-your-retro-done/"/>
+    <updated>2015-11-05T16:36:31-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2015/11/05/is-your-retro-done</id>
+    <content type="html"><![CDATA[<p><small>(Cross posted to the <a href="http://www.cyrusinnovation.com/is-your-retro-done/">Cyrus Innovation Blog</a>)</small></p>
+
+<p>Retrospective meetings are an important part of any sort of “Agile”
+process. I have a rule about when a retrospective meeting is over.</p>
+
+<ol>
+  <li>Everyone that wants to talk has talked.</li>
+  <li>There is at least one action item.</li>
+  <li>There is at least one volunteer for each action item.</li>
+</ol>
+
+<p>A good retrospective meetings can help a team achieve what they need
+and want. Often, however, these meetings tend toward directionless
+discussion and complaining. While <em>sometimes</em> a ‘complaining’
+retrospective can be good and cathartic, these should not be the usual
+meeting.</p>
+
+<p>Recently a client’s retrospective meetings had fallen by the wayside.
+Even when they had them they were mostly at the complaining end of the
+spectrum. We had helped them get back into regular retrospectives,
+weekly actually, but they were still not very good.</p>
+
+<p>At the end of one retrospective the team member playing the
+facilitator role tried to wrap the long ramble up by asking <em>“Retro
+Complete?”</em>. I cut off the murmured agreements with another question:
+<em>“Do we have some action items?”</em>.</p>
+
+<p>A retrospective meeting should result in action items. These might be
+a new story/ticket/card, a task, a new process, or an experiment to
+try. Without these the meeting was just discussion.</p>
+
+<p>Also important is that the action items have volunteers. If no one
+wants to do or ‘champion’ an action item then find out why. Perhaps
+the action item just isn’t that important to the team; then drop it.
+Perhaps it is too big and amorphous; then break it down to a single
+next action. Or perhaps it is scary; if this is the case then
+this scariness is something for more discussion.</p>
+
+<p>In the end the team discussed what actions to take on the topics they
+had discussed and created a short list. They even had volunteer for at
+least one. Still not the most successful retrospective, but better
+than the last. Hopefully they’ll keep this habit and their retros will
+become even more effective.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Quick Review of 20 years of 'Professional' programming]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/06/20/quick-review-of-20-years-of-professional-programming/"/>
+    <updated>2012-06-20T21:00:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/06/20/quick-review-of-20-years-of-professional-programming</id>
+    <content type="html"><![CDATA[<p>In May 1992 I graduated with a Bachelor of Science in Computer Science from
+<a href="http://www.wpi.edu/" title="My alma mater">WPI</a>. That means that I’ve been a ‘<em>professional</em>’ programmer for a little
+bit over 20 years.  I have to say that while on the whole it has been good I
+regret some things.</p>
+
+<p>Firstly, I think I got a good education from WPI.  However I wish I had taken
+it onto myself to get a <em>better</em> education.  I didn’t extend myself enough, I
+didn’t really dig into things as much as I could have. I got good grades and
+left it at that.  This is a regret of mine.</p>
+
+<p>Nextly, upon graduating, I got some jobs and things went well. I fell into
+thinking that I knew what I was doing.  I think I was, while cocksure, still a
+bit better than the average programmer of the time with equal experience.  But
+it was during this approximately 10-15 year period where I fell into a lull. I
+thought I was good and I never did too much extra-curricular research. I did
+have a small piece of <a href="http://sourceforge.net/projects/tnef/">free software</a> that I worked on during this time</p>
+<ul>
+  <li>but that didn’t really stretch my abilities. The work I was doing at work
+was good - but again not stretching my abilities.</li>
+</ul>
+
+<p>During this time I only remember going to a single ‘conference’. That was when
+the local <a href="http://www.acm.org">ACM</a> chapter in <a href="http://www.gbcacm.org/">Boston</a> brought in one of the 
+<a href="http://en.wikipedia.org/wiki/Gang_of_Four_(software)">Gang of Four</a> to talk about their book. I distinctly remember that during the
+lunch I was so shy/awkward that I felt like never attending anything like this
+again.</p>
+
+<p>Sometime during the last 5-10 years I started to become dissatisfied with how
+software projects were being run and how quality, my own and other developers
+was being handled.  Sometime during this time period I was exposed to Agile
+methodologies. Perhaps the time was just ‘right’, but for whatever reason
+instead of just sitting around and accepting things I did a lot of research, I
+started reading blogs, I started trying things out for myself, I even went to
+conferences and made some good connections with people.</p>
+
+<p>It was at this point I started to realized 1) how little I knew and 2) how
+much I had forgotten.</p>
+
+<p>This is where I am now. I am trying to turn myself around and learn more and
+all the time.</p>
+
+<p>I hope my next 20 years of programming (because I plan on coding (maybe not
+always for pay) until I die) will not find myself falling into another rut…</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[My problems bootstrapping Midje]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/04/24/my-problems-bootstrapping-midje/"/>
+    <updated>2012-04-24T20:23:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/04/24/my-problems-bootstrapping-midje</id>
+    <content type="html"><![CDATA[<h2 id="a-tragedy-of-my-own-devising">(<em>A Tragedy of My Own Devising</em>)</h2>
+
+<h2 id="abstract">Abstract</h2>
+<p>I had a lot of problems setting up my first <a href="https://github.com/marick/Midje">Midje</a> tests for my <a href="http://clojure.org/">Clojure</a>
+project <a href="http://defdrink.heroku.com">(defdrink)</a> last night and thought it might be useful for me to
+write about it.</p>
+
+<p>(And helpful it was… I see plenty of mistakes I made and summarize the
+lessons learned at the end).</p>
+
+<h2 id="background">Background</h2>
+
+<p>First a quick background. <a href="http://defdrink.heroku.com">(defdrink)</a> will be/is a web application which
+will assist in the choosing of a cocktail based upon the contents of the users
+liquor cabinet. I am using this project as a means of learning <a href="http://clojure.org/">Clojure</a>. I
+have put all the source on <a href="https://github.com/verdammelt/defdrink">github</a> (as one does…) and in
+this post will refer to particular commits to illustrate different steps.</p>
+
+<h2 id="in-the-beginning">In the Beginning…</h2>
+
+<p>At the point where our story begins I had slapped together a quick (and ugly)
+prototype. The purpose of the prototype was to get a Clojure project which has
+a web page which allowed retrieving and saving data into a database; all
+served up on Heroku. Being a prototype - it had not tests (horrors). This
+moment in time is <a href="https://github.com/verdammelt/defdrink/tree/0da77fbafc87634e94e0342e409e5b071b8d6c1f">commit 0da77fbafc87634e94e0342e409e5b071b8d6c1f</a>.</p>
+
+<h2 id="trying-to-put-in-the-first-midje-test">Trying to put in the first Midje test.</h2>
+
+<p>It took me two tries to get my first Midje test (and that first test merely
+proved that Arithmetic worked: <code>(fact (+ 2 2) =&gt; 4)</code>).</p>
+
+<p>My first attempt was me doing what I thought was ‘obvious’ and what I thought
+the Midje wiki was telling me I should be able to do: put a bit of magic in my
+<code>projects.clj</code> file and then a test file with a <code>(fact ...)</code> in it.</p>
+
+<p>That attempt ending with frustration at the fact the only feedback I was
+getting was a bunch of Java stack traces.</p>
+
+<p>My second attempt was simply making these same stumblings - I had wrongly
+assumed that I had I simply not <em>quite</em> understood the previous time.</p>
+
+<p>After I realized that my second attempt was heading toward another failure I
+finally rolled back and tried to take the next smallest step.  I wanted to run
+Midje (with <a href="https://github.com/stuartsierra/lazytest">Lazytest</a>) and get it to report something like “0 tests”. With
+the help of the <a href="https://github.com/marick/lein-midje">lein-midje plugin Readme</a> I got this
+<a href="https://github.com/verdammelt/defdrink/commit/cd4fad91dbcb7803f49f234474bbb3d3ad3d1295">working</a> in not too much time. If you look at that commit
+you will notice a glaring error - one that was not obvious to me as I tried to
+continue.</p>
+
+<h2 id="my-first-midje-test">My first Midje test…</h2>
+
+<h3 id="a-problem-of-my-own-devising">A Problem of My Own Devising</h3>
+
+<p>Ages ago when I started this project I ran <code>lein new defdrink</code> and then, since
+I didn’t have any tests, I removed the <code>test</code> subdirectory. Now, a month
+later, I couldn’t remember just how the test directory was supposed to be laid
+out, and it was obvious to me that it needed to have some special directory
+tree/naming to find the files etc. Mixed into that was a lack of understanding
+Clojure namespaces and directory structures (this was just me being dense).
+At this point I kept getting stack traces about not finding namespaces, which
+all seemed right - but obviously lein, midje, clojure or all three didn’t
+agree.</p>
+
+<p>Finally I had just ran <code>lein new foo</code> in a temp directory and saw the
+structure needed.  That was the clue I needed – the clue  I couldn’t find
+this little simple piece of information out on the web either for Midje or
+Clojure’s own test framework. Now that I had the directory structure right,
+the namespace in the file right it would work right? <em>Right?</em></p>
+
+<h3 id="wrong">…wrong…</h3>
+
+<p>As I am sure all of you playing along at home can see - I never added a
+dependency on Midje itself in the previous step. That means at this point I
+started getting messages that said:</p>
+
+<blockquote>
+  <p>Could not locate midje/sweet__init.class or midje/sweet.clj on classpath</p>
+</blockquote>
+
+<p>Let me tell you this was very confusing after all I knew that I already
+had Midje working. Now that I added a test it says it can’t find Midje?!
+Finally I saw my error and fixed it.  Now at long last, I had a Midje test!
+Of course it was just a <a href="https://github.com/verdammelt/defdrink/commit/0c3840cea7d4f5e1d0258a8cd6b087f949e0c6c2">dummy test</a> but it was actually running.</p>
+
+<h2 id="now-lets-do-it-for-reals">Now, let’s do it for reals…</h2>
+
+<p>My next step was to get a real test. My premise for these tests was to remove
+some hardcoded SQL code in my model class. I was going to push that code down
+into a couple helper classes so that I could isolate myself from the database.
+The first test was to show that my <code>defdrink/all</code> method would delegate down
+to my new <code>sql/select</code> method with the <code>:drinks</code> parameter (that is the
+table name).</p>
+
+<p>I once again had some odd and annoying problems with the only feedback being
+cryptic stack traces.  I don’t remember all the details but they involved
+statements such as ‘provided not being defined in this context’ - which led me
+down wild chases to determine if I had all the right modules required etc.
+Fortunately/unfortunately the problems resolved themselves (I hate that) and I
+got my first <a href="https://github.com/verdammelt/defdrink/commit/dfc494f7b4ea50b67138605308be1967d9d8dcd4">real test running</a>:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>A Small Step for One Programmer</span><a href='https://github.com/verdammelt/defdrink/blob/dfc494f7b4ea50b67138605308be1967d9d8dcd4/test/defdrink/test/models/drinks.clj'>defdrink/test/defdrink/test/models/drinks.clj </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(fact (all) =&gt; […drink1… …drink2…]
+</span><span class='line'>      (provided (sql/select :drinks) =&gt; […drink1… …drink2…]))</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>(I sort of like how it turned out… I like the <a href="https://github.com/marick/Midje/wiki/Metaconstants">metacontstants</a> feature and
+am excited to try it out more.)</p>
+
+<h2 id="and-now-for-my-encore">And now for my encore…</h2>
+
+<p>Now that the select statement was sequestered, I turned my attention to the
+insert statement.  This is where I again ran into problems.</p>
+
+<p>This new test, like the previous, was going to be a simple test of delegation.
+Did the model layer properly call down to the database layer to query or
+persist the data.  The test I wanted to write was to say that the
+<code>defdrink/save</code> method called the <code>sql/insert</code> method with the correct
+parameters.  My first attempt at this ended… (wait for it…) in
+frustration.</p>
+
+<h3 id="whats-wrong-this-time">What’s wrong <em>THIS</em> time?!</h3>
+
+<p>In Ruby or Java/Groovy I’d simply have my test call my method and test the
+expectation on my mock object that the <code>sql/insert</code> method was called with the
+correct parameters. Unfortunatly for me, I could not figure out how to do that
+in Midje. I ended with the following unhappy test:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>An Unhappy Test</span><a href='https://github.com/verdammelt/defdrink/blob/9fbb73b327e7509e2612932dfedc97e8e55330ce/test/defdrink/test/models/drinks.clj'>defdrink/test/defdrink/test/models/drinks.clj </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(fact
+</span><span class='line'>     (insert …name…) =&gt; …not-important…
+</span><span class='line'>     (provided (sql/insert :drinks {:name …name…}) =&gt; …not-important…))</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I’ll freely admit that while trying to write this test I began to have doubts
+(which I still hold) that perhaps I shouldn’t even by <em>trying</em> to right this
+test. It just seemed like a code smell to me. The way the test ended up seems
+to be telling me: “Mark, just what are you thinking?!”</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In conclusion (finally) my problems were much of my own devising. Whether it
+was shooting myself in the foot, trying to do something quickly because “its
+easy right?”, not yet understanding this language/environment I am trying to
+work in, or simply because I am trying to write Clojure tests as I would Ruby
+or Java tests – I’ve had a hard time getting to <a href="https://github.com/verdammelt/defdrink/tree/9fbb73b327e7509e2612932dfedc97e8e55330ce">this point</a>.</p>
+
+<p>Even admitting my own problems, I have to say, IMNSHO that it would have been
+nice to see a tutorial/cookbook out there of how to get started with Midje.
+What I’d have liked to have found would be something which stepped me through:</p>
+
+<ol>
+  <li>what to put in my <code>project.clj</code> file for midje, lazytest, and lien</li>
+  <li>a simple example of getting one’s first tests off the ground</li>
+  <li>and then a bit more showing mocking for example.</li>
+</ol>
+
+<p>In researching this blog post I see I did overlook some resources on the Midje
+wiki that would have helped, at least with the second two points.</p>
+
+<p>So the moral is:</p>
+
+<ol>
+  <li>slow down</li>
+  <li>small steps</li>
+  <li><em>read</em> the docs, not just look at them.</li>
+</ol>
+
+<p>I do think I might try to contribute this sort of tutorial to the Midje
+project. Because I can’t be the only dope who thinks he knows what he’s
+doing, who will get frustrated because there is not a tutorial to hold his
+hand through the first steps.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

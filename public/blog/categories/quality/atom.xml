@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: quality | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/quality/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Delivery vs. Code Quality: Any Corners Safe To Cut?]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/11/13/delivery-vs-code-quality-any-corners-safe-to-cut/"/>
+    <updated>2012-11-13T20:32:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/11/13/delivery-vs-code-quality-any-corners-safe-to-cut</id>
+    <content type="html"><![CDATA[<p>The balancing act between delivering vs. code quality has been on my mind
+lately. It seems to me that there are times when delivery trumps code quality.
+But sacrificing code quality for delivery speed results in slower delivery of
+future features.</p>
+
+<p>(‘Code Quality’ here is defined as ‘good design’, ‘easy to change’, ‘easy to
+understand’. This is not about quality as in free-of-bugs: that is <strong>not</strong> a
+corner I will cut. I am also not suggesting writing <em>shit</em>.)</p>
+
+<p>Are there any corners which are <em>safe</em> to cut? I have a feeling there is no
+good answer; but is there a <em>right</em> answer?</p>
+
+<p>I suppose as a bottom line the best to do is to keep the corner-cutting
+explicit and visible to all people involved (that includes non-developers) so
+that the eventual slowdown will not be a surprise.</p>
+
+<p>Or is this just an invalid assumption on my part? Is there any time that
+delivery can trump code quality? I know that everyone says that keeping code
+quality high is the only way to go quickly
+(<a href="http://twitter.com/unclebobmartin">@unclebob’s</a> pithy: “The only way to go
+fast is to go well”). But that seems to be to be about the long term; I am
+talking about short term speed gains.</p>
+
+<p>This is something I’m going to continue to think about; I’d love to hear your
+thoughts on this.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

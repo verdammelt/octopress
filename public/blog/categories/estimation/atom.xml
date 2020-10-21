@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: estimation | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/estimation/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[To Estimating Bugs or Not: The Definitive Answer]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2014/08/03/estimating-bugs/"/>
+    <updated>2014-08-03T16:31:11-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2014/08/03/estimating-bugs</id>
+    <content type="html"><![CDATA[<p>I was recently re-reading the XP books and in <em>Extreme Programming
+Installed</em><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> I came upon a section where the authors say that bugs
+should be estimated and planned into iterations like other stories.
+I disagreed with that idea, thinking about how ‘<em>opinion had changed</em>’
+on that topic since the book was written and that ‘<em>that’s not how I
+was taught to do it</em>’.</p>
+
+<p>Then I wondered <em>why</em> I thought that, just who had taught me that bugs
+should not be estimated. At first I assumed it was Jim Shore from <em>The
+Art of Agile</em><sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, but a quick look in the book<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> shows that he says
+<em>to</em> estimate bug stories. That led me to do some looking around the
+Internet<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> and discuss this issue with my colleagues at Cyrus
+Innovation<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>.</p>
+
+<p>I know believe I have the definitive answer to the question of whether
+or not to estimate bugs.</p>
+
+<p>(First a clarification: I am not talking about defects found during an
+iteration in, or caused by, stories being worked on during that
+iteration. That just means that story is not done. Don’t take credit
+for it and create a bug card. Just accept that the story is not done.)</p>
+
+<p>And now for that definitive answer:</p>
+
+<blockquote>
+  <p><em>It depends.</em></p>
+</blockquote>
+
+<p>Some teams might find it useful to give the Customer the ability to
+prioritize bugs along with other work. By estimating the bugs the
+Customer has all the data they need to make their trade-offs. That
+being said: estimating bugs can be very difficult since there is often
+more than the usual share of unknown unknowns; thus the estimate will
+be less reliable than normal.</p>
+
+<p>Some teams might find it useful to estimate bugs so that planning an
+iteration is easier. If a team knows it can do 14 points of work, then
+14 points of work can be taken off the top of the backlog, maybe they
+are all bugs, or some bugs or no bugs; doesn’t matter - it is 14
+points. If bugs are not estimated then maybe the team can do some bugs
+and how many more points? <em>shrug</em>.</p>
+
+<p>Some teams might find that estimating bugs allows the number of bugs
+to be hidden among the work being done. They want to make sure that
+bugs are always visible, so they do <em>not</em> estimate want to make sure
+that bugs always detract from their velocity. Estimating bugs makes
+them a bit more <em>normal</em> and thus less visible.</p>
+
+<p>So ultimately, as with any such question, the answer depends upon the
+needs and desires of the team. Do what works for you, and periodically
+question why and even try a different way.</p>
+
+<p>(Drink Pairing: I paired the writing of this post with a simple
+Daiquiri<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>.)</p>
+
+<hr />
+<p>and strain.</p>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>http://www.amazon.com/Extreme-Programming-Installed-Ron-Jeffries/dp/0201708426/ <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>http://www.jamesshore.com/Agile-Book/ <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>My copy contains the note: “To Mark - Here’s to sucking less! Jim Shore” <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>Specifically the World Wide Web section of the Internet. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>http://www.cyrusinnovation.com/ <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>1.5oz Rum, .75oz Lime Juice, .25oz Simple Syrup. Shake over ice <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: patterns | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/patterns/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The Cocktail Pattern Language]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2014/11/01/cocktail-pattern-language/"/>
+    <updated>2014-11-01T15:20:08-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2014/11/01/cocktail-pattern-language</id>
+    <content type="html"><![CDATA[<h2 id="abstract">Abstract</h2>
+
+<p>The idea of a “Pattern Language” is well known and well received in
+the Software community. Since the work of the Gang of Four<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> it has
+helped in the communication of solutions and the discovery of new ones
+Cocktails have a pattern language which is well recognized by
+professionals but not by consumers. In this post I hope to make the
+Cocktail Pattern Language visible and useful to cocktail consumers and
+amateur bartenders.</p>
+
+<h2 id="what-is-a-cocktail">What is a cocktail?</h2>
+
+<p>To begin with a “cocktail” is defined, classically, as the mixture of
+a “spirit”, sugar, water, bitters. This itself is less of a recipe for
+a specific drink as it is a pattern for all possible cocktails. While
+the modern concept of a cocktail has expanded from this origin it is
+still a good starting place for this discussion, and a fundamental
+example of cocktail patterns.</p>
+
+<h2 id="what-is-a-pattern">What is a pattern?</h2>
+
+<blockquote>
+  <p>The elements of this language are entities called patterns. Each
+pattern describes a problem that occurs over and over again in our
+environment, and then describes the core of the solution to that
+problem, in such a way that you can use this solution a million
+times over, without ever doing it the same way twice.
+– Christopher Alexander<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+</blockquote>
+
+<p>Basically by “pattern” I mean a name for a particular way of doing
+something, a solution to a problem. A pattern does not dictate the
+only way to do something but shows the “shape” of the solution. The
+specifics of the situation will always cause variations.</p>
+
+<h3 id="examples-of-patterns">Examples of Patterns</h3>
+
+<p>The easiest way to describe what cocktail patterns are is to give
+examples.</p>
+
+<h4 id="the-manhattan">The Manhattan:</h4>
+
+<p>The recipe for a Manhattan is 2 parts Rye (or Bourbon), 1 part Sweet
+Vermouth and Angostura bitters. The recipe contains a main spirit:
+Rye, bitters: Angostura, and sweet: Vermouth (which also adds more
+kick and bit more bitter).</p>
+
+<p>The simplest variant is The Rob Roy, replace the Rye with Scotch. Next
+simplest are the Dry and Perfect variants: Dry instead of Sweet
+Vermouth, or equal parts of two respectively.</p>
+
+<p>A more differing variant is The Toronto: 2 oz. Rye, .25 oz Fernet
+Branca, .25 tsp sugar, Angostura bitters. While on the surface it
+doesn’t sounds like the same drink it is if you break it down. The
+main spirit is still Rye. The bitter &amp; extra kick is added by the
+Fernet and Angostura while the sweet is provided directly by sugar.</p>
+
+<p>Thus the <em>pattern</em> of a Manhattan is a whiskey paired with bitters and
+sweet.</p>
+
+<h4 id="the-martini">The Martini</h4>
+
+<p>One cocktail which is (in)famous for its variants is the Martini. The
+<em>pattern</em> of a Martini is simply Gin (or Vodka) and Vermouth.
+Martinis can be Sweet, Perfect or Dry. The amount of vermouth can
+vary depending on the taste of the drinker. Different garnishes can be
+used, additional ingredients can be added as desired.</p>
+
+<p>One variant is The Bronx. It is a Perfect Gin Martini with the
+addition of Orange Juice: 6 parts Gin, 3 parts Sweet Vermouth, 2 part
+Dry Vermouth and 3 parts Orange Juice.</p>
+
+<p>Another variant is The Vesper Martini which is essentially a Dry Gin
+Martini: 3 oz. Gin, 1 oz Vodka, .5 oz Lillet Blanc<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>. It replaces
+the Vermouth with Lillet (similar to Vermouth in that it is a
+fortified wine with herbal ingredients).</p>
+
+<p>One last variant is The Martinez which is basically a Sweet Martini: 2
+oz Gin, .75 oz Sweet Vermouth, .25 oz Maraschino Liqueur and Angostura
+bitters. Here the Sweet Vermouth is augmented with Maraschino and a
+bit of bitters is added.</p>
+
+<h4 id="the-sour">The Sour</h4>
+
+<p>A final pattern I’ll mention is the sour. Drinks in this pattern are
+The Whiskey sour, the Gimlet, the Daiquiri. The pattern here is a
+spirit along with a good amount of citrus juice (Lime often) and some
+sugar.</p>
+
+<h2 id="why-it-is-useful">Why it is useful</h2>
+
+<blockquote>
+  <p>The usefulness of speaking of patterns is to have a common
+terminology for discussing the situations designers already see
+over and over.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
+</blockquote>
+
+<p>Patterns in cocktails can be very useful to the bartender because it
+helps them choose the next drink for the patron. The patron may, as I
+do, say “I like Manhattans” or “I’d like something like a Daiquiri”
+and the bartender can rattle off a series of variants upon that
+pattern, or even invent their own.</p>
+
+<p>Also the patterns overlap. For instance a Manhattan and a Sweet
+Martini have the same basic pattern: 2 spirit to 1 Sweet Vermouth. So
+a person who likes Manhattans may slide into Sweet Martinis and thus
+explore a whole new pattern of cocktails.</p>
+
+<p>Thus the patterns of cocktails, as in Architecture and Programming,
+allow one to have a language to talk about the problem and possible
+solutions to it and to find new areas of discovery.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Gamma, Helm, Johnson, and Vlissides. <em>Design Patterns.</em> Reading,
+  MA: Addison-Wesley, 1995. Print. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Alexander, Christopher. <em>Pattern Language.</em> New York: Oxford UP,</p>
+      <ol>
+        <li>Print.</li>
+      </ol>
+      <p><a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Due to recipe changes the current Lillet Blanc is sweeter and
+  less bitter than previous versions. A better ingredient would be
+  Cocchi Americano. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>“Cocktail.” Wikipedia. Wikimedia Foundation, 29 Oct. 2014. Web.
+  01 Nov. 2014. <a href="http://en.wikipedia.org/wiki/Cocktail">http://en.wikipedia.org/wiki/Cocktail</a>. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The Delete Refactoring]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/02/03/the-delete-refactoring/"/>
+    <updated>2012-02-03T11:22:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/02/03/the-delete-refactoring</id>
+    <content type="html"><![CDATA[<p style="text-align: center;">The Code is unnecessary.</p>
+<p style="text-align: center;"><em>Delete it.</em></p>
+
+<pre><code>void printLog (String msg) {                   
+    int logLevel = 2;                   
+    LOG.printLine(msg);          
+}        
+</code></pre>
+
+<p style="text-align: center;">=&gt;</p>
+
+<pre><code>void printLog (String msg) {                   
+    LOG.printLine(msg);          
+}    
+</code></pre>
+
+<h2 id="motivation">Motivation</h2>
+
+<p>Sometimes code doesn’t do anything.  Maybe a variable is no longer used, or a
+whole function or class is no longer referenced by the rest of the code.  If
+that happens, delete it.</p>
+
+<h2 id="mechanics">Mechanics</h2>
+
+<ul>
+  <li>select unused code</li>
+  <li>press the delete key</li>
+  <li>compile and test</li>
+</ul>
+
+<h2 id="example">Example</h2>
+
+<p>I start with the following code:</p>
+
+<pre><code>// This method is no longer used          
+// int getErrorLevel() {          
+//     return -1;          
+// }    
+</code></pre>
+
+<p>Select the text and hit delete.  I now have the resulting code:</p>
+
+<p>&nbsp;</p>
+]]></content>
+  </entry>
+  
+</feed>

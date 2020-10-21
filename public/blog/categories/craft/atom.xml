@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: craft | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/craft/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Life is Short, and the Craft is Long]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2013/01/27/life-is-short/"/>
+    <updated>2013-01-27T19:30:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2013/01/27/life-is-short</id>
+    <content type="html"><![CDATA[<script type="math/tex; mode=display">O\ \beta\acute{\iota}\omicron\sigma\ \beta\rho\alpha\chi\acute{\upsilon}\sigma \\
+\acute{\eta}\ \delta\grave{\epsilon}\ \tau\acute{\epsilon}\chi\nu\eta\ \mu\alpha\kappa\rho\acute{\eta}</script>
+
+<p>Hippocrates noted that there was so much to his craft to learn, but only such
+a short life to learn it in<sup id="fnref:hippo"><a href="#fn:hippo" class="footnote">1</a></sup>. Chaucer paraphrased it as <em>‘Life is so
+short, and the craft takes so long to learn’</em><sup id="fnref:chaucer"><a href="#fn:chaucer" class="footnote">2</a></sup>.</p>
+
+<p>While I can totally relate to that idea these days I didn’t always. At one
+point I was a foolish person who thought they were good at what they did and
+just slid along, month after month, year upon year not improving. That changed
+several years ago when I was introduced to a bunch of new (to me) ideas and
+techniques and the scales fell from my eyes and I realized how little I knew.</p>
+
+<p>I feel I know so little sometimes; that my skills as a developer are limited.
+I know that is not entirely true, my self-deprecation rearing its ugly head.
+But it is a frequent feeling.</p>
+
+<p>There <em>is</em> so much to learn and one’s life <em>is</em> so short; why then should I
+even bother? I enjoy programming, and I, as part of my character, prefer to do
+the best job I can. Thus I am left with no choice but to do everything I can
+to improve my skills.</p>
+
+<p>There <em>is</em> so much to learn and one’s life <em>is</em> so short; how then can I move
+forward? I have been focusing on the basics (such as simple design and clean
+code) - these will be skills applicable to any programming language I may use
+or project I may be on. From this base I can expand into areas which are less
+familiar to me (such as functional and logic programming) - these will broaden
+the mind and help clarify existing skills in the familiar areas.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:hippo">
+      <p><a href="http://en.wikipedia.org/wiki/Ars_longa,_vita_brevis"><em>Aphorismi</em></a> <a href="#fnref:hippo" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:chaucer">
+      <p><em>Parlement of Foules</em> <a href="#fnref:chaucer" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
+  
+</feed>

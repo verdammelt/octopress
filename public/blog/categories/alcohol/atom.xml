@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: alcohol | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/alcohol/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Best Invention: Cocktail Truck (http://explodingdog.tumblr.com/post/619551818/its-friday-afternoon-and-i-just-came-up-with-the)]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2010/05/25/best-invention-cocktail-truck-httpexplodingdo/"/>
+    <updated>2010-05-25T00:00:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2010/05/25/best-invention-cocktail-truck-httpexplodingdo</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+</feed>

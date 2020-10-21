@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: design | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/design/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Make same things similar, different things dissimilar]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/11/24/make-same-things-similar/"/>
+    <updated>2012-11-24T14:46:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/11/24/make-same-things-similar</id>
+    <content type="html"><![CDATA[<h2 id="abstract">Abstract</h2>
+
+<p>Whilst fixing some bugs in data file parsing code I found that the bugs lie in
+the fact that the types of data files were more similar than not; but the code
+said that they were more dissimilar than similar. Refactoring to make same
+code same fixed at least part of the bugs on its own.</p>
+
+<h2 id="a-story">A Story</h2>
+
+<p>On my current project we have some code that reads data files and puts the
+data into the database. The files come in different formats and layouts,
+however there are only really two different kinds of files. I have always
+maintained that the processing of these two types of files are more same than
+different. <em>i.e.</em> How to read an excel file with the data laid out <em>just so</em>
+and put that data into the database is all the same whereas the way to
+validate if <em>this</em> line in the file a data line or something to ignore, or how
+to split all the data into larger logical chunks (required before putting into
+the database) is perhaps different between these two types of files.</p>
+
+<p>I was very involved in the creation of the code for the reading of the first
+type of data file; but not very involved for the second. Recently when we
+shook out some bugs in the parsing of the second type of file I found myself
+in the code for both types of files fixing the bugs.</p>
+
+<p>I found that the code implied that the two files were more different than I
+had imagined. Code that I thought would be similar or even exactly the same
+was not. This difference could be seen on multiple levels; from the naming of
+things up to the factoring of the code into methods and classes.</p>
+
+<p>As I reviewed the bugs I had to fix I saw that the bugs were stating that the
+second type of file was in fact not so different from the first type. As far
+as the user was concerned much of the “rules” of parsing were exactly the
+same.</p>
+
+<p>The first thing I did was make the code for the second type of file much more
+similar to the first type. This involved renaming and refactoring. Then once
+things were much more the same I extracted the sameness into the base class
+(which had already existed). By doing this refactoring at least parts of the
+bugs were fixed. All that was left was some tweaking to the code left behind
+which defined the <em>difference</em>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This coding really showed to me the importance of keeping a consistency in the
+code. Things which are the same should be named and look the same. Things
+which are different should <em>NOT</em> named the same or look the same; they must be
+kept dissimilar.  The compiler doesn’t care of course; but I think it will
+help the programmer.</p>
+
+<p>Not keeping to this ‘rule’ I think will lead to bugs where things which should
+be the handled in the same or similar manner are mistakenly not since they
+appear to the following developers to be different. Or even more simply
+because the commonality was not extracted earlier because it was not noticed.</p>
+
+<p>The way to keep this in mind is not not just think if the code is factored
+well or has good naming; but also if the code you wrote is similar or
+dissimilar to other code around it - and if that is correct or not.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GOOS Review ch 14 &amp; 15]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/11/18/goos-review-ch-14-and-15/"/>
+    <updated>2012-11-18T19:13:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/11/18/goos-review-ch-14-and-15</id>
+    <content type="html"><![CDATA[<p>(Just a quick post about chapters 14 &amp; 15 of GOOS to get myself back into the
+swing of things after a while…)</p>
+
+<p>A few points hit me during these two chapters. Things which I <em>know</em> but which
+perhaps are not entirely second nature to me yet (even after all these years)</p>
+
+<ul>
+  <li>In chapter 14 new features were added with little fuss - the relatively
+clean design allowed for this.</li>
+  <li>Chapter 15 showed doing refactorings bit by bit - it kept tests red for a
+while but they got done. Just because it will take a while doesn’t mean not
+    to do it.</li>
+  <li>Chapter 15 also saw the developers thinking about how to continue down the
+path they were one was going to be pretty annoying/boring. They took this
+to mean that they were doing something wrong. They stopped and thought
+about it and found a better design which allowed their needed changes to be
+easier.</li>
+</ul>
+
+<p>These are three important things to internalize:</p>
+
+<ul>
+  <li>Good clean design leads to ease in implementing new features.</li>
+  <li>A refactoring might be hard - but that is not a reason not to do it.</li>
+  <li>If the change you need to do is hard / annoying - step back and figure out
+why (see the first point).</li>
+</ul>
+
+<p>These are all things I <em>know</em>; but in the heat of the moment will tend to
+forget. I need to really get them internalized; then I can <em>choose</em> to ignore
+them at certain circumstances, but then I’ll do it more explicitly and know
+the pros and cons.</p>
+
+<p>Also as a side note there were some good points where the OO design skills
+shone through. For example the addition of Java <code>enum</code> objects which quickly
+became feature-ful objects which caused cleaner code elsewhere (<code>Column</code> and
+<code>SniperState</code>)</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GOOS Review Chapter 13: Not done if the code is messy]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/07/26/goos-review-chapter-13-not-done-if-the-code-is-messy/"/>
+    <updated>2012-07-26T22:24:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/07/26/goos-review-chapter-13-not-done-if-the-code-is-messy</id>
+    <content type="html"><![CDATA[<p>(This post is long overdue… sorry about that).</p>
+
+<p>This chapter was not to long but had some points that were interesting to me.</p>
+
+<p>Firstly the thought that refactoring before and after a change should be about
+<em>clarifying</em> the code via its design. This should not be thought of as
+<em>cleaning</em> or <em>gold plating</em>.</p>
+
+<p>I found it interesting right when the Authors said that the job was not done
+because the code was ‘feeling messy’ my gut was telling me that the code was
+not too bad. This is something I’ve noticed. I think my gut is wrong and needs
+some new calibration.</p>
+
+<p>The last item I wanted to point out was the idea that you should defer
+refactoring decisions until you can see/feel what the problems are. But to do
+this you must know that you will take the time to refactor when you know that
+refactoring is right. If you don’t have confidence - you will refactor
+prematurely.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[goos review chapter 12]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/07/02/goos-review-chapter-12/"/>
+    <updated>2012-07-02T21:25:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/07/02/goos-review-chapter-12</id>
+    <content type="html"><![CDATA[<p>In this chapter we implement our first <em>real</em> acceptance test. It is an
+end-to-end test of a real user feature.</p>
+
+<p>I tend to run my tests repeatedly as I write them - so I hit a problem before
+the Authors revealed it. It was the <em>surprise</em> problem of the connection
+needing to be closed. I guess my running of tests often led me to find it
+earlier than others might - so I’ll take that as a win. It was annoying to
+hit it before the Author’s intended though - I thought I had a broken OpenFire
+installation.</p>
+
+<p>There were four things that stood out for me in this chapter:</p>
+
+<ol>
+  <li>
+    <p>Their note about using the same value in test code and production code
+(<em>e.g.</em> JOIN_MESSAGE_FORMAT) on p109.  This is a problem that I struggle
+with in my testing. Sometimes I feel that it is cheating - or not really
+testing anything. Other times I think it is the “Right Thing To Do(TM)”. I
+am glad/disappointed that they have conclusive word on if it is good/bad.</p>
+  </li>
+  <li>
+    <p>They start implementation of the new feature by first refactoring the
+existing code into one that will make the needed change easy. This is
+something I’d like to internalize but I haven’t yet. I usually start by
+implementing what I need (even if hard/ugly) and then refactoring until it
+is nice and clean. But this often leads to 
+<a href="http://bible.cc/matthew/13-42.htm">wailing and gnashing of teeth</a>. I also think, in retrospect that
+I have missed the target of the really nice design, which no longer can
+really see, but I <em>feel</em> is still out there.</p>
+  </li>
+  <li>
+    <p>There was a phrase on p113 which I think is a good feel for how I usually
+am thinking when I am implementing: “…our immediate concern is to get
+message translation to work, the rest can wait.” It is this focusing on the
+immediate problem and ‘faking-till-you-make-it’ that I do a lot. I like to
+commit often - so I am always working hard to get small bits working and
+committed instead of trying to do bigger chunks of work (although I can’t
+say I am always successful in this).</p>
+  </li>
+  <li>
+    <p>On p116 the Authors say that the expectation is the most important line of
+the test. However I find that it is hidden in the Java code needed to
+create it. Perhaps it is because I always look at a test in the ‘arrange,
+act, assert’ way; so I don’t expect to see an expectation in the ‘arrange’
+section but in the ‘assert’ section (as it would be with Spock, Mockito, or
+Moq for example). I wonder how else it could be made more visible?</p>
+  </li>
+  <li>
+    <p>Finally they point out the importance of writing the ‘first draft’ code and
+then refactoring it after the tests are working. I don’t think I could
+agree with this more strongly.</p>
+  </li>
+</ol>
+
+<p>On the whole a good chapter for the first real user-feature. I am still
+annoyed with plain old Java code. Maybe I’ll need to start re-implementing
+this in Ruby or at least Groovy sooner rather than later.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GOOS - The Walking Skeleton starts Walking]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/06/05/goos-the-walking-skeleton-starts-walking/"/>
+    <updated>2012-06-05T23:00:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/06/05/goos-the-walking-skeleton-starts-walking</id>
+    <content type="html"><![CDATA[<p>Just a quick post to ensure I keep this moving along.</p>
+
+<p>I have completed my review of Chapters 9-11 of GOOS.  These chapters cover the
+starting of this example project – the Auction Sniper.  There seemed to be
+mostly ordinary stuff here (perhaps it is ordinary to me now that I have
+worked in something like this style for a while…).</p>
+
+<p>After discussing what the scope of the project is and some of the 3rd party
+protocols we’ll be dealing with we create a to do list of the initial
+‘stories’.  This will be our backlog.</p>
+
+<p>We then start an Iteration Zero to get the Walking Skeleton up and running.
+I’ve seen Iteration Zeros which didn’t work - but I think the failure there
+was not keeping them tightly timeboxed like any other iteration. The Author’s
+recommendation is to keep them timeboxed - so I have no complaints there.</p>
+
+<p>One thing mentioned in this chapter as the first end-to-end test is created is
+“programming by wishful thinking”.  This is something that fits my style well
+and I think I keep learning that if I don’t do it; things don’t end up as
+nicely. Someday I’ll learn to trust the instinct and style.</p>
+
+<p>Finally in the final chapter of this little section we get the Walking
+Skeleton going. The code isn’t bad - there are some things I don’t find
+aesthetically pleasing - but I don’t want to refactor too much - because if I
+do it might be harder for me to follow along the future examples. Perhaps
+after a bit more code is written I’ll refactor on a branch.</p>
+
+<p>I think the major thing I’m learning is how happy I am not to be writing
+straight Java all the time.  I write in Groovy mostly at work and Ruby and
+Clojure at home. Straight Java is not horrible - but really there is so much
+typing - it could all be done with less typing.</p>
+
+<p>(Another reason to write this short post is to get rid of the mental block
+that is keeping me from just jumping into the next chapters!)</p>
+]]></content>
+  </entry>
+  
+</feed>

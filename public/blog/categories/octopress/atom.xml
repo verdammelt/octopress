@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: octopress | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Problems deploying to Heroku after upgrading Octopress]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/06/24/problems-deploying-to-heroku-after-upgrading-octopress/"/>
+    <updated>2012-06-24T20:10:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/06/24/problems-deploying-to-heroku-after-upgrading-octopress</id>
+    <content type="html"><![CDATA[<p>Just a note (perhaps for my future self).</p>
+
+<p>I had considerable problems after upgrading Octopress and then trying
+to deploy my blog to Heroku.</p>
+
+<p>The problems stemmed from the update to the Gemfile. There were two problems:</p>
+
+<p>Firstly: everything except for <code>sinatra</code> was put into the
+<code>:development</code> group. Heroku runs <code>bundle --without=development</code> so
+all those gems will be missing.</p>
+
+<p>Secondly: due to an earlier problem with the <code>pygment</code> and python
+environments I need to keep the following in my Gemfile</p>
+
+<pre><code>gem 'pygments.rb', '= 0.2.3'
+gem 'rubypython', '= 0.5.1'
+</code></pre>
+
+<p>After I fixed those two problems deploying to Heroku worked fine.</p>
+
+<p>One bright side is that I now know how to use <code>heroku
+releases:rollback</code> to shift back to a previous version. This let me
+keep my blog up and running while I tried to figure out the problem.
+(Not that anyone actually reads it…)</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fixing python/pygments.rb problem in Octopress]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/04/26/fixing-python-slash-pygments-dot-rb-problem-in-octopress/"/>
+    <updated>2012-04-26T22:38:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/04/26/fixing-python-slash-pygments-dot-rb-problem-in-octopress</id>
+    <content type="html"><![CDATA[<p>After I posted my last blog post it was reported to me that my code blocks
+were no displaying properly. The readers were seeing an error like: <code>"Liquid
+error: Could not open library ‘/usr/local/lib/libpython2.7.a’: ...".</code></p>
+
+<p>Some googling informed me that the problem seemed to be somewhere in
+RubyPython. The instructions were relatively straightforward - but it wasn’t
+clear to me if I needed to do <em>both</em> of the directions.</p>
+
+<p>The quick answer is yes. To fix this problem one must do the following:</p>
+
+<ol>
+  <li>Make sure RubyPython is locked to 0.5.1 in the Gemfile (<em>i.e.</em> <code>gem
+'rubypython', '= 0.5.1'</code></li>
+  <li>Create a file <code>plugins/ruby_python_heroku_fix.rb</code> with the contents:
+<code>RubyPython.configure :python_exe =&gt; 'python2.6'</code> (the filename is not
+actually important).</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Old Blog Posts Migrated]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/04/12/old-blog-posts-migrated/"/>
+    <updated>2012-04-12T22:48:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/04/12/old-blog-posts-migrated</id>
+    <content type="html"><![CDATA[<p>Using <a href="https://gist.github.com/2143368">this</a> updated migrator for <a href="https://github.com/mojombo/Jekyll">Jekyll</a> I have managed to
+get all my old Posterous blog posts loaded into this Octopress blog.</p>
+
+<p>There is still a problem with some posts - the media they contained are not
+currently available.  I think it was the posts where I had emailed a picture
+to Posterous (which would then bounced to Flickr and Twitter).  But any post I
+composed as an email seems to be here.</p>
+
+<p>The time it takes to generate the site has really dropped off unfortunately.
+Hopefully it will not just get linearly worse…</p>
+
+]]></content>
+  </entry>
+  
+</feed>

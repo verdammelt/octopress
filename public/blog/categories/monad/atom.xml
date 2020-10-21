@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: monad | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/monad/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How I learned to stop worrying and love the Monad]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/06/27/how-i-learned-to-stop-worrying-and-love-the-monad/"/>
+    <updated>2012-06-27T19:43:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/06/27/how-i-learned-to-stop-worrying-and-love-the-monad</id>
+    <content type="html"><![CDATA[<p>(sorry I couldn’t help that title)</p>
+
+<p>For a while I’ve been trying to learn what this <em>Monad</em> thing was. Smart
+people were talking about them and making them sound important. Smart people I
+knew and admired were making them sound like something I should know about.</p>
+
+<p>So I’d try to learn what monads are and it all sounded something like this:</p>
+
+<blockquote>
+  <p>A Monad is Kleisi triple: an endofunctor, together with two natural
+transformations.</p>
+</blockquote>
+
+<p>Simple right? I just felt dumb. I didn’t think I’d ever understand what they
+were or why they were important.</p>
+
+<p>That is until I watched two presentations. While I can’t say I <em>understand</em>
+them yet, I feel like I’ve had an insight which might be useful so I’d like to
+share them.</p>
+
+<p>(Both presentations use Clojure - but don’t let that put you off if you don’t
+know Clojure - the Clojure in the presentations is not very complex.)</p>
+
+<h2 id="why-is-a-monad-like-a-writing-desk">Why is a Monad like a Writing Desk</h2>
+
+<p>A few weeks ago I finally watched a presentation by Carin Meier called 
+<a href="http://www.infoq.com/presentations/Why-is-a-Monad-Like-a-Writing-Desk">Why is a Monad like a Writing Desk?</a> (presented at Clojure/West 2012). 
+Given my big soft-spot for Alice in Wonderland references I was predisposed 
+to watch this video.</p>
+
+<p>Carin presents monads gently via a cute little story of Alice, a programmer,
+who is trying to learn about monads but falls asleep and enters a Wonderland
+like land of talking doors and Astronaut-hosted tea parties. Through the story
+I learned a little bit about monads alongside Alice.</p>
+
+<p>She covered the Identity, Maybe and State monads which I had seen before but
+now better understood.</p>
+
+<h2 id="introduction-to-monads">Introduction to Monads</h2>
+
+<p>At the end of Carin’s presentation there was a link to another presentation by
+Adam Smyczek called <a href="http://www.youtube.com/watch?v=ObR3qi4Guys">Introduction to Monads</a> (presented at a Bay Area
+Clojure User Group meeting in 2010).</p>
+
+<p>In this presentation he shows a real case where he used several monads to
+create a clean design for a testing DSL he was creating. It involved some live
+coding which was good to see.</p>
+
+<p>He also covered the same monads. Seeing them implemented again, helped
+solidify my understanding of them.</p>
+
+<h2 id="insight">Insight</h2>
+
+<p>Watching these two presentation I came to a realization:</p>
+
+<blockquote>
+  <p>Monads are not a <strong>thing</strong>, they are a pattern.</p>
+</blockquote>
+
+<p>That’s it. That was the insight I needed. I realized that previously I was
+always looking for some explanation of a <em>thing</em>, a language construct, and
+object, a function. But that is not what a monad is (although it could be
+built in to a language <em>etc.</em>).</p>
+
+<p>Monads are a design pattern. They are a pattern
+of flow control, a pattern of chaining functions on sequences of data.</p>
+
+<p>I think my next insight will come about when I consciously implement code
+using monads. I hope to create an opportunity for this.</p>
+
+<p>I’d suggest to anyone who wants to learn something about monads but is finding
+it tough to watch Carin’s presentation (sit back, relax, enjoy and learn) and
+then follow that up with Adam’s presentation.  I watched them back to back one
+evening and I think that really helped.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

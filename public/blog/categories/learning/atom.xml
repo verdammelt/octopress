@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: learning | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/learning/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[What I have (re)-learned from SICP]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2014/07/06/what-i-have-re-learned-from-sicp/"/>
+    <updated>2014-07-06T14:14:33-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2014/07/06/what-i-have-re-learned-from-sicp</id>
+    <content type="html"><![CDATA[<p>After about two years of slowly working through Structure and
+Interpretation of Computer Programs (SICP)<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> I finally completed it.
+I didn’t do every exercise but I did many of them<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>.</p>
+
+<h2 id="the-history">The History</h2>
+
+<p>I first worked through SICP back in 1989 as part of my class at
+Worcester Polytechnic Institute (where I received my BSCS in 1992). It
+is a book that I remember with awe. I remember being, along with most
+of the class, mystified by this <em>dumb</em> language Scheme. It was so
+unlike anything we were used to. I was familiar with BASIC and Pascal
+and some very basic Bourne Shell scripting. Scheme was <em>alien</em>. Most
+of us thought it crazy. But then, somewhere about half-way through the
+class it clicked, suddenly I <em>got it</em>. Scheme, and Lisp by
+association, was amazing. The REPL development, the flexibility, the
+lack and regularity of syntax gave it great power. And then… then…
+we started on the chapter about the Meta-circular Evaluator<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>;
+writing an evaluator of Scheme in Scheme. It was so simple, so
+clear<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>.</p>
+
+<p>This was a Freshman class, and the rest of my time at WPI I played
+around with Lisp, sometimes doing assignments in it, playing with my
+Emacs initialization files, that sort of thing. Never got serious. And
+then I joined the work force in 1990 with a summer job doing C/Motif
+work at a startup. And then after college a C job connecting their
+Windows app to a particular printer for graphs, and then a C/Motif job
+on a news ticker for a stock market application. Oh and then I
+learned<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> object-oriented programming with C++… I forgot the
+lessons I learned in SICP.</p>
+
+<h2 id="the-return">The Return</h2>
+
+<p>I went back to SICP expecting to be <em>reminded</em> of a few things. What I
+found was that I was <em>taught</em> things I never remember being taught.
+Things which I so wish I had grokked at the time. Things which I
+obviously never understood and then forgot.</p>
+
+<p>A few of the things I learned way back when and then forgot were:</p>
+
+<ul>
+  <li>Judge a programming language by the means of abstraction and the
+means of composition.</li>
+  <li>The power/utility of REPL development.</li>
+  <li>Lazy streams to deal with infinities are not scary.</li>
+  <li>Functional Programming.</li>
+  <li>Object-Oriented Programming.</li>
+  <li>The Problem of State.</li>
+</ul>
+
+<h2 id="the-reaction">The Reaction</h2>
+
+<p>This is a <em>Freshman</em> level textbook, and all of this was taught as
+early as the mid-eighties. Looking back I feel like I was caught up in
+a great forgetting. There are things we (as Software Engineers<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>)
+<em>knew</em> and then forgot, or chose to forget/overlook.</p>
+
+<p>Now I see people going back to old papers/books and
+re-learning/discovering what we already knew but forgot/ignored. It is
+like a wider version of Greenspun’s tenth rule<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>. We had something
+and then had to put it aside because it didn’t work in our
+“<em>reality</em>”, but now we come back and “<em>discover</em>” it all over again.</p>
+
+<p><strong>OMG</strong> Garbage Collection<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup> <strong>OMG</strong> <em>interactive</em> language shells
+(aka REPL) <strong>OMG</strong> dynamic languages <strong>OMG</strong> functional programming
+<strong>OMG</strong> <em>OO</em> is about message passing.</p>
+
+<p>What happened, were we asleep?</p>
+
+<p>It would be one thing if we acted like these are in fact old ideas
+that are just now realizing are good/possible - but we act like they
+are <em>new</em>. Reality has caught up to where the 1960’s thought was
+possible<sup id="fnref:9"><a href="#fn:9" class="footnote">9</a></sup>.</p>
+
+<h2 id="the-back-to-the-future">The Back to the Future</h2>
+
+<p>One last thing I (re)learned: The fun of learning and working through
+problems. And that leads to what is yet to come.</p>
+
+<p>I’m going to start looking at the old texts of our practice. The
+ancients knew things that we have forgotten. I will see what I can
+learn from them. I will strive to avoid Argument from Antiquity
+however, that is always a danger with this sort of thing.</p>
+
+<p>I can only see so far because I stand upon the shoulders of Giants<sup id="fnref:10"><a href="#fn:10" class="footnote">10</a></sup>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>http://mitpress.mit.edu/sicp/ <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>https://github.com/verdammelt/sicp <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1 <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>It was in this class I created the joke idea of ‘God code’. The
+  stereotypical 3 line Lisp code, first line defines function,
+  second like is a null check, third line recurses. And <em>shit</em> got
+  done. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p><em>“</em>learned<em>”</em> <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>Software Engineer, Programmer, Coder, Hacker whatever you want
+  to call us/ourselves. <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>“Any sufficiently complicated C or FORTRAN program contains an
+  ad hoc, informally-specified, bug-ridden, slow implementation of
+  half of Common Lisp.” <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:8">
+      <p>http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-33.html#%_sec_5.3 <a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:9">
+      <p>http://www-formal.stanford.edu/jmc/recursive.pdf <a href="#fnref:9" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:10">
+      <p>with apologies to Newton. <a href="#fnref:10" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Quick Review of 20 years of 'Professional' programming]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/06/20/quick-review-of-20-years-of-professional-programming/"/>
+    <updated>2012-06-20T21:00:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/06/20/quick-review-of-20-years-of-professional-programming</id>
+    <content type="html"><![CDATA[<p>In May 1992 I graduated with a Bachelor of Science in Computer Science from
+<a href="http://www.wpi.edu/" title="My alma mater">WPI</a>. That means that I’ve been a ‘<em>professional</em>’ programmer for a little
+bit over 20 years.  I have to say that while on the whole it has been good I
+regret some things.</p>
+
+<p>Firstly, I think I got a good education from WPI.  However I wish I had taken
+it onto myself to get a <em>better</em> education.  I didn’t extend myself enough, I
+didn’t really dig into things as much as I could have. I got good grades and
+left it at that.  This is a regret of mine.</p>
+
+<p>Nextly, upon graduating, I got some jobs and things went well. I fell into
+thinking that I knew what I was doing.  I think I was, while cocksure, still a
+bit better than the average programmer of the time with equal experience.  But
+it was during this approximately 10-15 year period where I fell into a lull. I
+thought I was good and I never did too much extra-curricular research. I did
+have a small piece of <a href="http://sourceforge.net/projects/tnef/">free software</a> that I worked on during this time</p>
+<ul>
+  <li>but that didn’t really stretch my abilities. The work I was doing at work
+was good - but again not stretching my abilities.</li>
+</ul>
+
+<p>During this time I only remember going to a single ‘conference’. That was when
+the local <a href="http://www.acm.org">ACM</a> chapter in <a href="http://www.gbcacm.org/">Boston</a> brought in one of the 
+<a href="http://en.wikipedia.org/wiki/Gang_of_Four_(software)">Gang of Four</a> to talk about their book. I distinctly remember that during the
+lunch I was so shy/awkward that I felt like never attending anything like this
+again.</p>
+
+<p>Sometime during the last 5-10 years I started to become dissatisfied with how
+software projects were being run and how quality, my own and other developers
+was being handled.  Sometime during this time period I was exposed to Agile
+methodologies. Perhaps the time was just ‘right’, but for whatever reason
+instead of just sitting around and accepting things I did a lot of research, I
+started reading blogs, I started trying things out for myself, I even went to
+conferences and made some good connections with people.</p>
+
+<p>It was at this point I started to realized 1) how little I knew and 2) how
+much I had forgotten.</p>
+
+<p>This is where I am now. I am trying to turn myself around and learn more and
+all the time.</p>
+
+<p>I hope my next 20 years of programming (because I plan on coding (maybe not
+always for pay) until I die) will not find myself falling into another rut…</p>
+
+]]></content>
+  </entry>
+  
+</feed>

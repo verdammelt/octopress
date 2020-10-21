@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: objects | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/objects/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[quick thoughts about @david_a_black's presentation at @bostonrb 2012-07-10]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/07/10/quick-thoughts-about-at-david-a-blacks-presentation-at-at-bostonrb-2012-07-10/"/>
+    <updated>2012-07-10T21:35:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/07/10/quick-thoughts-about-at-david-a-blacks-presentation-at-at-bostonrb-2012-07-10</id>
+    <content type="html"><![CDATA[<h2 id="0-overview">0. Overview</h2>
+
+<p>David Black (<a href="http://www.twitter.com/david_a_black">@david_a_black</a>) presented his his “The
+Well-Grounded Nuby” presentation to the Boston Ruby Group
+(<a href="http://www.twitter.com/bostonrb">@bostonrb</a>) meetup on 2012-07-10. I was unfortunately
+unable to attend but I watched/listened in on their 
+<a href="http://www.youtube.com/watch?v=DVQxmayBWOs">live streaming</a>.</p>
+
+<p>He presented seven things about Ruby that every noobie should know. I guess I
+am still closer to noobie than expert but I found that his points where very
+good for ‘levels’ above noobie. His seven points were:</p>
+
+<ul>
+  <li>Everything evaluates to an object</li>
+  <li>Sending messages to objects</li>
+  <li>Objects resolve messages to methods</li>
+  <li>Classes and modules are objects</li>
+  <li>There is always a “self”</li>
+  <li>Variables contain references to objects</li>
+  <li>True and false are objects</li>
+</ul>
+
+<p>I thought his talk could be summarized (<em>flippantly</em>?) into two points:</p>
+
+<ol>
+  <li>Ruby is <a href="http://en.wikipedia.org/wiki/Turtles_all_the_way_down">objects the whole way down</a>.</li>
+  <li>Ruby is <a href="http://www.lispworks.com/documentation/common-lisp.html">Lisp</a>-y.</li>
+</ol>
+
+<h2 id="1-objects-the-whole-way-down">1. Objects the Whole Way Down</h2>
+
+<p>I had the thought that Ruby must be objects the whole way down; but I had not
+tested it out, nor thought about it much. I just hadn’t needed to worry about
+it in my small amount of Ruby work. But this presentation made me much more
+aware of this. I need to experiment with this more and become more familiar
+with this style. C#/Java (which I am more recently familiar with) just don’t
+have this feel.</p>
+
+<p>I do a lot of work day-to-day in <a href="http://groovy.codehaus.org/">Groovy</a> and some of the discussion
+here sounds familiar. While I <em>knew</em> Groovy was like Ruby, I think it might be
+more like Ruby than I had been thinking. I need to investigate.</p>
+
+<h2 id="2-lisp-y">2. Lisp-y</h2>
+
+<p>Perhaps it is because I’ve been reading <a href="http://letoverlambda.com/">Let over Lambda</a> but I
+immediately started thinking lispy thoughts during a few points.</p>
+
+<p>Specifically when he was saying that everything evaluates to an object and
+discussed how <code>case</code> is just as <code>if...elseif...else</code> using <code>===</code> I wondered
+how I might be able to write my own control flow. Does Ruby have
+<a href="http://www.gigamonkeys.com/book/macros-defining-your-own.html">macros</a>? I need to investigate.</p>
+
+<h2 id="3-the-mixture-of-the-two-and-beyond">3. The Mixture of the Two (and beyond)</h2>
+
+<p>His first point, “Everything evaluates to Object” and “<code>true</code> and <code>false</code> are
+Objects” made me think lispy thoughts. On the first point it was simply “duh”
+of course <em>everything</em> evaluates to <em>something</em>, and the second made me think
+of the difference between <a href="http://en.wikipedia.org/wiki/Scheme_(programming_language)">Scheme</a>/<a href="http://clojure.org/">Clojure</a> and 
+<a href="http://www.lispworks.com/documentation/common-lisp.html">Common Lisp</a> with respect to <code>t</code>/<code>nil</code> or <code>true</code>/<code>false</code>.</p>
+
+<p>Lisp has an object system - but it is built on top of an existing language
+with the features of the language itself. There is something about this
+presentation of Ruby that makes me start feeling that Ruby’s object system,
+while a much more integral part of the language is still defined in that
+language itself as <a href="http://en.wikipedia.org/wiki/Common_Lisp_Object_System">CLOS</a> is.</p>
+
+<p>His point about “There is always a <code>self</code>” made me think about my recent
+forays into <a href="http://en.wikipedia.org/wiki/JavaScript">Javascript</a> at work. These have revolved around me
+trying to understand what <code>this</code> was at different points in the code.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The talk was though-provoking in me; and thus, <em>IMNHO</em>, it was good. I have at
+least two different things to investigate.</p>
+
+<p>Overall his presentation made me realize there was plenty more in Ruby for me
+to learn, and that there was plenty more in Ruby that was, to me,  <em>worth</em>
+learning.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

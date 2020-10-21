@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: pdf | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/pdf/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Seven Deadly Sins of Programming]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/05/14/seven-deadly-sins-of-programming/"/>
+    <updated>2012-05-14T22:14:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/05/14/seven-deadly-sins-of-programming</id>
+    <content type="html"><![CDATA[<p>At tonight’s Boston Software Craftstmanship meetup I presented my lightning
+talk: Seven Deadly Sins of Programming. It is a half baked idea - take it with
+a grain of salt.</p>
+
+<p>Attached are the <a href="assets/deadlysins.pdf">PDF slides</a>.</p>
+
+<p>The source code for the presentation (done in the <a href="http://en.wikipedia.org/wiki/Beamer_(LaTeX)">Beamer</a> package for
+<a href="http://www.latex-project.org/">LateX</a>) is on <a href="https://github.com/verdammelt/SevenDeadlySins">my github</a>.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

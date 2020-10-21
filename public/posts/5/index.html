@@ -1,0 +1,1253 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Code And Cocktails</title>
+  <meta name="author" content="Mark Simpson">
+
+  
+  <meta name="description" content="(sorry I couldn’t help that title) For a while I’ve been trying to learn what this Monad thing was. Smart
+people were talking about them and making &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code-and-cocktails.heroku.com/posts/5">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Code And Cocktails" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$', '$$'], ["\\[", "\\]"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+  
+  <script type="text/javascript">
+    if (window.location.hostname !== "octopress.dev") {
+      console.log("load gaq")
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30682469-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Code And Cocktails</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code-and-cocktails.heroku.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/assets/resume.pdf">R&eacute;sum&eacute;</a></li>
+  <li><a href="/publickey">Public Key</a></li>
+  <li><a href="http://www.flickr.com/photos/verdammelt/">My Photographs</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/27/how-i-learned-to-stop-worrying-and-love-the-monad/">How I Learned to Stop Worrying and Love the Monad</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2012/06/27/how-i-learned-to-stop-worrying-and-love-the-monad/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2012/06/27/how-i-learned-to-stop-worrying-and-love-the-monad/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>(sorry I couldn’t help that title)</p>
+
+<p>For a while I’ve been trying to learn what this <em>Monad</em> thing was. Smart
+people were talking about them and making them sound important. Smart people I
+knew and admired were making them sound like something I should know about.</p>
+
+<p>So I’d try to learn what monads are and it all sounded something like this:</p>
+
+<blockquote>
+  <p>A Monad is Kleisi triple: an endofunctor, together with two natural
+transformations.</p>
+</blockquote>
+
+<p>Simple right? I just felt dumb. I didn’t think I’d ever understand what they
+were or why they were important.</p>
+
+<p>That is until I watched two presentations. While I can’t say I <em>understand</em>
+them yet, I feel like I’ve had an insight which might be useful so I’d like to
+share them.</p>
+
+<p>(Both presentations use Clojure - but don’t let that put you off if you don’t
+know Clojure - the Clojure in the presentations is not very complex.)</p>
+
+<h2 id="why-is-a-monad-like-a-writing-desk">Why is a Monad like a Writing Desk</h2>
+
+<p>A few weeks ago I finally watched a presentation by Carin Meier called 
+<a href="http://www.infoq.com/presentations/Why-is-a-Monad-Like-a-Writing-Desk">Why is a Monad like a Writing Desk?</a> (presented at Clojure/West 2012). 
+Given my big soft-spot for Alice in Wonderland references I was predisposed 
+to watch this video.</p>
+
+<p>Carin presents monads gently via a cute little story of Alice, a programmer,
+who is trying to learn about monads but falls asleep and enters a Wonderland
+like land of talking doors and Astronaut-hosted tea parties. Through the story
+I learned a little bit about monads alongside Alice.</p>
+
+<p>She covered the Identity, Maybe and State monads which I had seen before but
+now better understood.</p>
+
+<h2 id="introduction-to-monads">Introduction to Monads</h2>
+
+<p>At the end of Carin’s presentation there was a link to another presentation by
+Adam Smyczek called <a href="http://www.youtube.com/watch?v=ObR3qi4Guys">Introduction to Monads</a> (presented at a Bay Area
+Clojure User Group meeting in 2010).</p>
+
+<p>In this presentation he shows a real case where he used several monads to
+create a clean design for a testing DSL he was creating. It involved some live
+coding which was good to see.</p>
+
+<p>He also covered the same monads. Seeing them implemented again, helped
+solidify my understanding of them.</p>
+
+<h2 id="insight">Insight</h2>
+
+<p>Watching these two presentation I came to a realization:</p>
+
+<blockquote>
+  <p>Monads are not a <strong>thing</strong>, they are a pattern.</p>
+</blockquote>
+
+<p>That’s it. That was the insight I needed. I realized that previously I was
+always looking for some explanation of a <em>thing</em>, a language construct, and
+object, a function. But that is not what a monad is (although it could be
+built in to a language <em>etc.</em>).</p>
+
+<p>Monads are a design pattern. They are a pattern
+of flow control, a pattern of chaining functions on sequences of data.</p>
+
+<p>I think my next insight will come about when I consciously implement code
+using monads. I hope to create an opportunity for this.</p>
+
+<p>I’d suggest to anyone who wants to learn something about monads but is finding
+it tough to watch Carin’s presentation (sit back, relax, enjoy and learn) and
+then follow that up with Adam’s presentation.  I watched them back to back one
+evening and I think that really helped.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/24/problems-deploying-to-heroku-after-upgrading-octopress/">Problems Deploying to Heroku After Upgrading Octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2012/06/24/problems-deploying-to-heroku-after-upgrading-octopress/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2012/06/24/problems-deploying-to-heroku-after-upgrading-octopress/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Just a note (perhaps for my future self).</p>
+
+<p>I had considerable problems after upgrading Octopress and then trying
+to deploy my blog to Heroku.</p>
+
+<p>The problems stemmed from the update to the Gemfile. There were two problems:</p>
+
+<p>Firstly: everything except for <code>sinatra</code> was put into the
+<code>:development</code> group. Heroku runs <code>bundle --without=development</code> so
+all those gems will be missing.</p>
+
+<p>Secondly: due to an earlier problem with the <code>pygment</code> and python
+environments I need to keep the following in my Gemfile</p>
+
+<pre><code>gem 'pygments.rb', '= 0.2.3'
+gem 'rubypython', '= 0.5.1'
+</code></pre>
+
+<p>After I fixed those two problems deploying to Heroku worked fine.</p>
+
+<p>One bright side is that I now know how to use <code>heroku
+releases:rollback</code> to shift back to a previous version. This let me
+keep my blog up and running while I tried to figure out the problem.
+(Not that anyone actually reads it…)</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/20/quick-review-of-20-years-of-professional-programming/">Quick Review of 20 Years of 'Professional' Programming</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2012/06/20/quick-review-of-20-years-of-professional-programming/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2012/06/20/quick-review-of-20-years-of-professional-programming/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In May 1992 I graduated with a Bachelor of Science in Computer Science from
+<a href="http://www.wpi.edu/" title="My alma mater">WPI</a>. That means that I’ve been a ‘<em>professional</em>’ programmer for a little
+bit over 20 years.  I have to say that while on the whole it has been good I
+regret some things.</p>
+
+<p>Firstly, I think I got a good education from WPI.  However I wish I had taken
+it onto myself to get a <em>better</em> education.  I didn’t extend myself enough, I
+didn’t really dig into things as much as I could have. I got good grades and
+left it at that.  This is a regret of mine.</p>
+
+<p>Nextly, upon graduating, I got some jobs and things went well. I fell into
+thinking that I knew what I was doing.  I think I was, while cocksure, still a
+bit better than the average programmer of the time with equal experience.  But
+it was during this approximately 10-15 year period where I fell into a lull. I
+thought I was good and I never did too much extra-curricular research. I did
+have a small piece of <a href="http://sourceforge.net/projects/tnef/">free software</a> that I worked on during this time</p>
+<ul>
+  <li>but that didn’t really stretch my abilities. The work I was doing at work
+was good - but again not stretching my abilities.</li>
+</ul>
+
+<p>During this time I only remember going to a single ‘conference’. That was when
+the local <a href="http://www.acm.org">ACM</a> chapter in <a href="http://www.gbcacm.org/">Boston</a> brought in one of the 
+<a href="http://en.wikipedia.org/wiki/Gang_of_Four_(software)">Gang of Four</a> to talk about their book. I distinctly remember that during the
+lunch I was so shy/awkward that I felt like never attending anything like this
+again.</p>
+
+<p>Sometime during the last 5-10 years I started to become dissatisfied with how
+software projects were being run and how quality, my own and other developers
+was being handled.  Sometime during this time period I was exposed to Agile
+methodologies. Perhaps the time was just ‘right’, but for whatever reason
+instead of just sitting around and accepting things I did a lot of research, I
+started reading blogs, I started trying things out for myself, I even went to
+conferences and made some good connections with people.</p>
+
+<p>It was at this point I started to realized 1) how little I knew and 2) how
+much I had forgotten.</p>
+
+<p>This is where I am now. I am trying to turn myself around and learn more and
+all the time.</p>
+
+<p>I hope my next 20 years of programming (because I plan on coding (maybe not
+always for pay) until I die) will not find myself falling into another rut…</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/06/05/goos-the-walking-skeleton-starts-walking/">GOOS - the Walking Skeleton Starts Walking</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2012/06/05/goos-the-walking-skeleton-starts-walking/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2012/06/05/goos-the-walking-skeleton-starts-walking/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Just a quick post to ensure I keep this moving along.</p>
+
+<p>I have completed my review of Chapters 9-11 of GOOS.  These chapters cover the
+starting of this example project – the Auction Sniper.  There seemed to be
+mostly ordinary stuff here (perhaps it is ordinary to me now that I have
+worked in something like this style for a while…).</p>
+
+<p>After discussing what the scope of the project is and some of the 3rd party
+protocols we’ll be dealing with we create a to do list of the initial
+‘stories’.  This will be our backlog.</p>
+
+<p>We then start an Iteration Zero to get the Walking Skeleton up and running.
+I’ve seen Iteration Zeros which didn’t work - but I think the failure there
+was not keeping them tightly timeboxed like any other iteration. The Author’s
+recommendation is to keep them timeboxed - so I have no complaints there.</p>
+
+<p>One thing mentioned in this chapter as the first end-to-end test is created is
+“programming by wishful thinking”.  This is something that fits my style well
+and I think I keep learning that if I don’t do it; things don’t end up as
+nicely. Someday I’ll learn to trust the instinct and style.</p>
+
+<p>Finally in the final chapter of this little section we get the Walking
+Skeleton going. The code isn’t bad - there are some things I don’t find
+aesthetically pleasing - but I don’t want to refactor too much - because if I
+do it might be harder for me to follow along the future examples. Perhaps
+after a bit more code is written I’ll refactor on a branch.</p>
+
+<p>I think the major thing I’m learning is how happy I am not to be writing
+straight Java all the time.  I write in Groovy mostly at work and Ruby and
+Clojure at home. Straight Java is not horrible - but really there is so much
+typing - it could all be done with less typing.</p>
+
+<p>(Another reason to write this short post is to get rid of the mental block
+that is keeping me from just jumping into the next chapters!)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/28/omg-git-is-scary-and-amazing/">OMG Git Is Scary and Amazing</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2012/05/28/omg-git-is-scary-and-amazing/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2012/05/28/omg-git-is-scary-and-amazing/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote>
+  <p>I just bought a chainsaw - my problems are solved</p>
+</blockquote>
+
+<p>I created a modification to <a href="https://github.com/marick/lein-midje">lein-midje</a>
+which allowed it to be a <code>lein new</code> template to help people get started with
+Midje. I submitted a <a href="https://github.com/marick/lein-midje/pull/24">pull
+request</a> and in doing so
+realized that I really ought to have done my work on a branch.  <em>ugh</em>.</p>
+
+<p>Knowing that Git is super-awesome(TM) I thought there must be some necromatic
+incantation to take previous commit and put them on a branch. I was
+surprised/horrified to find out how <a href="http://stackoverflow.com/questions/1628563/git-move-recent-commit-to-a-new-branch">easy it was</a>! (the first answer, at the time of this posting, is the important one).</p>
+
+<p>For the record this is all you need to do:</p>
+
+<pre><code>git branch &lt;newbranch&gt;
+git reset --hard HEAD~2 # or however far back you want to go
+git co &lt;new branch&gt;
+</code></pre>
+
+<p>It seemed to easy to I tested it out. I created a new repository with a file
+which was empty on the initial commit. I modified it two times committing each
+time. Then did the above steps. Then on the master branch I committed a
+different change.  Now <code>git log --all</code> looks like this (my personal formatting
+stolen from
+<a href="https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs">garybernhardt</a>):</p>
+
+<pre><code>virgil:foo(abranch)&gt; git lg --all
+* 0d4d369    (8 minutes)   &lt;Mark Simpson&gt;   (master) after branch
+| * f0101f4  (9 minutes)   &lt;Mark Simpson&gt;   (HEAD, abranch) third co
+| * d8160bf  (9 minutes)   &lt;Mark Simpson&gt;   second commit
+|/  
+* cceb15b    (10 minutes)  &lt;Mark Simpson&gt;   initial commit
+</code></pre>
+
+<p>Git is scary and cool at the same time. It is a serious chainsaw and you can
+get stuff done, but you could also chop your leg clean off.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/19/goos-guide-to-testing-and-designing/">GOOS Guide to Testing and Designing</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2012/05/19/goos-guide-to-testing-and-designing/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2012/05/19/goos-guide-to-testing-and-designing/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>(The second in a <a href="/blog/categories/goosreview">series</a> in which I reread
+Growing Object Oriented Systems and try to digest it better. Overall this
+section, Chapters 4-8, is filled with timely reminders to me about several
+things about good design.)</p>
+
+<h2 id="the-walking-skeleton">The Walking Skeleton</h2>
+
+<p>This is one of the points in this book which seem like such small items but I
+think have more importance than initial appears.  In fact I am surprised in my
+rereading that the authors advocate the end-to-end tests to be done on
+<em>deployed</em> systems - that is not something I’ve ever really tried and seems
+very daunting.</p>
+
+<p>The important things to remember here about the Walking Skeleton is that it is
+<em>not</em> about writing real functionality, but meant to flush out issues both
+technological and organizational. It will be definitely smaller than an MMF.
+It might take a surprising amount of time to write it nonetheless. This is
+because there will be a whole lot of learning happening. The same goes for the
+first few features. (Boy is this a timely reminder for me right now…)</p>
+
+<p>Unfortunately this slowness at the beginning of a project can seem like a bad
+thing - but it is really not. The beginning feels a bit rocky - but then it
+smooths out as deploy and integration issues have been resolved. In a ‘normal’
+project the beginning might be smooth but the deploy and integration problems
+will crop up and make the end rough.</p>
+
+<h2 id="how-to-write-a-test">How to Write a Test</h2>
+
+<p>The way they describe to write a test is something I try to do - but it bears
+repeating (this is valid for tests at any level):</p>
+
+<ol>
+  <li>Write the test you want to read (write helper code to make this possible).</li>
+  <li>Watch it fail - keep working on it until it fails for the right reason
+with a good error message).</li>
+  <li>Now write the production code to make it pass.</li>
+</ol>
+
+<p>By taking the time to do this you will ensure that the goal and intent of the
+part you are working on is clear. When done ensure it has a clear intention
+revealing name - this is how you will understand the system later.</p>
+
+<p>Start by writing an acceptance test for the feature. Write it in terms of the
+domain and the user. An acceptance test gives feedback on the external API of
+the system and upon major integration points both with external APIs and
+internal components. Since the acceptance test is likely to be failing until
+all parts of the code is written it will need to be separated from the main
+build.</p>
+
+<p>Once the acceptance test is well written then start moving down a level to the
+objects that the acceptance test uses and unit test their functionality into
+existence. This is the idea of testing from inputs to outputs.  Jumping to a
+lower level object too soon will lead that object to have an interface which
+does not reflect what it really needs to be. Only by building the objects
+after building their callers can you know what is really needed.</p>
+
+<p>The Authors have a bit of simple advice as to what to test first: they suggest
+going for a simple successful path, and they make a good point why. Tests
+provide feedback, if you focus your initial tests around error or edge cases
+then your design feedback will be about that instead of the normal work of the
+component you are writing.</p>
+
+<p>One final important point the authors make on how to write tests is: “If an
+area is hard to test don’t just ask <em>how can we test this?</em> but <em>why is it
+hard to test?</em>. If something is hard to test it could be the tests are trying
+to tell you something. This is one place I have trouble with - I seem to have
+too much tolerance for pain while coding - a tolerance I need to cure myself
+of.</p>
+
+<h2 id="how-to-design-code-and-how-tests-affect-that">How to Design Code (and How Tests Affect That)</h2>
+
+<p>Obviously writing tests before the code affects how the code is designed - the
+pressures to keep each object isolated are very powerful. The book contains a
+good set of design points which are not unique to the book and not new to me.
+There were a few specific points I thought good to note.</p>
+
+<p>When objects are composed together the interface for the composite object must
+be less complex than the union of the interfaces of the composed objects. This
+makes it a higher abstraction which hides some of the complexities. Higher
+abstractions allow us to manage complexity.</p>
+
+<p>Each object must be context independent <em>e.g.</em> everything it needs to do its
+job needs to be passed into in via the constructor or the specific method in
+question. Thus each object has external knowledge on a “need to know basis”.
+This leads to the ability to recompose objects to get different behavior.</p>
+
+<p>Create plenty of Value types. This combats Primitive Obsession and also
+creates attractors for functionality.</p>
+
+<p>Object peers (those objects which are communicated with directly) should be
+mocked out in tests. This causes coupling and interface problems to be
+evident.  Value types should not be mocked.  Neither should third party APIs
+be mocked since the feedback provided cannot be used since the API cannot be
+changed. Also mocking external APIs runs the danger of testing against
+behavior you believe the API has, but may not actually have. Third party APIs
+should be wrapped in a thin adapter layer which can be mocked in unit tests.</p>
+
+<h2 id="where-do-types-come-from">Where do Types Come From?</h2>
+
+<p>I rather like the Author’s descriptions of how types are ‘found’ when working
+in the code. The three ways are valid for both Value and Object types:</p>
+
+<ol>
+  <li>
+    <p>Breaking Out: When the code shows that an class is becoming too complex
+that is a sign that it is doing too much.  Some of the functionality
+could be split into helper types.</p>
+  </li>
+  <li>
+    <p>Budding Off: When there is a new domain object a new type should be
+created, even if is empty or contains only one piece of data.  The type
+will act as an attractor for further data and behavior.</p>
+  </li>
+  <li>
+    <p>Bundling Up: When a group of classes are always used together they can be
+bundled together.  Remember that composite objects should have a less
+complex interface than their composed parts.</p>
+  </li>
+</ol>
+
+<h2 id="a-final-note-about-mocking">A Final Note About Mocking</h2>
+
+<p>I find that now that I can mock concrete classes in Java that I do not use
+interfaces as heavily as I used to. The Authors specifically point out they
+use interfaces quite a bit - again because they are concerned with
+the communication between objects. I think this is one item I’ll keep an eye
+on as work through the examples. I have used interfaces in this way before but
+it seems lately I have not been doing so.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I agree with their design ideas. I already try to follow them. I am quite
+excited to work through the example with them (something I did not do when I
+read the book previously). I hope that by doing (and blogging about it) these
+good ideas will sink in more; becoming more normal for me.</p>
+
+<p>I also intend to blog more frequently on it instead of lumping large chunks
+together like I did here.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/15/the-lotus-eaters/">The Lotus Eaters</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2012/05/15/the-lotus-eaters/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2012/05/15/the-lotus-eaters/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>From the <a href="http://en.wikipedia.org/wiki/Odyssey">Odyssey</a>:</p>
+
+<blockquote>
+  <p>…but gave them to eat of the lotus, which was so delicious that those
+   who ate of it left off caring about home</p>
+</blockquote>
+
+<p>I believe that the <a href="sazerac">Sazerac</a> may be my ‘lotus’ - what is yours?</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/14/seven-deadly-sins-of-programming/">Seven Deadly Sins of Programming</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2012/05/14/seven-deadly-sins-of-programming/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2012/05/14/seven-deadly-sins-of-programming/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>At tonight’s Boston Software Craftstmanship meetup I presented my lightning
+talk: Seven Deadly Sins of Programming. It is a half baked idea - take it with
+a grain of salt.</p>
+
+<p>Attached are the <a href="assets/deadlysins.pdf">PDF slides</a>.</p>
+
+<p>The source code for the presentation (done in the <a href="http://en.wikipedia.org/wiki/Beamer_(LaTeX)">Beamer</a> package for
+<a href="http://www.latex-project.org/">LateX</a>) is on <a href="https://github.com/verdammelt/SevenDeadlySins">my github</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/05/09/rereading-growing-object-oriented-systems/">Rereading Growing Object Oriented Systems</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2012/05/09/rereading-growing-object-oriented-systems/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2012/05/09/rereading-growing-object-oriented-systems/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="why">Why</h2>
+
+<p>I read <a href="http://www.growing-object-oriented-software.com/">GOOS</a> severals years ago but I have decided to reread it as I felt I
+didn’t think it really got into my head the first time. Definitely I did
+become more comfortable with mocking in tests - but I felt there was probably
+more that I missed. So I am rereading it - and more importantly - taking a few
+notes. It is those notes that I will be writing about, every chapter or two -
+hopefully not a project that will end in a whimper.</p>
+
+<h2 id="chapter-1">Chapter 1</h2>
+
+<h3 id="a-learning-process">A learning process</h3>
+
+<p><span class="pullquote-right" data-pullquote="Software is a learning process.">
+“Software is a learning process.” I am not sure why I didn’t catch this
+last time. It is something that makes absolute sense to me now; and moreover I
+don’t know a time when it would <em>not</em> have made sense to me over the last
+decade. If software is a learning process, getting feedback on that learning
+is of utmost importance.
+</span></p>
+
+<h3 id="nothing-to-lose">Nothing to lose</h3>
+
+<p>The boxed-text about ‘nothing to lose but your bugs’ strikes me as ‘sales
+pitch’. Having believed, then being bitten by this catch phrase I don’t buy
+it. TDD will not help the developers write the right feature - just help
+ensure that what they write is what they intended. It is not a silver bullet;
+and I’d think that Pryce and Freeman had not intended that; so I hope that
+I’ll see something that backs up this claim from them.</p>
+
+<p>(However I <em>do</em> feel that implementing via TDD helps drive out cases that
+might get missed until later exploratory testing. By finding them earlier in
+the process we have a big win.)</p>
+
+<p>After finishing the rest of the chapter I see their claim is that all the
+levels of TDD practices: end-to-end; integration and unit; could reduce the
+chance of writing the wrong code.</p>
+
+<h3 id="refactoring">Refactoring</h3>
+
+<p>Pryce and Freeman say that refactoring is a local change. This made me
+immediately realize that easily fall into <em>large</em> refactorings. This is
+something I want to keep an eye on. Not just for refactorings - but for any
+work - I should work in small chunks.</p>
+
+<h3 id="a-rose-by-any-other-name">A rose by any other name…</h3>
+
+<p>It annoys me that there are so many terms for different levels of tests. I
+personally use ‘Integration’ test for any test that integrates two or more
+components (except for those sets of components which I consider a Unit - then
+of course that would be a Unit test…). They keep talking about ‘Acceptance
+Tests’ which to me are ‘User Tests’ - and given I just got back from some
+training from Jim Shore I am currently at least moderately against automated
+user tests. I do like End-to-End tests - that they call Acceptance test - but
+need to keep them under control since they have the drawback of slowness and
+brittleness.</p>
+
+<p>I really like to have clear terms for things - terms that are understood
+generally by people. I think it eases communication. That being said I see in
+myself a lacking of clarity when I discuss topics. Reading this book is
+bringing this up to me; perhaps it is something I need to work on for myself.</p>
+
+<h2 id="chapter-2">Chapter 2</h2>
+
+<h3 id="a-web-of-messages">A web of messages</h3>
+
+<p>I think the important idea presented in this chapter is the idea the domain
+concepts are not embodied by a particular classes in your code but by the
+connections of those classes embodied by the messages that they pass each
+other. This is an idea I remember having trouble with when I first read this
+book and I am again having a little trouble making it concrete in my head.
+Hopefully this second read will help solidify it.</p>
+
+<h3 id="values--objects">Values &amp; Objects</h3>
+
+<p>The authors present a nice terminology for two types of collections of data
+and functionality found in code. Simply: <em>Values</em> are immutable without
+distinct identity; <em>Objects</em> have changing state and have distinct identity.</p>
+
+<p>Here again is a reminder to me to have a clear, consistent terminology to aid
+in communication.</p>
+
+<h3 id="tell-dont-ask">Tell don’t ask</h3>
+
+<p>While I am familiar with the “Law of Demeter”, it is one of those things that
+seems to quickly fall by the wayside as I code. Another thing to add to my
+list of things to improve.</p>
+
+<p>There seems to be a lot of good discussion about this on the internet - one
+discussion and explanation of it I like is that from Avdi Grimm in his
+blog post <a href="http://devblog.avdi.org/2011/07/05/demeter-its-not-just-a-good-idea-its-the-law/">Demeter: It’s not a good idea. It’s the law</a>. In it
+he points to method chaining and points out:</p>
+
+<pre><code>&gt;Look again at the definition of the Law: it never says anything about the
+&gt;number of methods called, or the number of objects a method uses. It is
+&gt;strictly concerned with the number of /types/ a method deals with.
+</code></pre>
+
+<p>So it is OK to chain a set of method calls together that all do different
+things to collections of objects, or Strings for example; but not when there
+are multiple different <em>types</em> of objects.</p>
+
+<h2 id="in-conclusion-for-now">In Conclusion (for now)</h2>
+
+<p>I am looking forward to continuing my rereading of this book. I think I will
+gain from this review of important topics (Object Oriented Design and TDD). I
+may not end up agreeing with it - but I hope to solidify my thoughts and
+practices in this area through it.</p>
+
+<p>Along the way I plan on continuing to take notes and then making blog posts
+about it. I think through this process I will do an even better job of
+understanding what I have read. I hope you all don’t mind too much.</p>
+
+<h2 id="postscript---chapter-3">Postscript - Chapter 3</h2>
+
+<p>Chapter 3 was a discussion about using JMock. Nothing really to note or
+report.  I have no yet decided what language(s) I will be using while doing
+the exercises.  I think I may just do it in Java with JMock so that I can
+easily follow along with their examples. However another part of me wants to
+do them in Ruby or Groovy or Clojure to help me compare and contrast.</p>
+
+<p>In any case, any code written will of course be published to <a href="https://github.com/verdammelt">my
+Github</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/28/reflections-upon-the-art-of-agile-training/">Reflections Upon the Art of Agile Training</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2012/04/28/reflections-upon-the-art-of-agile-training/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2012/04/28/reflections-upon-the-art-of-agile-training/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="what">What</h2>
+
+<p>I am returning home from the <a href="http://www.cyrusinnovation.com/index.php/art-of-agile-nyc">Art of Agile Boot Camp</a> presented by
+<a href="http://www.jamesshore.com">James Shore</a> and <a href="http://www.futureworksconsulting.com">Diana Larsen</a> in New York City.</p>
+
+<p>The training turned out to be review for me given that most of my coworkers
+are <a href="http://www.cyrusinnovation.com">Cyrus Innovations</a> employees and they all attended this training
+in October of 2011. They came back and implemented some of the ideas from the
+training - so in a way I’ve been living this stuff since then. Even before
+that we were a pretty well functioning agile team.</p>
+
+<p>Even though it was a review I still thought it was very beneficial to me.
+There are always opportunities to improve; and details/reasonings that had
+been forgotten. Old ideas can become new again through re-iteration.</p>
+
+<p>The training was split into two parts. The first two days covered Agile
+Planning and the last three Agile Delivery. The latter was what I was most
+interested in - but I think I may have gotten just as much out of the first
+section.</p>
+
+<h3 id="90-minute-iterations---crazy">90 Minute Iterations?! - Crazy!</h3>
+
+<p>It was in the second half of the class that we got to “experience” Agile
+Delivery for ourselves. In our groups we delivered working software four times
+in four iterations; each iteration was 90 minutes long. It seemed crazy and a
+few times it felt crazy - but we did deliver running software (a cheesy text
+based ‘game’) in 90 minute iterations. During these 90 minutes we did
+everything from release planning, to coding (TDD’d naturally), exploratory
+testing, and releasing.</p>
+
+<p>Crazy as it may seem - it is a brilliant exercise. By making us so focused we
+needed to organize ourselves, help each other out and really work to remove
+all roadblocks. Also it forced us to make, quickly, decisions about what was
+going to be in and what was not. We couldn’t let ego get in the way and argue
+too much about anything; we could always pivot and change our minds later.</p>
+
+<h3 id="relearning-what-stories-are">Relearning what Stories are</h3>
+
+<p>Even as a well functioning agile team I have to say that there were some
+things related to stories that I now think I/We were doing wrong or not so
+well.  Firstly, I was reminded that Stories are not requirements. Stories are
+conversations about the requirements and they are negotiable. It is really
+important that they are small and independent. A story on its own is not
+likely to be a complete feature (MMF) - they ought to be much smaller than
+that.</p>
+
+<p>Another point about stories that Jim makes a point of is that they should not
+be re-estimated. This seemed odd to me so I made a point to discuss it
+further. It seemed to me that one should re-estimate a story if more
+information is known. For example we may come to know that the implementation
+needed for a story is harder than first thought, or easier (perhaps it is
+becoming routine).</p>
+
+<p>Jim’s point is that estimates are always wrong, but they should be consistent.
+So if something was estimated as a ‘1’; then anything like it should also be a
+‘1’; even if find out that it was easier/harder. The reason is because if we
+change our estimations then our velocity becomes less meaningful. It is our
+velocity that should be changing to reflect our capability for doing N 1-point
+stories. That N will go up and down as 1 point stories are harder/easier.</p>
+
+<h3 id="velocity-settling">Velocity: settling</h3>
+
+<p><span class="pullquote-right" data-pullquote="Decrease velocity easily. Increase velocity pessimistically"></span></p>
+
+<p>Instead of simply doing <a href="http://c2.com/cgi/wiki?YesterdaysWeather">Yesterday’s Weather</a>, Jim
+suggests letting velocity ‘settle’. The way he put it was: 
+Decrease velocity easily. Increase velocity pessimistically.<br />
+The idea is that if you always use Yesterday’s Weather that your velocity may
+tend to to be erratic, and more importantly that it prevents the team from
+having consistent time for <a href="http://jamesshore.com/Agile-Book/slack.html">Slack</a>. While I can understand this
+intellectually I find it hard to grok. Perhaps that is because of long
+standing bad habits from previous work environments. It is something I’d like
+to experiment with.</p>
+
+<p>&lt;/span&gt;</p>
+
+<h3 id="focus-on-delivering-value">Focus on Delivering Value</h3>
+
+<p>Duh. I just needed to be reminded of this.</p>
+
+<h3 id="fluencies">Fluencies</h3>
+
+<p>Diana and Jim presented an idea of ‘Fluency’ in Agile Practices. Each level is
+useful, none of them are ‘bad’.  They are:</p>
+
+<ol>
+  <li>We build code.</li>
+  <li>We create business value.</li>
+  <li>We <em>deliver</em> business value.</li>
+  <li>We <em>optimize</em> business value.</li>
+  <li>We optimize <em>our organization’s</em> business value.</li>
+</ol>
+
+<p>The idea is that you are ‘fluent’ at a level, as with a language, when you can
+easily work at that level, even under pressure. I think our current team, and
+myself, is largely fluent at the level of delivering business value and
+day-to-day we do some work at the level of optimizing that value.</p>
+
+<h2 id="so-what">So What</h2>
+
+<h3 id="the-first-thing-to-build">The First Thing to Build…</h3>
+
+<p><span class="pullquote-right" data-pullquote="The First thing to build is Trust"></span></p>
+
+<p>Diana mentioned a good quote: The First thing to build is Trust. The
+idea is that the first thing the team needs to get good at is delivering on
+its commitments - consistently.</p>
+
+<p>&lt;/span&gt;</p>
+
+<h3 id="iteration-planning-is-a-design-activity">Iteration Planning is a design activity</h3>
+
+<p>This is an interesting idea that I need to think more about. The idea is that
+because Iteration Planning involves choices about what will be built; that it
+affect design.</p>
+
+<h3 id="people-over">People over…</h3>
+
+<p>I always find interacting with people who are interested in or driven to
+learning very energizing. A change in this time I realized what that now I was
+the person who was answering questions of and encouraging people who were new
+to Agile. I am starting to realize that I know this stuff and have something
+to offer. It was also great to see a coworker doing the same, and doing a
+better job than I did.</p>
+
+<h2 id="now-what">Now What</h2>
+
+<p>There are some things I want to try for myself and for my team.</p>
+
+<h3 id="demos">Demos</h3>
+
+<p>Right now on my current project we do not have Customer Demos. I said a few
+times during the training that my project does not yet have a Customer, but
+what it really doesn’t have is a User. I think we could start demoing it now
+to whoever wanted to see it. At the least demoing to fellow team members may
+help us be focused and see a bigger picture.</p>
+
+<h3 id="story-sizing">Story sizing</h3>
+
+<p>Currently our features are not quite <em>Minimum</em> Marketable Features. They tend
+to be larger than that. Furthermore it seems our Product Manager (the Customer
+Proxy) doesn’t care much about anything smaller than that. However that is
+leaving us with only a story or two per iteration - which is not helping us
+achieve a more stable velocity.</p>
+
+<p>I need to do some brainstorming on how we can (or if we should) shrink our
+features. Then figure out ways to split stories into smaller chunks so we can
+have several per iteration (at least 4). The important thing here is to keep
+business value in each story. While I do not think this will magically cause
+my Product Manager to care about the smaller stories; but I hope it will help
+engage them more if we can show business value progress with each one.</p>
+
+<p>Related to this is the problem that it seems there may be some expectations
+about when the current release will be shippable. My current projections are
+much further out from those expectations. I need to use tools like Velocity,
+Release Planning with Risk calculations (ala <a href="http://www.teamrabu.com/">Rabu</a> which I currently
+use) to bring data to the table in my discussions with the Product and Project
+Managers.</p>
+
+<h3 id="root-cause-analysis">Root Cause Analysis</h3>
+
+<p>Now that I’ve had this review I feel that I and my team have not been doing a
+good job of doing root cause analysis on the issues in our process which we
+discuss in our Retrospectives. Furthermore we are not doing a good job of root
+cause analysis on any bugs that come up.</p>
+
+<p>(On the topic of bugs I want to more seriously have the “Bugs don’t happen
+here” attitude.)</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In conclusion the training was fantastic - even for someone who is not new to
+Agile methodologies. I am bringing back some good ideas which may help me and
+my team achieve even better fluency in our work. It also solidified for me
+some existing ideas that I thought I/we already did pretty well.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/6">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/4">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+<img src="/images/me.jpg">
+<p>Hello, I'm Mark and I like cocktails and programming.  Sometimes at the same
+time.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/03/10/how-to-write-a-mix-task/">Writing Mix Tasks for Fun and Profit.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/05/24/learning-from-my-apprentice/">Learning From My Apprentice</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/25/quickie-less-columns-on-your-board/">Quickie: Less Columns on Your Board</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/02/28/the-craftsperson-and-their-tools/">The Craftsperson and Their Tools</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/10/gotcha-of-using-youtubeplayerfragment-at-viewpager-for-android/">Gotcha of Using YouTubePlayerFragment and ViewPager for Android</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/-boston-sc' style='font-size: 103.07692307692308%'>@boston_sc(4)</a> <a href='/blog/categories/ad-d' style='font-size: 102.3076923076923%'>AD&D(3)</a> <a href='/blog/categories/agile' style='font-size: 104.61538461538461%'>agile(6)</a> <a href='/blog/categories/alcohol' style='font-size: 100.76923076923077%'>alcohol(1)</a> <a href='/blog/categories/android' style='font-size: 100.76923076923077%'>android(1)</a> <a href='/blog/categories/bicycle' style='font-size: 104.61538461538461%'>bicycle(6)</a> <a href='/blog/categories/blog' style='font-size: 101.53846153846153%'>blog(2)</a> <a href='/blog/categories/bostonrb' style='font-size: 100.76923076923077%'>bostonrb(1)</a> <a href='/blog/categories/branch' style='font-size: 100.76923076923077%'>branch(1)</a> <a href='/blog/categories/bugs' style='font-size: 100.76923076923077%'>bugs(1)</a> <a href='/blog/categories/cat' style='font-size: 100.76923076923077%'>cat(1)</a> <a href='/blog/categories/century' style='font-size: 103.84615384615384%'>century(5)</a> <a href='/blog/categories/cleancode' style='font-size: 100.76923076923077%'>cleancode(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.76923076923077%'>Clojure(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.76923076923077%'>clojure(1)</a> <a href='/blog/categories/cocktail' style='font-size: 103.84615384615384%'>cocktail(5)</a> <a href='/blog/categories/cocktails' style='font-size: 100.76923076923077%'>cocktails(1)</a> <a href='/blog/categories/code' style='font-size: 103.84615384615384%'>code(5)</a> <a href='/blog/categories/codekata' style='font-size: 100.76923076923077%'>codekata(1)</a> <a href='/blog/categories/coderetreat' style='font-size: 101.53846153846153%'>coderetreat(2)</a> <a href='/blog/categories/coding' style='font-size: 100.76923076923077%'>coding(1)</a> <a href='/blog/categories/coffeescript' style='font-size: 100.76923076923077%'>coffeescript(1)</a> <a href='/blog/categories/comic' style='font-size: 100.76923076923077%'>comic(1)</a> <a href='/blog/categories/concert' style='font-size: 100.76923076923077%'>concert(1)</a> <a href='/blog/categories/craft' style='font-size: 100.76923076923077%'>craft(1)</a> <a href='/blog/categories/craftsmanship' style='font-size: 100.76923076923077%'>craftsmanship(1)</a> <a href='/blog/categories/cube' style='font-size: 100.76923076923077%'>cube(1)</a> <a href='/blog/categories/design' style='font-size: 106.15384615384616%'>design(8)</a> <a href='/blog/categories/desk' style='font-size: 100.76923076923077%'>desk(1)</a> <a href='/blog/categories/developer' style='font-size: 100.76923076923077%'>developer(1)</a> <a href='/blog/categories/domain' style='font-size: 100.76923076923077%'>domain(1)</a> <a href='/blog/categories/elixir' style='font-size: 100.76923076923077%'>elixir(1)</a> <a href='/blog/categories/emacs' style='font-size: 103.84615384615384%'>emacs(5)</a> <a href='/blog/categories/estimation' style='font-size: 100.76923076923077%'>estimation(1)</a> <a href='/blog/categories/express' style='font-size: 100.76923076923077%'>express(1)</a> <a href='/blog/categories/food' style='font-size: 101.53846153846153%'>food(2)</a> <a href='/blog/categories/gin' style='font-size: 100.76923076923077%'>gin(1)</a> <a href='/blog/categories/git' style='font-size: 100.76923076923077%'>git(1)</a> <a href='/blog/categories/gnus' style='font-size: 103.07692307692308%'>gnus(4)</a> <a href='/blog/categories/goos' style='font-size: 104.61538461538461%'>goos(6)</a> <a href='/blog/categories/goosreview' style='font-size: 104.61538461538461%'>goosreview(6)</a> <a href='/blog/categories/grapefruit' style='font-size: 100.76923076923077%'>grapefruit(1)</a> <a href='/blog/categories/gwendolyn' style='font-size: 100.76923076923077%'>gwendolyn(1)</a> <a href='/blog/categories/heroku' style='font-size: 100.76923076923077%'>heroku(1)</a> <a href='/blog/categories/jeckyll' style='font-size: 100.76923076923077%'>jeckyll(1)</a> <a href='/blog/categories/kraftwerk' style='font-size: 100.76923076923077%'>kraftwerk(1)</a> <a href='/blog/categories/latex' style='font-size: 102.3076923076923%'>LaTeX(3)</a> <a href='/blog/categories/learning' style='font-size: 101.53846153846153%'>learning(2)</a> <a href='/blog/categories/life' style='font-size: 100.76923076923077%'>life(1)</a> <a href='/blog/categories/lisp' style='font-size: 103.07692307692308%'>lisp(4)</a> <a href='/blog/categories/listening' style='font-size: 100.76923076923077%'>listening(1)</a> <a href='/blog/categories/maintenance' style='font-size: 100.76923076923077%'>maintenance(1)</a> <a href='/blog/categories/markdown' style='font-size: 100.76923076923077%'>markdown(1)</a> <a href='/blog/categories/meetup' style='font-size: 100.76923076923077%'>meetup(1)</a> <a href='/blog/categories/metrics' style='font-size: 100.76923076923077%'>metrics(1)</a> <a href='/blog/categories/midje' style='font-size: 100.76923076923077%'>midje(1)</a> <a href='/blog/categories/mistakes' style='font-size: 100.76923076923077%'>mistakes(1)</a> <a href='/blog/categories/mix' style='font-size: 100.76923076923077%'>mix(1)</a> <a href='/blog/categories/mockito' style='font-size: 100.76923076923077%'>mockito(1)</a> <a href='/blog/categories/moma' style='font-size: 100.76923076923077%'>moma(1)</a> <a href='/blog/categories/monad' style='font-size: 100.76923076923077%'>monad(1)</a> <a href='/blog/categories/naming' style='font-size: 100.76923076923077%'>naming(1)</a> <a href='/blog/categories/node' style='font-size: 100.76923076923077%'>node(1)</a> <a href='/blog/categories/objects' style='font-size: 100.76923076923077%'>objects(1)</a> <a href='/blog/categories/octopress' style='font-size: 102.3076923076923%'>octopress(3)</a> <a href='/blog/categories/office' style='font-size: 100.76923076923077%'>office(1)</a> <a href='/blog/categories/oo' style='font-size: 104.61538461538461%'>oo(6)</a> <a href='/blog/categories/opinion' style='font-size: 100.76923076923077%'>opinion(1)</a> <a href='/blog/categories/pairprogramming' style='font-size: 100.76923076923077%'>pairprogramming(1)</a> <a href='/blog/categories/patterns' style='font-size: 101.53846153846153%'>patterns(2)</a> <a href='/blog/categories/pdf' style='font-size: 100.76923076923077%'>pdf(1)</a> <a href='/blog/categories/personal' style='font-size: 103.07692307692308%'>personal(4)</a> <a href='/blog/categories/photos' style='font-size: 100.76923076923077%'>photos(1)</a> <a href='/blog/categories/picture' style='font-size: 101.53846153846153%'>picture(2)</a> <a href='/blog/categories/posterous' style='font-size: 101.53846153846153%'>posterous(2)</a> <a href='/blog/categories/presentation' style='font-size: 100.76923076923077%'>presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 103.07692307692308%'>programming(4)</a> <a href='/blog/categories/python' style='font-size: 100.76923076923077%'>python(1)</a> <a href='/blog/categories/quality' style='font-size: 100.76923076923077%'>quality(1)</a> <a href='/blog/categories/react' style='font-size: 100.76923076923077%'>react(1)</a> <a href='/blog/categories/reactnative' style='font-size: 100.76923076923077%'>reactnative(1)</a> <a href='/blog/categories/recipe' style='font-size: 102.3076923076923%'>recipe(3)</a> <a href='/blog/categories/refactoring' style='font-size: 100.76923076923077%'>refactoring(1)</a> <a href='/blog/categories/repl' style='font-size: 100.76923076923077%'>repl(1)</a> <a href='/blog/categories/retro' style='font-size: 100.76923076923077%'>retro(1)</a> <a href='/blog/categories/retrospective' style='font-size: 102.3076923076923%'>retrospective(3)</a> <a href='/blog/categories/ruby' style='font-size: 102.3076923076923%'>ruby(3)</a> <a href='/blog/categories/scna' style='font-size: 103.07692307692308%'>scna(4)</a> <a href='/blog/categories/scna2013' style='font-size: 100.76923076923077%'>scna2013(1)</a> <a href='/blog/categories/sicp' style='font-size: 100.76923076923077%'>sicp(1)</a> <a href='/blog/categories/sin' style='font-size: 100.76923076923077%'>sin(1)</a> <a href='/blog/categories/skill' style='font-size: 100.76923076923077%'>skill(1)</a> <a href='/blog/categories/slides' style='font-size: 100.76923076923077%'>slides(1)</a> <a href='/blog/categories/software' style='font-size: 100.76923076923077%'>software(1)</a> <a href='/blog/categories/softwarecraftsmanship' style='font-size: 103.84615384615384%'>softwarecraftsmanship(5)</a> <a href='/blog/categories/tdd' style='font-size: 110.0%'>tdd(13)</a> <a href='/blog/categories/tools' style='font-size: 100.76923076923077%'>tools(1)</a> <a href='/blog/categories/training' style='font-size: 100.76923076923077%'>training(1)</a> <a href='/blog/categories/vermouth' style='font-size: 100.76923076923077%'>vermouth(1)</a> <a href='/blog/categories/viking' style='font-size: 100.76923076923077%'>viking(1)</a> <a href='/blog/categories/work' style='font-size: 103.07692307692308%'>work(4)</a> <a href='/blog/categories/yakshaving' style='font-size: 100.76923076923077%'>yakshaving(1)</a> <a href='/blog/categories/yarlisp' style='font-size: 100.76923076923077%'>yarlisp(1)</a> </span>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/verdammelt">@verdammelt</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'verdammelt',
+            count: 5,
+            skip_forks: false,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/verdammelt" data-widget-id="485216270623596545">Tweets by @verdammelt</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:verdammelt">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "verdammelt"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2020 - Mark Simpson -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'codeandcocktails';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    if (window.location.hostname !== "octopress.dev") {
+      console.log("load gaq")
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30682469-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Code And Cocktails</title>
+  <meta name="author" content="Mark Simpson">
+
+  
+  <meta name="description" content="Reading Corey Haines' recent blog post "Blaming your tools" (http://programmingtour.blogspot.com/2010/03/blaming-your-tools.html) made me think about &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code-and-cocktails.heroku.com/posts/13">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Code And Cocktails" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$', '$$'], ["\\[", "\\]"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+  
+  <script type="text/javascript">
+    if (window.location.hostname !== "octopress.dev") {
+      console.log("load gaq")
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30682469-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Code And Cocktails</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code-and-cocktails.heroku.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/assets/resume.pdf">R&eacute;sum&eacute;</a></li>
+  <li><a href="/publickey">Public Key</a></li>
+  <li><a href="http://www.flickr.com/photos/verdammelt/">My Photographs</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/22/on-craftsmen-and-their-tools/">On Craftsmen and Their Tools</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2010/03/22/on-craftsmen-and-their-tools/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2010/03/22/on-craftsmen-and-their-tools/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Reading Corey Haines' recent blog post "Blaming your tools" <br />(<a href="http://programmingtour.blogspot.com/2010/03/blaming-your-tools.html)">http://programmingtour.blogspot.com/2010/03/blaming-your-tools.html)</a> <br />made me think about a few things about my relationship to the tools of <br />my craft. <p /> I am a die hard Emacs (<a href="http://www.gnu.org/software/emacs/)">http://www.gnu.org/software/emacs/)</a> user (and <br />also use VI - so no need for flames). I've been using Emacs since 1989 <br />and it has been a solid tool in my toolbox the entire time. It is not <br />always the correct tool, and currently it is not my IDE for work (Visual <br />Studio 2010 is my current IDE); but always at least a fall-back. I am <br />often able to do "magic" that my other coworkers can't make happen <br />because I use Emacs; especially by recording macros and then applying <br />them to a large set of files. Or by creating quick Elisp programs to <br />generate data. <p /> I am long time Unix user. My day job is on Windows - but I always <br />install Cygwin (<a href="http://www.cygwin.org">http://www.cygwin.org</a>). Again, like Emacs, I have been using <br />it since 1988/89 and it has only rarely let me down. Again - not always <br />the right tool; but always available. Also has allowed me to do "magic" <br />my coworkers have not been able to do. <p /> Am I "[defending my] possibly old, less-effective tools"? I don't think <br />so. There are new tools I use, and I know that Emacs & Unix command <br />line are not perfect tools for all cases (but they come close!). I do <br />think it is important to find multi-purpose tools that can be used as <br />fall-backs when the specialized tools don't work. I see too many of my <br />coworkers who their fall-back tools are notepad.exe and cmd.exe. Which brings me to something I often wonder - Why don't some people <br />think about their tools? I keep running into (and working with) people <br />who are using tools they don't like, are not satisfied with, but they <br />don't look for better tools. Similarly they continue to do tasks <br />repetitively and inefficiently without looking for ways to either, not do <br />them at all, or to do them more efficiently. <p /> (I kept wanting to say that these developers were 'content' or <br />'satisfied' - but really they aren't. They are not 'content' or <br />'satisfied' doing inefficient work with bad tools - but they keep right <br />on doing it.)
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/13/with-gin-gimlet-in-hand-i-return-to-my-large/">With Gin Gimlet in Hand - I Return to My Large Backlog of Blog Reading.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2010/03/13/with-gin-gimlet-in-hand-i-return-to-my-large/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2010/03/13/with-gin-gimlet-in-hand-i-return-to-my-large/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"></div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/13/perfect-end-to-night-of-reading-agilecraftstm/">Perfect End to Night of Reading #agile/#craftstmanship Blogs: #shojo #manga!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2010/03/13/perfect-end-to-night-of-reading-agilecraftstm/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2010/03/13/perfect-end-to-night-of-reading-agilecraftstm/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"></div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/12/clarification-bicycling-is-not-dangerous-doin/">Clarification: Bicycling Is Not Dangerous - Doing Stupid Shit on a Bicycle Is.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2010/03/12/clarification-bicycling-is-not-dangerous-doin/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2010/03/12/clarification-bicycling-is-not-dangerous-doin/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"></div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/11/whats-the-point-of-having-a-cold-if-it-doesnt/">What's the Point of Having a Cold if It Doesn't Make You Sick Enough to Stay Home From Work?!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2010/03/11/whats-the-point-of-having-a-cold-if-it-doesnt/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2010/03/11/whats-the-point-of-having-a-cold-if-it-doesnt/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"></div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/09/classy-panda-lovely-bikecommute-yesterday-eve/">Classy Panda - Lovely #bikecommute Yesterday Evening: http://flic.kr/p/7JyEZ3</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2010/03/09/classy-panda-lovely-bikecommute-yesterday-eve/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2010/03/09/classy-panda-lovely-bikecommute-yesterday-eve/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"></div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/08/lovely-bikecommute-this-morning-spring-is-ear/">Lovely #bikecommute This Morning - Spring Is Early! Also: Top Hat Catches a Lot of Wind! May Need Shorter Hat.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2010/03/08/lovely-bikecommute-this-morning-spring-is-ear/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2010/03/08/lovely-bikecommute-this-morning-spring-is-ear/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"></div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/08/agile-project-house-renovation-analogyanecdot/">Agile Project - House Renovation - Analogy/Anecdote.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2010/03/08/agile-project-house-renovation-analogyanecdot/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2010/03/08/agile-project-house-renovation-analogyanecdot/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">I'm not sure why it took me so long to notice this analogy/similarity[1] <br />but when W. and I had part of our house renovated it was done in what, <br />if it were software, I would definitely call and "Agile" methodology. <p /> I don't remember if I was aware of "Agile" at the time (having come to <br />this bandwagon rather late) and I was the "Customer" for this project - <br />but now looking back I see the following connections: <p /> 1. Weekly iterations - While not all 'stories' were done for us to see <br />each week - we did meet with the project coordinators each week and they <br />reviewed what got done, and what was going to get done and made sure we <br />were OK with how it went. If we changed our minds, or realized that we <br />wanted something different - the plans could change[2]. This is also <br />where issues were brought up - some tasks ran into problems (it is an <br />old house, there are strange and bizarre bits of construction in it <br />hidden behind the walls) which also led to changes in the plan. We were <br />always working on "stories" which we felt we must get done, sometimes <br />choosing to change which "stories" were to get done.[3] <p /> 2. Continuous Integration/Delivery - Since the work was taking place in <br />our own house (which we were still living in) we could take the latest <br />'drop' and check it out. How did the new room look (even if only framed <br />with no drywall)? Maybe the door should swing the other way (now that <br />we see how the walls actually _are_)? <p /> 3. Incremental development - obviously all construction is in a sense <br />incremental - first you frame the walls, then the drywall goes up, then <br />that is painted, doorknobs put on etc. As time goes on - big changes <br />become harder - but with the continuous feedback those changes can be <br />made earlier - we could see how things were shaping up as they went. <p /> 4. Retrospective - along with the weekly meetings I remember being <br />asked about if the meetings were working out OK - if we had any issues <br />with the way the construction was happening while we still lived there <br />etc. I.e could the process be improved. <p /> 5. Acceptance Tests - a "story" was not done until we were satisfied. <p /> (Luckily, however, no Test Driven Development - wouldn't want them to <br />"fail" a load bearing wall before they built it!) <p /> In all I'd class this house renovation project as sort of "Agile" <br />project and I think it worked out well. Knowing what I know now I think <br />I could have worked as "Customer" even better. <p /> Footnotes: [1] I just got "Agile Principles, Patterns, and Practices in C#" <br />[Martin & Martin 2007], perhaps reading some of the front matter brought <br />this anecdote to light. <p /> [2] For a price of course! <p /> [3] But if a "story" started we couldn't really stop it (you can't <br />un-demo a room!) of course.
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/05/well-i-guess-i-was-due-for-an-unproductive-da/">Well I Guess I Was Due for an Unproductive Day at Work *sigh*</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2010/03/05/well-i-guess-i-was-due-for-an-unproductive-da/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2010/03/05/well-i-guess-i-was-due-for-an-unproductive-da/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"></div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/03/dont-mind-helping-coworkers-not-sure-if-i-lik/">Don't Mind Helping Coworkers - Not Sure if I Like Being a Ref Between Two of Them Though.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2010/03/03/dont-mind-helping-coworkers-not-sure-if-i-lik/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2010/03/03/dont-mind-helping-coworkers-not-sure-if-i-lik/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"></div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/14">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/12">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+<img src="/images/me.jpg">
+<p>Hello, I'm Mark and I like cocktails and programming.  Sometimes at the same
+time.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/03/10/how-to-write-a-mix-task/">Writing Mix Tasks for Fun and Profit.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/05/24/learning-from-my-apprentice/">Learning From My Apprentice</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/25/quickie-less-columns-on-your-board/">Quickie: Less Columns on Your Board</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/02/28/the-craftsperson-and-their-tools/">The Craftsperson and Their Tools</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/10/gotcha-of-using-youtubeplayerfragment-at-viewpager-for-android/">Gotcha of Using YouTubePlayerFragment and ViewPager for Android</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/-boston-sc' style='font-size: 103.07692307692308%'>@boston_sc(4)</a> <a href='/blog/categories/ad-d' style='font-size: 102.3076923076923%'>AD&D(3)</a> <a href='/blog/categories/agile' style='font-size: 104.61538461538461%'>agile(6)</a> <a href='/blog/categories/alcohol' style='font-size: 100.76923076923077%'>alcohol(1)</a> <a href='/blog/categories/android' style='font-size: 100.76923076923077%'>android(1)</a> <a href='/blog/categories/bicycle' style='font-size: 104.61538461538461%'>bicycle(6)</a> <a href='/blog/categories/blog' style='font-size: 101.53846153846153%'>blog(2)</a> <a href='/blog/categories/bostonrb' style='font-size: 100.76923076923077%'>bostonrb(1)</a> <a href='/blog/categories/branch' style='font-size: 100.76923076923077%'>branch(1)</a> <a href='/blog/categories/bugs' style='font-size: 100.76923076923077%'>bugs(1)</a> <a href='/blog/categories/cat' style='font-size: 100.76923076923077%'>cat(1)</a> <a href='/blog/categories/century' style='font-size: 103.84615384615384%'>century(5)</a> <a href='/blog/categories/cleancode' style='font-size: 100.76923076923077%'>cleancode(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.76923076923077%'>Clojure(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.76923076923077%'>clojure(1)</a> <a href='/blog/categories/cocktail' style='font-size: 103.84615384615384%'>cocktail(5)</a> <a href='/blog/categories/cocktails' style='font-size: 100.76923076923077%'>cocktails(1)</a> <a href='/blog/categories/code' style='font-size: 103.84615384615384%'>code(5)</a> <a href='/blog/categories/codekata' style='font-size: 100.76923076923077%'>codekata(1)</a> <a href='/blog/categories/coderetreat' style='font-size: 101.53846153846153%'>coderetreat(2)</a> <a href='/blog/categories/coding' style='font-size: 100.76923076923077%'>coding(1)</a> <a href='/blog/categories/coffeescript' style='font-size: 100.76923076923077%'>coffeescript(1)</a> <a href='/blog/categories/comic' style='font-size: 100.76923076923077%'>comic(1)</a> <a href='/blog/categories/concert' style='font-size: 100.76923076923077%'>concert(1)</a> <a href='/blog/categories/craft' style='font-size: 100.76923076923077%'>craft(1)</a> <a href='/blog/categories/craftsmanship' style='font-size: 100.76923076923077%'>craftsmanship(1)</a> <a href='/blog/categories/cube' style='font-size: 100.76923076923077%'>cube(1)</a> <a href='/blog/categories/design' style='font-size: 106.15384615384616%'>design(8)</a> <a href='/blog/categories/desk' style='font-size: 100.76923076923077%'>desk(1)</a> <a href='/blog/categories/developer' style='font-size: 100.76923076923077%'>developer(1)</a> <a href='/blog/categories/domain' style='font-size: 100.76923076923077%'>domain(1)</a> <a href='/blog/categories/elixir' style='font-size: 100.76923076923077%'>elixir(1)</a> <a href='/blog/categories/emacs' style='font-size: 103.84615384615384%'>emacs(5)</a> <a href='/blog/categories/estimation' style='font-size: 100.76923076923077%'>estimation(1)</a> <a href='/blog/categories/express' style='font-size: 100.76923076923077%'>express(1)</a> <a href='/blog/categories/food' style='font-size: 101.53846153846153%'>food(2)</a> <a href='/blog/categories/gin' style='font-size: 100.76923076923077%'>gin(1)</a> <a href='/blog/categories/git' style='font-size: 100.76923076923077%'>git(1)</a> <a href='/blog/categories/gnus' style='font-size: 103.07692307692308%'>gnus(4)</a> <a href='/blog/categories/goos' style='font-size: 104.61538461538461%'>goos(6)</a> <a href='/blog/categories/goosreview' style='font-size: 104.61538461538461%'>goosreview(6)</a> <a href='/blog/categories/grapefruit' style='font-size: 100.76923076923077%'>grapefruit(1)</a> <a href='/blog/categories/gwendolyn' style='font-size: 100.76923076923077%'>gwendolyn(1)</a> <a href='/blog/categories/heroku' style='font-size: 100.76923076923077%'>heroku(1)</a> <a href='/blog/categories/jeckyll' style='font-size: 100.76923076923077%'>jeckyll(1)</a> <a href='/blog/categories/kraftwerk' style='font-size: 100.76923076923077%'>kraftwerk(1)</a> <a href='/blog/categories/latex' style='font-size: 102.3076923076923%'>LaTeX(3)</a> <a href='/blog/categories/learning' style='font-size: 101.53846153846153%'>learning(2)</a> <a href='/blog/categories/life' style='font-size: 100.76923076923077%'>life(1)</a> <a href='/blog/categories/lisp' style='font-size: 103.07692307692308%'>lisp(4)</a> <a href='/blog/categories/listening' style='font-size: 100.76923076923077%'>listening(1)</a> <a href='/blog/categories/maintenance' style='font-size: 100.76923076923077%'>maintenance(1)</a> <a href='/blog/categories/markdown' style='font-size: 100.76923076923077%'>markdown(1)</a> <a href='/blog/categories/meetup' style='font-size: 100.76923076923077%'>meetup(1)</a> <a href='/blog/categories/metrics' style='font-size: 100.76923076923077%'>metrics(1)</a> <a href='/blog/categories/midje' style='font-size: 100.76923076923077%'>midje(1)</a> <a href='/blog/categories/mistakes' style='font-size: 100.76923076923077%'>mistakes(1)</a> <a href='/blog/categories/mix' style='font-size: 100.76923076923077%'>mix(1)</a> <a href='/blog/categories/mockito' style='font-size: 100.76923076923077%'>mockito(1)</a> <a href='/blog/categories/moma' style='font-size: 100.76923076923077%'>moma(1)</a> <a href='/blog/categories/monad' style='font-size: 100.76923076923077%'>monad(1)</a> <a href='/blog/categories/naming' style='font-size: 100.76923076923077%'>naming(1)</a> <a href='/blog/categories/node' style='font-size: 100.76923076923077%'>node(1)</a> <a href='/blog/categories/objects' style='font-size: 100.76923076923077%'>objects(1)</a> <a href='/blog/categories/octopress' style='font-size: 102.3076923076923%'>octopress(3)</a> <a href='/blog/categories/office' style='font-size: 100.76923076923077%'>office(1)</a> <a href='/blog/categories/oo' style='font-size: 104.61538461538461%'>oo(6)</a> <a href='/blog/categories/opinion' style='font-size: 100.76923076923077%'>opinion(1)</a> <a href='/blog/categories/pairprogramming' style='font-size: 100.76923076923077%'>pairprogramming(1)</a> <a href='/blog/categories/patterns' style='font-size: 101.53846153846153%'>patterns(2)</a> <a href='/blog/categories/pdf' style='font-size: 100.76923076923077%'>pdf(1)</a> <a href='/blog/categories/personal' style='font-size: 103.07692307692308%'>personal(4)</a> <a href='/blog/categories/photos' style='font-size: 100.76923076923077%'>photos(1)</a> <a href='/blog/categories/picture' style='font-size: 101.53846153846153%'>picture(2)</a> <a href='/blog/categories/posterous' style='font-size: 101.53846153846153%'>posterous(2)</a> <a href='/blog/categories/presentation' style='font-size: 100.76923076923077%'>presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 103.07692307692308%'>programming(4)</a> <a href='/blog/categories/python' style='font-size: 100.76923076923077%'>python(1)</a> <a href='/blog/categories/quality' style='font-size: 100.76923076923077%'>quality(1)</a> <a href='/blog/categories/react' style='font-size: 100.76923076923077%'>react(1)</a> <a href='/blog/categories/reactnative' style='font-size: 100.76923076923077%'>reactnative(1)</a> <a href='/blog/categories/recipe' style='font-size: 102.3076923076923%'>recipe(3)</a> <a href='/blog/categories/refactoring' style='font-size: 100.76923076923077%'>refactoring(1)</a> <a href='/blog/categories/repl' style='font-size: 100.76923076923077%'>repl(1)</a> <a href='/blog/categories/retro' style='font-size: 100.76923076923077%'>retro(1)</a> <a href='/blog/categories/retrospective' style='font-size: 102.3076923076923%'>retrospective(3)</a> <a href='/blog/categories/ruby' style='font-size: 102.3076923076923%'>ruby(3)</a> <a href='/blog/categories/scna' style='font-size: 103.07692307692308%'>scna(4)</a> <a href='/blog/categories/scna2013' style='font-size: 100.76923076923077%'>scna2013(1)</a> <a href='/blog/categories/sicp' style='font-size: 100.76923076923077%'>sicp(1)</a> <a href='/blog/categories/sin' style='font-size: 100.76923076923077%'>sin(1)</a> <a href='/blog/categories/skill' style='font-size: 100.76923076923077%'>skill(1)</a> <a href='/blog/categories/slides' style='font-size: 100.76923076923077%'>slides(1)</a> <a href='/blog/categories/software' style='font-size: 100.76923076923077%'>software(1)</a> <a href='/blog/categories/softwarecraftsmanship' style='font-size: 103.84615384615384%'>softwarecraftsmanship(5)</a> <a href='/blog/categories/tdd' style='font-size: 110.0%'>tdd(13)</a> <a href='/blog/categories/tools' style='font-size: 100.76923076923077%'>tools(1)</a> <a href='/blog/categories/training' style='font-size: 100.76923076923077%'>training(1)</a> <a href='/blog/categories/vermouth' style='font-size: 100.76923076923077%'>vermouth(1)</a> <a href='/blog/categories/viking' style='font-size: 100.76923076923077%'>viking(1)</a> <a href='/blog/categories/work' style='font-size: 103.07692307692308%'>work(4)</a> <a href='/blog/categories/yakshaving' style='font-size: 100.76923076923077%'>yakshaving(1)</a> <a href='/blog/categories/yarlisp' style='font-size: 100.76923076923077%'>yarlisp(1)</a> </span>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/verdammelt">@verdammelt</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'verdammelt',
+            count: 5,
+            skip_forks: false,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/verdammelt" data-widget-id="485216270623596545">Tweets by @verdammelt</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:verdammelt">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "verdammelt"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2020 - Mark Simpson -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'codeandcocktails';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    if (window.location.hostname !== "octopress.dev") {
+      console.log("load gaq")
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30682469-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+
+
+
+
+</body>
+</html>

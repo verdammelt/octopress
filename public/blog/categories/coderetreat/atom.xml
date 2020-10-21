@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: coderetreat | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/coderetreat/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Coderetreat - the need for preparedness]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2011/12/04/coderetreat-the-need-for-preparedness/"/>
+    <updated>2011-12-04T00:00:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2011/12/04/coderetreat-the-need-for-preparedness</id>
+    <content type="html"><![CDATA[<h2>Abstract</h2>
+
+<p>This observer has noted a repeated waste of time by attendees of the
+<a href="http://coderetreat.org/">Coderetreats</a> he has attended. Herein is described a
+simple way to be better prepared when you attend your next Coderetreat</p>
+
+<h2>Observational Data</h2>
+
+<p>This past weekend was the Global Day of Coderetreat and I attended the
+one in <a href="http://coderetreat.org/events/global-day-of-coderetreat">Cambridge, Mass</a>. This was my third and I
+again saw an annoyance I want to get out of my head.</p>
+
+<p>First, let me recapitulate the idea of the code retreat.  The
+participants work on the <a href="http://en.wikipedia.org/wiki/Conways_Game_of_Life">Conway&rsquo;s Game of Life</a> programming
+problem in 45 minute intervals in pairs, throwing away the code after
+every iteration.  Some iterations have interesting constraints added;
+such as &lsquo;no primitives&rsquo;, &lsquo;no ifs&rsquo;, or &lsquo;silent paring&rsquo;.</p>
+
+<p>I have noticed that at each coderetreat I&rsquo;ve attended some people spend
+time (usually only in the first session luckily) fighting with their
+environments to get the point where they can start coding. To me any
+time spent setting up the environment is wasted time when you have 45
+minutes.  I&rsquo;m not saying that this was a /huge/ issue &ndash; but a very
+little bit of preparation can save plenty of time during the event.</p>
+
+<h2>An Initial Attempt for a Personal Solution</h2>
+
+<p>Given that I saw (and felt, when pairing with someone who was
+unprepared) this problem at the Chicago coderetreat (held the day after
+<a href="http://scna.softwarecraftsmanship.org/">SCNA</a>), I made sure I had a ruby and Java project all set up so
+that I had a failing test (<code>true == false</code>).  That way I knew that
+everything was all set: all needed libraries, any special configuration
+(<a href="http://www.zenspider.com/ZSS/Products/ZenTest/">autotest</a> &amp; <a href="https://www.relishapp.com/rspec">rspec</a> always gives me a little bit of
+hassle), any other annoying little thing was done.  I even went so far
+as to push them up to <a href="https://.github.com">GitHub</a> so others could use them to.
+(git makes deleting the code after an iteration very easy: <code>git reset
+--hard HEAD &amp;&amp; git clean -fqx</code>).</p>
+
+<p>It turns out that I didn&rsquo;t need to do this.  There was already a GitHub
+repository that did what I needed and much more:
+<a href="https://github.com/coreyhaines/coderetreat">coreyhaines/coderetreat</a>.</p>
+
+<h2>Conclusion</h2>
+
+<p>Given that the above repository is set up for 10 programming languages
+currently, it is likely that the ones you want to use are already
+there.  Simply cloning the repository and doing a quick smoke test will
+ensure that your environment is ready for the session.</p>
+
+<p>If you don&rsquo;t find your favorite language &ndash; or the skeleton provided
+doesn&rsquo;t work as well as it could &ndash; send a pull request (I tweaked the
+ruby starting point to let autotest work with rspec right away).</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[#coderetreat thoughts]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2010/10/19/coderetreat-thoughts/"/>
+    <updated>2010-10-19T00:00:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2010/10/19/coderetreat-thoughts</id>
+    <content type="html"><![CDATA[<p>The code retreat at the 8th Light offices was the first one I had ever <br />attended. Overall I thought it was great, and again was well organized <br />like the SCNA conference was. <p /> I came into the code retreat feeling a bit intimidated and left feeling <br />tired and a bit intimidated. Just like the conference the code retreat <br />was _tiring_, but still a good tired. And like the conference I was a <br />bit intimidated by all the passionate, smart people around me. I hope <br />to be half as good as these people are. <p /> I am very happy that I did get to pair with really smart people in <br />Clojure, Ruby, Javascript and C#. <p /> * High Points: <p /> ** I had never written a line of Javascript before and never even really <br /> read much either. It is very weird, but in a good way. I'm going to <br /> add it to my list in order to at least familiarize myself with it. I <br /> think knowing a bit of it will help me understand other languages <br /> better. My pair (Sean McMillan) did a very good job taking the time to explain the <br /> features and constructs of the language so that we can work <br /> together.<p /> ** The God class was an accident, as most gods are probably. Marty and <br /> I started the session saying we'd work on the 'always delegate' <br /> constraint. We quickly decided that Cells needed to delegate to <br /> someone above them... who could that be? God of course. But that <br /> flippant naming changed EVERYTHING. The whole session changed. All <br /> our naming changed. Near the end, we were writing some code and it <br /> wasn't feeling right, Corey pointed out the encapsulation problem in <br /> it. Cells were telling God what to do. Nothing can tell God what to <br /> do! The problem would have been visible without the naming but with <br /> the naming the code FELT wrong. <p /> ** During lunch we had a discussion that brought up the idea of the <br /> Cells themselves knowing about their neighbors, mixing this with <br /> genetic programming could lead to extra data on each cell which gets <br /> combined when the dead cell comes back to life rule is applied, as <br /> this could be seen as a reproductive step. Furthermore the extra <br /> data could be somehow relevant to the Game of Life itself, e.g. some <br /> cells might be more resistant to over/under-population than others, <br /> thus surviving longer. I found this a very interesting idea and may <br /> try to find time to play with it more. <p /> * Low Points: <p /> I felt I was a bad pair in a few cases as my thinking got rather cloudy <br />and unfocused at a few points in the afternoon (especially when pairing <br />in C# with @MaggieLongshore! sorry!) <p /> * In Retrospect: In retrospect I feel I could have gotten more out of it if I could have <br />snapped myself out of my mindset that I wanted to "get as far as I <br />could" earlier in the day. That would have let me play with other <br />constraints, like no numbers, totally functional etc. <p /> </p>
+]]></content>
+  </entry>
+  
+</feed>

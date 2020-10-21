@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: yakshaving | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/yakshaving/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[TDD in Common Lisp: recursive yak-shaving]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving/"/>
+    <updated>2013-12-25T17:34:59-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving</id>
+    <content type="html"><![CDATA[<p>While avoiding family this Christmas-day I started trying to figure out way
+for me to do TDD in Common Lisp (as one does…). That led to SLIME<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> and
+    QuickLisp<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> and lisp-unit<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> and asdf<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> (<em>&amp;c. &amp;c</em>).</p>
+
+<h2 id="its-yaks-the-whole-way-down">…it’s yaks the whole way down.</h2>
+
+<p>The hardest part for me was to find a simple way to load my code and run the
+tests. ASDF ships with <code>asdf:test-system</code> defined but it does nothing by
+default<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>. So I did some digging around and saw some other’s solutions and
+synthesized my version.</p>
+
+<p>Here is an example ASDF system definition for a Game of Life<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>
+implementation.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'><span></span><span class="p">(</span><span class="nv">asdf:defsystem</span> <span class="ss">#:gol</span>
+</span><span class='line'>  <span class="ss">:description</span> <span class="err">“</span><span class="nv">Conways</span> <span class="nv">Game</span> <span class="nv">of</span> <span class="nv">Life</span> <span class="nv">in</span> <span class="nv">Lisp</span><span class="err">”</span>
+</span><span class='line'>  <span class="ss">:author</span> <span class="err">“</span><span class="nv">Mark</span> <span class="nv">Simpson</span> <span class="nv">&lt;a</span> <span class="nv">href=</span><span class="s">&quot;mailto:verdammelt@gmail.com&quot;</span><span class="nv">&gt;verdammelt@gmail.com&lt;/a&gt;</span><span class="err">”</span>
+</span><span class='line'>  <span class="ss">:version</span> <span class="err">“</span><span class="nv">0.0.0</span><span class="err">”</span>
+</span><span class='line'>  <span class="ss">:depends-on</span> <span class="p">(</span><span class="err">“</span><span class="nv">lisp-unit</span><span class="err">”</span><span class="p">)</span>
+</span><span class='line'>  <span class="ss">:components</span> <span class="p">((</span><span class="ss">:module</span> <span class="err">“</span><span class="nv">src</span><span class="err">”</span>
+</span><span class='line'>			<span class="ss">:serial</span> <span class="no">t</span>
+</span><span class='line'>			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="err">“</span><span class="nc">package</span><span class="err">”</span><span class="p">)</span>
+</span><span class='line'>				     <span class="p">(</span><span class="ss">:file</span> <span class="err">“</span><span class="nv">gol</span><span class="err">”</span><span class="p">))</span>
+</span><span class='line'>                <span class="p">(</span><span class="ss">:module</span> <span class="err">“</span><span class="nv">test</span><span class="err">”</span>
+</span><span class='line'>			<span class="ss">:serial</span> <span class="no">t</span>
+</span><span class='line'>            <span class="ss">:depends-on</span> <span class="p">(</span><span class="err">“</span><span class="nv">src</span><span class="err">”</span><span class="p">)</span>
+</span><span class='line'>			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="err">“</span><span class="nc">package</span><span class="err">”</span><span class="p">)</span>
+</span><span class='line'>				     <span class="p">(</span><span class="ss">:file</span> <span class="err">“</span><span class="nv">gol-test</span><span class="err">”</span><span class="p">))))</span>
+</span><span class='line'>  <span class="ss">:in-order-to</span> <span class="p">((</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">load-op</span> <span class="ss">:gol</span><span class="p">)))</span>
+</span><span class='line'>  <span class="ss">:perform</span> <span class="p">(</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">o</span> <span class="nv">c</span><span class="p">)</span>
+</span><span class='line'>		    <span class="p">(</span><span class="k">progv</span>
+</span><span class='line'>			<span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">intern</span> <span class="err">“</span><span class="nv">&lt;em&gt;PRINT-ERRORS&lt;/em&gt;</span><span class="err">”</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
+</span><span class='line'>			      <span class="p">(</span><span class="nb">intern</span> <span class="err">“</span><span class="nv">&lt;em&gt;PRINT-FAILURES&lt;/em&gt;</span><span class="err">”</span> <span class="ss">:lisp-unit</span><span class="p">))</span>
+</span><span class='line'>			<span class="err">‘</span><span class="p">(</span><span class="no">t</span> <span class="no">t</span><span class="p">)</span>
+</span><span class='line'>		      <span class="p">(</span><span class="nb">funcall</span> <span class="p">(</span><span class="nb">find-symbol</span> <span class="err">“</span><span class="nv">RUN-TESTS</span><span class="err">”</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
+</span><span class='line'>			       <span class="ss">:all</span> <span class="ss">:gol-test</span><span class="p">))))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2 id="my-god-its-full-of-yaks">My God… it’s full of yaks</h2>
+
+<p>I’m just going to let that sink in for a bit while I get some coffee.</p>
+
+<p>Ok, now that I’m back I will explain each part. The first interesting bit is
+on line 6:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>depends-on </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'>  <span class="ss">:depends-on</span> <span class="p">(</span><span class="err">“</span><span class="nv">lisp-unit</span><span class="err">”</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This line tells ASDF that it should find and load a system called <code>lisp-unit</code>
+because our system depends upon it. This is where QuickLisp makes things
+simple since that is its job and it does a fine one at that.</p>
+
+<p>Next is the definition of our components:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Defining the Components </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'>  <span class="ss">:components</span> <span class="p">((</span><span class="ss">:module</span> <span class="err">“</span><span class="nv">src</span><span class="err">”</span>
+</span><span class='line'>			<span class="ss">:serial</span> <span class="no">t</span>
+</span><span class='line'>			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="err">“</span><span class="nc">package</span><span class="err">”</span><span class="p">)</span>
+</span><span class='line'>				     <span class="p">(</span><span class="ss">:file</span> <span class="err">“</span><span class="nv">gol</span><span class="err">”</span><span class="p">))</span>
+</span><span class='line'>                <span class="p">(</span><span class="ss">:module</span> <span class="err">“</span><span class="nv">test</span><span class="err">”</span>
+</span><span class='line'>			<span class="ss">:serial</span> <span class="no">t</span>
+</span><span class='line'>            <span class="ss">:depends-on</span> <span class="p">(</span><span class="err">“</span><span class="nv">src</span><span class="err">”</span><span class="p">)</span>
+</span><span class='line'>			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="err">“</span><span class="nc">package</span><span class="err">”</span><span class="p">)</span>
+</span><span class='line'>				     <span class="p">(</span><span class="ss">:file</span> <span class="err">“</span><span class="nv">gol-test</span><span class="err">”</span><span class="p">))))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I’ve decided that my project should have two main directories, one to contain
+all the production source code and one for all the test source code. Each one
+will be in their own packages, with the <code>:gol-test</code> package <code>:use</code>-ing the
+<code>:gol</code> package. <code>:serial t</code> by the way tells ASDF that each item in the
+component list depends upon the one before it.</p>
+
+<p>Now the hairier parts which tell ASDF to run our tests:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Telling ASDF How to Test Our System </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'>  <span class="ss">:in-order-to</span> <span class="p">((</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">load-op</span> <span class="ss">:gol</span><span class="p">)))</span>
+</span><span class='line'>  <span class="ss">:perform</span> <span class="p">(</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">o</span> <span class="nv">c</span><span class="p">)</span>
+</span><span class='line'>		    <span class="p">(</span><span class="k">progv</span>
+</span><span class='line'>			<span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">intern</span> <span class="err">“</span><span class="nv">&lt;em&gt;PRINT-ERRORS&lt;/em&gt;</span><span class="err">”</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
+</span><span class='line'>			      <span class="p">(</span><span class="nb">intern</span> <span class="err">“</span><span class="nv">&lt;em&gt;PRINT-FAILURES&lt;/em&gt;</span><span class="err">”</span> <span class="ss">:lisp-unit</span><span class="p">))</span>
+</span><span class='line'>			<span class="err">‘</span><span class="p">(</span><span class="no">t</span> <span class="no">t</span><span class="p">)</span>
+</span><span class='line'>		      <span class="p">(</span><span class="nb">funcall</span> <span class="p">(</span><span class="nb">find-symbol</span> <span class="err">“</span><span class="nv">RUN-TESTS</span><span class="err">”</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
+</span><span class='line'>			       <span class="ss">:all</span> <span class="ss">:gol-test</span><span class="p">))))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The first line is simply stating that in order to do <code>test-op</code> ASDF needs to
+perform <code>load-op</code> on the <code>:gol</code> system. This way every time we run the tests
+we’ll reload the system if needed.</p>
+
+<p>Now… this next bit probably shows how rusty my Lisp is. Maybe there is an
+easier way. Basically we want to run <code>(lisp-unit:run-tests :all :gol-test)</code>
+with <code>lisp-unit:*print-errors*</code> and <code>lisp-unit:*print-failures*</code> both bound to
+<code>t</code> (they default to <code>nil</code> and that doesn’t give enough info IMNSHO). However
+when Lisp is reading and evaluating this code <code>lisp-unit</code> has probably not yet
+been loaded - so we have to be crafty and find the symbol by name in the
+package then <code>funcall</code> it. Binding the variables was trickier but I stumbled
+upon <code>progv</code><sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup> and that seems to be just what I needed.</p>
+
+<p><code>progv</code> creates new dynamic bindings for the symbols in the list which is its
+first argument. These symbols are determined at runtime. That means we can use
+<code>intern</code> to find or create these symbols in the right package<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup>. <code>progv</code>
+binds these symbols to the values in the list which is its second parameter
+and then finally executes the sexp which is its third argument in an
+environment which contains these new bindings.</p>
+
+<p>With this work done I can now type in <code>(asdf:test-system 'gol)</code> into my REPL
+and it loads and runs my tests and gives me useful output of those tests. I
+might go so far as to bind that to a very short function name, or even a key
+in Emacs.</p>
+
+<h2 id="there-are-still-more-yaks-to-shave">There are still more yaks to shave.</h2>
+
+<p>What is left to be determined is if this is the best way to do things.</p>
+
+<p>Some documentation/blogs I read lead me to believe that putting the tests in
+the same system with the production code is <em>verboten</em> (or at least a
+<em>no-no</em>). I tried having the tests be in their own system definition
+(depending upon the production code) but then ASDF &amp; QuickLisp both strongly
+pushed me to have that definition it its own <code>.asd</code> file<sup id="fnref:9"><a href="#fn:9" class="footnote">9</a></sup> which seemed
+awkward to me. I personally have no problem shipping tests with the production
+code, and I believe that if needed all the symbols of the test package could
+be <code>unintern</code>-ed before an image was saved if desired.</p>
+
+<p>I’ll play around with this setup and see how things go.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>http://www.common-lisp.net/project/slime/ <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>http://www.quicklisp.org/ <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>https://github.com/OdonataResearchLLC/lisp-unit <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>http://common-lisp.net/project/asdf/ <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>http://common-lisp.net/project/asdf/asdf/Predefined-operations-of-ASDF.html#test_002dop <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>Really? You don’t know what this is already and you had to look in the 
+footnotes? Go look it upon Wikipedia already! <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>http://www.lispworks.com/documentation/HyperSpec/Body/s_progv.htm#progv <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:8">
+      <p>Perhaps I should use <code>find-symbol</code> instead so that I don’t create
+symbols that the package doesn’t export. I will experiment with that. <a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:9">
+      <p>since they look up the defintion by looking for a file with the same
+name as the system <a href="#fnref:9" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
+  
+</feed>

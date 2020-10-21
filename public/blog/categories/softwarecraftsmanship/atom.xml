@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: softwarecraftsmanship | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/softwarecraftsmanship/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Having a conversation with your code]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/11/09/having-a-conversation-with-your-code/"/>
+    <updated>2012-11-09T10:03:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/11/09/having-a-conversation-with-your-code</id>
+    <content type="html"><![CDATA[<p>Just sat in on a talk by Cory Foy entitled “When Code Cries: Listening to What
+Your Code is Saying”.</p>
+
+<p>(Warning: there will be anthropomorphizing of source code in this post)</p>
+
+<p>One thing I wanted to pull out of it is the idea of <em>listening</em> to your code.
+Really listening. Like it was a person.</p>
+
+<p>I don’t think it is just listening to code - but a conversation with code. The
+programmer is talking about what they need, and the code is telling the
+programmer what it needs. It is a give and take like any conversation. If one
+side of the conversation tries to dominate, or ignores the other, the outcome
+will not be successful. Like any conversation the failure may not be immediate
+but later when misunderstandings between the parties of the conversation cause
+problems.</p>
+
+<p>Listening is not easy however. To really listen you have to:</p>
+
+<ul>
+  <li>Decide to listen</li>
+  <li>Listen for the whole message</li>
+  <li>Let go of your personal agenda</li>
+  <li>Be patient</li>
+  <li>Be curious</li>
+  <li>Test for understanding</li>
+</ul>
+
+<p>I personally have problems with listening patiently for the whole message.  I
+tend to jump in, trying to add things, perhaps of my own agenda, saying things
+starting with “So what you’re saying is…” instead of just waiting to find
+out what is being said. With code this comes out when I too quickly jump to
+refactorings or thinking that my coding task is done - because I’m not
+listening to the code.</p>
+
+<p>Having a conversation with code is not easy either. Mike Clement
+<a href="https://twitter.com/mdclement">@mdclement</a> likened it to talking with his 18
+month old child. They can’t talk - but they are trying to communicate. One
+needs to be patient in order to get the message.</p>
+
+<p>I am working on being a better listener, with people, but I can see that I
+need to work on those skills for my code as well.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[@nashjain at @boston_sc - Clean Code vs. Sufficient Design]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2011/02/09/nashjain-at-bostonsc-clean-code-vs-sufficient/"/>
+    <updated>2011-02-09T00:00:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2011/02/09/nashjain-at-bostonsc-clean-code-vs-sufficient</id>
+    <content type="html"><![CDATA[<p>I kept wanting to say something to the effect: "But no... you gotta make <br />the code clean..." (and I probably pretty much DID say that several <br />times).[1] <p /> But the point Naresh[2] made is valid: Spending lots of time on making sure <br />your code is clean may not be the best/most profitable way to spend your <br />time. <p /> I think a good way to summarize his point is: "If you have a good team <br />(which you trust), with smart people and tight collaboration with <br />customers, then the code is not important and will take care if itself". <br />He suggests an approach of building apps/features quickly (and perhaps <br />not entirely cleanly) so that you can get feedback from customers <br />quickly to determine if it is worth spending more time on it. This <br />makes sense - and if the app/feature is worth it you go back and make it <br />better. But if it is not worth it - you don't bother; it would be a <br />waste of time/money. <p /> The important issue here is what 'good enough' means. Naresh says that <br />you make this app/feature 'good enough'. He gives two different <br />examples: 1) a feature that they put together quickly and the <br />customer didn't care about so nothing more was done and 2) an app which <br />is being slowly and carefully crafted because the initial release needs <br />to be awesome. Both are "good enough" but "good enough" is very <br />different in each case. <p /> If the team doesn't agree on what "good enough" means then you have <br />problem there. Which brings up that this idea that the code will take <br />care of itself seems to be predicated on the fact you have a great team <br />with high customer collaboration. <p /> So what if you don't? <p /> Naresh answered this by asking if pushing strict TDD or Clean Code (TM) <br />was a good way to fix that situation. I can't say it is[3]. Education <br />seems to be the best thing. <p /> Educating my coworkers is something I realize I need to do - but I am <br />not sure how to go about doing it. We don't pair program - so I can't <br />directly "show". I need to find a way to do this. <p /> ----- <p /> Footnotes:</p>
+<p>[1] I feel that my disagreements with Naresh's points are not entirely <br />logical and are based around my current lack of trust (and opinion <br />mismatch) with my current team. I agree that his approach is pragmatic - <br />I worry that 'pragmatism' can be the cover for lots of dumb stuff which <br />cause pain in the end. Again this goes back to a trust in the team - I <br />do not currently have trust in my current team and that is coloring my <br />opinion of how I think his suggestions could work. For them to work in <br />my current situation would involve a large change, not only of myself, <br />but of the organization and its members - which I don't think is likely <br />to happen (but is this opinion too just because I do not trust the <br />team?). <p /> [2] @nashjain <p /> [3] Although as Zach[4] pointed out: in my current situation, doing TDD <br />and making the code Clean(TM) is sort of a defensive strategy for me. <p /> [4] @zdsbs</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[#scna notes & retrospective]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2010/10/19/scna-notes-retrospective/"/>
+    <updated>2010-10-19T00:00:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2010/10/19/scna-notes-retrospective</id>
+    <content type="html"><![CDATA[<p>* Abstract: <p /> The SCNA 2010 conference was well organized, energizing and personally <br />useful. The short talk/long break format was a surprising success for <br />me; allowing attendance in many good talks while at the same time having <br />great discussion/chats with many people, both new to me and those I look <br />up to. Hopefully at least some of these connections will be lasting and <br />the energy gained from this conference will propel me forward to better <br />things. <p /> * In Summary: <p />  - Craft vs. Art vs. Commodity / Form vs. Function: Making 'beautiful' <br /> code is a great thing to do - but may not be what is needed. <br /> Targeting craft (like a well tailored suit, as opposed to a <br /> beautiful-but-impractical dress, or business casual from Sears) is <br /> probably the sweet spot. <p />  - Value to the Customer: Deliver what the customer needs - not what you <br /> think that need. If you think they need something else - TALK with <br /> them. Maybe in the end you can't do the work they need. <p />  - Always learning: Not a new point, but another good reminder. <p />  - Lots of connections made: Met lots of people, hopefully some of these <br /> connections will last. <p /> * In Specific: <p /> ** The format: <p /> Coming into the conference I was not sure if I was going to like the <br />shorter talks and longer break format, but on the whole, I thought it <br />turned out really well. During those breaks I met many, many passionate <br />and smart people. Also these longer breaks let me chat, or at least <br />thank, some people who I look up to in this community. In other <br />conferences the short time between talks reduces this opportunity, the <br />speaker gets mobbed by people at the end of a talk, so having the longer <br />time allows more people to catch the speakers and others in the rooms <br />and hallways. <p /> ** The talks: <p /> I found the quality and content of the talks to be generally very high <br />and the single-track format helped me ensure I didn't miss anything. A few points about the talks: <p />  - Uncle bob's point about multiple-cores/cpus making threading/state <br /> problems more prevalent is very important. If the trend does <br /> continue in computer manufacturing we will need to find better and <br /> more efficient ways to deal with the issues that arise. We need to <br /> find ways to help NOT have the problems in the first place. <br /> Functional programming seems like it might be a good direction to <br /> look. <p />  - Doug Bradbury's "personal statement" talk made a distinction I liked <br /> between craft and manufacturing (which links a bit with Fowler's talk <br /> later). Crafts are things made by hand, manufacturing is when things <br /> are made by machines. His talk really showed his passion for <br /> 'making' things, which comes out for him in programming. I also <br /> really liked his thought that the design of the program reflects the <br /> programmer.[1] <p />  - Michael Norton's talk about training software professional, making <br /> the analogy to medical doctors, made some good points to think <br /> further on. I don't have a clear opinion on the whole <br /> certification/licensing issue myself (but my gut feeling is I don't <br /> like the idea - but that is just a gut reaction without much <br /> thought). The part of the analogy I really liked was the idea of <br /> residency, collaborative learning and continuing education. <p />  - Ken Auer's started me thinking more about bringing value to the <br /> customer, it is a part of development that I partially ignore, or <br /> work on less. Later talks added to this. - From the apprenticeship panel I liked to hear from Collin that he <br /> felt that the programmer/musician analogy is often interpreted <br /> incorrectly, that it is not, to him, some sort of brain ability, but <br /> the focus on practice. I liked to hear this because unlike many of my <br /> colleagues I have NO musical ability and hearing the analogy is <br /> always a bit like hearing that I'll never be really good because I'm <br /> not musical. <p />  - Chad Fowler's talk gave me a useful spectrum between 'art' and <br /> 'commodity' with 'craft' in between. Form is most important for art <br /> &amp; craft while Function is most important for craft and commodity. <br /> Programmer's focus on making beautiful code, myself included, is <br /> tending to go to far into the art end as what the customer wants is <br /> something functional. His example of clothing, the beautiful dress <br /> which is not useful as clothing - but is art, the expensive but very <br /> well made/tailored suit is craft, and the business casual clothing <br /> from Sears is commodity. Also it was another mention of the need to <br /> listen to what the customer _needs_. If the customer needs commodity <br /> and you make art - you have not done the job right. Unless the <br /> customer truly wants something disposable then craft is best target. <p />  - Keavy McMinn's talk was another good "personal statement" talk. Like <br /> the musician-programmer analogy I've never liked the <br /> artist-programmer analogy since there too I don't have much, if any, <br /> 'artistic' ability. However her points were well taken, the factors <br /> which helped her as both artist and programmer are general enough to <br /> be taken as good ideas for anyone. <p />  - Enrique Comba-Riepenhausen's talk again hit the customer-value point. <br /> I found it interesting that three speakers, independently focused on <br /> this point, their talks overlapped and fit together well. There was <br /> some bemusement on each later speaker that the previous speaker(s) <br /> had "given my talk already" but each added their own factor. From <br /> Enrique I got reinforcement for the importance of _knowing_ the <br /> customer, even _feeling_ for the customer. This is an issue I am <br /> personally dealing with as I don't feel like I "get" my customer, <br /> they are not people I would "hang out with", they are not "my people" <br /> so to speak. I feel this affecting my work. <p />  - Corey Haines gave a good wrap-up talk and demanded that we stay <br /> positive, for both ourselves and the community. Negativity is <br /> another personal issue I deal with in all parts of my life, and in my <br /> work it has a particular effect on my work and my coworker's work. <br /> Also I am coming to the conclusion that I want to _help_ other <br /> developers in some way to write better code. Being negative will not <br /> help. Happiness is important.[2] <p /> ** Extracurricular activities: <p /> Outside of the conference itself, the Chicago Dine-around; the welcome <br />party; and the after party were even more great opportunities to talk <br />and connect with people. The organization of this and the execution of <br />the dine-around &amp; after-party left me very happy with the execution of <br />the conference as a whole.[3] <p /> A few things which came out of this that I am interested to see what <br />happens are: - Patrick Welsh mentioned that he was working (with Mike Hill) on a <br /> piece of specifically bad, but plausible code to be used as a sort of <br /> refactoring test. I want to see it, and use it measure of lack of <br /> knowledge/skill. <p />  - I gave restaurant advice in Boston/Cambridge to someone going there. <br /> Want to hear if they liked any of the places I recommended. <p />  - Determined I need to try to figure what specifically is wrong with <br /> work, so I can better determine if there is anything _I_ can do about <br /> it. ** The bottom line: <p /> The conference was tiring, so much to think about, so much socializing, <br />and so many really smart people making me feel dumb[4] just smashed me <br />down by the end. But - it is a good tired, the tired of a job well <br />done. <p /> ** Retrospective <p /> I need to do a better job of planning out learning/training. I need to <br />connect with, communicate with and learn from fellow travelers in the <br />Craftsmanship community (someday I will also then teach others what I <br />know). I need to find a new position where I can be happier, which will <br />help me do better work, which will help me be happier, etc, etc. I need <br />to be better about gathering contact info (or at least NAMES) of people <br />I talk with; there are a few people I remember really enjoying my talks <br />with, who I can't even recall a first name, let along a twitter/gmail <br />name. I need to challenge myself, I spend too much of my time just going <br />with the flow, that will not lead to my growth. <p /> Footnotes: [1] And this left me with an interesting frission between his obviously <br /> strong religious belief that leads him to feel that since he <br /> believes his god created him in that god's image that he too is a <br /> 'creator'. If the design reflects upon the designer, then I don't <br /> think that this god is a very good designer. The "design" I see <br /> around me is so full of rude hacks to get the job done that I don't <br /> think it is something to be really _proud_ of. The world needs some <br /> 'refactoring' in my opinion. Lots of redundancy, dead code, bugs <br /> etc. I hope to be a better designer than this god. <p /> [2] Oh and cats! <p /> [3] Also, selfishly and frugally, having my dinner/drinks mostly paid <br /> for me made me quite happy too. <p /> [4] When surrounded by all these passionate, brilliant people I feel so <br /> humbled, so small, so dumb. But, this is not something that can't <br /> be changed, it is after all good to be the worst amongst the great, <br /> there is so much opportunity to learn.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[#bostonsc July 28 2010 meeting notes]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2010/07/28/bostonsc-july-28-2010-meeting-notes/"/>
+    <updated>2010-07-28T00:00:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2010/07/28/bostonsc-july-28-2010-meeting-notes</id>
+    <content type="html"><![CDATA[<h1>In Summary:</h1>
+
+<p><em>Awesome!</em></p>
+
+<h1>In Specific:</h1>
+
+<h2>Presentation of Pairing Games</h2>
+
+<p>The meeting started with a good presentation by Moss &amp; Laura from Cyrus
+Innovation[1]. The presentation was their &ldquo;Pairing Games As Intentional
+Practice&rdquo; talk which they will be giving at Agile2010[2].  The talk was
+good and had interesting ideas about playing games with pairing like one
+might play games with coding katas etc.  <em>e.g.</em> Do the pairing with some
+specific restrictive rules such that lessons can be learned; activities
+practiced etc.  They presented several games (Socrates, Silent
+Programming) they have thought up along with the classic Ping Pong; and
+guided us in the creation of our own game (One Minute Switching).</p>
+
+<p>We put some of these games into practice when we went on to do a coding
+kata.  I think it would be very beneficial to have the game playing in
+the session; but their slot does not afford this.  I suggested that they
+us an Open Jam[3] slot; they could announce it during their talk and
+then guide the games during the Open Jam.  New games could be developed
+as well.  I&rsquo;d love to hear about any new games that are developed.</p>
+
+<h2>Coding Kata with Pairing Games</h2>
+
+<p>After the presentation, and pizza we worked on the Tic-Tac-Toe kata.
+We had five pairs and decided we&rsquo;d try out some of the pairing games.</p>
+
+<h3>The One Minute Switching Game</h3>
+
+<p>We started with the One Minute Switching we had designed in the
+session.  The intention is to keep momentum going by setting a fast pace
+of switching pairs every minute.  The pace was relentless and
+unforgiving!  Every time we&rsquo;d start something we&rsquo;d switch.  I thought it
+was a great game; it gave an urgency to all decisions and actions; but
+definitely not something to do for too long.</p>
+
+<p>The retrospective brought out similar feelings from the other people.</p>
+
+<h3>The Socrates Game</h3>
+
+<p>We switched and I got to pair with Abby [4].  I am so happy to get to
+hang out with Abby again even if for a short time; she is so full of
+energy and great ideas.  This probably helped making this paring session
+really &lsquo;click&rsquo;.</p>
+
+<p>Our game was the Socrates game which involves the Navigator asking
+questions of the driver who must answer them after researching in the
+code; or by changing the code to answer the question.  The group decided
+that the new person to the pair would be the Driver as it would
+facilitate them learning the &lsquo;new&rsquo; code.  It worked well; but all
+pairing groups eventually move away from this game and went to a more
+standard paring style after an initial use of the game.</p>
+
+<p>Our retrospective on this game brought out the thoughts that perhaps
+with so little code to learn/research the game was not well suited.</p>
+
+<h3>The Silent Programming Game</h3>
+
+<p>This was the &lsquo;hardest&rsquo; game.  There are two rules:</p>
+
+<ol>
+<li>No talking</li>
+<li>Switch after three minutes if you haven&rsquo;t already switched.</li>
+</ol>
+
+<p>It was very hard for me to not want to just rip the keyboard away from
+my paring partner every second.  I felt I monopolized the keyboard too
+much in this case.  It did not help that my partner was not familiar
+with C#/VS2010 which we were using on this machine.</p>
+
+<p>The retrospective brought up the point that perhaps this game works best
+when the knowledge level of the pair partners are roughly equal and they
+both have a good understanding of what needs to get done in the next
+roughly 30 minutes.</p>
+
+<h3>My Quick Retrospective on the Code Katas</h3>
+
+<p>I think for the future we should spend a few minutes to set up the
+initial code needed so we have a failing first (generically named)
+test.  Basically just something that says</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="directive">public</span> <span class="type">void</span> aTest() 
+             { 
+               <span class="keyword">assert</span>.Fail(<span class="string"><span class="delimiter">&quot;</span><span class="content">test something here</span><span class="delimiter">&quot;</span></span>); 
+             }</pre></div>
+</div>
+
+<p>One or two &lsquo;iterations&rsquo; of the One Minute Switching game was spent just
+doing this; as several of us were not entirely familiar with the IDE
+etc.</p>
+
+<p>On the other hand the One Minute Switching game was great for this; all
+choices of the setup needed to be done quickly as the clock was ticking!</p>
+
+<p>I also liked the quick retrospectives after each pair switch.  This
+helped me learn a little from each paring session.</p>
+
+<h1>In Conclusion</h1>
+
+<p>This was a good session.  The Presentation was good and I want to hear
+more about it.  If you are going to Agile2010 consider going to this
+session.</p>
+
+<p>This was especially great for me because I have limited/no opportunity
+to pair program in my day job.  I find the practice engaging,
+challenging, and even fun.  I&rsquo;m glad I got a chance to do some tonight.</p>
+
+<hr />
+
+<p>Footnotes:</p>
+
+<p>[1]  @moss &amp; @lgdean on twitter; <a href="http://www.cyrusinnovation.com">www.cyrusinnovation.com</a>.</p>
+
+<p>[2]  <a href="http://agile2010.com/team.html#5960">http://agile2010.com/team.html#5960</a></p>
+
+<p>[3]  <a href="http://agile2010.com/specialevents.html">http://agile2010.com/specialevents.html</a></p>
+
+<p>[4]  <a href="http://thehackerchickblog.com/">http://thehackerchickblog.com/</a> and @HackerChick on twitter.</p>
+
+<p>[5]  <a href="http://agile2010.com">http://agile2010.com</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Does Software Craftstmanship have 'survival fitnesse' in my environment? (comment on @unclebobmartin QCon Keynote 2010)]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2010/06/02/does-software-craftstmanship-have-survival-fi/"/>
+    <updated>2010-06-02T00:00:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2010/06/02/does-software-craftstmanship-have-survival-fi</id>
+    <content type="html"><![CDATA[<p>(Short comment on &quot;Convincing Others&#39; slide from Bob Martin&#39;s QCon 2010<br /> Keynote (~0:45:00 - 0:47:00 in the video<br /> (<a href="http://www.infoq.com/presentations/Robert-C.-Martin-Bad-Code)">http://www.infoq.com/presentations/Robert-C.-Martin-Bad-Code)</a>))</p>
+<p>Uncle Bob suggests that simply doing the best job you can, and sticking<br /> to your principles and disciplines can convince others that the<br /> craftsmanship approach is a better one.</p>
+<p>However that assumes that the Software Craftsmanship has a survival<br /> fitnesse greater than other approaches in your environment.</p>
+<p>If you are working in an environment where non-craftsmen are seen to be<br /> better (more features produced faster) than the craftsman (less features<br /> produced slower, but _better_) then no one will be convinced to change<br /> behavior. In such an environment there is no REASON to change - in fact<br /> changing would be detrimental.</p>
+<p>I currently fear that I work in such an environment.</p>
+<p>(I fully understand that this is a case of &#39;change your organization or<br /> change your organization&#39; (stress on the latter) - and I HAVE stuck with<br /> this position for too long given the conflict on values that seem to<br /> exist.)</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: scna | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/scna/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SCNA 2013 - Effortful vs. Automatic Brain]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2013/11/09/scna-2013-effortful-vs-automatic-brain/"/>
+    <updated>2013-11-09T19:07:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2013/11/09/scna-2013-effortful-vs-automatic-brain</id>
+    <content type="html"><![CDATA[<h2 id="experts-dont-know-what-they-know">Experts Don’t Know what they Know</h2>
+
+<p>This year’s SCNA Conference seemed to have several talks which touched upon
+the idea of experts having implicit knowledge. That is to say: they know
+things but can’t necessarily explain what they know, or why. Ken Auer and Dave
+Thomas touched upon it; during the panel on Software Quality it was also
+brought up (e.g.  Corey Haines’ amazing reference to <a href="http://en.wikipedia.org/wiki/Chicken_sexing">Chicken Sexing</a>).
+But I felt that Brian Marick’s talk took the idea and then added to it.</p>
+
+<h2 id="bright-vs-dull-cows">Bright vs. Dull Cows</h2>
+
+<p>Brian started talking about this implicit knowledge idea - giving his wife as
+an example. His wife (a veterinary professor) teaches her students to
+determine if a cow is ‘bright’ or ‘dull’ (a subjective diagnosis). Her
+students specify, day-after-day, if cows are dull or bright. She then corrects
+them. They usually ask how she could tell and she tells them something
+(drooping ears, nose-cleaning, etc.). But actually these specific clues are
+not <em>really the way to tell</em>. Those who can diagnose a cow as bright or dull
+cannot explain why.</p>
+
+<p>This anecdote seems to show that the implicit knowledge of the expert is
+something that can be trained. When discussing this idea after the talk Corey
+Haines mentioned a conference session in which Michael Feathers gave where he
+had the attendees give quick good/bad judgment calls on snippets of code. Then
+tallied those up and found that some snippets had a large amount of agreement
+as to their good-/bad-ness. They then discussed and tried to determine why.
+In light of Brian’s anecdote however it seems that they might never find out
+<em>why</em>, but maybe they could train themselves by looking at a lot of code and
+being corrected when they get the judgment wrong.</p>
+
+<p>(Brian hopes to use this sort of idea to be able to train himself to have a
+nearly physical reaction to bad code. While that sounds cool, I worry about a
+‘Ludovico Technique’ for code.)</p>
+
+<h2 id="effortful-vs-automatic">Effortful vs. Automatic</h2>
+
+<p>Brian then talked about two types of thinking: Effortful and Automatic.
+Effortful is the sort when you need to do a non-trivial arithmetic, or a
+parking in a tight spot. Automatic is when you do simple math like 2+2 or easy
+driving where you are sort of on autopilot. When you use the Effortful way, it
+actually takes <em>effort</em>. It is slower seems to be only possible to do it
+serially. Automatic thinking is faster, takes little effort, and seems to be
+parallelizable.</p>
+
+<p>If you don’t have something in Automatic then your brain shifts to Effortful;
+sort of a cache miss.  If you do something enough, or become good enough at
+it, you can put stuff into your Automatic cache.</p>
+
+<h2 id="switching-to-automatic">Switching to Automatic</h2>
+
+<p>So how can this be done? While Brian offers the usual ‘practice, practice,
+practice’, he adds to it an interesting idea about ‘Set and Setting’. ‘Set and
+Setting’ is an idea from Timothy Leary about why drugs such as LSD seem to
+have very different effects in different people. The mindset (Set) of the
+person (which includes things like rituals which build up that mindset) and
+the Setting (environment) have a strong influence on the experiences of that
+person.</p>
+
+<p>By being aware of which mindsets (and how to enter them) and what settings are
+most beneficial for programming (and even different types of programming) he
+feels he can move some programming tasks into his Automatic thinking area.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>It seems to me that the idea of ‘Automatic’ and ‘Effortful’ adds to the idea
+of the expert’s implicit knowledge. Perhaps the expert’s knowledge is just an
+expression of Automatic thinking?</p>
+
+<p>I’m interested in trying out the practice of being more aware of my own ‘Set
+and Setting’ with respect to code.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Having a conversation with your code]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/11/09/having-a-conversation-with-your-code/"/>
+    <updated>2012-11-09T10:03:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/11/09/having-a-conversation-with-your-code</id>
+    <content type="html"><![CDATA[<p>Just sat in on a talk by Cory Foy entitled “When Code Cries: Listening to What
+Your Code is Saying”.</p>
+
+<p>(Warning: there will be anthropomorphizing of source code in this post)</p>
+
+<p>One thing I wanted to pull out of it is the idea of <em>listening</em> to your code.
+Really listening. Like it was a person.</p>
+
+<p>I don’t think it is just listening to code - but a conversation with code. The
+programmer is talking about what they need, and the code is telling the
+programmer what it needs. It is a give and take like any conversation. If one
+side of the conversation tries to dominate, or ignores the other, the outcome
+will not be successful. Like any conversation the failure may not be immediate
+but later when misunderstandings between the parties of the conversation cause
+problems.</p>
+
+<p>Listening is not easy however. To really listen you have to:</p>
+
+<ul>
+  <li>Decide to listen</li>
+  <li>Listen for the whole message</li>
+  <li>Let go of your personal agenda</li>
+  <li>Be patient</li>
+  <li>Be curious</li>
+  <li>Test for understanding</li>
+</ul>
+
+<p>I personally have problems with listening patiently for the whole message.  I
+tend to jump in, trying to add things, perhaps of my own agenda, saying things
+starting with “So what you’re saying is…” instead of just waiting to find
+out what is being said. With code this comes out when I too quickly jump to
+refactorings or thinking that my coding task is done - because I’m not
+listening to the code.</p>
+
+<p>Having a conversation with code is not easy either. Mike Clement
+<a href="https://twitter.com/mdclement">@mdclement</a> likened it to talking with his 18
+month old child. They can’t talk - but they are trying to communicate. One
+needs to be patient in order to get the message.</p>
+
+<p>I am working on being a better listener, with people, but I can see that I
+need to work on those skills for my code as well.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[#scna notes & retrospective]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2010/10/19/scna-notes-retrospective/"/>
+    <updated>2010-10-19T00:00:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2010/10/19/scna-notes-retrospective</id>
+    <content type="html"><![CDATA[<p>* Abstract: <p /> The SCNA 2010 conference was well organized, energizing and personally <br />useful. The short talk/long break format was a surprising success for <br />me; allowing attendance in many good talks while at the same time having <br />great discussion/chats with many people, both new to me and those I look <br />up to. Hopefully at least some of these connections will be lasting and <br />the energy gained from this conference will propel me forward to better <br />things. <p /> * In Summary: <p />  - Craft vs. Art vs. Commodity / Form vs. Function: Making 'beautiful' <br /> code is a great thing to do - but may not be what is needed. <br /> Targeting craft (like a well tailored suit, as opposed to a <br /> beautiful-but-impractical dress, or business casual from Sears) is <br /> probably the sweet spot. <p />  - Value to the Customer: Deliver what the customer needs - not what you <br /> think that need. If you think they need something else - TALK with <br /> them. Maybe in the end you can't do the work they need. <p />  - Always learning: Not a new point, but another good reminder. <p />  - Lots of connections made: Met lots of people, hopefully some of these <br /> connections will last. <p /> * In Specific: <p /> ** The format: <p /> Coming into the conference I was not sure if I was going to like the <br />shorter talks and longer break format, but on the whole, I thought it <br />turned out really well. During those breaks I met many, many passionate <br />and smart people. Also these longer breaks let me chat, or at least <br />thank, some people who I look up to in this community. In other <br />conferences the short time between talks reduces this opportunity, the <br />speaker gets mobbed by people at the end of a talk, so having the longer <br />time allows more people to catch the speakers and others in the rooms <br />and hallways. <p /> ** The talks: <p /> I found the quality and content of the talks to be generally very high <br />and the single-track format helped me ensure I didn't miss anything. A few points about the talks: <p />  - Uncle bob's point about multiple-cores/cpus making threading/state <br /> problems more prevalent is very important. If the trend does <br /> continue in computer manufacturing we will need to find better and <br /> more efficient ways to deal with the issues that arise. We need to <br /> find ways to help NOT have the problems in the first place. <br /> Functional programming seems like it might be a good direction to <br /> look. <p />  - Doug Bradbury's "personal statement" talk made a distinction I liked <br /> between craft and manufacturing (which links a bit with Fowler's talk <br /> later). Crafts are things made by hand, manufacturing is when things <br /> are made by machines. His talk really showed his passion for <br /> 'making' things, which comes out for him in programming. I also <br /> really liked his thought that the design of the program reflects the <br /> programmer.[1] <p />  - Michael Norton's talk about training software professional, making <br /> the analogy to medical doctors, made some good points to think <br /> further on. I don't have a clear opinion on the whole <br /> certification/licensing issue myself (but my gut feeling is I don't <br /> like the idea - but that is just a gut reaction without much <br /> thought). The part of the analogy I really liked was the idea of <br /> residency, collaborative learning and continuing education. <p />  - Ken Auer's started me thinking more about bringing value to the <br /> customer, it is a part of development that I partially ignore, or <br /> work on less. Later talks added to this. - From the apprenticeship panel I liked to hear from Collin that he <br /> felt that the programmer/musician analogy is often interpreted <br /> incorrectly, that it is not, to him, some sort of brain ability, but <br /> the focus on practice. I liked to hear this because unlike many of my <br /> colleagues I have NO musical ability and hearing the analogy is <br /> always a bit like hearing that I'll never be really good because I'm <br /> not musical. <p />  - Chad Fowler's talk gave me a useful spectrum between 'art' and <br /> 'commodity' with 'craft' in between. Form is most important for art <br /> &amp; craft while Function is most important for craft and commodity. <br /> Programmer's focus on making beautiful code, myself included, is <br /> tending to go to far into the art end as what the customer wants is <br /> something functional. His example of clothing, the beautiful dress <br /> which is not useful as clothing - but is art, the expensive but very <br /> well made/tailored suit is craft, and the business casual clothing <br /> from Sears is commodity. Also it was another mention of the need to <br /> listen to what the customer _needs_. If the customer needs commodity <br /> and you make art - you have not done the job right. Unless the <br /> customer truly wants something disposable then craft is best target. <p />  - Keavy McMinn's talk was another good "personal statement" talk. Like <br /> the musician-programmer analogy I've never liked the <br /> artist-programmer analogy since there too I don't have much, if any, <br /> 'artistic' ability. However her points were well taken, the factors <br /> which helped her as both artist and programmer are general enough to <br /> be taken as good ideas for anyone. <p />  - Enrique Comba-Riepenhausen's talk again hit the customer-value point. <br /> I found it interesting that three speakers, independently focused on <br /> this point, their talks overlapped and fit together well. There was <br /> some bemusement on each later speaker that the previous speaker(s) <br /> had "given my talk already" but each added their own factor. From <br /> Enrique I got reinforcement for the importance of _knowing_ the <br /> customer, even _feeling_ for the customer. This is an issue I am <br /> personally dealing with as I don't feel like I "get" my customer, <br /> they are not people I would "hang out with", they are not "my people" <br /> so to speak. I feel this affecting my work. <p />  - Corey Haines gave a good wrap-up talk and demanded that we stay <br /> positive, for both ourselves and the community. Negativity is <br /> another personal issue I deal with in all parts of my life, and in my <br /> work it has a particular effect on my work and my coworker's work. <br /> Also I am coming to the conclusion that I want to _help_ other <br /> developers in some way to write better code. Being negative will not <br /> help. Happiness is important.[2] <p /> ** Extracurricular activities: <p /> Outside of the conference itself, the Chicago Dine-around; the welcome <br />party; and the after party were even more great opportunities to talk <br />and connect with people. The organization of this and the execution of <br />the dine-around &amp; after-party left me very happy with the execution of <br />the conference as a whole.[3] <p /> A few things which came out of this that I am interested to see what <br />happens are: - Patrick Welsh mentioned that he was working (with Mike Hill) on a <br /> piece of specifically bad, but plausible code to be used as a sort of <br /> refactoring test. I want to see it, and use it measure of lack of <br /> knowledge/skill. <p />  - I gave restaurant advice in Boston/Cambridge to someone going there. <br /> Want to hear if they liked any of the places I recommended. <p />  - Determined I need to try to figure what specifically is wrong with <br /> work, so I can better determine if there is anything _I_ can do about <br /> it. ** The bottom line: <p /> The conference was tiring, so much to think about, so much socializing, <br />and so many really smart people making me feel dumb[4] just smashed me <br />down by the end. But - it is a good tired, the tired of a job well <br />done. <p /> ** Retrospective <p /> I need to do a better job of planning out learning/training. I need to <br />connect with, communicate with and learn from fellow travelers in the <br />Craftsmanship community (someday I will also then teach others what I <br />know). I need to find a new position where I can be happier, which will <br />help me do better work, which will help me be happier, etc, etc. I need <br />to be better about gathering contact info (or at least NAMES) of people <br />I talk with; there are a few people I remember really enjoying my talks <br />with, who I can't even recall a first name, let along a twitter/gmail <br />name. I need to challenge myself, I spend too much of my time just going <br />with the flow, that will not lead to my growth. <p /> Footnotes: [1] And this left me with an interesting frission between his obviously <br /> strong religious belief that leads him to feel that since he <br /> believes his god created him in that god's image that he too is a <br /> 'creator'. If the design reflects upon the designer, then I don't <br /> think that this god is a very good designer. The "design" I see <br /> around me is so full of rude hacks to get the job done that I don't <br /> think it is something to be really _proud_ of. The world needs some <br /> 'refactoring' in my opinion. Lots of redundancy, dead code, bugs <br /> etc. I hope to be a better designer than this god. <p /> [2] Oh and cats! <p /> [3] Also, selfishly and frugally, having my dinner/drinks mostly paid <br /> for me made me quite happy too. <p /> [4] When surrounded by all these passionate, brilliant people I feel so <br /> humbled, so small, so dumb. But, this is not something that can't <br /> be changed, it is after all good to be the worst amongst the great, <br /> there is so much opportunity to learn.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[#coderetreat thoughts]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2010/10/19/coderetreat-thoughts/"/>
+    <updated>2010-10-19T00:00:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2010/10/19/coderetreat-thoughts</id>
+    <content type="html"><![CDATA[<p>The code retreat at the 8th Light offices was the first one I had ever <br />attended. Overall I thought it was great, and again was well organized <br />like the SCNA conference was. <p /> I came into the code retreat feeling a bit intimidated and left feeling <br />tired and a bit intimidated. Just like the conference the code retreat <br />was _tiring_, but still a good tired. And like the conference I was a <br />bit intimidated by all the passionate, smart people around me. I hope <br />to be half as good as these people are. <p /> I am very happy that I did get to pair with really smart people in <br />Clojure, Ruby, Javascript and C#. <p /> * High Points: <p /> ** I had never written a line of Javascript before and never even really <br /> read much either. It is very weird, but in a good way. I'm going to <br /> add it to my list in order to at least familiarize myself with it. I <br /> think knowing a bit of it will help me understand other languages <br /> better. My pair (Sean McMillan) did a very good job taking the time to explain the <br /> features and constructs of the language so that we can work <br /> together.<p /> ** The God class was an accident, as most gods are probably. Marty and <br /> I started the session saying we'd work on the 'always delegate' <br /> constraint. We quickly decided that Cells needed to delegate to <br /> someone above them... who could that be? God of course. But that <br /> flippant naming changed EVERYTHING. The whole session changed. All <br /> our naming changed. Near the end, we were writing some code and it <br /> wasn't feeling right, Corey pointed out the encapsulation problem in <br /> it. Cells were telling God what to do. Nothing can tell God what to <br /> do! The problem would have been visible without the naming but with <br /> the naming the code FELT wrong. <p /> ** During lunch we had a discussion that brought up the idea of the <br /> Cells themselves knowing about their neighbors, mixing this with <br /> genetic programming could lead to extra data on each cell which gets <br /> combined when the dead cell comes back to life rule is applied, as <br /> this could be seen as a reproductive step. Furthermore the extra <br /> data could be somehow relevant to the Game of Life itself, e.g. some <br /> cells might be more resistant to over/under-population than others, <br /> thus surviving longer. I found this a very interesting idea and may <br /> try to find time to play with it more. <p /> * Low Points: <p /> I felt I was a bad pair in a few cases as my thinking got rather cloudy <br />and unfocused at a few points in the afternoon (especially when pairing <br />in C# with @MaggieLongshore! sorry!) <p /> * In Retrospect: In retrospect I feel I could have gotten more out of it if I could have <br />snapped myself out of my mindset that I wanted to "get as far as I <br />could" earlier in the day. That would have let me play with other <br />constraints, like no numbers, totally functional etc. <p /> </p>
+]]></content>
+  </entry>
+  
+</feed>

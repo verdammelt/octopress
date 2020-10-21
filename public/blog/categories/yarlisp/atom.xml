@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: yarlisp | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/yarlisp/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[On Implementing a Lisp]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/08/13/on-implementing-a-lisp/"/>
+    <updated>2012-08-13T07:37:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/08/13/on-implementing-a-lisp</id>
+    <content type="html"><![CDATA[<h2 id="0-background">0. Background</h2>
+
+<p>About a year ago I read McCarthy’s paper <a href="http://www-formal.stanford.edu/jmc/recursive.pdf">“Recursive Functions of Symbolic
+Expressions and Their Computation by Machine</a> and I thought about
+implementing the Lisp described in it in Ruby (a language I was learning at
+the time). The project languished for quite some time until just recently when
+I went ahead and implemented the language specification laid out in that
+paper.</p>
+
+<p>The project is <a href="http://github.com/verdammelt/yarlisp">yarlisp</a>, it’s name means “Yet Another Ruby Lisp” given an
+assumption that I could not possibly be the first person to do this sort of
+thing, mixed with the idea that <a href="http://www.randomhacks.net/articles/2005/12/03/why-ruby-is-an-acceptable-lisp">“Ruby is an acceptable Lisp”</a> and
+even a bit of <a href="http://en.wikipedia.org/wiki/International_Talk_Like_a_Pirate_Day">“Talk Like a Pirate Day”</a>.</p>
+
+<p>My goal in this project is to try to minimize the amount I need to implement
+in my ‘assembly language’ (Ruby). There is an idea that Lisp needs to have
+only seven primitive operations implemented in its assembly language and
+everything else can be implemented in the Lisp itself. (Obviously this seven
+primitives thing really only implements the symbol processing parts - things
+like numbers, IO etc. really need to be implemented in the underlying
+language). I have not entirely succeeded in this so far - I was more
+interested in the beginning to implement the functionality; I think I can
+refactor to more purity.</p>
+
+<h2 id="1-current-state-of-the-project">1. Current state of the project</h2>
+
+<p>I have implemented <code>ATOM</code>, <code>EQ</code>, <code>CAR</code>, <code>CDR</code>, <code>CONS</code>, <code>COND</code>, <code>QUOTE</code> and
+<code>EVAL</code> all in Ruby. The features of Ruby I have used are subroutine
+definition, conditionals, boolean true/false, equality and raising exceptions
+(for undefined behavior).</p>
+
+<p>The implementation of <code>EVAL</code> required some more helper functions due to their
+recursive definitions, these too are written with Ruby as I had not yet found
+a way to implement subroutine definition - especially not recursive subroutine
+definition.</p>
+
+<p><code>ATOM</code>s are symbols (<em>e.g.</em> <code>:foo</code>); <code>CONS</code> cells are arrays of length two
+(<em>e.g.</em> <code>[:a, [:b, :NIL]</code>). Anything not an array is an <code>ATOM</code>. All public
+methods of the <code>Yarlisp</code> module are named in ALL CAPS; these are the Lisp
+primitives. Any helper methods are implemented as inner methods and are named
+in lowercase. If it is not in ALL CAPS it is not a method available in my Lisp
+language.</p>
+
+<p>Currently the only sexp syntax available is <code>CONS</code> cells; the <em>list
+shorthand</em> style of sexp is not yet available. This means I need to write
+lists like <code>[:a, [:b, :NIL]]</code> instead of <code>[:a, :b]</code>. This has become very
+annoying, very quickly.</p>
+
+<p>One oddity of my implementation is wherever I call a Lisp primitive I do it in
+an oddly Lisp looking way (odd to see in a Ruby file). For example, when the
+<code>CAR</code> of the expression passed to <code>EVAL</code> is <code>:CDR</code> it returns: <code>(EVAL (CAR
+args), env)</code>. While it makes the code look odd for Ruby - it brings out the
+<em>Lispyness</em> of it. I will continue with this as an aesthetic in the code I
+write in this project.</p>
+
+<p>Because of my choice of Ruby as my ‘assembly language’ I have not needed to
+implement memory allocation or garbage collection.</p>
+
+<h2 id="2-thoughts">2. Thoughts</h2>
+
+<p>I found this a fun little exercise and want to continue to do it. I think I
+will also implement Lisp in other languages. It turned out not to be very
+hard and was something that could be easily be broken up into pieces by the
+different primitives and clauses in <code>EVAL</code>.</p>
+
+<p>Now that I see all of <code>EVAL</code> implemented I think I can see a way to
+reimplement more of the language in Lisp itself by using the <code>LABEL</code> and
+<code>LAMBDA</code> Lisp functions. Also there are things like <code>:NIL</code> and true/false
+which I could implement by having <code>EVAL</code> append bindings to the environment it
+is passed. That way there will be default bindings for these things. Or
+perhaps I’ll just leave that for the caller of <code>EVAL</code> to do.</p>
+
+<p>I ran into an odd issue while finishing my implementation of <code>LABEL</code>. There
+was a feeling of double evaluation on the arguments the method I was defining.
+Since my goal at the time was to implement the spec as written I went along
+with it. However I believe there is an superfluous call to <code>EVAL</code> in the
+definition as given in the paper. I want to hunt that down and fix it.</p>
+
+<p>What I am struck with overall is the cleanliness and sparseness of it. The
+logic of simple, regular syntax, and the association list lead to no surprises
+during implementing. Each step made sense; although <code>LABEL</code> and <code>LAMBDA</code> took
+longer for me to understand - partly/mostly because the M-expr syntax used in
+the paper, along with the formatting of the paper, made that section of the
+specification harder to read. In reviewing my implementation I can see the
+specification very clearly in it; the definition of Lisp is very clear in its
+implementation.</p>
+
+<p>I hope to continue working on this project - and others like it. I’ll continue
+to write about my adventures with it.</p>
+
+<h2 id="3-next-steps">3. Next steps</h2>
+
+<p>The next phase of this project will include the following:</p>
+
+<ol>
+  <li>Adding the list style sexp shorthand - all these <code>CONS</code> cells are getting
+hard to write out.</li>
+  <li>Refactoring to higher purity of the language - implementing more of the
+language in itself - less in Ruby</li>
+  <li>Implementing a reader - which will need to be in Ruby. Although with the
+more comfortable sexp syntax this may not be so necessary.</li>
+  <li>I want to find a more Lisp way of handling the undefined cases - to remove
+the raising of exceptions from Ruby code. This is an extension of the
+purity issue above.</li>
+</ol>
+
+<p>The very next step for me to take is to implement a <em>real</em> example method in
+my Lisp. Even though I do not have numbers I may implement a Fibonacci or
+factorial method using <a href="http://en.wikipedia.org/wiki/Church_numerals">Church Numerals</a>. At the very least I
+will implment the <code>FF</code> method presented in the paper.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

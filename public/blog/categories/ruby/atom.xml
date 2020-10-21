@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ruby | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[On Implementing a Lisp]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/08/13/on-implementing-a-lisp/"/>
+    <updated>2012-08-13T07:37:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/08/13/on-implementing-a-lisp</id>
+    <content type="html"><![CDATA[<h2 id="0-background">0. Background</h2>
+
+<p>About a year ago I read McCarthy’s paper <a href="http://www-formal.stanford.edu/jmc/recursive.pdf">“Recursive Functions of Symbolic
+Expressions and Their Computation by Machine</a> and I thought about
+implementing the Lisp described in it in Ruby (a language I was learning at
+the time). The project languished for quite some time until just recently when
+I went ahead and implemented the language specification laid out in that
+paper.</p>
+
+<p>The project is <a href="http://github.com/verdammelt/yarlisp">yarlisp</a>, it’s name means “Yet Another Ruby Lisp” given an
+assumption that I could not possibly be the first person to do this sort of
+thing, mixed with the idea that <a href="http://www.randomhacks.net/articles/2005/12/03/why-ruby-is-an-acceptable-lisp">“Ruby is an acceptable Lisp”</a> and
+even a bit of <a href="http://en.wikipedia.org/wiki/International_Talk_Like_a_Pirate_Day">“Talk Like a Pirate Day”</a>.</p>
+
+<p>My goal in this project is to try to minimize the amount I need to implement
+in my ‘assembly language’ (Ruby). There is an idea that Lisp needs to have
+only seven primitive operations implemented in its assembly language and
+everything else can be implemented in the Lisp itself. (Obviously this seven
+primitives thing really only implements the symbol processing parts - things
+like numbers, IO etc. really need to be implemented in the underlying
+language). I have not entirely succeeded in this so far - I was more
+interested in the beginning to implement the functionality; I think I can
+refactor to more purity.</p>
+
+<h2 id="1-current-state-of-the-project">1. Current state of the project</h2>
+
+<p>I have implemented <code>ATOM</code>, <code>EQ</code>, <code>CAR</code>, <code>CDR</code>, <code>CONS</code>, <code>COND</code>, <code>QUOTE</code> and
+<code>EVAL</code> all in Ruby. The features of Ruby I have used are subroutine
+definition, conditionals, boolean true/false, equality and raising exceptions
+(for undefined behavior).</p>
+
+<p>The implementation of <code>EVAL</code> required some more helper functions due to their
+recursive definitions, these too are written with Ruby as I had not yet found
+a way to implement subroutine definition - especially not recursive subroutine
+definition.</p>
+
+<p><code>ATOM</code>s are symbols (<em>e.g.</em> <code>:foo</code>); <code>CONS</code> cells are arrays of length two
+(<em>e.g.</em> <code>[:a, [:b, :NIL]</code>). Anything not an array is an <code>ATOM</code>. All public
+methods of the <code>Yarlisp</code> module are named in ALL CAPS; these are the Lisp
+primitives. Any helper methods are implemented as inner methods and are named
+in lowercase. If it is not in ALL CAPS it is not a method available in my Lisp
+language.</p>
+
+<p>Currently the only sexp syntax available is <code>CONS</code> cells; the <em>list
+shorthand</em> style of sexp is not yet available. This means I need to write
+lists like <code>[:a, [:b, :NIL]]</code> instead of <code>[:a, :b]</code>. This has become very
+annoying, very quickly.</p>
+
+<p>One oddity of my implementation is wherever I call a Lisp primitive I do it in
+an oddly Lisp looking way (odd to see in a Ruby file). For example, when the
+<code>CAR</code> of the expression passed to <code>EVAL</code> is <code>:CDR</code> it returns: <code>(EVAL (CAR
+args), env)</code>. While it makes the code look odd for Ruby - it brings out the
+<em>Lispyness</em> of it. I will continue with this as an aesthetic in the code I
+write in this project.</p>
+
+<p>Because of my choice of Ruby as my ‘assembly language’ I have not needed to
+implement memory allocation or garbage collection.</p>
+
+<h2 id="2-thoughts">2. Thoughts</h2>
+
+<p>I found this a fun little exercise and want to continue to do it. I think I
+will also implement Lisp in other languages. It turned out not to be very
+hard and was something that could be easily be broken up into pieces by the
+different primitives and clauses in <code>EVAL</code>.</p>
+
+<p>Now that I see all of <code>EVAL</code> implemented I think I can see a way to
+reimplement more of the language in Lisp itself by using the <code>LABEL</code> and
+<code>LAMBDA</code> Lisp functions. Also there are things like <code>:NIL</code> and true/false
+which I could implement by having <code>EVAL</code> append bindings to the environment it
+is passed. That way there will be default bindings for these things. Or
+perhaps I’ll just leave that for the caller of <code>EVAL</code> to do.</p>
+
+<p>I ran into an odd issue while finishing my implementation of <code>LABEL</code>. There
+was a feeling of double evaluation on the arguments the method I was defining.
+Since my goal at the time was to implement the spec as written I went along
+with it. However I believe there is an superfluous call to <code>EVAL</code> in the
+definition as given in the paper. I want to hunt that down and fix it.</p>
+
+<p>What I am struck with overall is the cleanliness and sparseness of it. The
+logic of simple, regular syntax, and the association list lead to no surprises
+during implementing. Each step made sense; although <code>LABEL</code> and <code>LAMBDA</code> took
+longer for me to understand - partly/mostly because the M-expr syntax used in
+the paper, along with the formatting of the paper, made that section of the
+specification harder to read. In reviewing my implementation I can see the
+specification very clearly in it; the definition of Lisp is very clear in its
+implementation.</p>
+
+<p>I hope to continue working on this project - and others like it. I’ll continue
+to write about my adventures with it.</p>
+
+<h2 id="3-next-steps">3. Next steps</h2>
+
+<p>The next phase of this project will include the following:</p>
+
+<ol>
+  <li>Adding the list style sexp shorthand - all these <code>CONS</code> cells are getting
+hard to write out.</li>
+  <li>Refactoring to higher purity of the language - implementing more of the
+language in itself - less in Ruby</li>
+  <li>Implementing a reader - which will need to be in Ruby. Although with the
+more comfortable sexp syntax this may not be so necessary.</li>
+  <li>I want to find a more Lisp way of handling the undefined cases - to remove
+the raising of exceptions from Ruby code. This is an extension of the
+purity issue above.</li>
+</ol>
+
+<p>The very next step for me to take is to implement a <em>real</em> example method in
+my Lisp. Even though I do not have numbers I may implement a Fibonacci or
+factorial method using <a href="http://en.wikipedia.org/wiki/Church_numerals">Church Numerals</a>. At the very least I
+will implment the <code>FF</code> method presented in the paper.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[quick thoughts about @david_a_black's presentation at @bostonrb 2012-07-10]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/07/10/quick-thoughts-about-at-david-a-blacks-presentation-at-at-bostonrb-2012-07-10/"/>
+    <updated>2012-07-10T21:35:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/07/10/quick-thoughts-about-at-david-a-blacks-presentation-at-at-bostonrb-2012-07-10</id>
+    <content type="html"><![CDATA[<h2 id="0-overview">0. Overview</h2>
+
+<p>David Black (<a href="http://www.twitter.com/david_a_black">@david_a_black</a>) presented his his “The
+Well-Grounded Nuby” presentation to the Boston Ruby Group
+(<a href="http://www.twitter.com/bostonrb">@bostonrb</a>) meetup on 2012-07-10. I was unfortunately
+unable to attend but I watched/listened in on their 
+<a href="http://www.youtube.com/watch?v=DVQxmayBWOs">live streaming</a>.</p>
+
+<p>He presented seven things about Ruby that every noobie should know. I guess I
+am still closer to noobie than expert but I found that his points where very
+good for ‘levels’ above noobie. His seven points were:</p>
+
+<ul>
+  <li>Everything evaluates to an object</li>
+  <li>Sending messages to objects</li>
+  <li>Objects resolve messages to methods</li>
+  <li>Classes and modules are objects</li>
+  <li>There is always a “self”</li>
+  <li>Variables contain references to objects</li>
+  <li>True and false are objects</li>
+</ul>
+
+<p>I thought his talk could be summarized (<em>flippantly</em>?) into two points:</p>
+
+<ol>
+  <li>Ruby is <a href="http://en.wikipedia.org/wiki/Turtles_all_the_way_down">objects the whole way down</a>.</li>
+  <li>Ruby is <a href="http://www.lispworks.com/documentation/common-lisp.html">Lisp</a>-y.</li>
+</ol>
+
+<h2 id="1-objects-the-whole-way-down">1. Objects the Whole Way Down</h2>
+
+<p>I had the thought that Ruby must be objects the whole way down; but I had not
+tested it out, nor thought about it much. I just hadn’t needed to worry about
+it in my small amount of Ruby work. But this presentation made me much more
+aware of this. I need to experiment with this more and become more familiar
+with this style. C#/Java (which I am more recently familiar with) just don’t
+have this feel.</p>
+
+<p>I do a lot of work day-to-day in <a href="http://groovy.codehaus.org/">Groovy</a> and some of the discussion
+here sounds familiar. While I <em>knew</em> Groovy was like Ruby, I think it might be
+more like Ruby than I had been thinking. I need to investigate.</p>
+
+<h2 id="2-lisp-y">2. Lisp-y</h2>
+
+<p>Perhaps it is because I’ve been reading <a href="http://letoverlambda.com/">Let over Lambda</a> but I
+immediately started thinking lispy thoughts during a few points.</p>
+
+<p>Specifically when he was saying that everything evaluates to an object and
+discussed how <code>case</code> is just as <code>if...elseif...else</code> using <code>===</code> I wondered
+how I might be able to write my own control flow. Does Ruby have
+<a href="http://www.gigamonkeys.com/book/macros-defining-your-own.html">macros</a>? I need to investigate.</p>
+
+<h2 id="3-the-mixture-of-the-two-and-beyond">3. The Mixture of the Two (and beyond)</h2>
+
+<p>His first point, “Everything evaluates to Object” and “<code>true</code> and <code>false</code> are
+Objects” made me think lispy thoughts. On the first point it was simply “duh”
+of course <em>everything</em> evaluates to <em>something</em>, and the second made me think
+of the difference between <a href="http://en.wikipedia.org/wiki/Scheme_(programming_language)">Scheme</a>/<a href="http://clojure.org/">Clojure</a> and 
+<a href="http://www.lispworks.com/documentation/common-lisp.html">Common Lisp</a> with respect to <code>t</code>/<code>nil</code> or <code>true</code>/<code>false</code>.</p>
+
+<p>Lisp has an object system - but it is built on top of an existing language
+with the features of the language itself. There is something about this
+presentation of Ruby that makes me start feeling that Ruby’s object system,
+while a much more integral part of the language is still defined in that
+language itself as <a href="http://en.wikipedia.org/wiki/Common_Lisp_Object_System">CLOS</a> is.</p>
+
+<p>His point about “There is always a <code>self</code>” made me think about my recent
+forays into <a href="http://en.wikipedia.org/wiki/JavaScript">Javascript</a> at work. These have revolved around me
+trying to understand what <code>this</code> was at different points in the code.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The talk was though-provoking in me; and thus, <em>IMNHO</em>, it was good. I have at
+least two different things to investigate.</p>
+
+<p>Overall his presentation made me realize there was plenty more in Ruby for me
+to learn, and that there was plenty more in Ruby that was, to me,  <em>worth</em>
+learning.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[My thoughts derived from the talk given by @chadfowler at @bostonrb 2012-02-21]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/02/21/my-thoughts-derived-from-the-talk-given-by-at-chadfowler-at-at-bostonrb-2012-02-21/"/>
+    <updated>2012-02-21T22:36:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/02/21/my-thoughts-derived-from-the-talk-given-by-at-chadfowler-at-at-bostonrb-2012-02-21</id>
+    <content type="html"><![CDATA[<h2 id="overview">Overview</h2>
+
+<p>(I finally went to <em>another</em> Boston Ruby meetup.  Only my second -
+hopefully it will be less than ~9 months before I go to my third.)</p>
+
+<p>Chad Fowler gave a talk entitled “Measuring &amp; Analyzing Things That
+Matter When You Have Too Many Things To Keep Track Of” at tonights
+Boston Ruby Meetup.  It was <em>the</em> reason why I went to the meetup.(But I
+did enjoy the other two talks - but they are not the topic of this post)</p>
+
+<p>His talk was, self-described, half-baked ideas.  Which is fine by me.
+At @boston_sc we’ve started doing “half-baked” ideas talks and they have
+been great - I only wish that this talk was more discussion style like
+the ones we have at @boston_sc.</p>
+
+<p>He talked about how even with a team of very good developers, good code
+is not guaranteed.  The bad stuff builds up, even without people
+noticing, via bad habits and laziness.  His person example of gaining a
+lot of weight hits very solidly with me and I am again working to drop
+my weight which keeps just sneaking back (due to bad habits and laziness
+on my part).</p>
+
+<h2 id="how-to-measure-how-readable-code-is">How to measure how readable code is</h2>
+
+<p>He mentioned several thoughts about how to fight the bad
+habits/laziness, but the one that got me thinking was about the
+<a href="http://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_test">Flesch-Kincaid Readability
+Scale</a>.</p>
+
+<p>Basically in a nutshell Rudolph Flesch devised a algorithm for English
+which let you compute a score which then equates to what level of
+English reader could easily read and understand your English.  He
+suggested that perhaps some combination of metrics (e.g. flog, flag,
+roodi, churn, reek, (i.e. things from metric-fu)) might render a
+<em>number</em> which would equate to a level of developer (his scale topped
+out at Rich Hickey) that could understand your code.</p>
+
+<p>The reason that this got me thinking especially was because it fits into
+a less-than-half-baked idea I’ve had.  A few months ago I was working
+with a junior developer at my job and while she was away I had
+implemented a nice little bit of Groovy code to do something.  It
+involved a chain of collection functions (<em>e.g.</em> map, inject, collect
+etc.).  I thought it was great.  When she came back and saw it she
+couldn’t understand it.  I explained it to her and she <em>started</em> to
+understand.  I explained again and she <em>sort of</em> understood.  Then I
+said “ok, hold on…” and replaced it with 2 for loops.  Totally dumb
+un-cool code that did the same thing.  She immediately understood! So
+that is what we committed.</p>
+
+<p>The problem was that I was at a higher level of understanding of that
+sort of pseudo-function collection function chaining.  (and also it
+the code might have been a bit ‘clever’ <em>shudder</em>).  By shifting to
+<em>ordinary</em> code it was easy to understand.</p>
+
+<p>The thing I am interested in is if this scale of code comprehensibility
+is if it is absolute or relative.  My first thought it is relative.  If
+one can raise the base skill of a team then that team can understand
+more esoteric code.</p>
+
+<h2 id="other-thoughts">Other thoughts</h2>
+
+<p>There were other interesting points in there - obviously rather ruby
+specific:</p>
+
+<ul>
+  <li>Mention of tools like flog, flay, roodi, reek, etc all good
+at giving numbers about your code.</li>
+  <li>Measuring whatever worries you</li>
+  <li>Graphing everything you can</li>
+  <li>(again) Getting information from your commit history</li>
+</ul>
+
+<p>These are also things that will keep me thinking for a bit.  I can use
+these ideas both in my for-pay coding and my for-free/me coding.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

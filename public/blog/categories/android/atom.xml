@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: android | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Gotcha of using YouTubePlayerFragment and ViewPager for Android]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2016/01/10/gotcha-of-using-youtubeplayerfragment-at-viewpager-for-android/"/>
+    <updated>2016-01-10T17:19:50-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2016/01/10/gotcha-of-using-youtubeplayerfragment-at-viewpager-for-android</id>
+    <content type="html"><![CDATA[<p><small>(Cross posted to the <a href="http://www.cyrusinnovation.com/gotcha-of-using-youtubeplayerfragment-and-viewpager-for-android/">Cyrus Innovation Blog</a>)</small></p>
+
+<p>Recently I learned some Android programming by writing a simple app
+for a client. It was a great opportunity to learn the platform and how
+“easy” it is to write an app. I ran into one ‘gotcha’ that I thought
+might be valuable to others.</p>
+
+<p>One feature that was needed was a swipeable carousel of YouTube
+videos. Google provides some widgets for showing YouTube videos on an
+Android device and
+<a href="https://developers.google.com/youtube/android/player/reference/com/google/android/youtube/player/YouTubePlayerFragment?hl=en">YouTubePlayerFragment</a>
+was a (almost) perfect fit for my needs<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. Also
+<a href="http://developer.android.com/reference/android/support/v4/view/ViewPager.html">ViewPager</a>
+was just the thing for creating the swipeable list of items. It was
+easy enough to create a subclass of
+<a href="http://developer.android.com/reference/android/support/v4/app/FragmentPagerAdapter.html">FragmentPageAdapter</a>
+which knew the list of videos and created YouTubePlayerFragments as
+needed (actually a subclass whose job was to handle the initialization
+of the YouTubePlayerFragment).</p>
+
+<p>While this was easy to code - it was not so easy to make it actually
+<em>work</em>.</p>
+
+<p>Trying to play videos resulted in a cryptic message about the player
+not playing because it was not visible on the screen. The coordinates
+in the error message made it seem like the object was way to the left
+of the visible screen. That was the first clue. It was perplexing
+though since the player was quite obviously right there <em>on the
+screen</em>.</p>
+
+<p>Some debugging gave me the second clue I needed. When I pressed play
+on the player on the screen, <em>multiple</em> players were firing events
+saying that they were playing. <em>Multiple</em> players?</p>
+
+<p>Reading<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> into the documentation of ViewPager some more told me that
+it will request multiple views from the ViewPageAdapter, so that other
+views are “ready to go”. But why did they all respond when I clicked
+on one of them?</p>
+
+<p>More debugging did not solve the mystery but solidified my hypothesis:
+The YouTubePlayer and/or YouTubePlayerFragment has state shared
+between all their instances. That is the only explanation that would
+fit the observed behavior.</p>
+
+<p>So I needed a way to ensure that only one YouTubePlayer was in play at
+a time. The ViewPager documentation says you can change the number of
+other pages that will be created. Changing that did not work for me -
+at least one other view was always created. That left me with ensuring
+that only one player was <em>initialized</em>.</p>
+
+<p>I tried various event listeners but found that none of them fit the
+need. Sometimes I would get an event firing both on the active and the
+inactive viewer and it was not possible to tell the difference.
+Finally I found one thing that did seem consistent and usable:
+<code>setUserVisibleHint</code>. It was called on the fragment with a <code>true</code>
+value when that fragment was the one shown to the user and was called
+with <code>false</code> when it was not. So I made sure my fragment was not
+initialized until it got told that it was visible; and then released
+it when it was no longer visible.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Except for the supremely annoying fact that the YouTube player
+widgets <em>DO NOT WORK</em> on emulators. So I had to do all this work
+with a physical device tethered to my machine. Like a savage. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="http://www.rif.org/">Reading is Fundamental</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
+  
+</feed>

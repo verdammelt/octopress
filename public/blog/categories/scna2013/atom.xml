@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: scna2013 | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/scna2013/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SCNA 2013 - Effortful vs. Automatic Brain]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2013/11/09/scna-2013-effortful-vs-automatic-brain/"/>
+    <updated>2013-11-09T19:07:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2013/11/09/scna-2013-effortful-vs-automatic-brain</id>
+    <content type="html"><![CDATA[<h2 id="experts-dont-know-what-they-know">Experts Don’t Know what they Know</h2>
+
+<p>This year’s SCNA Conference seemed to have several talks which touched upon
+the idea of experts having implicit knowledge. That is to say: they know
+things but can’t necessarily explain what they know, or why. Ken Auer and Dave
+Thomas touched upon it; during the panel on Software Quality it was also
+brought up (e.g.  Corey Haines’ amazing reference to <a href="http://en.wikipedia.org/wiki/Chicken_sexing">Chicken Sexing</a>).
+But I felt that Brian Marick’s talk took the idea and then added to it.</p>
+
+<h2 id="bright-vs-dull-cows">Bright vs. Dull Cows</h2>
+
+<p>Brian started talking about this implicit knowledge idea - giving his wife as
+an example. His wife (a veterinary professor) teaches her students to
+determine if a cow is ‘bright’ or ‘dull’ (a subjective diagnosis). Her
+students specify, day-after-day, if cows are dull or bright. She then corrects
+them. They usually ask how she could tell and she tells them something
+(drooping ears, nose-cleaning, etc.). But actually these specific clues are
+not <em>really the way to tell</em>. Those who can diagnose a cow as bright or dull
+cannot explain why.</p>
+
+<p>This anecdote seems to show that the implicit knowledge of the expert is
+something that can be trained. When discussing this idea after the talk Corey
+Haines mentioned a conference session in which Michael Feathers gave where he
+had the attendees give quick good/bad judgment calls on snippets of code. Then
+tallied those up and found that some snippets had a large amount of agreement
+as to their good-/bad-ness. They then discussed and tried to determine why.
+In light of Brian’s anecdote however it seems that they might never find out
+<em>why</em>, but maybe they could train themselves by looking at a lot of code and
+being corrected when they get the judgment wrong.</p>
+
+<p>(Brian hopes to use this sort of idea to be able to train himself to have a
+nearly physical reaction to bad code. While that sounds cool, I worry about a
+‘Ludovico Technique’ for code.)</p>
+
+<h2 id="effortful-vs-automatic">Effortful vs. Automatic</h2>
+
+<p>Brian then talked about two types of thinking: Effortful and Automatic.
+Effortful is the sort when you need to do a non-trivial arithmetic, or a
+parking in a tight spot. Automatic is when you do simple math like 2+2 or easy
+driving where you are sort of on autopilot. When you use the Effortful way, it
+actually takes <em>effort</em>. It is slower seems to be only possible to do it
+serially. Automatic thinking is faster, takes little effort, and seems to be
+parallelizable.</p>
+
+<p>If you don’t have something in Automatic then your brain shifts to Effortful;
+sort of a cache miss.  If you do something enough, or become good enough at
+it, you can put stuff into your Automatic cache.</p>
+
+<h2 id="switching-to-automatic">Switching to Automatic</h2>
+
+<p>So how can this be done? While Brian offers the usual ‘practice, practice,
+practice’, he adds to it an interesting idea about ‘Set and Setting’. ‘Set and
+Setting’ is an idea from Timothy Leary about why drugs such as LSD seem to
+have very different effects in different people. The mindset (Set) of the
+person (which includes things like rituals which build up that mindset) and
+the Setting (environment) have a strong influence on the experiences of that
+person.</p>
+
+<p>By being aware of which mindsets (and how to enter them) and what settings are
+most beneficial for programming (and even different types of programming) he
+feels he can move some programming tasks into his Automatic thinking area.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>It seems to me that the idea of ‘Automatic’ and ‘Effortful’ adds to the idea
+of the expert’s implicit knowledge. Perhaps the expert’s knowledge is just an
+expression of Automatic thinking?</p>
+
+<p>I’m interested in trying out the practice of being more aware of my own ‘Set
+and Setting’ with respect to code.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

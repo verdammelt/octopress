@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: grapefruit | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/grapefruit/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The Palm Beach Special]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/07/26/the-palm-beach-special/"/>
+    <updated>2012-07-26T19:13:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/07/26/the-palm-beach-special</id>
+    <content type="html"><![CDATA[<p>(It was noted to me that for a blog called ‘code and cocktails’ that I
+don’t have many cocktail related posts - so here we go:)</p>
+
+<p>I decided to try a new-to-me cocktail tonight and asked
+<a href="http://cocktaildb.com/">cocktaildb</a> for cocktails which contain grapefruit and gin.  It suggested,
+amongst others, the <a href="http://cocktaildb.com/recipe_detail?id=4758">Palm Beach Special</a>.</p>
+
+<ul>
+  <li>2 1/2 oz. gin</li>
+  <li>3/4 oz. grapefruit juice</li>
+  <li>1/2 oz. sweet vermouth</li>
+  <li>shake well with ice, strain into cocktail glass.</li>
+</ul>
+
+<p>I enjoy the combination of gin and grapefruit in this drink but I have two
+issues with it which I’d like to experiment with:</p>
+
+<ol>
+  <li>I think it is too heavy on the gin - I think it overloads the grapefruit.</li>
+  <li>I wonder if something like St. Germaine might be a good exchange for sweet
+vermouth - obviously it would change the drink - but I think it might be
+for the better.</li>
+</ol>
+
+<p>As an aside: cocktaildb is a great resource - I wish I could filter out drinks
+for which I don’t have ingredients however.  That is why I am building
+(slowly) my own cocktail recipe website <a href="http://defdrink.heroku.com"><code>(defdrink)</code></a>. (The primary
+purpose of <code>(defdrink)</code> is to be a vehicle for me to learn <a href="http://clojure.org/">Clojure</a>)</p>
+
+]]></content>
+  </entry>
+  
+</feed>

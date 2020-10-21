@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: agile | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/agile/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Quickie: Less Columns on Your Board]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2016/04/25/quickie-less-columns-on-your-board/"/>
+    <updated>2016-04-25T20:52:08-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2016/04/25/quickie-less-columns-on-your-board</id>
+    <content type="html"><![CDATA[<p>So you have a “Agile Board”(TM) congratulations! If you are like any
+of the people I’ve worked with recently you’ve got lots of columns to
+keep track of all the possible states a story card could be in.</p>
+
+<p>Back away from the board…</p>
+
+<p>You should start with very few columns. I think four should be plenty:</p>
+
+<ul>
+  <li><code>Backlog</code></li>
+  <li><code>Current</code></li>
+  <li><code>Doing</code></li>
+  <li><code>Done</code></li>
+</ul>
+
+<p><code>Backlog</code> is the place to keep all your new ideas. Make sure the next
+priorities are at the top and ready to go, as you go down the list
+don’t worry about the rest too much, they can stay vague.</p>
+
+<p><code>Current</code> is for the things you are planning on doing this
+iteration. Use the Goldilocks principle. Don’t agree to do too much
+or too little. Just the Right(TM) amount.</p>
+
+<p><code>Doing</code> is for things that are being worked on <em>RIGHT NOW</em>. A good
+number of items here is a function of the number of people on your
+team and how they collaborate (pairing, mobbing, solo if you must). If
+there are too few or too many items there is a problem - discuss
+it. If something stays here for days that is the sign of a problem -
+discuss it.</p>
+
+<p><code>Done</code> is for keeping track of the valuable things you are delivering
+as a team. Rejoice. Throw them away after sufficient rejoicing
+(sometime after the next iteration starts is a good time).</p>
+
+<p>What about <code>Ready for QA</code>? or <code>Ready for Deploy</code>? you ask. I’d ask why
+isn’t QA and/or Deploy part of your definition of done?</p>
+
+<p>What about <code>Blocked</code>. OK this one <em>might</em> be useful. But a red sticky
+(or equivalent for non-physical boards) on the card is probably
+enough. Moving it to another column makes it less visible, and a card
+being blocked is a problem and we want problems to be visible.</p>
+
+<p>Of course it is <em>your</em> process not mine. Use the columns <em>you</em>
+need. But know <em>why</em> you need them, and feel free to add and remove
+them if after discussion you realize the board is not serving <em>you</em>
+anymore.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Is your retro done?]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2015/11/05/is-your-retro-done/"/>
+    <updated>2015-11-05T16:36:31-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2015/11/05/is-your-retro-done</id>
+    <content type="html"><![CDATA[<p><small>(Cross posted to the <a href="http://www.cyrusinnovation.com/is-your-retro-done/">Cyrus Innovation Blog</a>)</small></p>
+
+<p>Retrospective meetings are an important part of any sort of “Agile”
+process. I have a rule about when a retrospective meeting is over.</p>
+
+<ol>
+  <li>Everyone that wants to talk has talked.</li>
+  <li>There is at least one action item.</li>
+  <li>There is at least one volunteer for each action item.</li>
+</ol>
+
+<p>A good retrospective meetings can help a team achieve what they need
+and want. Often, however, these meetings tend toward directionless
+discussion and complaining. While <em>sometimes</em> a ‘complaining’
+retrospective can be good and cathartic, these should not be the usual
+meeting.</p>
+
+<p>Recently a client’s retrospective meetings had fallen by the wayside.
+Even when they had them they were mostly at the complaining end of the
+spectrum. We had helped them get back into regular retrospectives,
+weekly actually, but they were still not very good.</p>
+
+<p>At the end of one retrospective the team member playing the
+facilitator role tried to wrap the long ramble up by asking <em>“Retro
+Complete?”</em>. I cut off the murmured agreements with another question:
+<em>“Do we have some action items?”</em>.</p>
+
+<p>A retrospective meeting should result in action items. These might be
+a new story/ticket/card, a task, a new process, or an experiment to
+try. Without these the meeting was just discussion.</p>
+
+<p>Also important is that the action items have volunteers. If no one
+wants to do or ‘champion’ an action item then find out why. Perhaps
+the action item just isn’t that important to the team; then drop it.
+Perhaps it is too big and amorphous; then break it down to a single
+next action. Or perhaps it is scary; if this is the case then
+this scariness is something for more discussion.</p>
+
+<p>In the end the team discussed what actions to take on the topics they
+had discussed and created a short list. They even had volunteer for at
+least one. Still not the most successful retrospective, but better
+than the last. Hopefully they’ll keep this habit and their retros will
+become even more effective.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Reminder: Agile is Risk Management]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2015/06/21/agile-is-risk-management/"/>
+    <updated>2015-06-21T12:18:20-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2015/06/21/agile-is-risk-management</id>
+    <content type="html"><![CDATA[<p>In a note of the References section of “Waltzing with Bears” (DeMarco
+&amp; Lister 2003), there is a note on “Planning Extreme Programming”
+(Beck &amp; Fowler 2001) which says “When viewed as a set of
+[Risk Management] strategies, XP makes all kinds of sense.” This made
+me review how XP (or Agile more generally) is a risk management
+technique.</p>
+
+<p>The incremental approach of XP reduces risk of late delivery or wrong
+delivery. The demo, planning and retrospective meetings seem to be an
+implicit risk analysis/mitigation exercise. It might be beneficial to
+make this more explicit.</p>
+
+<p>One place where XP doesn’t line up with DeMarco &amp; Lister’s thoughts on
+risk management is their advice that there should be sizable up-front
+design and estimation. XP eschews this. XP argues that the cost of
+up-front design &amp; estimation of higher than the risk that they
+mitigate. It seems a reasonable risk vs. cost choice. Adding some
+explicit up-front brainstorming should be sufficient to cover the
+problem of missing large-impact risks. Furthermore the iterative
+nature of the methodology allows for a just-in-time approach to the
+costs and risks.</p>
+
+<p>The book also contains a quote from Tom Glib who said (paraphrased)
+‘Be ready to pack up whatever you’ve got any given morning and
+deliver it by close of day’. This is very fitting with the idea in XP
+that the result of every iteration should be deliverable and producing
+value. While a one-day iteration, as implied in the quote, is perhaps
+too extreme for many teams; the exercise of determining what it would
+take to deliver value in shorter and shorter iterations is valuable.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[To Estimating Bugs or Not: The Definitive Answer]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2014/08/03/estimating-bugs/"/>
+    <updated>2014-08-03T16:31:11-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2014/08/03/estimating-bugs</id>
+    <content type="html"><![CDATA[<p>I was recently re-reading the XP books and in <em>Extreme Programming
+Installed</em><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> I came upon a section where the authors say that bugs
+should be estimated and planned into iterations like other stories.
+I disagreed with that idea, thinking about how ‘<em>opinion had changed</em>’
+on that topic since the book was written and that ‘<em>that’s not how I
+was taught to do it</em>’.</p>
+
+<p>Then I wondered <em>why</em> I thought that, just who had taught me that bugs
+should not be estimated. At first I assumed it was Jim Shore from <em>The
+Art of Agile</em><sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, but a quick look in the book<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> shows that he says
+<em>to</em> estimate bug stories. That led me to do some looking around the
+Internet<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> and discuss this issue with my colleagues at Cyrus
+Innovation<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>.</p>
+
+<p>I know believe I have the definitive answer to the question of whether
+or not to estimate bugs.</p>
+
+<p>(First a clarification: I am not talking about defects found during an
+iteration in, or caused by, stories being worked on during that
+iteration. That just means that story is not done. Don’t take credit
+for it and create a bug card. Just accept that the story is not done.)</p>
+
+<p>And now for that definitive answer:</p>
+
+<blockquote>
+  <p><em>It depends.</em></p>
+</blockquote>
+
+<p>Some teams might find it useful to give the Customer the ability to
+prioritize bugs along with other work. By estimating the bugs the
+Customer has all the data they need to make their trade-offs. That
+being said: estimating bugs can be very difficult since there is often
+more than the usual share of unknown unknowns; thus the estimate will
+be less reliable than normal.</p>
+
+<p>Some teams might find it useful to estimate bugs so that planning an
+iteration is easier. If a team knows it can do 14 points of work, then
+14 points of work can be taken off the top of the backlog, maybe they
+are all bugs, or some bugs or no bugs; doesn’t matter - it is 14
+points. If bugs are not estimated then maybe the team can do some bugs
+and how many more points? <em>shrug</em>.</p>
+
+<p>Some teams might find that estimating bugs allows the number of bugs
+to be hidden among the work being done. They want to make sure that
+bugs are always visible, so they do <em>not</em> estimate want to make sure
+that bugs always detract from their velocity. Estimating bugs makes
+them a bit more <em>normal</em> and thus less visible.</p>
+
+<p>So ultimately, as with any such question, the answer depends upon the
+needs and desires of the team. Do what works for you, and periodically
+question why and even try a different way.</p>
+
+<p>(Drink Pairing: I paired the writing of this post with a simple
+Daiquiri<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>.)</p>
+
+<hr />
+<p>and strain.</p>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>http://www.amazon.com/Extreme-Programming-Installed-Ron-Jeffries/dp/0201708426/ <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>http://www.jamesshore.com/Agile-Book/ <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>My copy contains the note: “To Mark - Here’s to sucking less! Jim Shore” <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>Specifically the World Wide Web section of the Internet. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>http://www.cyrusinnovation.com/ <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>1.5oz Rum, .75oz Lime Juice, .25oz Simple Syrup. Shake over ice <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Reflections Upon the Art of Agile Training]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/04/28/reflections-upon-the-art-of-agile-training/"/>
+    <updated>2012-04-28T16:00:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/04/28/reflections-upon-the-art-of-agile-training</id>
+    <content type="html"><![CDATA[<h2 id="what">What</h2>
+
+<p>I am returning home from the <a href="http://www.cyrusinnovation.com/index.php/art-of-agile-nyc">Art of Agile Boot Camp</a> presented by
+<a href="http://www.jamesshore.com">James Shore</a> and <a href="http://www.futureworksconsulting.com">Diana Larsen</a> in New York City.</p>
+
+<p>The training turned out to be review for me given that most of my coworkers
+are <a href="http://www.cyrusinnovation.com">Cyrus Innovations</a> employees and they all attended this training
+in October of 2011. They came back and implemented some of the ideas from the
+training - so in a way I’ve been living this stuff since then. Even before
+that we were a pretty well functioning agile team.</p>
+
+<p>Even though it was a review I still thought it was very beneficial to me.
+There are always opportunities to improve; and details/reasonings that had
+been forgotten. Old ideas can become new again through re-iteration.</p>
+
+<p>The training was split into two parts. The first two days covered Agile
+Planning and the last three Agile Delivery. The latter was what I was most
+interested in - but I think I may have gotten just as much out of the first
+section.</p>
+
+<h3 id="90-minute-iterations---crazy">90 Minute Iterations?! - Crazy!</h3>
+
+<p>It was in the second half of the class that we got to “experience” Agile
+Delivery for ourselves. In our groups we delivered working software four times
+in four iterations; each iteration was 90 minutes long. It seemed crazy and a
+few times it felt crazy - but we did deliver running software (a cheesy text
+based ‘game’) in 90 minute iterations. During these 90 minutes we did
+everything from release planning, to coding (TDD’d naturally), exploratory
+testing, and releasing.</p>
+
+<p>Crazy as it may seem - it is a brilliant exercise. By making us so focused we
+needed to organize ourselves, help each other out and really work to remove
+all roadblocks. Also it forced us to make, quickly, decisions about what was
+going to be in and what was not. We couldn’t let ego get in the way and argue
+too much about anything; we could always pivot and change our minds later.</p>
+
+<h3 id="relearning-what-stories-are">Relearning what Stories are</h3>
+
+<p>Even as a well functioning agile team I have to say that there were some
+things related to stories that I now think I/We were doing wrong or not so
+well.  Firstly, I was reminded that Stories are not requirements. Stories are
+conversations about the requirements and they are negotiable. It is really
+important that they are small and independent. A story on its own is not
+likely to be a complete feature (MMF) - they ought to be much smaller than
+that.</p>
+
+<p>Another point about stories that Jim makes a point of is that they should not
+be re-estimated. This seemed odd to me so I made a point to discuss it
+further. It seemed to me that one should re-estimate a story if more
+information is known. For example we may come to know that the implementation
+needed for a story is harder than first thought, or easier (perhaps it is
+becoming routine).</p>
+
+<p>Jim’s point is that estimates are always wrong, but they should be consistent.
+So if something was estimated as a ‘1’; then anything like it should also be a
+‘1’; even if find out that it was easier/harder. The reason is because if we
+change our estimations then our velocity becomes less meaningful. It is our
+velocity that should be changing to reflect our capability for doing N 1-point
+stories. That N will go up and down as 1 point stories are harder/easier.</p>
+
+<h3 id="velocity-settling">Velocity: settling</h3>
+
+<p>Surround your pullquote like this {" text to be quoted "}</p>
+
+<h3 id="focus-on-delivering-value">Focus on Delivering Value</h3>
+
+<p>Duh. I just needed to be reminded of this.</p>
+
+<h3 id="fluencies">Fluencies</h3>
+
+<p>Diana and Jim presented an idea of ‘Fluency’ in Agile Practices. Each level is
+useful, none of them are ‘bad’.  They are:</p>
+
+<ol>
+  <li>We build code.</li>
+  <li>We create business value.</li>
+  <li>We <em>deliver</em> business value.</li>
+  <li>We <em>optimize</em> business value.</li>
+  <li>We optimize <em>our organization’s</em> business value.</li>
+</ol>
+
+<p>The idea is that you are ‘fluent’ at a level, as with a language, when you can
+easily work at that level, even under pressure. I think our current team, and
+myself, is largely fluent at the level of delivering business value and
+day-to-day we do some work at the level of optimizing that value.</p>
+
+<h2 id="so-what">So What</h2>
+
+<h3 id="the-first-thing-to-build">The First Thing to Build…</h3>
+
+<p>Surround your pullquote like this {" text to be quoted "}</p>
+
+<h3 id="iteration-planning-is-a-design-activity">Iteration Planning is a design activity</h3>
+
+<p>This is an interesting idea that I need to think more about. The idea is that
+because Iteration Planning involves choices about what will be built; that it
+affect design.</p>
+
+<h3 id="people-over">People over…</h3>
+
+<p>I always find interacting with people who are interested in or driven to
+learning very energizing. A change in this time I realized what that now I was
+the person who was answering questions of and encouraging people who were new
+to Agile. I am starting to realize that I know this stuff and have something
+to offer. It was also great to see a coworker doing the same, and doing a
+better job than I did.</p>
+
+<h2 id="now-what">Now What</h2>
+
+<p>There are some things I want to try for myself and for my team.</p>
+
+<h3 id="demos">Demos</h3>
+
+<p>Right now on my current project we do not have Customer Demos. I said a few
+times during the training that my project does not yet have a Customer, but
+what it really doesn’t have is a User. I think we could start demoing it now
+to whoever wanted to see it. At the least demoing to fellow team members may
+help us be focused and see a bigger picture.</p>
+
+<h3 id="story-sizing">Story sizing</h3>
+
+<p>Currently our features are not quite <em>Minimum</em> Marketable Features. They tend
+to be larger than that. Furthermore it seems our Product Manager (the Customer
+Proxy) doesn’t care much about anything smaller than that. However that is
+leaving us with only a story or two per iteration - which is not helping us
+achieve a more stable velocity.</p>
+
+<p>I need to do some brainstorming on how we can (or if we should) shrink our
+features. Then figure out ways to split stories into smaller chunks so we can
+have several per iteration (at least 4). The important thing here is to keep
+business value in each story. While I do not think this will magically cause
+my Product Manager to care about the smaller stories; but I hope it will help
+engage them more if we can show business value progress with each one.</p>
+
+<p>Related to this is the problem that it seems there may be some expectations
+about when the current release will be shippable. My current projections are
+much further out from those expectations. I need to use tools like Velocity,
+Release Planning with Risk calculations (ala <a href="http://www.teamrabu.com/">Rabu</a> which I currently
+use) to bring data to the table in my discussions with the Product and Project
+Managers.</p>
+
+<h3 id="root-cause-analysis">Root Cause Analysis</h3>
+
+<p>Now that I’ve had this review I feel that I and my team have not been doing a
+good job of doing root cause analysis on the issues in our process which we
+discuss in our Retrospectives. Furthermore we are not doing a good job of root
+cause analysis on any bugs that come up.</p>
+
+<p>(On the topic of bugs I want to more seriously have the “Bugs don’t happen
+here” attitude.)</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In conclusion the training was fantastic - even for someone who is not new to
+Agile methodologies. I am bringing back some good ideas which may help me and
+my team achieve even better fluency in our work. It also solidified for me
+some existing ideas that I thought I/we already did pretty well.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

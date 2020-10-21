@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jeckyll | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/jeckyll/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Old Blog Posts Migrated]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/04/12/old-blog-posts-migrated/"/>
+    <updated>2012-04-12T22:48:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/04/12/old-blog-posts-migrated</id>
+    <content type="html"><![CDATA[<p>Using <a href="https://gist.github.com/2143368">this</a> updated migrator for <a href="https://github.com/mojombo/Jekyll">Jekyll</a> I have managed to
+get all my old Posterous blog posts loaded into this Octopress blog.</p>
+
+<p>There is still a problem with some posts - the media they contained are not
+currently available.  I think it was the posts where I had emailed a picture
+to Posterous (which would then bounced to Flickr and Twitter).  But any post I
+composed as an email seems to be here.</p>
+
+<p>The time it takes to generate the site has really dropped off unfortunately.
+Hopefully it will not just get linearly worse…</p>
+
+]]></content>
+  </entry>
+  
+</feed>

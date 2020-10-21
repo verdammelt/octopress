@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: lisp | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/lisp/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Bootstrapping a Testing Library]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2015/04/18/bootstrapping-lisp-testing-library/"/>
+    <updated>2015-04-18T14:43:22-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2015/04/18/bootstrapping-lisp-testing-library</id>
+    <content type="html"><![CDATA[<h2 id="abstract">Abstract</h2>
+
+<p>What’s a person to do when one prefers developing in a TDD style and
+decides to start a project where nothing not directly in the language
+needs to be written? Why, write a testing library of course! But…
+without a testing library how can one write this testing library in a
+TDD fashion? Herein is how I went about doing it.</p>
+
+<p>(Full disclosure: this is not the first time I’ve tried this sort
+thing<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. But I had forgotten I had done it before until I was
+writing this article.)</p>
+
+<h2 id="why">Why?</h2>
+
+<blockquote>
+  <p>“If you wish to make an apple pie from scratch, you must first
+invent the universe.” – Carl Sagan</p>
+</blockquote>
+
+<p>I have decided to have a crazy project wherein I’ll write an
+application in Common Lisp and <em>only</em> Common Lisp. That is to say, no
+other libraries. I have allowed myself to use extensions provided by
+the the implementation SBCL<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> so luckily I won’t need to write my
+own socket and threading extensions.</p>
+
+<p>This is a crazy and stupid idea. But the point of the project is to
+give me a place to play around with things I don’t normally deal with
+and in a language that I like to play with.</p>
+
+<h2 id="test-driving-a-testing-library">Test Driving a Testing Library</h2>
+
+<h3 id="where-to-start">Where to start?</h3>
+
+<p>Common Lisp has no built in testing library, but it does have
+<code>assert</code><sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>. If you have <code>assert</code> you can write a testing library.
+The problem is writing the first test. I puzzled it over a little and
+decided I’d need a function which would take an expression to evaluate
+(the test) and would return some data structure which would indicate
+the results of the test. Given that here is the first test:</p>
+
+<pre><code class="language-lisp">(assert (assoc :failure (test::collect-test-results (assert nil))))
+</code></pre>
+
+<p>So this is asserting that the return value of <code>collect-test-results</code>
+when applied to <code>(assert nil)</code> will be an alist<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> which will
+have a <code>cons</code> cell whose <code>car</code> is <code>:failure</code>.</p>
+
+<p>This test directly implies the following test:</p>
+
+<pre><code class="language-lisp">(assert (not (assoc :failure (test::collect-test-results (assert t)))))
+</code></pre>
+
+<p>That is to say: if the expression does not raise an exception there
+will <em>not</em> be such an element in the returned alist.</p>
+
+<p>After implementing a macro which lets those test pass I wrote some
+more tests to round out what I thought would be a useful implmentation
+of this base function of the library. I now had these tests to
+bootstrap my library.</p>
+
+<pre><code class="language-lisp">(assert (assoc :failure (test::collect-test-results (assert nil))))
+(assert (not (assoc :failure (test::collect-test-results (assert t)))))
+(assert (equal (assoc :value (test::collect-test-results 'foo)) '(:value . foo)))
+(assert (assoc :duration (test::collect-test-results 'foo)))
+(assert (assoc :start (test::collect-test-results 'foo)))
+(assert (assoc :end (test::collect-test-results 'foo)))
+(format t "~A...PASSED~&amp;" 'test::collect-test-results)
+</code></pre>
+
+<p>With this I felt that I had enough testing to make me feel confident
+in my little implementation. It wasn’t perfect - but good enough for
+me to now <em>use</em> this function to test other parts of my library.</p>
+
+<h3 id="how-to-write-a-test">How to write a test</h3>
+
+<p>With <code>collect-test-results</code> I had a way to writing and running
+individual simple tests. But it wasn’t a very convenient thing to use.
+But what it let me do is now write tests for <code>deftest</code> which would let
+me define tests. I started by writing the sort of test I wanted to
+write:</p>
+
+<pre><code class="language-lisp">(deftest a-simple-failing-test
+    "This is a very simple test which fails"
+  (assert (= 5 (+ 2 2))))
+</code></pre>
+
+<p>Through a few tests, written using <code>collect-test-results</code> I determined
+that <code>deftest</code> would intern a symbol with the same name as the first
+argument of the <code>deftest</code>, bind its function property to a function
+which when called would, by calling <code>collect-test-results</code> evaluate
+the body of the <code>deftest</code>. These symbols were put into a list which
+could be retrieved from the library. Furthermore, defining a test with
+the same name as an existing test does not create a duplicate test.</p>
+
+<p>It might be clearest to just show you how these tests (and an
+extracted helper function) ended up:</p>
+
+<pre><code class="language-lisp">(defmacro assert-no-failure (&amp;body assertion)
+  (let ((failure (gensym "fail")))
+    `(let ((,failure (assoc :failure (test::collect-test-results
+                                       (assert ,@assertion)))))
+       (assert (not ,failure) () (format nil "~A" ,failure)))))
+
+(deftest a-simple-failing-test
+    "This is a very simple test which fails"
+  (assert (= 5 (+ 2 2))))
+
+(let ((test-list (test::test-list)))
+  (assert-no-failure (equal test-list '(a-simple-failing-test)))
+  (assert-no-failure (fboundp (car test-list)))
+  (assert-no-failure (assoc :failure (funcall (car test-list))))
+  (assert-no-failure (string= "This is a very simple test which fails"
+                              (documentation (car test-list) 'function)))
+  (assert-no-failure (equal (assoc :test-name (funcall (car test-list)))
+                            '(:test-name . test-test::a-simple-failing-test))))
+
+(deftest a-simple-failing-test
+    "This is a very simple test which fails"
+  (assert (= 5 (+ 2 2))))
+
+(assert-no-failure (= (length (test::test-list)) 1))
+
+(deftest a-simple-passing-test
+    "This is a very simple test which passes"
+  (assert (= 4 (+ 2 2))))
+
+(assert-no-failure (= (length (test::test-list)) 2))
+
+(format t "~A...PASSED~&amp;" 'test:deftest)
+</code></pre>
+
+<h3 id="running-tests">Running tests</h3>
+
+<p>Now that we can define tests and evaluate them all that is left is to
+have a convenient way to run the defined tests. Three quick tests on
+the output of <code>run-all-tests</code> were proof enough for me (the tests that the
+call to <code>run-all-tests</code> would run were the ones defined above, one
+passing and one failing) that it would execute each test, report which
+ones failed and a count of passes and fails to <code>*standard-output*</code>.:</p>
+
+<pre><code class="language-lisp">(let ((*standard-output* (make-string-output-stream)))
+  (run-all-tests)
+  (let ((output (get-output-stream-string *standard-output*)))
+    (assert-no-failure (search "A-SIMPLE-FAILING-TEST...FAILED." output))
+    (assert-no-failure (search "PASSED: 1" output))
+    (assert-no-failure (search "FAILED: 1" output))))
+(format t "~A...PASSED~&amp;" 'test:run-all-tests)
+</code></pre>
+
+<h3 id="recap">Recap</h3>
+
+<p>At this point my testing library has two main entry points: <code>deftest</code>
+and <code>run-all-tests</code>. To create them, I first used <code>assert</code> to test
+drive the creation on a lower-level function <code>collect-test-results</code>,
+which I then used to test drive <code>deftest</code>, which I then used to test
+drive <code>run-all-tests</code>.</p>
+
+<h2 id="next-steps-and-thoughts">Next Steps and Thoughts</h2>
+
+<p>Now that I have this testing library I can use it to test drive the
+rest of the application I will write. I’m sure along the way I’ll be
+extending this library as I find new requirements for it. I’ll
+probably also be writing some assertion library to make the tests more
+expressive.</p>
+
+<p>The resulting tests<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> and code<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup> are in my GitHub repository for this
+project: yakshave<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="http://code-and-cocktails.herokuapp.com/blog/2011/04/11/writing-a-unit-test-framework-in-a-language-y/">http://code-and-cocktails.herokuapp.com/blog/2011/04/11/writing-a-unit-test-framework-in-a-language-y/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="http://www.sbcl.org/">http://www.sbcl.org/</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm#assert">http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm#assert</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p><a href="http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_a.htm#association_list">(or association list) “<em>n. a list of conses representing an association of keys with values, where the car of each cons is the key and the cdr is the value associated with that key.</em>”</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p><a href="https://github.com/verdammelt/yakshave/blob/53348569c40aed951fbeb90ff78d423e25a39db7/test-test.lisp">https://github.com/verdammelt/yakshave/blob/53348569c40aed951fbeb90ff78d423e25a39db7/test-test.lisp</a> <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p><a href="https://github.com/verdammelt/yakshave/blob/53348569c40aed951fbeb90ff78d423e25a39db7/test.lisp">https://github.com/verdammelt/yakshave/blob/53348569c40aed951fbeb90ff78d423e25a39db7/test.lisp</a> <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p><a href="https://github.com/verdammelt/yakshave">https://github.com/verdammelt/yakshave</a> <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[TDD in Common Lisp: recursive yak-shaving]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving/"/>
+    <updated>2013-12-25T17:34:59-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving</id>
+    <content type="html"><![CDATA[<p>While avoiding family this Christmas-day I started trying to figure out way
+for me to do TDD in Common Lisp (as one does…). That led to SLIME<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> and
+    QuickLisp<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> and lisp-unit<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> and asdf<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> (<em>&amp;c. &amp;c</em>).</p>
+
+<h2 id="its-yaks-the-whole-way-down">…it’s yaks the whole way down.</h2>
+
+<p>The hardest part for me was to find a simple way to load my code and run the
+tests. ASDF ships with <code>asdf:test-system</code> defined but it does nothing by
+default<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>. So I did some digging around and saw some other’s solutions and
+synthesized my version.</p>
+
+<p>Here is an example ASDF system definition for a Game of Life<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>
+implementation.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'><span></span><span class="p">(</span><span class="nv">asdf:defsystem</span> <span class="ss">#:gol</span>
+</span><span class='line'>  <span class="ss">:description</span> <span class="err">“</span><span class="nv">Conways</span> <span class="nv">Game</span> <span class="nv">of</span> <span class="nv">Life</span> <span class="nv">in</span> <span class="nv">Lisp</span><span class="err">”</span>
+</span><span class='line'>  <span class="ss">:author</span> <span class="err">“</span><span class="nv">Mark</span> <span class="nv">Simpson</span> <span class="nv">&lt;a</span> <span class="nv">href=</span><span class="s">&quot;mailto:verdammelt@gmail.com&quot;</span><span class="nv">&gt;verdammelt@gmail.com&lt;/a&gt;</span><span class="err">”</span>
+</span><span class='line'>  <span class="ss">:version</span> <span class="err">“</span><span class="nv">0.0.0</span><span class="err">”</span>
+</span><span class='line'>  <span class="ss">:depends-on</span> <span class="p">(</span><span class="err">“</span><span class="nv">lisp-unit</span><span class="err">”</span><span class="p">)</span>
+</span><span class='line'>  <span class="ss">:components</span> <span class="p">((</span><span class="ss">:module</span> <span class="err">“</span><span class="nv">src</span><span class="err">”</span>
+</span><span class='line'>			<span class="ss">:serial</span> <span class="no">t</span>
+</span><span class='line'>			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="err">“</span><span class="nc">package</span><span class="err">”</span><span class="p">)</span>
+</span><span class='line'>				     <span class="p">(</span><span class="ss">:file</span> <span class="err">“</span><span class="nv">gol</span><span class="err">”</span><span class="p">))</span>
+</span><span class='line'>                <span class="p">(</span><span class="ss">:module</span> <span class="err">“</span><span class="nv">test</span><span class="err">”</span>
+</span><span class='line'>			<span class="ss">:serial</span> <span class="no">t</span>
+</span><span class='line'>            <span class="ss">:depends-on</span> <span class="p">(</span><span class="err">“</span><span class="nv">src</span><span class="err">”</span><span class="p">)</span>
+</span><span class='line'>			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="err">“</span><span class="nc">package</span><span class="err">”</span><span class="p">)</span>
+</span><span class='line'>				     <span class="p">(</span><span class="ss">:file</span> <span class="err">“</span><span class="nv">gol-test</span><span class="err">”</span><span class="p">))))</span>
+</span><span class='line'>  <span class="ss">:in-order-to</span> <span class="p">((</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">load-op</span> <span class="ss">:gol</span><span class="p">)))</span>
+</span><span class='line'>  <span class="ss">:perform</span> <span class="p">(</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">o</span> <span class="nv">c</span><span class="p">)</span>
+</span><span class='line'>		    <span class="p">(</span><span class="k">progv</span>
+</span><span class='line'>			<span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">intern</span> <span class="err">“</span><span class="nv">&lt;em&gt;PRINT-ERRORS&lt;/em&gt;</span><span class="err">”</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
+</span><span class='line'>			      <span class="p">(</span><span class="nb">intern</span> <span class="err">“</span><span class="nv">&lt;em&gt;PRINT-FAILURES&lt;/em&gt;</span><span class="err">”</span> <span class="ss">:lisp-unit</span><span class="p">))</span>
+</span><span class='line'>			<span class="err">‘</span><span class="p">(</span><span class="no">t</span> <span class="no">t</span><span class="p">)</span>
+</span><span class='line'>		      <span class="p">(</span><span class="nb">funcall</span> <span class="p">(</span><span class="nb">find-symbol</span> <span class="err">“</span><span class="nv">RUN-TESTS</span><span class="err">”</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
+</span><span class='line'>			       <span class="ss">:all</span> <span class="ss">:gol-test</span><span class="p">))))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2 id="my-god-its-full-of-yaks">My God… it’s full of yaks</h2>
+
+<p>I’m just going to let that sink in for a bit while I get some coffee.</p>
+
+<p>Ok, now that I’m back I will explain each part. The first interesting bit is
+on line 6:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>depends-on </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'>  <span class="ss">:depends-on</span> <span class="p">(</span><span class="err">“</span><span class="nv">lisp-unit</span><span class="err">”</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This line tells ASDF that it should find and load a system called <code>lisp-unit</code>
+because our system depends upon it. This is where QuickLisp makes things
+simple since that is its job and it does a fine one at that.</p>
+
+<p>Next is the definition of our components:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Defining the Components </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'>  <span class="ss">:components</span> <span class="p">((</span><span class="ss">:module</span> <span class="err">“</span><span class="nv">src</span><span class="err">”</span>
+</span><span class='line'>			<span class="ss">:serial</span> <span class="no">t</span>
+</span><span class='line'>			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="err">“</span><span class="nc">package</span><span class="err">”</span><span class="p">)</span>
+</span><span class='line'>				     <span class="p">(</span><span class="ss">:file</span> <span class="err">“</span><span class="nv">gol</span><span class="err">”</span><span class="p">))</span>
+</span><span class='line'>                <span class="p">(</span><span class="ss">:module</span> <span class="err">“</span><span class="nv">test</span><span class="err">”</span>
+</span><span class='line'>			<span class="ss">:serial</span> <span class="no">t</span>
+</span><span class='line'>            <span class="ss">:depends-on</span> <span class="p">(</span><span class="err">“</span><span class="nv">src</span><span class="err">”</span><span class="p">)</span>
+</span><span class='line'>			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="err">“</span><span class="nc">package</span><span class="err">”</span><span class="p">)</span>
+</span><span class='line'>				     <span class="p">(</span><span class="ss">:file</span> <span class="err">“</span><span class="nv">gol-test</span><span class="err">”</span><span class="p">))))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I’ve decided that my project should have two main directories, one to contain
+all the production source code and one for all the test source code. Each one
+will be in their own packages, with the <code>:gol-test</code> package <code>:use</code>-ing the
+<code>:gol</code> package. <code>:serial t</code> by the way tells ASDF that each item in the
+component list depends upon the one before it.</p>
+
+<p>Now the hairier parts which tell ASDF to run our tests:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Telling ASDF How to Test Our System </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='common-lisp'><span class='line'>  <span class="ss">:in-order-to</span> <span class="p">((</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">load-op</span> <span class="ss">:gol</span><span class="p">)))</span>
+</span><span class='line'>  <span class="ss">:perform</span> <span class="p">(</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">o</span> <span class="nv">c</span><span class="p">)</span>
+</span><span class='line'>		    <span class="p">(</span><span class="k">progv</span>
+</span><span class='line'>			<span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">intern</span> <span class="err">“</span><span class="nv">&lt;em&gt;PRINT-ERRORS&lt;/em&gt;</span><span class="err">”</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
+</span><span class='line'>			      <span class="p">(</span><span class="nb">intern</span> <span class="err">“</span><span class="nv">&lt;em&gt;PRINT-FAILURES&lt;/em&gt;</span><span class="err">”</span> <span class="ss">:lisp-unit</span><span class="p">))</span>
+</span><span class='line'>			<span class="err">‘</span><span class="p">(</span><span class="no">t</span> <span class="no">t</span><span class="p">)</span>
+</span><span class='line'>		      <span class="p">(</span><span class="nb">funcall</span> <span class="p">(</span><span class="nb">find-symbol</span> <span class="err">“</span><span class="nv">RUN-TESTS</span><span class="err">”</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
+</span><span class='line'>			       <span class="ss">:all</span> <span class="ss">:gol-test</span><span class="p">))))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The first line is simply stating that in order to do <code>test-op</code> ASDF needs to
+perform <code>load-op</code> on the <code>:gol</code> system. This way every time we run the tests
+we’ll reload the system if needed.</p>
+
+<p>Now… this next bit probably shows how rusty my Lisp is. Maybe there is an
+easier way. Basically we want to run <code>(lisp-unit:run-tests :all :gol-test)</code>
+with <code>lisp-unit:*print-errors*</code> and <code>lisp-unit:*print-failures*</code> both bound to
+<code>t</code> (they default to <code>nil</code> and that doesn’t give enough info IMNSHO). However
+when Lisp is reading and evaluating this code <code>lisp-unit</code> has probably not yet
+been loaded - so we have to be crafty and find the symbol by name in the
+package then <code>funcall</code> it. Binding the variables was trickier but I stumbled
+upon <code>progv</code><sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup> and that seems to be just what I needed.</p>
+
+<p><code>progv</code> creates new dynamic bindings for the symbols in the list which is its
+first argument. These symbols are determined at runtime. That means we can use
+<code>intern</code> to find or create these symbols in the right package<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup>. <code>progv</code>
+binds these symbols to the values in the list which is its second parameter
+and then finally executes the sexp which is its third argument in an
+environment which contains these new bindings.</p>
+
+<p>With this work done I can now type in <code>(asdf:test-system 'gol)</code> into my REPL
+and it loads and runs my tests and gives me useful output of those tests. I
+might go so far as to bind that to a very short function name, or even a key
+in Emacs.</p>
+
+<h2 id="there-are-still-more-yaks-to-shave">There are still more yaks to shave.</h2>
+
+<p>What is left to be determined is if this is the best way to do things.</p>
+
+<p>Some documentation/blogs I read lead me to believe that putting the tests in
+the same system with the production code is <em>verboten</em> (or at least a
+<em>no-no</em>). I tried having the tests be in their own system definition
+(depending upon the production code) but then ASDF &amp; QuickLisp both strongly
+pushed me to have that definition it its own <code>.asd</code> file<sup id="fnref:9"><a href="#fn:9" class="footnote">9</a></sup> which seemed
+awkward to me. I personally have no problem shipping tests with the production
+code, and I believe that if needed all the symbols of the test package could
+be <code>unintern</code>-ed before an image was saved if desired.</p>
+
+<p>I’ll play around with this setup and see how things go.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>http://www.common-lisp.net/project/slime/ <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>http://www.quicklisp.org/ <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>https://github.com/OdonataResearchLLC/lisp-unit <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>http://common-lisp.net/project/asdf/ <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>http://common-lisp.net/project/asdf/asdf/Predefined-operations-of-ASDF.html#test_002dop <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>Really? You don’t know what this is already and you had to look in the 
+footnotes? Go look it upon Wikipedia already! <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>http://www.lispworks.com/documentation/HyperSpec/Body/s_progv.htm#progv <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:8">
+      <p>Perhaps I should use <code>find-symbol</code> instead so that I don’t create
+symbols that the package doesn’t export. I will experiment with that. <a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:9">
+      <p>since they look up the defintion by looking for a file with the same
+name as the system <a href="#fnref:9" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[On Implementing a Lisp]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/08/13/on-implementing-a-lisp/"/>
+    <updated>2012-08-13T07:37:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/08/13/on-implementing-a-lisp</id>
+    <content type="html"><![CDATA[<h2 id="0-background">0. Background</h2>
+
+<p>About a year ago I read McCarthy’s paper <a href="http://www-formal.stanford.edu/jmc/recursive.pdf">“Recursive Functions of Symbolic
+Expressions and Their Computation by Machine</a> and I thought about
+implementing the Lisp described in it in Ruby (a language I was learning at
+the time). The project languished for quite some time until just recently when
+I went ahead and implemented the language specification laid out in that
+paper.</p>
+
+<p>The project is <a href="http://github.com/verdammelt/yarlisp">yarlisp</a>, it’s name means “Yet Another Ruby Lisp” given an
+assumption that I could not possibly be the first person to do this sort of
+thing, mixed with the idea that <a href="http://www.randomhacks.net/articles/2005/12/03/why-ruby-is-an-acceptable-lisp">“Ruby is an acceptable Lisp”</a> and
+even a bit of <a href="http://en.wikipedia.org/wiki/International_Talk_Like_a_Pirate_Day">“Talk Like a Pirate Day”</a>.</p>
+
+<p>My goal in this project is to try to minimize the amount I need to implement
+in my ‘assembly language’ (Ruby). There is an idea that Lisp needs to have
+only seven primitive operations implemented in its assembly language and
+everything else can be implemented in the Lisp itself. (Obviously this seven
+primitives thing really only implements the symbol processing parts - things
+like numbers, IO etc. really need to be implemented in the underlying
+language). I have not entirely succeeded in this so far - I was more
+interested in the beginning to implement the functionality; I think I can
+refactor to more purity.</p>
+
+<h2 id="1-current-state-of-the-project">1. Current state of the project</h2>
+
+<p>I have implemented <code>ATOM</code>, <code>EQ</code>, <code>CAR</code>, <code>CDR</code>, <code>CONS</code>, <code>COND</code>, <code>QUOTE</code> and
+<code>EVAL</code> all in Ruby. The features of Ruby I have used are subroutine
+definition, conditionals, boolean true/false, equality and raising exceptions
+(for undefined behavior).</p>
+
+<p>The implementation of <code>EVAL</code> required some more helper functions due to their
+recursive definitions, these too are written with Ruby as I had not yet found
+a way to implement subroutine definition - especially not recursive subroutine
+definition.</p>
+
+<p><code>ATOM</code>s are symbols (<em>e.g.</em> <code>:foo</code>); <code>CONS</code> cells are arrays of length two
+(<em>e.g.</em> <code>[:a, [:b, :NIL]</code>). Anything not an array is an <code>ATOM</code>. All public
+methods of the <code>Yarlisp</code> module are named in ALL CAPS; these are the Lisp
+primitives. Any helper methods are implemented as inner methods and are named
+in lowercase. If it is not in ALL CAPS it is not a method available in my Lisp
+language.</p>
+
+<p>Currently the only sexp syntax available is <code>CONS</code> cells; the <em>list
+shorthand</em> style of sexp is not yet available. This means I need to write
+lists like <code>[:a, [:b, :NIL]]</code> instead of <code>[:a, :b]</code>. This has become very
+annoying, very quickly.</p>
+
+<p>One oddity of my implementation is wherever I call a Lisp primitive I do it in
+an oddly Lisp looking way (odd to see in a Ruby file). For example, when the
+<code>CAR</code> of the expression passed to <code>EVAL</code> is <code>:CDR</code> it returns: <code>(EVAL (CAR
+args), env)</code>. While it makes the code look odd for Ruby - it brings out the
+<em>Lispyness</em> of it. I will continue with this as an aesthetic in the code I
+write in this project.</p>
+
+<p>Because of my choice of Ruby as my ‘assembly language’ I have not needed to
+implement memory allocation or garbage collection.</p>
+
+<h2 id="2-thoughts">2. Thoughts</h2>
+
+<p>I found this a fun little exercise and want to continue to do it. I think I
+will also implement Lisp in other languages. It turned out not to be very
+hard and was something that could be easily be broken up into pieces by the
+different primitives and clauses in <code>EVAL</code>.</p>
+
+<p>Now that I see all of <code>EVAL</code> implemented I think I can see a way to
+reimplement more of the language in Lisp itself by using the <code>LABEL</code> and
+<code>LAMBDA</code> Lisp functions. Also there are things like <code>:NIL</code> and true/false
+which I could implement by having <code>EVAL</code> append bindings to the environment it
+is passed. That way there will be default bindings for these things. Or
+perhaps I’ll just leave that for the caller of <code>EVAL</code> to do.</p>
+
+<p>I ran into an odd issue while finishing my implementation of <code>LABEL</code>. There
+was a feeling of double evaluation on the arguments the method I was defining.
+Since my goal at the time was to implement the spec as written I went along
+with it. However I believe there is an superfluous call to <code>EVAL</code> in the
+definition as given in the paper. I want to hunt that down and fix it.</p>
+
+<p>What I am struck with overall is the cleanliness and sparseness of it. The
+logic of simple, regular syntax, and the association list lead to no surprises
+during implementing. Each step made sense; although <code>LABEL</code> and <code>LAMBDA</code> took
+longer for me to understand - partly/mostly because the M-expr syntax used in
+the paper, along with the formatting of the paper, made that section of the
+specification harder to read. In reviewing my implementation I can see the
+specification very clearly in it; the definition of Lisp is very clear in its
+implementation.</p>
+
+<p>I hope to continue working on this project - and others like it. I’ll continue
+to write about my adventures with it.</p>
+
+<h2 id="3-next-steps">3. Next steps</h2>
+
+<p>The next phase of this project will include the following:</p>
+
+<ol>
+  <li>Adding the list style sexp shorthand - all these <code>CONS</code> cells are getting
+hard to write out.</li>
+  <li>Refactoring to higher purity of the language - implementing more of the
+language in itself - less in Ruby</li>
+  <li>Implementing a reader - which will need to be in Ruby. Although with the
+more comfortable sexp syntax this may not be so necessary.</li>
+  <li>I want to find a more Lisp way of handling the undefined cases - to remove
+the raising of exceptions from Ruby code. This is an extension of the
+purity issue above.</li>
+</ol>
+
+<p>The very next step for me to take is to implement a <em>real</em> example method in
+my Lisp. Even though I do not have numbers I may implement a Fibonacci or
+factorial method using <a href="http://en.wikipedia.org/wiki/Church_numerals">Church Numerals</a>. At the very least I
+will implment the <code>FF</code> method presented in the paper.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[quick thoughts about @david_a_black's presentation at @bostonrb 2012-07-10]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/07/10/quick-thoughts-about-at-david-a-blacks-presentation-at-at-bostonrb-2012-07-10/"/>
+    <updated>2012-07-10T21:35:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/07/10/quick-thoughts-about-at-david-a-blacks-presentation-at-at-bostonrb-2012-07-10</id>
+    <content type="html"><![CDATA[<h2 id="0-overview">0. Overview</h2>
+
+<p>David Black (<a href="http://www.twitter.com/david_a_black">@david_a_black</a>) presented his his “The
+Well-Grounded Nuby” presentation to the Boston Ruby Group
+(<a href="http://www.twitter.com/bostonrb">@bostonrb</a>) meetup on 2012-07-10. I was unfortunately
+unable to attend but I watched/listened in on their 
+<a href="http://www.youtube.com/watch?v=DVQxmayBWOs">live streaming</a>.</p>
+
+<p>He presented seven things about Ruby that every noobie should know. I guess I
+am still closer to noobie than expert but I found that his points where very
+good for ‘levels’ above noobie. His seven points were:</p>
+
+<ul>
+  <li>Everything evaluates to an object</li>
+  <li>Sending messages to objects</li>
+  <li>Objects resolve messages to methods</li>
+  <li>Classes and modules are objects</li>
+  <li>There is always a “self”</li>
+  <li>Variables contain references to objects</li>
+  <li>True and false are objects</li>
+</ul>
+
+<p>I thought his talk could be summarized (<em>flippantly</em>?) into two points:</p>
+
+<ol>
+  <li>Ruby is <a href="http://en.wikipedia.org/wiki/Turtles_all_the_way_down">objects the whole way down</a>.</li>
+  <li>Ruby is <a href="http://www.lispworks.com/documentation/common-lisp.html">Lisp</a>-y.</li>
+</ol>
+
+<h2 id="1-objects-the-whole-way-down">1. Objects the Whole Way Down</h2>
+
+<p>I had the thought that Ruby must be objects the whole way down; but I had not
+tested it out, nor thought about it much. I just hadn’t needed to worry about
+it in my small amount of Ruby work. But this presentation made me much more
+aware of this. I need to experiment with this more and become more familiar
+with this style. C#/Java (which I am more recently familiar with) just don’t
+have this feel.</p>
+
+<p>I do a lot of work day-to-day in <a href="http://groovy.codehaus.org/">Groovy</a> and some of the discussion
+here sounds familiar. While I <em>knew</em> Groovy was like Ruby, I think it might be
+more like Ruby than I had been thinking. I need to investigate.</p>
+
+<h2 id="2-lisp-y">2. Lisp-y</h2>
+
+<p>Perhaps it is because I’ve been reading <a href="http://letoverlambda.com/">Let over Lambda</a> but I
+immediately started thinking lispy thoughts during a few points.</p>
+
+<p>Specifically when he was saying that everything evaluates to an object and
+discussed how <code>case</code> is just as <code>if...elseif...else</code> using <code>===</code> I wondered
+how I might be able to write my own control flow. Does Ruby have
+<a href="http://www.gigamonkeys.com/book/macros-defining-your-own.html">macros</a>? I need to investigate.</p>
+
+<h2 id="3-the-mixture-of-the-two-and-beyond">3. The Mixture of the Two (and beyond)</h2>
+
+<p>His first point, “Everything evaluates to Object” and “<code>true</code> and <code>false</code> are
+Objects” made me think lispy thoughts. On the first point it was simply “duh”
+of course <em>everything</em> evaluates to <em>something</em>, and the second made me think
+of the difference between <a href="http://en.wikipedia.org/wiki/Scheme_(programming_language)">Scheme</a>/<a href="http://clojure.org/">Clojure</a> and 
+<a href="http://www.lispworks.com/documentation/common-lisp.html">Common Lisp</a> with respect to <code>t</code>/<code>nil</code> or <code>true</code>/<code>false</code>.</p>
+
+<p>Lisp has an object system - but it is built on top of an existing language
+with the features of the language itself. There is something about this
+presentation of Ruby that makes me start feeling that Ruby’s object system,
+while a much more integral part of the language is still defined in that
+language itself as <a href="http://en.wikipedia.org/wiki/Common_Lisp_Object_System">CLOS</a> is.</p>
+
+<p>His point about “There is always a <code>self</code>” made me think about my recent
+forays into <a href="http://en.wikipedia.org/wiki/JavaScript">Javascript</a> at work. These have revolved around me
+trying to understand what <code>this</code> was at different points in the code.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The talk was though-provoking in me; and thus, <em>IMNHO</em>, it was good. I have at
+least two different things to investigate.</p>
+
+<p>Overall his presentation made me realize there was plenty more in Ruby for me
+to learn, and that there was plenty more in Ruby that was, to me,  <em>worth</em>
+learning.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

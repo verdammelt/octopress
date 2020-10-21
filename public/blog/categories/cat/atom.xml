@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: cat | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/cat/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Gwendolyn Rampant]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/01/08/gwendolyn-rampant/"/>
+    <updated>2012-01-08T00:00:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/01/08/gwendolyn-rampant</id>
+    <content type="html"><![CDATA[<p><a href="http://www.flickr.com/photos/verdammelt/6662574265/" title="Gwendolyn Rampant by verdammelt, on Flickr"><img src="http://farm8.staticflickr.com/7032/6662574265_2afe36663c.jpg" width="282" height="500" alt="Gwendolyn Rampant" /></a></p>
+]]></content>
+  </entry>
+  
+</feed>

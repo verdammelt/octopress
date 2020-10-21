@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: gnus | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/gnus/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Gnus configuration (2.5 of N) - Spam Splitting]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2011/12/07/gnus-configuration-25-of-n-spam-splitting/"/>
+    <updated>2011-12-07T00:00:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2011/12/07/gnus-configuration-25-of-n-spam-splitting</id>
+    <content type="html"><![CDATA[<p>An addendum to follow up on how to fix an item that was giving me a
+problem before.</p>
+
+<p>In order to get ham &amp; spam moved and processed as such when you mark it
+you need to set up additional group parameters:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>'((&quot;nnfolder.*&quot;
+ (spam-contents gnus-group-spam-classification-ham)
+ (spam-process (ham spam-use-bogofilter)
+           (spam spam-use-bogofilter))
+ (spam-process-destination &quot;nnfolder:spam.spam&quot;))
+(&quot;spam.spam&quot;
+ (spam-contents gnus-group-spam-classification-spam)
+ (spam-process (spam spam-use-bogofilter)
+           (ham spam-use-bogofilter))
+ (ham-process-destination &quot;nnfolder:mail.misc&quot;))</pre></div>
+</div>
+
+<p>Specifically the <code>spam-process-destination</code> and
+<code>ham-process-destination</code> pair.  These cause the mail to be moved from
+the ham to spam groups and /visa versa/.</p>
+
+<p>One problem still remains &ndash; the bogofilter still doesn&rsquo;t seem to be
+doing anything.  I don&rsquo;t see any evidence that it is being called in the
+`<em>Messages</em> buffer either.</p>
+
+<p>So the score is:</p>
+
+<ol>
+<li>Bogofilter not being called when groups exited</li>
+<li>Wish I could get BBDB to work.</li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gnus configuration (2 of N) - Spam splitting]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2011/12/06/gnus-configuration-2-of-n-spam-splitting/"/>
+    <updated>2011-12-06T00:00:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2011/12/06/gnus-configuration-2-of-n-spam-splitting</id>
+    <content type="html"><![CDATA[<h2>Setting up Splitting</h2>
+
+<p>The next thing I felt I needed to set up was spam splitting.  I didn&rsquo;t
+want obvious spam being dumped into my inbox anymore.</p>
+
+<p>To set up spam splitting you need to be using <a href="http://www.gnu.org/s/emacs/manual/html_node/gnus/Fancy-Mail-Splitting.html#Fancy-Mail-Splitting">Fancy
+Splitting</a>.  Then you add <code>(: spam-split)</code> to you fancy split
+rules. At this point you have something like:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>(setq nnmail-split-methods 'nnmail-split-fancy
+         nnmail-split-fancy '(| (: spam-split)
+                                &quot;mail.misc&quot;))</pre></div>
+</div>
+
+<p>You also have to call <code>spam-initialize</code> to make it start working.</p>
+
+<p>/However/ one has to do a little more.  You have to specify which spam
+back ends you want to use.  Since my <a href="http://theworld.com/">ISP</a> runs
+<a href="http://spamassassin.apache.org/">SpamAssassin</a> I chose to use
+<code>spam-use-spamassassin-headers</code>.  Setting this to <code>t</code> makes the spam
+package check for the <code>X-Spam-Status: YES</code> header.  (There are plenty of
+choices so check out the <a href="http://www.gnu.org/s/emacs/manual/html_node/gnus/Spam-Back-Ends.html#Spam-Back-Ends">doc</a>)</p>
+
+<h2>What didn&rsquo;t work quite right</h2>
+
+<p>I also wanted to use <a href="http://bogofilter.sourceforge.net/">Bogofilter</a> so that my local machine
+could learn to identify stuff that my upstream Spamassassin did not.
+However I&rsquo;m not sure if that is working correctly.  My Bogofilter
+database file is still zero size.</p>
+
+<p>To get a spam back end to process spam and ham when you are done reading
+a group you need to add some group parameters.  So I set:</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>(setq gnus-parameters
+       '((&quot;nnfolder.*&quot;
+          (spam-contents gnus-group-spam-classification-ham)
+          (spam-process (ham spam-use-bogofilter)))
+         (&quot;spam.spam&quot;
+          (spam-contents gnus-group-spam-classification-spam)
+          (spam-process (spam spam-use-bogofilter)))
+        ...</pre></div>
+</div>
+
+<p>But like I said that doesn&rsquo;t appear to be working.  I&rsquo;m probably just
+missing something small that is mentioned in the documentation.</p>
+
+<h2>What seems to be broken</h2>
+
+<p>Before my nuke and pave (and upgrade to emacs v24) I was using
+<a href="http://bbdb.sourceforge.net/">BBDB</a> as a whitelist.  So if you were not in my BBDB then you
+went to spam.  However with v24 when I try to use BBDB I get an error
+saying that <code>bbdb-search</code> is undefined.  It /is/ defined in
+<code>bbdb-com.el</code> however so I am not sure what is wrong.  I&rsquo;m going to
+investigate a bit more and post a question on <code>gmane.emacs.gnus.general</code>
+and <code>gmane.emacs.gnus.user</code> (maybe also <code>gmane.emacs.bbdb.user</code>).</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[There comes a time in every Emacs-user's life when...]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2011/12/02/there-comes-a-time-in-every-emacs-users-life/"/>
+    <updated>2011-12-02T00:00:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2011/12/02/there-comes-a-time-in-every-emacs-users-life</id>
+    <content type="html"><![CDATA[<p>&hellip;you just need to nuke-and-pave your configuration.</p>
+
+<p>That time has come for me &ndash; especially with respect to my <a href="http://gnus.org">GNUS</a>
+configuration. I&rsquo;ve been using GNUS to read <a href="http://en.wikipedia.org/wiki/Usenet">news</a> since
+probably 1990 or earlier, before then I remember using <a href="http://en.wikipedia.org/wiki/Rn_(newsreader)">rn</a>.</p>
+
+<p>As for <a href="http://en.wikipedia.org/wiki/Email">email</a> I&rsquo;ve used <a href="http://www.emacswiki.org/emacs/Rmail">RMAIL</a> and <a href="http://www.emacswiki.org/emacs/CategoryViewMail">VM</a>.  I don&rsquo;t
+remember exactly when I switched GNUS but it has been probably at least
+5 years.</p>
+
+<p>Over that time my <a href="http://www.gnus.org/manual/gnus_11.html#SEC11">gnus init file</a> has grown pretty hairy.
+It is time for a shave.</p>
+
+<p>Over the last week I&rsquo;ve switched to a pretest release of Emacs v24 and
+during that time I cleaned out a lot of configuration &ndash; but feared to clean out
+much of my gnus configuration.  However in trying to get the spam checking
+working better I realized that a nuke-and-pave is probably the best
+thing to do now.</p>
+
+<p>So I am about to remove nearly ALL of my gnus configuration.  Pray for me.</p>
+
+<p>p.s. I&rsquo;ll try to blog about my luck or lack-there-of.  And also any
+interesting bits I discover along the way.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GNUS configuration note 1 (of N)]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2011/12/02/gnus-configuration-note-1-of-n/"/>
+    <updated>2011-12-02T00:00:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2011/12/02/gnus-configuration-note-1-of-n</id>
+    <content type="html"><![CDATA[<p>So far I have flailed around moving my email to a different structure.
+I have been using <code>nnmail-use-long-file-names</code> set to <code>t</code> up until now.
+But I decided to try it out with the default value of <code>nil</code>.</p>
+
+<p>I had several problems this evening</p>
+
+<ul>
+<li><p>Sent mail was going to <code>nnfolder+nnfolder</code> instead of
+<code>nnfolder+archive</code> as advertised.  I think that this may have been
+caused by old settings in my <code>.newsrc.eld</code>.  After mucking about in
+there I started getting my sent mail in the right place.</p></li>
+<li><p>Not sure how it happened but the system acted as if
+<code>nnfolder-directory</code> was set to <code>~/News/nnfolder</code> but then suddenly
+switched to <code>~/Mail/</code>.  I got that all sorted out (now set to
+<code>~/News/mail</code>) but it took some time and my brain didn&rsquo;t figure out
+how it was working for while.  The important part here is if you move
+a mail file you must also move/edit the <code>active</code> file to list that
+mail group.</p></li>
+</ul>
+
+<p>Some of the problems may have been caused by a rather cavalier attitude
+to the task.  If I had sat down to do it more carefully and slowly it
+could have gone more smoothly.</p>
+
+<p>No mail was lost so I am happy. But the system as it is currently
+configured is definitely not the way I want to keep it.  Things to do
+next:</p>
+
+<ul>
+<li>spam handling</li>
+<li>expiry for archving (which I conflate that with sent mail processing)</li>
+<li>splitting (but less splitting than I was doing previously)</li>
+</ul>
+
+<p>But now&hellip; time for sleep.</p>
+]]></content>
+  </entry>
+  
+</feed>

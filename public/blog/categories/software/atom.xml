@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: software | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/software/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Software Life Span]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2015/12/28/software-life-span/"/>
+    <updated>2015-12-28T08:28:18-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2015/12/28/software-life-span</id>
+    <content type="html"><![CDATA[<p><small>(Cross posted to the <a href="http://www.cyrusinnovation.com/software-life-span/">Cyrus Innovation Blog</a>)</small></p>
+
+<blockquote>
+  <p>Software maintenance is an extremely important but highly neglected
+activity.</p>
+</blockquote>
+
+<p>…says Boehm<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> in the midst of a long paper about the current and
+possible future state of Software Engineering at the end of 1976. I
+think this statement is just as true today as it was almost 40 years
+ago when Boehm wrote it.</p>
+
+<p>Boehm defines Software Maintenance as “the process of modifying
+existing operational software while leaving its primary functions
+intact.” (which sounds a lot like what we now call Refactoring). He
+states the Maintenance has three main ‘functions’ which imply certain
+needs:</p>
+
+<blockquote>
+  <ul>
+    <li>Understanding the existing software: This implies the need
+for…well-structured and well-formatted code</li>
+    <li>Modifying the existing software: This implies the need for software,
+…, and data structures which are easy to expand and which minimize
+side effects of changes…</li>
+    <li>Revalidating the modified software: This implies the need for
+software structures which facilitate selective retest, and aids for
+making retest more thorough and efficient.</li>
+  </ul>
+</blockquote>
+
+<p>We have the tools today to do these things. They are things like
+modular design, the SOLID principles, and TDD. We have learned ways
+to write well-structured code which minimize side effects of changes
+and which facilitate retest. We’ve written languages and libraries
+which help us do these things.</p>
+
+<p>But yet maintenance is still a problem.</p>
+
+<p>Perhaps we as an industry are focusing only on the “cool” stuff. Or
+believe/hope that “someone else” will maintain it. Or focusing on
+immediate customer need and not considering long term needs. The
+customer themselves may not consider the long term costs.</p>
+
+<p>As professionals we need to consider the life-span of the code we are
+writing, and write it accordingly. If a civil engineer is asked to build
+a bridge that need only last for a single crossing it will be quite
+different than if the bridge needed to last for decades (or longer).
+We need to think in same ways.</p>
+
+<p>Currently we often write software as if it only needs to work for
+today. No thought is given to tomorrow.</p>
+
+<p>We have the tools to write software that can live as long as it needs
+to. But we need to treat the life-span as a requirement.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Boehm, B. W. “Software Engineering” <em>Classics in Software
+Engineering.</em> Ed. Edward Nash Yourdon. New York: YOURDON
+Press, 1979. pp325-361. Print. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
+  
+</feed>

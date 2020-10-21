@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: domain | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/domain/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Thoughts about the Domain Model]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2014/04/29/thoughts-about-the-domain-model/"/>
+    <updated>2014-04-29T20:39:27-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2014/04/29/thoughts-about-the-domain-model</id>
+    <content type="html"><![CDATA[<p>The
+<a href="http://c2.com/ppr/checks.html">CHECKS Pattern Language paper</a>(Cunningham
+1994) has some good ideas about what they call “Information
+Integrity”, ensuring that inputs are parsed/validated/handled well.
+But I also found that it made some good statements about the domain
+model in general. I’m going to write about a few of these quotes here.</p>
+
+<blockquote>
+  <p>Your domain model must express the “logic” of the business in its
+richest and often illogical detail. Every clause of every
+statement should be motivated by some business fact of life.</p>
+</blockquote>
+
+<p>A program will always have an unfortunate amount of code in it, but an
+important chunk of it is the domain model. That part that <em>is</em> the
+reason for the application. Not the code that does the jQuery
+<a href="http://en.wiktionary.org/wiki/jiggery-pokery">jiggery-pokery</a>, not
+the <code>malloc</code>s and <code>free</code>s. When the business rules change this is
+where the change will be made. Keep it clean and uncluttered with
+non-domain details. If there are details in it which do not correspond
+to the domain logic then there will be confusion when talking about
+the domain with the experts. If the code doesn’t express the domain
+the way the domain experts talk about it, or it is incomplete, then
+there will be confusion again.</p>
+
+<blockquote>
+  <p>In your domain models you are chartered to express business logic
+with no more complexity than originally conceived or currently
+expressed.</p>
+</blockquote>
+
+<p>Domain logic can be complicated to begin with. It doesn’t help that
+you are not an expert in the domain of (<em>e.g</em>)
+<a href="http://holysmokesbatman.com/tracks/holy-priceless-collection-of-etruscan-snoods.html">Etruscan Snoods</a>,
+but you need to write a program to work with them. You talk with the
+experts and translate their expertise into a program. Don’t make it
+more complicated than it already is. Keep it simple and to the point
+so it is easy to talk about it with the domain experts. If it is not
+easy to discuss what it does with the domain experts then adding new
+features or finding/fixing problems with it will be more difficult.</p>
+
+<blockquote>
+  <p>A person reaches through a program’s interface to manipulate the
+domain model.</p>
+</blockquote>
+
+<p>This is an important thought - the user thinks and talks about the
+domain with a certain language, pattern and style; make sure your
+program talks their language. If the program’s interface doesn’t match
+the user’s language then the user will have trouble using it, or using
+it correctly. Data should be labeled with the right words, operations
+with the correct terms, and permissible inputs and output formats must
+match expected conventions.</p>
+
+<p>In closing the <a href="http://c2.com/ppr/checks.html">paper</a> discusses good
+patterns for dealing with inputs and the domain model, but I think
+that it is the above quotes really that really stand out as good
+things to think about.</p>
+]]></content>
+  </entry>
+  
+</feed>

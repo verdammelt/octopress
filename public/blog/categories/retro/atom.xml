@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: retro | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/retro/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Is your retro done?]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2015/11/05/is-your-retro-done/"/>
+    <updated>2015-11-05T16:36:31-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2015/11/05/is-your-retro-done</id>
+    <content type="html"><![CDATA[<p><small>(Cross posted to the <a href="http://www.cyrusinnovation.com/is-your-retro-done/">Cyrus Innovation Blog</a>)</small></p>
+
+<p>Retrospective meetings are an important part of any sort of “Agile”
+process. I have a rule about when a retrospective meeting is over.</p>
+
+<ol>
+  <li>Everyone that wants to talk has talked.</li>
+  <li>There is at least one action item.</li>
+  <li>There is at least one volunteer for each action item.</li>
+</ol>
+
+<p>A good retrospective meetings can help a team achieve what they need
+and want. Often, however, these meetings tend toward directionless
+discussion and complaining. While <em>sometimes</em> a ‘complaining’
+retrospective can be good and cathartic, these should not be the usual
+meeting.</p>
+
+<p>Recently a client’s retrospective meetings had fallen by the wayside.
+Even when they had them they were mostly at the complaining end of the
+spectrum. We had helped them get back into regular retrospectives,
+weekly actually, but they were still not very good.</p>
+
+<p>At the end of one retrospective the team member playing the
+facilitator role tried to wrap the long ramble up by asking <em>“Retro
+Complete?”</em>. I cut off the murmured agreements with another question:
+<em>“Do we have some action items?”</em>.</p>
+
+<p>A retrospective meeting should result in action items. These might be
+a new story/ticket/card, a task, a new process, or an experiment to
+try. Without these the meeting was just discussion.</p>
+
+<p>Also important is that the action items have volunteers. If no one
+wants to do or ‘champion’ an action item then find out why. Perhaps
+the action item just isn’t that important to the team; then drop it.
+Perhaps it is too big and amorphous; then break it down to a single
+next action. Or perhaps it is scary; if this is the case then
+this scariness is something for more discussion.</p>
+
+<p>In the end the team discussed what actions to take on the topics they
+had discussed and created a short list. They even had volunteer for at
+least one. Still not the most successful retrospective, but better
+than the last. Hopefully they’ll keep this habit and their retros will
+become even more effective.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

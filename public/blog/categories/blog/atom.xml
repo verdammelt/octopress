@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: blog | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/blog/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Old Blog Posts Migrated]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/04/12/old-blog-posts-migrated/"/>
+    <updated>2012-04-12T22:48:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/04/12/old-blog-posts-migrated</id>
+    <content type="html"><![CDATA[<p>Using <a href="https://gist.github.com/2143368">this</a> updated migrator for <a href="https://github.com/mojombo/Jekyll">Jekyll</a> I have managed to
+get all my old Posterous blog posts loaded into this Octopress blog.</p>
+
+<p>There is still a problem with some posts - the media they contained are not
+currently available.  I think it was the posts where I had emailed a picture
+to Posterous (which would then bounced to Flickr and Twitter).  But any post I
+composed as an email seems to be here.</p>
+
+<p>The time it takes to generate the site has really dropped off unfortunately.
+Hopefully it will not just get linearly worse…</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[\LaTeX blog posting - a test post.]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2011/11/30/slash-latex-blog-posting-a-test-post/"/>
+    <updated>2011-11-30T07:40:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2011/11/30/slash-latex-blog-posting-a-test-post</id>
+    <content type="html"><![CDATA[<p>I have had some annoying problems recently making <a href="http://posterous.com">posterous</a>
+blog posts via <a href="http://en.wikipedia.org/wiki/Email">email</a> using <a href="http://daringfireball.net/projects/markdown/">markdown</a>.</p>
+
+<p>These problems have made me feel foolish - like I can’t get something
+/simple/ right.  Or even more importantly, like I am incapable of simple
+copy editing.</p>
+
+<p>Thus I am writing this test blog post.</p>
+
+<p>However, not wanting to write a post saying:</p>
+
+<p>&gt; testing testing - please ignore</p>
+
+<p>Instead I will mumble something about <a href="http://www.latex-project.org/">LaTeX</a> and muse on how it would be
+sort of cool if I could write each post as a LaTeX document and then
+they’d look pretty gorgeous.  Not that I need lots of equations - but
+really LaTeX would do it so perfectly. <img src="http://www.mathworks.com/help/techdoc/creating_plots/latex_equations.png" alt="isn't it
+lovely" title="a lovely set of equations" /></p>
+
+<p>Perhaps my biggest problem is that I can’t easily get a nice preview.  I
+am editing this in <a href="http://www.gnu.org/s/emacs/">Emacs</a> using <a href="http://www.gnus.org/">Gnus</a>.  Really given that
+it is Emacs there may already be a solution to my problems - or I could
+do it myself.</p>
+
+<p>But getting back to LaTeX blogging.  What might that look like?  Perhaps
+each post would be a <a href="http://en.wikipedia.org/wiki/Pdf">PDF</a>?  Or maybe the LaTeX document would be
+rendered as <a href="http://en.wikipedia.org/wiki/Html">HTML</a>?  Perhaps this deserves a little more thinking.</p>
+
+<p>Time to send this off and see how screwed up it looks in <a href="http://verdammelt.posterous.com">my
+posterous</a>.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

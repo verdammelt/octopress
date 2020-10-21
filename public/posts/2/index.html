@@ -1,0 +1,1633 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Code And Cocktails</title>
+  <meta name="author" content="Mark Simpson">
+
+  
+  <meta name="description" content="Abstract Ensure that user.clj does not contain dependencies (even transitive)
+upon code that needs to be compiled. This file is loaded well before &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code-and-cocktails.heroku.com/posts/2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Code And Cocktails" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$', '$$'], ["\\[", "\\]"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+  
+  <script type="text/javascript">
+    if (window.location.hostname !== "octopress.dev") {
+      console.log("load gaq")
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30682469-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Code And Cocktails</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code-and-cocktails.heroku.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/assets/resume.pdf">R&eacute;sum&eacute;</a></li>
+  <li><a href="/publickey">Public Key</a></li>
+  <li><a href="http://www.flickr.com/photos/verdammelt/">My Photographs</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/03/19/clojure-project-reloaded-pattern-gotcha/">Clojure Project 'Reloaded' Pattern Gotcha</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2015/03/19/clojure-project-reloaded-pattern-gotcha/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2015/03/19/clojure-project-reloaded-pattern-gotcha/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="abstract">Abstract</h2>
+
+<p>Ensure that <code>user.clj</code> does not contain dependencies (even transitive)
+upon code that needs to be compiled. This file is loaded well before
+Leiningen is started enough to compile files.</p>
+
+<h2 id="problem-description">Problem Description</h2>
+
+<p>In my latest learning project with Clojure I decided to try Stuart
+Sierra’s Reloaded project pattern<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. I liked the idea of this
+project pattern because it promised to make the REPL driven
+development on a web application smoother. Things were going smoothly
+as I worked on simple dummy pages for my little application. However
+when I connected the data file parsing code with its custom exception
+to the application I started getting compilation and class not found
+errors related to the custom exception. The reason for this is a
+rather simple one - but was difficult for me to find information on or
+figure out.</p>
+
+<p>First an aside about custom exceptions. It seems that in the Clojure
+community that custom exceptions are avoided<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>. Either one of the
+built-in Java exceptions, <code>ex-info</code><sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> or Slingshot<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> is used
+instead. However it had been my favored approach to create a
+domain-specific exception for my application’s needed, so I stumbled
+forward and learned how to do it. It was relatively simple by using
+the <code>:gen-class</code> option of <code>ns</code> and the <code>:aot</code> feature of Leiningen.
+And it worked well… until I connected the code using the exception
+with the web application that was implemented in the reloaded pattern.</p>
+
+<p>A big part of the reloaded pattern is the use of functions in
+<code>user.clj</code> to start and stop the system. This file is loaded by
+Clojure whenever it is started<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> so it is perfect for functionality
+wanted in a REPL. This file is kept in a directory which is only
+included in the class path when the <code>dev</code> profile is used (the <code>repl</code>
+and <code>compile</code> tasks use the <code>dev</code> profile by default).</p>
+
+<p>Everything is fine until the code in <code>user.clj</code> depends upon (even
+transitively) code which must be compiled (such as custom exceptions).
+Then we hit a annoying chicken-and-egg problem<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup> wherein Leiningen
+when trying to compile (or launch the REPL) naturally starts Clojure,
+which in turn loads <code>user.clj</code> which in turn depends upon code that
+needs to be compiled. The error that is reported says that the
+compiled class cannot be found.</p>
+
+<h2 id="the-confusion">The Confusion</h2>
+
+<p>This error led me to first think that my custom exception was not
+written properly and thus wasn’t being compiled, then I thought it was
+a problem of the <code>:aot</code> feature in Leiningen and interaction with the
+<code>dev</code> profile. But the problem was more fundamental. It was just my
+sort of luck that kept me from finding the answer until I spent hours
+debugging and researching. Now it is easy to find several reports of
+this problem<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>. It is not a Leiningen problem, not a Clojure
+problem, not a reloaded pattern problem, but an annoyingly unfortunate
+interaction between them.</p>
+
+<h2 id="the-workaround">The Workaround</h2>
+
+<p>Luckily, once the problem was identified, there is a relatively easy
+workaround. I took the parts of <code>user.clj</code> which depended upon the
+custom exception and moved those to a new file <code>reloaded.clj</code> which is
+then loaded when the REPL starts by using the <code>:repl-options</code>
+configuration in <code>project.clj</code>. <code>:repl-options</code> as a <code>:init</code>
+configuration which can contain an expression which is evaluated when
+the REPL is starting. I set it to <code>(load "reloaded")</code>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>http://thinkrelevance.com/blog/2013/06/04/clojure-workflow-reloaded <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>http://tinyurl.com/o5kn5av <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>https://clojuredocs.org/clojure.core/ex-info <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>https://github.com/scgilardi/slingshot/blob/master/README.md <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>http://dev.solita.fi/2014/03/18/pimp-my-repl.html <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>https://en.wikipedia.org/wiki/Chicken_or_the_egg <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>https://github.com/technomancy/leiningen/issues/1245,
+  https://github.com/technomancy/leiningen/issues/1477,
+  https://github.com/technomancy/leiningen/issues/1764,
+  https://github.com/technomancy/leiningen/issues/1787 <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/18/mocking-class-constructor-in-python-with-mockito/">Mocking Class Constructor in Python With Mockito</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2015/01/18/mocking-class-constructor-in-python-with-mockito/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2015/01/18/mocking-class-constructor-in-python-with-mockito/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In the current code I’m working on we once and a while want to mock
+the constructor of a class. It is only really needed because we have a
+few classes who sadly do heavy-lifting in their constructors.</p>
+
+<p>The common wisdom on the team was “you can’t do that”, but it bugged
+me and I eventually googled the right things and found out how to do
+it. The moment I did it myself I realized that it was obvious. Let me
+explain.</p>
+
+<p>In [Python Mockito][https://code.google.com/p/mockito-python/] the
+standard form of stubbing is done with the <code>when</code> function, operating
+upon an object:</p>
+
+<pre><code class="language-python">when(obj).method(arg1, arg2).thenReturn(5)
+</code></pre>
+
+<p>This states that <code>when</code> <code>obj.method</code> is called with arguments <code>arg1</code>
+and <code>arg2</code> then return <code>5</code>. (There are other things to do besides
+<code>thenReturn</code> but for purposes of this discussion that is enough).</p>
+
+<p>What about if you want to mock a constructor? The naïve approach is to
+try:</p>
+
+<pre><code class="language-python">when(Klass).__init__(arg1, arg2).thenReturn(fakeKlassInstance)
+</code></pre>
+
+<p>But that doesn’t work. It will return an error equivalent to “NoneType
+does not have an attribute thenReturn”.</p>
+
+<p>Making it work is pretty simple. Let’s say that <code>Klass</code> is defined in
+a module called <code>klass</code>. Then we can do the following:</p>
+
+<pre><code class="language-python">import klass
+when(klass).Klass(arg1, arg2).thenReturn(fakeKlassInstance)
+</code></pre>
+
+<p>It works because a module is an object on which the classes are
+methods! It was so obvious when I saw it work. The clues were right in
+from of my face, calling the constructor of a class is as simple as
+using the class name <em>as if</em> it were a function. That’s because <em>it
+is</em>! I’d like to blame too many years of Java &amp; C# where “importing”
+is more about telling the linker where to find things than about
+creating objects that can be manipulated.</p>
+
+<p>So to sum up: a class is a method on a module which returns an
+instance of that class. When you import a module you are creating a
+variable of that name bound to an object which represents that module.</p>
+
+<hr />
+
+<p>Here is a test file which can be used to play with this idea. Note it
+uses the fact that the name of the current modules is bound to a
+variable called <code>__name__</code> and that <code>sys.modules</code> is a hash of all
+modules.</p>
+
+<pre><code class="language-python">import sys
+import mockito
+
+class Foo(object):
+    def __init__(self):
+        self.x = 5
+
+    def method(self):
+        return 10
+
+
+f = Foo()
+print f.method()
+mockito.when(f).method().thenReturn('blah')
+print f.method()
+
+# This will not work and throw an error.
+# print Foo()
+# mockito.when(Foo).__init__(mockito.any()).thenReturn('blah')
+# print Foo()
+
+print Foo()
+mockito.when(sys.modules[__name__]).Foo().thenReturn('blah')
+print Foo()
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/01/cocktail-pattern-language/">The Cocktail Pattern Language</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2014/11/01/cocktail-pattern-language/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2014/11/01/cocktail-pattern-language/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="abstract">Abstract</h2>
+
+<p>The idea of a “Pattern Language” is well known and well received in
+the Software community. Since the work of the Gang of Four<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> it has
+helped in the communication of solutions and the discovery of new ones
+Cocktails have a pattern language which is well recognized by
+professionals but not by consumers. In this post I hope to make the
+Cocktail Pattern Language visible and useful to cocktail consumers and
+amateur bartenders.</p>
+
+<h2 id="what-is-a-cocktail">What is a cocktail?</h2>
+
+<p>To begin with a “cocktail” is defined, classically, as the mixture of
+a “spirit”, sugar, water, bitters. This itself is less of a recipe for
+a specific drink as it is a pattern for all possible cocktails. While
+the modern concept of a cocktail has expanded from this origin it is
+still a good starting place for this discussion, and a fundamental
+example of cocktail patterns.</p>
+
+<h2 id="what-is-a-pattern">What is a pattern?</h2>
+
+<blockquote>
+  <p>The elements of this language are entities called patterns. Each
+pattern describes a problem that occurs over and over again in our
+environment, and then describes the core of the solution to that
+problem, in such a way that you can use this solution a million
+times over, without ever doing it the same way twice.
+– Christopher Alexander<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+</blockquote>
+
+<p>Basically by “pattern” I mean a name for a particular way of doing
+something, a solution to a problem. A pattern does not dictate the
+only way to do something but shows the “shape” of the solution. The
+specifics of the situation will always cause variations.</p>
+
+<h3 id="examples-of-patterns">Examples of Patterns</h3>
+
+<p>The easiest way to describe what cocktail patterns are is to give
+examples.</p>
+
+<h4 id="the-manhattan">The Manhattan:</h4>
+
+<p>The recipe for a Manhattan is 2 parts Rye (or Bourbon), 1 part Sweet
+Vermouth and Angostura bitters. The recipe contains a main spirit:
+Rye, bitters: Angostura, and sweet: Vermouth (which also adds more
+kick and bit more bitter).</p>
+
+<p>The simplest variant is The Rob Roy, replace the Rye with Scotch. Next
+simplest are the Dry and Perfect variants: Dry instead of Sweet
+Vermouth, or equal parts of two respectively.</p>
+
+<p>A more differing variant is The Toronto: 2 oz. Rye, .25 oz Fernet
+Branca, .25 tsp sugar, Angostura bitters. While on the surface it
+doesn’t sounds like the same drink it is if you break it down. The
+main spirit is still Rye. The bitter &amp; extra kick is added by the
+Fernet and Angostura while the sweet is provided directly by sugar.</p>
+
+<p>Thus the <em>pattern</em> of a Manhattan is a whiskey paired with bitters and
+sweet.</p>
+
+<h4 id="the-martini">The Martini</h4>
+
+<p>One cocktail which is (in)famous for its variants is the Martini. The
+<em>pattern</em> of a Martini is simply Gin (or Vodka) and Vermouth.
+Martinis can be Sweet, Perfect or Dry. The amount of vermouth can
+vary depending on the taste of the drinker. Different garnishes can be
+used, additional ingredients can be added as desired.</p>
+
+<p>One variant is The Bronx. It is a Perfect Gin Martini with the
+addition of Orange Juice: 6 parts Gin, 3 parts Sweet Vermouth, 2 part
+Dry Vermouth and 3 parts Orange Juice.</p>
+
+<p>Another variant is The Vesper Martini which is essentially a Dry Gin
+Martini: 3 oz. Gin, 1 oz Vodka, .5 oz Lillet Blanc<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>. It replaces
+the Vermouth with Lillet (similar to Vermouth in that it is a
+fortified wine with herbal ingredients).</p>
+
+<p>One last variant is The Martinez which is basically a Sweet Martini: 2
+oz Gin, .75 oz Sweet Vermouth, .25 oz Maraschino Liqueur and Angostura
+bitters. Here the Sweet Vermouth is augmented with Maraschino and a
+bit of bitters is added.</p>
+
+<h4 id="the-sour">The Sour</h4>
+
+<p>A final pattern I’ll mention is the sour. Drinks in this pattern are
+The Whiskey sour, the Gimlet, the Daiquiri. The pattern here is a
+spirit along with a good amount of citrus juice (Lime often) and some
+sugar.</p>
+
+<h2 id="why-it-is-useful">Why it is useful</h2>
+
+<blockquote>
+  <p>The usefulness of speaking of patterns is to have a common
+terminology for discussing the situations designers already see
+over and over.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
+</blockquote>
+
+<p>Patterns in cocktails can be very useful to the bartender because it
+helps them choose the next drink for the patron. The patron may, as I
+do, say “I like Manhattans” or “I’d like something like a Daiquiri”
+and the bartender can rattle off a series of variants upon that
+pattern, or even invent their own.</p>
+
+<p>Also the patterns overlap. For instance a Manhattan and a Sweet
+Martini have the same basic pattern: 2 spirit to 1 Sweet Vermouth. So
+a person who likes Manhattans may slide into Sweet Martinis and thus
+explore a whole new pattern of cocktails.</p>
+
+<p>Thus the patterns of cocktails, as in Architecture and Programming,
+allow one to have a language to talk about the problem and possible
+solutions to it and to find new areas of discovery.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Gamma, Helm, Johnson, and Vlissides. <em>Design Patterns.</em> Reading,
+  MA: Addison-Wesley, 1995. Print. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Alexander, Christopher. <em>Pattern Language.</em> New York: Oxford UP,</p>
+      <ol>
+        <li>Print.</li>
+      </ol>
+      <p><a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Due to recipe changes the current Lillet Blanc is sweeter and
+  less bitter than previous versions. A better ingredient would be
+  Cocchi Americano. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>“Cocktail.” Wikipedia. Wikimedia Foundation, 29 Oct. 2014. Web.
+  01 Nov. 2014. <a href="http://en.wikipedia.org/wiki/Cocktail">http://en.wikipedia.org/wiki/Cocktail</a>. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/03/estimating-bugs/">To Estimating Bugs or Not: The Definitive Answer</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2014/08/03/estimating-bugs/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2014/08/03/estimating-bugs/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I was recently re-reading the XP books and in <em>Extreme Programming
+Installed</em><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> I came upon a section where the authors say that bugs
+should be estimated and planned into iterations like other stories.
+I disagreed with that idea, thinking about how ‘<em>opinion had changed</em>’
+on that topic since the book was written and that ‘<em>that’s not how I
+was taught to do it</em>’.</p>
+
+<p>Then I wondered <em>why</em> I thought that, just who had taught me that bugs
+should not be estimated. At first I assumed it was Jim Shore from <em>The
+Art of Agile</em><sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, but a quick look in the book<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> shows that he says
+<em>to</em> estimate bug stories. That led me to do some looking around the
+Internet<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> and discuss this issue with my colleagues at Cyrus
+Innovation<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>.</p>
+
+<p>I know believe I have the definitive answer to the question of whether
+or not to estimate bugs.</p>
+
+<p>(First a clarification: I am not talking about defects found during an
+iteration in, or caused by, stories being worked on during that
+iteration. That just means that story is not done. Don’t take credit
+for it and create a bug card. Just accept that the story is not done.)</p>
+
+<p>And now for that definitive answer:</p>
+
+<blockquote>
+  <p><em>It depends.</em></p>
+</blockquote>
+
+<p>Some teams might find it useful to give the Customer the ability to
+prioritize bugs along with other work. By estimating the bugs the
+Customer has all the data they need to make their trade-offs. That
+being said: estimating bugs can be very difficult since there is often
+more than the usual share of unknown unknowns; thus the estimate will
+be less reliable than normal.</p>
+
+<p>Some teams might find it useful to estimate bugs so that planning an
+iteration is easier. If a team knows it can do 14 points of work, then
+14 points of work can be taken off the top of the backlog, maybe they
+are all bugs, or some bugs or no bugs; doesn’t matter - it is 14
+points. If bugs are not estimated then maybe the team can do some bugs
+and how many more points? <em>shrug</em>.</p>
+
+<p>Some teams might find that estimating bugs allows the number of bugs
+to be hidden among the work being done. They want to make sure that
+bugs are always visible, so they do <em>not</em> estimate want to make sure
+that bugs always detract from their velocity. Estimating bugs makes
+them a bit more <em>normal</em> and thus less visible.</p>
+
+<p>So ultimately, as with any such question, the answer depends upon the
+needs and desires of the team. Do what works for you, and periodically
+question why and even try a different way.</p>
+
+<p>(Drink Pairing: I paired the writing of this post with a simple
+Daiquiri<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>.)</p>
+
+<hr />
+<p>and strain.</p>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>http://www.amazon.com/Extreme-Programming-Installed-Ron-Jeffries/dp/0201708426/ <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>http://www.jamesshore.com/Agile-Book/ <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>My copy contains the note: “To Mark - Here’s to sucking less! Jim Shore” <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>Specifically the World Wide Web section of the Internet. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>http://www.cyrusinnovation.com/ <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>1.5oz Rum, .75oz Lime Juice, .25oz Simple Syrup. Shake over ice <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/07/06/what-i-have-re-learned-from-sicp/">What I Have (Re)-learned From SICP</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2014/07/06/what-i-have-re-learned-from-sicp/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2014/07/06/what-i-have-re-learned-from-sicp/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After about two years of slowly working through Structure and
+Interpretation of Computer Programs (SICP)<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> I finally completed it.
+I didn’t do every exercise but I did many of them<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>.</p>
+
+<h2 id="the-history">The History</h2>
+
+<p>I first worked through SICP back in 1989 as part of my class at
+Worcester Polytechnic Institute (where I received my BSCS in 1992). It
+is a book that I remember with awe. I remember being, along with most
+of the class, mystified by this <em>dumb</em> language Scheme. It was so
+unlike anything we were used to. I was familiar with BASIC and Pascal
+and some very basic Bourne Shell scripting. Scheme was <em>alien</em>. Most
+of us thought it crazy. But then, somewhere about half-way through the
+class it clicked, suddenly I <em>got it</em>. Scheme, and Lisp by
+association, was amazing. The REPL development, the flexibility, the
+lack and regularity of syntax gave it great power. And then… then…
+we started on the chapter about the Meta-circular Evaluator<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>;
+writing an evaluator of Scheme in Scheme. It was so simple, so
+clear<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>.</p>
+
+<p>This was a Freshman class, and the rest of my time at WPI I played
+around with Lisp, sometimes doing assignments in it, playing with my
+Emacs initialization files, that sort of thing. Never got serious. And
+then I joined the work force in 1990 with a summer job doing C/Motif
+work at a startup. And then after college a C job connecting their
+Windows app to a particular printer for graphs, and then a C/Motif job
+on a news ticker for a stock market application. Oh and then I
+learned<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> object-oriented programming with C++… I forgot the
+lessons I learned in SICP.</p>
+
+<h2 id="the-return">The Return</h2>
+
+<p>I went back to SICP expecting to be <em>reminded</em> of a few things. What I
+found was that I was <em>taught</em> things I never remember being taught.
+Things which I so wish I had grokked at the time. Things which I
+obviously never understood and then forgot.</p>
+
+<p>A few of the things I learned way back when and then forgot were:</p>
+
+<ul>
+  <li>Judge a programming language by the means of abstraction and the
+means of composition.</li>
+  <li>The power/utility of REPL development.</li>
+  <li>Lazy streams to deal with infinities are not scary.</li>
+  <li>Functional Programming.</li>
+  <li>Object-Oriented Programming.</li>
+  <li>The Problem of State.</li>
+</ul>
+
+<h2 id="the-reaction">The Reaction</h2>
+
+<p>This is a <em>Freshman</em> level textbook, and all of this was taught as
+early as the mid-eighties. Looking back I feel like I was caught up in
+a great forgetting. There are things we (as Software Engineers<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>)
+<em>knew</em> and then forgot, or chose to forget/overlook.</p>
+
+<p>Now I see people going back to old papers/books and
+re-learning/discovering what we already knew but forgot/ignored. It is
+like a wider version of Greenspun’s tenth rule<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>. We had something
+and then had to put it aside because it didn’t work in our
+“<em>reality</em>”, but now we come back and “<em>discover</em>” it all over again.</p>
+
+<p><strong>OMG</strong> Garbage Collection<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup> <strong>OMG</strong> <em>interactive</em> language shells
+(aka REPL) <strong>OMG</strong> dynamic languages <strong>OMG</strong> functional programming
+<strong>OMG</strong> <em>OO</em> is about message passing.</p>
+
+<p>What happened, were we asleep?</p>
+
+<p>It would be one thing if we acted like these are in fact old ideas
+that are just now realizing are good/possible - but we act like they
+are <em>new</em>. Reality has caught up to where the 1960’s thought was
+possible<sup id="fnref:9"><a href="#fn:9" class="footnote">9</a></sup>.</p>
+
+<h2 id="the-back-to-the-future">The Back to the Future</h2>
+
+<p>One last thing I (re)learned: The fun of learning and working through
+problems. And that leads to what is yet to come.</p>
+
+<p>I’m going to start looking at the old texts of our practice. The
+ancients knew things that we have forgotten. I will see what I can
+learn from them. I will strive to avoid Argument from Antiquity
+however, that is always a danger with this sort of thing.</p>
+
+<p>I can only see so far because I stand upon the shoulders of Giants<sup id="fnref:10"><a href="#fn:10" class="footnote">10</a></sup>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>http://mitpress.mit.edu/sicp/ <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>https://github.com/verdammelt/sicp <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1 <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>It was in this class I created the joke idea of ‘God code’. The
+  stereotypical 3 line Lisp code, first line defines function,
+  second like is a null check, third line recurses. And <em>shit</em> got
+  done. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p><em>“</em>learned<em>”</em> <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>Software Engineer, Programmer, Coder, Hacker whatever you want
+  to call us/ourselves. <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>“Any sufficiently complicated C or FORTRAN program contains an
+  ad hoc, informally-specified, bug-ridden, slow implementation of
+  half of Common Lisp.” <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:8">
+      <p>http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-33.html#%_sec_5.3 <a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:9">
+      <p>http://www-formal.stanford.edu/jmc/recursive.pdf <a href="#fnref:9" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:10">
+      <p>with apologies to Newton. <a href="#fnref:10" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/29/thoughts-about-the-domain-model/">Thoughts About the Domain Model</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2014/04/29/thoughts-about-the-domain-model/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2014/04/29/thoughts-about-the-domain-model/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The
+<a href="http://c2.com/ppr/checks.html">CHECKS Pattern Language paper</a>(Cunningham
+1994) has some good ideas about what they call “Information
+Integrity”, ensuring that inputs are parsed/validated/handled well.
+But I also found that it made some good statements about the domain
+model in general. I’m going to write about a few of these quotes here.</p>
+
+<blockquote>
+  <p>Your domain model must express the “logic” of the business in its
+richest and often illogical detail. Every clause of every
+statement should be motivated by some business fact of life.</p>
+</blockquote>
+
+<p>A program will always have an unfortunate amount of code in it, but an
+important chunk of it is the domain model. That part that <em>is</em> the
+reason for the application. Not the code that does the jQuery
+<a href="http://en.wiktionary.org/wiki/jiggery-pokery">jiggery-pokery</a>, not
+the <code>malloc</code>s and <code>free</code>s. When the business rules change this is
+where the change will be made. Keep it clean and uncluttered with
+non-domain details. If there are details in it which do not correspond
+to the domain logic then there will be confusion when talking about
+the domain with the experts. If the code doesn’t express the domain
+the way the domain experts talk about it, or it is incomplete, then
+there will be confusion again.</p>
+
+<blockquote>
+  <p>In your domain models you are chartered to express business logic
+with no more complexity than originally conceived or currently
+expressed.</p>
+</blockquote>
+
+<p>Domain logic can be complicated to begin with. It doesn’t help that
+you are not an expert in the domain of (<em>e.g</em>)
+<a href="http://holysmokesbatman.com/tracks/holy-priceless-collection-of-etruscan-snoods.html">Etruscan Snoods</a>,
+but you need to write a program to work with them. You talk with the
+experts and translate their expertise into a program. Don’t make it
+more complicated than it already is. Keep it simple and to the point
+so it is easy to talk about it with the domain experts. If it is not
+easy to discuss what it does with the domain experts then adding new
+features or finding/fixing problems with it will be more difficult.</p>
+
+<blockquote>
+  <p>A person reaches through a program’s interface to manipulate the
+domain model.</p>
+</blockquote>
+
+<p>This is an important thought - the user thinks and talks about the
+domain with a certain language, pattern and style; make sure your
+program talks their language. If the program’s interface doesn’t match
+the user’s language then the user will have trouble using it, or using
+it correctly. Data should be labeled with the right words, operations
+with the correct terms, and permissible inputs and output formats must
+match expected conventions.</p>
+
+<p>In closing the <a href="http://c2.com/ppr/checks.html">paper</a> discusses good
+patterns for dealing with inputs and the domain model, but I think
+that it is the above quotes really that really stand out as good
+things to think about.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/13/serving-coffee-with-express/">Serving Coffee With Express</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2014/04/13/serving-coffee-with-express/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2014/04/13/serving-coffee-with-express/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A few weeks ago I was playing around with a new stack:
+Node-Express-Angular all in CoffeeScript<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. I found it quite easy to
+have the Express server compile my CoffeeScript files and then return
+the JavaScript to the browser. I then found myself last week in a
+position at work where I wanted a little test page to hang the Angular
+directives I was working on so I quickly used the same trick.</p>
+
+<p>I’m not saying this trick is bullet-proof, or even a necessarily good
+idea for production. But it seems like a good thing for testing and
+perhaps for getting a project off the ground with some prototyping. It
+also serves as a small example of how to write an Express
+Middleware<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>.</p>
+
+<p>With that caveat I will present you with the code and explanation of
+it<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td><td class="code"><pre><code class="coffeescript"><span class="line"><span class="nv">express = </span><span class="nx">require</span> <span class="s">&#39;express&#39;</span>
+</span><span class="line"><span class="nv">coffee = </span><span class="nx">require</span> <span class="s">&#39;coffee-script&#39;</span>
+</span><span class="line"><span class="nv">fs = </span><span class="nx">require</span> <span class="s">&#39;fs&#39;</span>
+</span><span class="line">
+</span><span class="line"><span class="nv">app = </span><span class="nx">express</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">app</span><span class="p">.</span><span class="nx">configure</span> <span class="nf">-&gt;</span>
+</span><span class="line">  <span class="nx">app</span><span class="p">.</span><span class="nx">set</span> <span class="s">&#39;port&#39;</span><span class="p">,</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">?</span> <span class="mi">3000</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="nx">express</span><span class="p">.</span><span class="nx">logger</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">app</span><span class="p">.</span><span class="nx">use</span> <span class="s">&#39;/client&#39;</span><span class="p">,</span> <span class="nf">(request, response, next) -&gt;</span>
+</span><span class="line">  <span class="nv">coffeeFile = </span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span> <span class="nx">__dirname</span><span class="p">,</span> <span class="s">&quot;../client&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">path</span>
+</span><span class="line">  <span class="nv">file = </span><span class="nx">fs</span><span class="p">.</span><span class="nx">read</span> <span class="nx">coffeeFile</span><span class="p">,</span> <span class="s">&quot;utf-8&quot;</span><span class="p">,</span> <span class="nf">(err, data) -&gt;</span>
+</span><span class="line">    <span class="k">return</span> <span class="nx">next</span><span class="p">()</span> <span class="k">if</span> <span class="nx">err</span><span class="o">?</span>
+</span><span class="line">    <span class="nx">response</span>
+</span><span class="line">      <span class="p">.</span><span class="nx">contentType</span><span class="p">(</span><span class="s">&#39;text/javascript&#39;</span><span class="p">)</span>
+</span><span class="line">      <span class="p">.</span><span class="nx">send</span> <span class="nx">coffee</span><span class="p">.</span><span class="nx">compile</span> <span class="nx">data</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span> <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;port&#39;</span><span class="p">),</span> <span class="nf">-&gt;</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&#39;listening on port %d&#39;</span><span class="p">,</span> <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s">&#39;port&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The part that concerns us are lines 12-18. This section is telling
+Express that if a request comes in with a path starting with <code>/client</code>
+that we will want to do some special processing on it.</p>
+
+<ul>
+  <li>
+    <p>Line 13 determines the path to the CoffeeScript file (which is in
+the <code>../client</code> directory relative to our current directory).  Of note
+here is that <code>request.path</code> does not contain the <code>/client</code> part of the
+path and <code>__dirname</code> is the directory of the currently executing file.</p>
+  </li>
+  <li>
+    <p>Line 14 sets up the reading of this CoffeeScript file. It is
+important to specify the encoding otherwise the Coffeescript compile
+will throw an error.</p>
+  </li>
+  <li>
+    <p>If there is an error reading the file (line 15), such as the file not
+existing, then we tell express to run whatever is the next rule
+(eventually if no other rules work Express will send a <code>404</code> for
+us).</p>
+  </li>
+  <li>
+    <p>If we can read the file then we use CoffeeScript to compile that file
+(line 18) and send that data back as the response (lines 16-18). (Of
+note here is that we set the content type to be <code>text/javascript</code>
+(line 17) to make sure that the browser does the right thing (it
+doesn’t appear necessary with Chrome at least, but probably best to do
+it.)).</p>
+  </li>
+</ul>
+
+<p>Congratulations, we’ve just written an Express Middleware!</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>It is my current opinion that CoffeeScript is better than
+  writing directly in JavaScript. It saves the developer from
+  making some very basic stupid mistakes with JavaScript and also
+  removes some of the syntatic noise. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="http://expressjs.com/4x/api.html#middleware"></a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>The toy app bootstrapping kit I mentioned at the top of this
+  post is in my
+  <a href="https://github.com/verdammelt/expressular-kit">expressular-kit</a>.
+  The code here is not a direct copy of the code there in
+  <code>app/server/app.coffee</code>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/20/one-way-to-do-things/">Only One Way of Doing Things...</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2014/01/20/one-way-to-do-things/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2014/01/20/one-way-to-do-things/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>When there is only one way of doing things, it is easier to<br />	 modify and reuse code. When code is reused, programs are easier<br />	 to change and most importantly, shrink. When a program shrinks<br />	 its construction and maintenance requires fewer people which<br />	 allows for more opportunities for reuse to be found. Consistency<br />	 leads to reuse, reuse leads to conciseness, conciseness leads to<br />	 understanding.</p><footer><strong>Programming as Experience: The Inspiration of Self (1995)</strong></footer></blockquote>
+
+<h2 id="resuse">Resuse</h2>
+
+<p>I like the meaning of ‘reuse’ in this quote. This is not the ‘reuse’
+promised by early OO proponents. They promised<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>: that one would be
+able to create objects which would be reused from one project to
+another. This is the reuse which means that code is reused <em>in</em> a
+project. This is the reuse which I believe to be attainable.</p>
+
+<p>It is like a inward-spiral: the more reuse of code the fewer ways to
+do a thing there will be which leads to only one way.</p>
+
+<p>The sentence about fewer people is a bit odd - but I feel it is does
+make sense. The fewer people on the team the more likey there will be
+only one way to do things which means there is by definition more
+reuse.</p>
+
+<h2 id="consistency">Consistency</h2>
+
+<p>Perhaps more important than reuse though is consistency. If code is
+consistent I have found it to be easier to reason about, because
+reasonable assumptions can be made when reading it. Being able to make
+reasonable assumptions, and have those borne out, is very important to
+me when reading code.</p>
+
+<h2 id="conciseness-and-understanding">Conciseness and Understanding</h2>
+
+<p>And it follows that with reuse and consistency one will get
+consiceness. But does that necessarily lead to underderstanding? That
+is something I <em>feel</em> is right, but I have seen some concise code
+which is hard to understand.</p>
+
+<hr />
+<p><em>References:</em></p>
+
+<ul>
+  <li>“Programming as Experience: The Inspiration of Self”, 1995, Smith,
+Randall B and Ungar, David</li>
+</ul>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Or perhaps that is not what they said, but what we heard. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving/">TDD in Common Lisp: Recursive Yak-shaving</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>While avoiding family this Christmas-day I started trying to figure out way
+for me to do TDD in Common Lisp (as one does…). That led to SLIME<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> and
+    QuickLisp<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> and lisp-unit<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> and asdf<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> (<em>&amp;c. &amp;c</em>).</p>
+
+<h2 id="its-yaks-the-whole-way-down">…it’s yaks the whole way down.</h2>
+
+<p>The hardest part for me was to find a simple way to load my code and run the
+tests. ASDF ships with <code>asdf:test-system</code> defined but it does nothing by
+default<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>. So I did some digging around and saw some other’s solutions and
+synthesized my version.</p>
+
+<p>Here is an example ASDF system definition for a Game of Life<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>
+implementation.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+</pre></td><td class="code"><pre><code class="common-lisp"><span class="line"><span class="p">(</span><span class="nv">asdf:defsystem</span> <span class="ss">#:gol</span>
+</span><span class="line">  <span class="ss">:description</span> <span class="s">&quot;Conways Game of Life in Lisp&quot;</span>
+</span><span class="line">  <span class="ss">:author</span> <span class="s">&quot;Mark Simpson &lt;verdammelt@gmail.com&gt;&quot;</span>
+</span><span class="line">  <span class="ss">:version</span> <span class="s">&quot;0.0.0&quot;</span>
+</span><span class="line">  <span class="ss">:depends-on</span> <span class="p">(</span><span class="s">&quot;lisp-unit&quot;</span><span class="p">)</span>
+</span><span class="line">  <span class="ss">:components</span> <span class="p">((</span><span class="ss">:module</span> <span class="s">&quot;src&quot;</span>
+</span><span class="line">			<span class="ss">:serial</span> <span class="no">t</span>
+</span><span class="line">			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="s">&quot;package&quot;</span><span class="p">)</span>
+</span><span class="line">				     <span class="p">(</span><span class="ss">:file</span> <span class="s">&quot;gol&quot;</span><span class="p">))</span>
+</span><span class="line">                <span class="p">(</span><span class="ss">:module</span> <span class="s">&quot;test&quot;</span>
+</span><span class="line">			<span class="ss">:serial</span> <span class="no">t</span>
+</span><span class="line">            <span class="ss">:depends-on</span> <span class="p">(</span><span class="s">&quot;src&quot;</span><span class="p">)</span>
+</span><span class="line">			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="s">&quot;package&quot;</span><span class="p">)</span>
+</span><span class="line">				     <span class="p">(</span><span class="ss">:file</span> <span class="s">&quot;gol-test&quot;</span><span class="p">))))</span>
+</span><span class="line">  <span class="ss">:in-order-to</span> <span class="p">((</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">load-op</span> <span class="ss">:gol</span><span class="p">)))</span>
+</span><span class="line">  <span class="ss">:perform</span> <span class="p">(</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">o</span> <span class="nv">c</span><span class="p">)</span>
+</span><span class="line">		    <span class="p">(</span><span class="k">progv</span>
+</span><span class="line">			<span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">intern</span> <span class="s">&quot;*PRINT-ERRORS*&quot;</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
+</span><span class="line">			      <span class="p">(</span><span class="nb">intern</span> <span class="s">&quot;*PRINT-FAILURES*&quot;</span> <span class="ss">:lisp-unit</span><span class="p">))</span>
+</span><span class="line">			<span class="o">&#39;</span><span class="p">(</span><span class="no">t</span> <span class="no">t</span><span class="p">)</span>
+</span><span class="line">		      <span class="p">(</span><span class="nb">funcall</span> <span class="p">(</span><span class="nb">find-symbol</span> <span class="s">&quot;RUN-TESTS&quot;</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
+</span><span class="line">			       <span class="ss">:all</span> <span class="ss">:gol-test</span><span class="p">))))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="my-god-its-full-of-yaks">My God… it’s full of yaks</h2>
+
+<p>I’m just going to let that sink in for a bit while I get some coffee.</p>
+
+<p>Ok, now that I’m back I will explain each part. The first interesting bit is
+on line 6:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>depends-on </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="common-lisp"><span class="line">  <span class="ss">:depends-on</span> <span class="p">(</span><span class="s">&quot;lisp-unit&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This line tells ASDF that it should find and load a system called <code>lisp-unit</code>
+because our system depends upon it. This is where QuickLisp makes things
+simple since that is its job and it does a fine one at that.</p>
+
+<p>Next is the definition of our components:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Defining the Components </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="common-lisp"><span class="line">  <span class="ss">:components</span> <span class="p">((</span><span class="ss">:module</span> <span class="s">&quot;src&quot;</span>
+</span><span class="line">			<span class="ss">:serial</span> <span class="no">t</span>
+</span><span class="line">			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="s">&quot;package&quot;</span><span class="p">)</span>
+</span><span class="line">				     <span class="p">(</span><span class="ss">:file</span> <span class="s">&quot;gol&quot;</span><span class="p">))</span>
+</span><span class="line">                <span class="p">(</span><span class="ss">:module</span> <span class="s">&quot;test&quot;</span>
+</span><span class="line">			<span class="ss">:serial</span> <span class="no">t</span>
+</span><span class="line">            <span class="ss">:depends-on</span> <span class="p">(</span><span class="s">&quot;src&quot;</span><span class="p">)</span>
+</span><span class="line">			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="s">&quot;package&quot;</span><span class="p">)</span>
+</span><span class="line">				     <span class="p">(</span><span class="ss">:file</span> <span class="s">&quot;gol-test&quot;</span><span class="p">))))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I’ve decided that my project should have two main directories, one to contain
+all the production source code and one for all the test source code. Each one
+will be in their own packages, with the <code>:gol-test</code> package <code>:use</code>-ing the
+<code>:gol</code> package. <code>:serial t</code> by the way tells ASDF that each item in the
+component list depends upon the one before it.</p>
+
+<p>Now the hairier parts which tell ASDF to run our tests:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Telling ASDF How to Test Our System </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="common-lisp"><span class="line">  <span class="ss">:in-order-to</span> <span class="p">((</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">load-op</span> <span class="ss">:gol</span><span class="p">)))</span>
+</span><span class="line">  <span class="ss">:perform</span> <span class="p">(</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">o</span> <span class="nv">c</span><span class="p">)</span>
+</span><span class="line">		    <span class="p">(</span><span class="k">progv</span>
+</span><span class="line">			<span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">intern</span> <span class="s">&quot;*PRINT-ERRORS*&quot;</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
+</span><span class="line">			      <span class="p">(</span><span class="nb">intern</span> <span class="s">&quot;*PRINT-FAILURES*&quot;</span> <span class="ss">:lisp-unit</span><span class="p">))</span>
+</span><span class="line">			<span class="o">&#39;</span><span class="p">(</span><span class="no">t</span> <span class="no">t</span><span class="p">)</span>
+</span><span class="line">		      <span class="p">(</span><span class="nb">funcall</span> <span class="p">(</span><span class="nb">find-symbol</span> <span class="s">&quot;RUN-TESTS&quot;</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
+</span><span class="line">			       <span class="ss">:all</span> <span class="ss">:gol-test</span><span class="p">))))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The first line is simply stating that in order to do <code>test-op</code> ASDF needs to
+perform <code>load-op</code> on the <code>:gol</code> system. This way every time we run the tests
+we’ll reload the system if needed.</p>
+
+<p>Now… this next bit probably shows how rusty my Lisp is. Maybe there is an
+easier way. Basically we want to run <code>(lisp-unit:run-tests :all :gol-test)</code>
+with <code>lisp-unit:*print-errors*</code> and <code>lisp-unit:*print-failures*</code> both bound to
+<code>t</code> (they default to <code>nil</code> and that doesn’t give enough info IMNSHO). However
+when Lisp is reading and evaluating this code <code>lisp-unit</code> has probably not yet
+been loaded - so we have to be crafty and find the symbol by name in the
+package then <code>funcall</code> it. Binding the variables was trickier but I stumbled
+upon <code>progv</code><sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup> and that seems to be just what I needed.</p>
+
+<p><code>progv</code> creates new dynamic bindings for the symbols in the list which is its
+first argument. These symbols are determined at runtime. That means we can use
+<code>intern</code> to find or create these symbols in the right package<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup>. <code>progv</code>
+binds these symbols to the values in the list which is its second parameter
+and then finally executes the sexp which is its third argument in an
+environment which contains these new bindings.</p>
+
+<p>With this work done I can now type in <code>(asdf:test-system 'gol)</code> into my REPL
+and it loads and runs my tests and gives me useful output of those tests. I
+might go so far as to bind that to a very short function name, or even a key
+in Emacs.</p>
+
+<h2 id="there-are-still-more-yaks-to-shave">There are still more yaks to shave.</h2>
+
+<p>What is left to be determined is if this is the best way to do things.</p>
+
+<p>Some documentation/blogs I read lead me to believe that putting the tests in
+the same system with the production code is <em>verboten</em> (or at least a
+<em>no-no</em>). I tried having the tests be in their own system definition
+(depending upon the production code) but then ASDF &amp; QuickLisp both strongly
+pushed me to have that definition it its own <code>.asd</code> file<sup id="fnref:9"><a href="#fn:9" class="footnote">9</a></sup> which seemed
+awkward to me. I personally have no problem shipping tests with the production
+code, and I believe that if needed all the symbols of the test package could
+be <code>unintern</code>-ed before an image was saved if desired.</p>
+
+<p>I’ll play around with this setup and see how things go.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>http://www.common-lisp.net/project/slime/ <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>http://www.quicklisp.org/ <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>https://github.com/OdonataResearchLLC/lisp-unit <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>http://common-lisp.net/project/asdf/ <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>http://common-lisp.net/project/asdf/asdf/Predefined-operations-of-ASDF.html#test_002dop <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>Really? You don’t know what this is already and you had to look in the 
+footnotes? Go look it upon Wikipedia already! <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>http://www.lispworks.com/documentation/HyperSpec/Body/s_progv.htm#progv <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:8">
+      <p>Perhaps I should use <code>find-symbol</code> instead so that I don’t create
+symbols that the package doesn’t export. I will experiment with that. <a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:9">
+      <p>since they look up the defintion by looking for a file with the same
+name as the system <a href="#fnref:9" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/11/25/on-reading-code/">On Reading Code</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2013/11/25/on-reading-code/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2013/11/25/on-reading-code/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="how-it-ought-to-be-done">(How It Ought To Be Done)</h2>
+
+<p>IMNSHO<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>.</p>
+
+<p>Being able to read source code<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> is very important. So how does
+one do it well?</p>
+
+<p>Just like reading any other material - first decide why is one reading it.
+Why is one reading the listing? Is one debugging a problem or trying to gain
+specific knowedge?; or reading to get general or pleasure? One takes different
+approaches depending upon the desired goal.</p>
+
+<p>The first step is to find an interesting spot to start.</p>
+
+<h3 id="for-debugging-or-to-gain-specific-knowledge">For Debugging (or to Gain Specific Knowledge)</h3>
+
+<p>Start by skimming of the code, <code>grep</code><sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> and <code>tags</code><sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> tables are useful for
+this. This will help one find the right, or at least likely entry point.
+There is a lot of <em>instinct</em><sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> involved in this step. One gets better at it
+the more one needs to do it<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>.</p>
+
+<h3 id="to-get-general-knowledge-or-for-pleasure">To Get General Knowledge (or for Pleasure)</h3>
+
+<p>Code is for reading<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup> so read it. Skim the code (<em>including</em> the tests<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup>).
+Look for something interesting, get the lay of the land, the shape of the
+code. Note the <em>Dramatis Personæ</em>. Perhaps the code seems to be about widgets
+and frobbing, oh and here’s something about twiddling that looks interesting.</p>
+
+<p>Pick one of these that is most intriguing (e.g. One wonders what happens when
+a widget is frobbed.) and use that as one’s entry point. This is a matter of
+personal taste/fetish<sup id="fnref:9"><a href="#fn:9" class="footnote">9</a></sup>.</p>
+
+<h3 id="now-that-one-has-ones-entry-point">Now that One has One’s Entry Point…</h3>
+
+<p>Now that one is staring in the face a chunk, hopefully a small chunk, of code;
+how does one read it?</p>
+
+<p><strong>Top Down</strong>. It is as simple as that<sup id="fnref:10"><a href="#fn:10" class="footnote">10</a></sup>.</p>
+
+<p>Read the first line of code, what does it say? Believe it. That can be risky -
+but at this point one must do it. What does the next line say, and so on.
+Follow function calls<sup id="fnref:11"><a href="#fn:11" class="footnote">11</a></sup> if they seem interesting. Skip over things that are
+not, or do not seem relevant.  If one’s interest is in frobbing ignore code
+about tweaking or twiddling.  Perhaps one makes a note that frobbing seems to
+involve tweaking or twiddling; but one must know about frobbing now so those
+are <strong>not relevant</strong>. This is also very tied to instinct.</p>
+
+<p>It is this point here which I think is most important. One must gain a sense
+of what is relevant when reading code. One cannot read every code path and
+think that will lead to understanding. That would be like reading the
+dictionary and assuming one knows the language. This is where I have seen
+programmers fail in their reading.</p>
+
+<p>This is a very good reason why naming is so important<sup id="fnref:12"><a href="#fn:12" class="footnote">12</a></sup>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>It has occurred to me that my style of reading code is not the same as
+some other’s. I have been told by a person I think highly of that they 
+feel my way is the/a right way. I have finally gotten around to writing it 
+up as a quick blog post. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Is it time for us to stop calling it ‘code’ given its implications of
+obfuscation? I think it is still appropriate as long as we remember that 
+the definition is not about obfuscation <em>per se</em> but about using a set of 
+symbols to mean other words/letters/symbols. This is, IMNSHO, exactly what 
+we are doing. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Or its ilk (<em>e.g.</em> <code>ack</code>) <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>New fangled IDEs keep the equivalent of tags tables. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>Gut feeling, hunch, guess work, randomness, luck <em>&amp;c.</em> <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>Especially when at the client site, trying to figure out why the trades
+are not going through. Take my word on it. <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>Most often code is for reading (and evaluating/compiling) by the
+computer; but also for oneself and one’s fellow humans. (Apologies for
+being speciest.) <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:8">
+      <p>Why do we keep referring to code <em>and</em> test? Tests <em>are</em> code. <a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:9">
+      <p><a href="https://www.google.com/search?q=cat+photobomb">Go ahead.</a> <a href="#fnref:9" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:10">
+      <p>Of course it is not that simple. <a href="#fnref:10" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:11">
+      <p>And other sorts of papered over <code>goto</code> statements. <a href="#fnref:11" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:12">
+      <p>Perhaps a post/rant for another day. <a href="#fnref:12" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/3">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+<img src="/images/me.jpg">
+<p>Hello, I'm Mark and I like cocktails and programming.  Sometimes at the same
+time.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/03/10/how-to-write-a-mix-task/">Writing Mix Tasks for Fun and Profit.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/05/24/learning-from-my-apprentice/">Learning From My Apprentice</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/25/quickie-less-columns-on-your-board/">Quickie: Less Columns on Your Board</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/02/28/the-craftsperson-and-their-tools/">The Craftsperson and Their Tools</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/10/gotcha-of-using-youtubeplayerfragment-at-viewpager-for-android/">Gotcha of Using YouTubePlayerFragment and ViewPager for Android</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/-boston-sc' style='font-size: 103.07692307692308%'>@boston_sc(4)</a> <a href='/blog/categories/ad-d' style='font-size: 102.3076923076923%'>AD&D(3)</a> <a href='/blog/categories/agile' style='font-size: 104.61538461538461%'>agile(6)</a> <a href='/blog/categories/alcohol' style='font-size: 100.76923076923077%'>alcohol(1)</a> <a href='/blog/categories/android' style='font-size: 100.76923076923077%'>android(1)</a> <a href='/blog/categories/bicycle' style='font-size: 104.61538461538461%'>bicycle(6)</a> <a href='/blog/categories/blog' style='font-size: 101.53846153846153%'>blog(2)</a> <a href='/blog/categories/bostonrb' style='font-size: 100.76923076923077%'>bostonrb(1)</a> <a href='/blog/categories/branch' style='font-size: 100.76923076923077%'>branch(1)</a> <a href='/blog/categories/bugs' style='font-size: 100.76923076923077%'>bugs(1)</a> <a href='/blog/categories/cat' style='font-size: 100.76923076923077%'>cat(1)</a> <a href='/blog/categories/century' style='font-size: 103.84615384615384%'>century(5)</a> <a href='/blog/categories/cleancode' style='font-size: 100.76923076923077%'>cleancode(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.76923076923077%'>Clojure(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.76923076923077%'>clojure(1)</a> <a href='/blog/categories/cocktail' style='font-size: 103.84615384615384%'>cocktail(5)</a> <a href='/blog/categories/cocktails' style='font-size: 100.76923076923077%'>cocktails(1)</a> <a href='/blog/categories/code' style='font-size: 103.84615384615384%'>code(5)</a> <a href='/blog/categories/codekata' style='font-size: 100.76923076923077%'>codekata(1)</a> <a href='/blog/categories/coderetreat' style='font-size: 101.53846153846153%'>coderetreat(2)</a> <a href='/blog/categories/coding' style='font-size: 100.76923076923077%'>coding(1)</a> <a href='/blog/categories/coffeescript' style='font-size: 100.76923076923077%'>coffeescript(1)</a> <a href='/blog/categories/comic' style='font-size: 100.76923076923077%'>comic(1)</a> <a href='/blog/categories/concert' style='font-size: 100.76923076923077%'>concert(1)</a> <a href='/blog/categories/craft' style='font-size: 100.76923076923077%'>craft(1)</a> <a href='/blog/categories/craftsmanship' style='font-size: 100.76923076923077%'>craftsmanship(1)</a> <a href='/blog/categories/cube' style='font-size: 100.76923076923077%'>cube(1)</a> <a href='/blog/categories/design' style='font-size: 106.15384615384616%'>design(8)</a> <a href='/blog/categories/desk' style='font-size: 100.76923076923077%'>desk(1)</a> <a href='/blog/categories/developer' style='font-size: 100.76923076923077%'>developer(1)</a> <a href='/blog/categories/domain' style='font-size: 100.76923076923077%'>domain(1)</a> <a href='/blog/categories/elixir' style='font-size: 100.76923076923077%'>elixir(1)</a> <a href='/blog/categories/emacs' style='font-size: 103.84615384615384%'>emacs(5)</a> <a href='/blog/categories/estimation' style='font-size: 100.76923076923077%'>estimation(1)</a> <a href='/blog/categories/express' style='font-size: 100.76923076923077%'>express(1)</a> <a href='/blog/categories/food' style='font-size: 101.53846153846153%'>food(2)</a> <a href='/blog/categories/gin' style='font-size: 100.76923076923077%'>gin(1)</a> <a href='/blog/categories/git' style='font-size: 100.76923076923077%'>git(1)</a> <a href='/blog/categories/gnus' style='font-size: 103.07692307692308%'>gnus(4)</a> <a href='/blog/categories/goos' style='font-size: 104.61538461538461%'>goos(6)</a> <a href='/blog/categories/goosreview' style='font-size: 104.61538461538461%'>goosreview(6)</a> <a href='/blog/categories/grapefruit' style='font-size: 100.76923076923077%'>grapefruit(1)</a> <a href='/blog/categories/gwendolyn' style='font-size: 100.76923076923077%'>gwendolyn(1)</a> <a href='/blog/categories/heroku' style='font-size: 100.76923076923077%'>heroku(1)</a> <a href='/blog/categories/jeckyll' style='font-size: 100.76923076923077%'>jeckyll(1)</a> <a href='/blog/categories/kraftwerk' style='font-size: 100.76923076923077%'>kraftwerk(1)</a> <a href='/blog/categories/latex' style='font-size: 102.3076923076923%'>LaTeX(3)</a> <a href='/blog/categories/learning' style='font-size: 101.53846153846153%'>learning(2)</a> <a href='/blog/categories/life' style='font-size: 100.76923076923077%'>life(1)</a> <a href='/blog/categories/lisp' style='font-size: 103.07692307692308%'>lisp(4)</a> <a href='/blog/categories/listening' style='font-size: 100.76923076923077%'>listening(1)</a> <a href='/blog/categories/maintenance' style='font-size: 100.76923076923077%'>maintenance(1)</a> <a href='/blog/categories/markdown' style='font-size: 100.76923076923077%'>markdown(1)</a> <a href='/blog/categories/meetup' style='font-size: 100.76923076923077%'>meetup(1)</a> <a href='/blog/categories/metrics' style='font-size: 100.76923076923077%'>metrics(1)</a> <a href='/blog/categories/midje' style='font-size: 100.76923076923077%'>midje(1)</a> <a href='/blog/categories/mistakes' style='font-size: 100.76923076923077%'>mistakes(1)</a> <a href='/blog/categories/mix' style='font-size: 100.76923076923077%'>mix(1)</a> <a href='/blog/categories/mockito' style='font-size: 100.76923076923077%'>mockito(1)</a> <a href='/blog/categories/moma' style='font-size: 100.76923076923077%'>moma(1)</a> <a href='/blog/categories/monad' style='font-size: 100.76923076923077%'>monad(1)</a> <a href='/blog/categories/naming' style='font-size: 100.76923076923077%'>naming(1)</a> <a href='/blog/categories/node' style='font-size: 100.76923076923077%'>node(1)</a> <a href='/blog/categories/objects' style='font-size: 100.76923076923077%'>objects(1)</a> <a href='/blog/categories/octopress' style='font-size: 102.3076923076923%'>octopress(3)</a> <a href='/blog/categories/office' style='font-size: 100.76923076923077%'>office(1)</a> <a href='/blog/categories/oo' style='font-size: 104.61538461538461%'>oo(6)</a> <a href='/blog/categories/opinion' style='font-size: 100.76923076923077%'>opinion(1)</a> <a href='/blog/categories/pairprogramming' style='font-size: 100.76923076923077%'>pairprogramming(1)</a> <a href='/blog/categories/patterns' style='font-size: 101.53846153846153%'>patterns(2)</a> <a href='/blog/categories/pdf' style='font-size: 100.76923076923077%'>pdf(1)</a> <a href='/blog/categories/personal' style='font-size: 103.07692307692308%'>personal(4)</a> <a href='/blog/categories/photos' style='font-size: 100.76923076923077%'>photos(1)</a> <a href='/blog/categories/picture' style='font-size: 101.53846153846153%'>picture(2)</a> <a href='/blog/categories/posterous' style='font-size: 101.53846153846153%'>posterous(2)</a> <a href='/blog/categories/presentation' style='font-size: 100.76923076923077%'>presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 103.07692307692308%'>programming(4)</a> <a href='/blog/categories/python' style='font-size: 100.76923076923077%'>python(1)</a> <a href='/blog/categories/quality' style='font-size: 100.76923076923077%'>quality(1)</a> <a href='/blog/categories/react' style='font-size: 100.76923076923077%'>react(1)</a> <a href='/blog/categories/reactnative' style='font-size: 100.76923076923077%'>reactnative(1)</a> <a href='/blog/categories/recipe' style='font-size: 102.3076923076923%'>recipe(3)</a> <a href='/blog/categories/refactoring' style='font-size: 100.76923076923077%'>refactoring(1)</a> <a href='/blog/categories/repl' style='font-size: 100.76923076923077%'>repl(1)</a> <a href='/blog/categories/retro' style='font-size: 100.76923076923077%'>retro(1)</a> <a href='/blog/categories/retrospective' style='font-size: 102.3076923076923%'>retrospective(3)</a> <a href='/blog/categories/ruby' style='font-size: 102.3076923076923%'>ruby(3)</a> <a href='/blog/categories/scna' style='font-size: 103.07692307692308%'>scna(4)</a> <a href='/blog/categories/scna2013' style='font-size: 100.76923076923077%'>scna2013(1)</a> <a href='/blog/categories/sicp' style='font-size: 100.76923076923077%'>sicp(1)</a> <a href='/blog/categories/sin' style='font-size: 100.76923076923077%'>sin(1)</a> <a href='/blog/categories/skill' style='font-size: 100.76923076923077%'>skill(1)</a> <a href='/blog/categories/slides' style='font-size: 100.76923076923077%'>slides(1)</a> <a href='/blog/categories/software' style='font-size: 100.76923076923077%'>software(1)</a> <a href='/blog/categories/softwarecraftsmanship' style='font-size: 103.84615384615384%'>softwarecraftsmanship(5)</a> <a href='/blog/categories/tdd' style='font-size: 110.0%'>tdd(13)</a> <a href='/blog/categories/tools' style='font-size: 100.76923076923077%'>tools(1)</a> <a href='/blog/categories/training' style='font-size: 100.76923076923077%'>training(1)</a> <a href='/blog/categories/vermouth' style='font-size: 100.76923076923077%'>vermouth(1)</a> <a href='/blog/categories/viking' style='font-size: 100.76923076923077%'>viking(1)</a> <a href='/blog/categories/work' style='font-size: 103.07692307692308%'>work(4)</a> <a href='/blog/categories/yakshaving' style='font-size: 100.76923076923077%'>yakshaving(1)</a> <a href='/blog/categories/yarlisp' style='font-size: 100.76923076923077%'>yarlisp(1)</a> </span>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/verdammelt">@verdammelt</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'verdammelt',
+            count: 5,
+            skip_forks: false,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/verdammelt" data-widget-id="485216270623596545">Tweets by @verdammelt</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:verdammelt">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "verdammelt"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2020 - Mark Simpson -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'codeandcocktails';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    if (window.location.hostname !== "octopress.dev") {
+      console.log("load gaq")
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30682469-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+
+
+
+
+</body>
+</html>

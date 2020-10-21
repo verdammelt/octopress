@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: listening | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/listening/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Having a conversation with your code]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/11/09/having-a-conversation-with-your-code/"/>
+    <updated>2012-11-09T10:03:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/11/09/having-a-conversation-with-your-code</id>
+    <content type="html"><![CDATA[<p>Just sat in on a talk by Cory Foy entitled “When Code Cries: Listening to What
+Your Code is Saying”.</p>
+
+<p>(Warning: there will be anthropomorphizing of source code in this post)</p>
+
+<p>One thing I wanted to pull out of it is the idea of <em>listening</em> to your code.
+Really listening. Like it was a person.</p>
+
+<p>I don’t think it is just listening to code - but a conversation with code. The
+programmer is talking about what they need, and the code is telling the
+programmer what it needs. It is a give and take like any conversation. If one
+side of the conversation tries to dominate, or ignores the other, the outcome
+will not be successful. Like any conversation the failure may not be immediate
+but later when misunderstandings between the parties of the conversation cause
+problems.</p>
+
+<p>Listening is not easy however. To really listen you have to:</p>
+
+<ul>
+  <li>Decide to listen</li>
+  <li>Listen for the whole message</li>
+  <li>Let go of your personal agenda</li>
+  <li>Be patient</li>
+  <li>Be curious</li>
+  <li>Test for understanding</li>
+</ul>
+
+<p>I personally have problems with listening patiently for the whole message.  I
+tend to jump in, trying to add things, perhaps of my own agenda, saying things
+starting with “So what you’re saying is…” instead of just waiting to find
+out what is being said. With code this comes out when I too quickly jump to
+refactorings or thinking that my coding task is done - because I’m not
+listening to the code.</p>
+
+<p>Having a conversation with code is not easy either. Mike Clement
+<a href="https://twitter.com/mdclement">@mdclement</a> likened it to talking with his 18
+month old child. They can’t talk - but they are trying to communicate. One
+needs to be patient in order to get the message.</p>
+
+<p>I am working on being a better listener, with people, but I can see that I
+need to work on those skills for my code as well.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: goosreview | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/goosreview/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[GOOS Review ch 14 &amp; 15]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/11/18/goos-review-ch-14-and-15/"/>
+    <updated>2012-11-18T19:13:00-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/11/18/goos-review-ch-14-and-15</id>
+    <content type="html"><![CDATA[<p>(Just a quick post about chapters 14 &amp; 15 of GOOS to get myself back into the
+swing of things after a while…)</p>
+
+<p>A few points hit me during these two chapters. Things which I <em>know</em> but which
+perhaps are not entirely second nature to me yet (even after all these years)</p>
+
+<ul>
+  <li>In chapter 14 new features were added with little fuss - the relatively
+clean design allowed for this.</li>
+  <li>Chapter 15 showed doing refactorings bit by bit - it kept tests red for a
+while but they got done. Just because it will take a while doesn’t mean not
+    to do it.</li>
+  <li>Chapter 15 also saw the developers thinking about how to continue down the
+path they were one was going to be pretty annoying/boring. They took this
+to mean that they were doing something wrong. They stopped and thought
+about it and found a better design which allowed their needed changes to be
+easier.</li>
+</ul>
+
+<p>These are three important things to internalize:</p>
+
+<ul>
+  <li>Good clean design leads to ease in implementing new features.</li>
+  <li>A refactoring might be hard - but that is not a reason not to do it.</li>
+  <li>If the change you need to do is hard / annoying - step back and figure out
+why (see the first point).</li>
+</ul>
+
+<p>These are all things I <em>know</em>; but in the heat of the moment will tend to
+forget. I need to really get them internalized; then I can <em>choose</em> to ignore
+them at certain circumstances, but then I’ll do it more explicitly and know
+the pros and cons.</p>
+
+<p>Also as a side note there were some good points where the OO design skills
+shone through. For example the addition of Java <code>enum</code> objects which quickly
+became feature-ful objects which caused cleaner code elsewhere (<code>Column</code> and
+<code>SniperState</code>)</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GOOS Review Chapter 13: Not done if the code is messy]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/07/26/goos-review-chapter-13-not-done-if-the-code-is-messy/"/>
+    <updated>2012-07-26T22:24:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/07/26/goos-review-chapter-13-not-done-if-the-code-is-messy</id>
+    <content type="html"><![CDATA[<p>(This post is long overdue… sorry about that).</p>
+
+<p>This chapter was not to long but had some points that were interesting to me.</p>
+
+<p>Firstly the thought that refactoring before and after a change should be about
+<em>clarifying</em> the code via its design. This should not be thought of as
+<em>cleaning</em> or <em>gold plating</em>.</p>
+
+<p>I found it interesting right when the Authors said that the job was not done
+because the code was ‘feeling messy’ my gut was telling me that the code was
+not too bad. This is something I’ve noticed. I think my gut is wrong and needs
+some new calibration.</p>
+
+<p>The last item I wanted to point out was the idea that you should defer
+refactoring decisions until you can see/feel what the problems are. But to do
+this you must know that you will take the time to refactor when you know that
+refactoring is right. If you don’t have confidence - you will refactor
+prematurely.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[goos review chapter 12]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/07/02/goos-review-chapter-12/"/>
+    <updated>2012-07-02T21:25:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/07/02/goos-review-chapter-12</id>
+    <content type="html"><![CDATA[<p>In this chapter we implement our first <em>real</em> acceptance test. It is an
+end-to-end test of a real user feature.</p>
+
+<p>I tend to run my tests repeatedly as I write them - so I hit a problem before
+the Authors revealed it. It was the <em>surprise</em> problem of the connection
+needing to be closed. I guess my running of tests often led me to find it
+earlier than others might - so I’ll take that as a win. It was annoying to
+hit it before the Author’s intended though - I thought I had a broken OpenFire
+installation.</p>
+
+<p>There were four things that stood out for me in this chapter:</p>
+
+<ol>
+  <li>
+    <p>Their note about using the same value in test code and production code
+(<em>e.g.</em> JOIN_MESSAGE_FORMAT) on p109.  This is a problem that I struggle
+with in my testing. Sometimes I feel that it is cheating - or not really
+testing anything. Other times I think it is the “Right Thing To Do(TM)”. I
+am glad/disappointed that they have conclusive word on if it is good/bad.</p>
+  </li>
+  <li>
+    <p>They start implementation of the new feature by first refactoring the
+existing code into one that will make the needed change easy. This is
+something I’d like to internalize but I haven’t yet. I usually start by
+implementing what I need (even if hard/ugly) and then refactoring until it
+is nice and clean. But this often leads to 
+<a href="http://bible.cc/matthew/13-42.htm">wailing and gnashing of teeth</a>. I also think, in retrospect that
+I have missed the target of the really nice design, which no longer can
+really see, but I <em>feel</em> is still out there.</p>
+  </li>
+  <li>
+    <p>There was a phrase on p113 which I think is a good feel for how I usually
+am thinking when I am implementing: “…our immediate concern is to get
+message translation to work, the rest can wait.” It is this focusing on the
+immediate problem and ‘faking-till-you-make-it’ that I do a lot. I like to
+commit often - so I am always working hard to get small bits working and
+committed instead of trying to do bigger chunks of work (although I can’t
+say I am always successful in this).</p>
+  </li>
+  <li>
+    <p>On p116 the Authors say that the expectation is the most important line of
+the test. However I find that it is hidden in the Java code needed to
+create it. Perhaps it is because I always look at a test in the ‘arrange,
+act, assert’ way; so I don’t expect to see an expectation in the ‘arrange’
+section but in the ‘assert’ section (as it would be with Spock, Mockito, or
+Moq for example). I wonder how else it could be made more visible?</p>
+  </li>
+  <li>
+    <p>Finally they point out the importance of writing the ‘first draft’ code and
+then refactoring it after the tests are working. I don’t think I could
+agree with this more strongly.</p>
+  </li>
+</ol>
+
+<p>On the whole a good chapter for the first real user-feature. I am still
+annoyed with plain old Java code. Maybe I’ll need to start re-implementing
+this in Ruby or at least Groovy sooner rather than later.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GOOS - The Walking Skeleton starts Walking]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/06/05/goos-the-walking-skeleton-starts-walking/"/>
+    <updated>2012-06-05T23:00:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/06/05/goos-the-walking-skeleton-starts-walking</id>
+    <content type="html"><![CDATA[<p>Just a quick post to ensure I keep this moving along.</p>
+
+<p>I have completed my review of Chapters 9-11 of GOOS.  These chapters cover the
+starting of this example project – the Auction Sniper.  There seemed to be
+mostly ordinary stuff here (perhaps it is ordinary to me now that I have
+worked in something like this style for a while…).</p>
+
+<p>After discussing what the scope of the project is and some of the 3rd party
+protocols we’ll be dealing with we create a to do list of the initial
+‘stories’.  This will be our backlog.</p>
+
+<p>We then start an Iteration Zero to get the Walking Skeleton up and running.
+I’ve seen Iteration Zeros which didn’t work - but I think the failure there
+was not keeping them tightly timeboxed like any other iteration. The Author’s
+recommendation is to keep them timeboxed - so I have no complaints there.</p>
+
+<p>One thing mentioned in this chapter as the first end-to-end test is created is
+“programming by wishful thinking”.  This is something that fits my style well
+and I think I keep learning that if I don’t do it; things don’t end up as
+nicely. Someday I’ll learn to trust the instinct and style.</p>
+
+<p>Finally in the final chapter of this little section we get the Walking
+Skeleton going. The code isn’t bad - there are some things I don’t find
+aesthetically pleasing - but I don’t want to refactor too much - because if I
+do it might be harder for me to follow along the future examples. Perhaps
+after a bit more code is written I’ll refactor on a branch.</p>
+
+<p>I think the major thing I’m learning is how happy I am not to be writing
+straight Java all the time.  I write in Groovy mostly at work and Ruby and
+Clojure at home. Straight Java is not horrible - but really there is so much
+typing - it could all be done with less typing.</p>
+
+<p>(Another reason to write this short post is to get rid of the mental block
+that is keeping me from just jumping into the next chapters!)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GOOS guide to Testing and Designing]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/05/19/goos-guide-to-testing-and-designing/"/>
+    <updated>2012-05-19T19:52:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/05/19/goos-guide-to-testing-and-designing</id>
+    <content type="html"><![CDATA[<p>(The second in a <a href="/blog/categories/goosreview">series</a> in which I reread
+Growing Object Oriented Systems and try to digest it better. Overall this
+section, Chapters 4-8, is filled with timely reminders to me about several
+things about good design.)</p>
+
+<h2 id="the-walking-skeleton">The Walking Skeleton</h2>
+
+<p>This is one of the points in this book which seem like such small items but I
+think have more importance than initial appears.  In fact I am surprised in my
+rereading that the authors advocate the end-to-end tests to be done on
+<em>deployed</em> systems - that is not something I’ve ever really tried and seems
+very daunting.</p>
+
+<p>The important things to remember here about the Walking Skeleton is that it is
+<em>not</em> about writing real functionality, but meant to flush out issues both
+technological and organizational. It will be definitely smaller than an MMF.
+It might take a surprising amount of time to write it nonetheless. This is
+because there will be a whole lot of learning happening. The same goes for the
+first few features. (Boy is this a timely reminder for me right now…)</p>
+
+<p>Unfortunately this slowness at the beginning of a project can seem like a bad
+thing - but it is really not. The beginning feels a bit rocky - but then it
+smooths out as deploy and integration issues have been resolved. In a ‘normal’
+project the beginning might be smooth but the deploy and integration problems
+will crop up and make the end rough.</p>
+
+<h2 id="how-to-write-a-test">How to Write a Test</h2>
+
+<p>The way they describe to write a test is something I try to do - but it bears
+repeating (this is valid for tests at any level):</p>
+
+<ol>
+  <li>Write the test you want to read (write helper code to make this possible).</li>
+  <li>Watch it fail - keep working on it until it fails for the right reason
+with a good error message).</li>
+  <li>Now write the production code to make it pass.</li>
+</ol>
+
+<p>By taking the time to do this you will ensure that the goal and intent of the
+part you are working on is clear. When done ensure it has a clear intention
+revealing name - this is how you will understand the system later.</p>
+
+<p>Start by writing an acceptance test for the feature. Write it in terms of the
+domain and the user. An acceptance test gives feedback on the external API of
+the system and upon major integration points both with external APIs and
+internal components. Since the acceptance test is likely to be failing until
+all parts of the code is written it will need to be separated from the main
+build.</p>
+
+<p>Once the acceptance test is well written then start moving down a level to the
+objects that the acceptance test uses and unit test their functionality into
+existence. This is the idea of testing from inputs to outputs.  Jumping to a
+lower level object too soon will lead that object to have an interface which
+does not reflect what it really needs to be. Only by building the objects
+after building their callers can you know what is really needed.</p>
+
+<p>The Authors have a bit of simple advice as to what to test first: they suggest
+going for a simple successful path, and they make a good point why. Tests
+provide feedback, if you focus your initial tests around error or edge cases
+then your design feedback will be about that instead of the normal work of the
+component you are writing.</p>
+
+<p>One final important point the authors make on how to write tests is: “If an
+area is hard to test don’t just ask <em>how can we test this?</em> but <em>why is it
+hard to test?</em>. If something is hard to test it could be the tests are trying
+to tell you something. This is one place I have trouble with - I seem to have
+too much tolerance for pain while coding - a tolerance I need to cure myself
+of.</p>
+
+<h2 id="how-to-design-code-and-how-tests-affect-that">How to Design Code (and How Tests Affect That)</h2>
+
+<p>Obviously writing tests before the code affects how the code is designed - the
+pressures to keep each object isolated are very powerful. The book contains a
+good set of design points which are not unique to the book and not new to me.
+There were a few specific points I thought good to note.</p>
+
+<p>When objects are composed together the interface for the composite object must
+be less complex than the union of the interfaces of the composed objects. This
+makes it a higher abstraction which hides some of the complexities. Higher
+abstractions allow us to manage complexity.</p>
+
+<p>Each object must be context independent <em>e.g.</em> everything it needs to do its
+job needs to be passed into in via the constructor or the specific method in
+question. Thus each object has external knowledge on a “need to know basis”.
+This leads to the ability to recompose objects to get different behavior.</p>
+
+<p>Create plenty of Value types. This combats Primitive Obsession and also
+creates attractors for functionality.</p>
+
+<p>Object peers (those objects which are communicated with directly) should be
+mocked out in tests. This causes coupling and interface problems to be
+evident.  Value types should not be mocked.  Neither should third party APIs
+be mocked since the feedback provided cannot be used since the API cannot be
+changed. Also mocking external APIs runs the danger of testing against
+behavior you believe the API has, but may not actually have. Third party APIs
+should be wrapped in a thin adapter layer which can be mocked in unit tests.</p>
+
+<h2 id="where-do-types-come-from">Where do Types Come From?</h2>
+
+<p>I rather like the Author’s descriptions of how types are ‘found’ when working
+in the code. The three ways are valid for both Value and Object types:</p>
+
+<ol>
+  <li>
+    <p>Breaking Out: When the code shows that an class is becoming too complex
+that is a sign that it is doing too much.  Some of the functionality
+could be split into helper types.</p>
+  </li>
+  <li>
+    <p>Budding Off: When there is a new domain object a new type should be
+created, even if is empty or contains only one piece of data.  The type
+will act as an attractor for further data and behavior.</p>
+  </li>
+  <li>
+    <p>Bundling Up: When a group of classes are always used together they can be
+bundled together.  Remember that composite objects should have a less
+complex interface than their composed parts.</p>
+  </li>
+</ol>
+
+<h2 id="a-final-note-about-mocking">A Final Note About Mocking</h2>
+
+<p>I find that now that I can mock concrete classes in Java that I do not use
+interfaces as heavily as I used to. The Authors specifically point out they
+use interfaces quite a bit - again because they are concerned with
+the communication between objects. I think this is one item I’ll keep an eye
+on as work through the examples. I have used interfaces in this way before but
+it seems lately I have not been doing so.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I agree with their design ideas. I already try to follow them. I am quite
+excited to work through the example with them (something I did not do when I
+read the book previously). I hope that by doing (and blogging about it) these
+good ideas will sink in more; becoming more normal for me.</p>
+
+<p>I also intend to blog more frequently on it instead of lumping large chunks
+together like I did here.</p>
+]]></content>
+  </entry>
+  
+</feed>

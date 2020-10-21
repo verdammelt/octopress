@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: work | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/work/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[A Year Without a Office Desk]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/04/08/a-year-without-a-office-desk/"/>
+    <updated>2012-04-08T20:09:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/04/08/a-year-without-a-office-desk</id>
+    <content type="html"><![CDATA[<p>(Well not quite true I don’t have a desk at all… but effectively I don’t
+have one).</p>
+
+<p>About a year ago I changed to a new job. In all previous jobs I’ve had I had a
+desk, in fact I had a office (sometimes shared) or at least a cube of my own.
+It was different at the new job; when I showed up on my first day at the new
+work there was a little bit of confusion about what cube I could be given and
+as a ‘temporary’ solution I was given a desk in the lab.</p>
+
+<p>Given the way we work on the team, I spent very little time at my desk. It
+became simply a place where I put my bag &amp; coat; a place for my coffee mug; a
+place for my notebook at the end of the day. I did use it to check my email
+first thing in the morning before everyone arrived (I’m an early person) - but
+other than that - unused. As the months went on I used it less and less
+everyday.</p>
+
+<p>Then in January the new DBA consultant started sitting at it with his laptop
+so he could be with the team; thus I was partially evicted from my ‘desk’. I
+still kept my inbox there - but now I didn’t even use the desk to read my
+email in the morning.</p>
+
+<p>At this same time there was a new coworker starting and with that a little
+angst about where they would sit (the cube situation was in fact no better;
+but actually worse). A cube was found for her; but I felt that by giving up my
+desk entirely I was making a personal statement about desks, cubes, offices.</p>
+
+<p>I do have regrets periodically when I need to do some personal matters; but we
+have a shared office nearby the lab and a few cubes that can be used in a
+pinch for private work/calls.</p>
+
+<p>In all - I have not really missed having a desk. I have found out that I don’t
+need much more than space for my inbox; maybe someday space for some filing.
+This conclusion is NOT what I would have expected from myself; I remember
+clearly wanting an office and bemoaning my fate of being in cubes. It seems I
+have accepted the team-room setting more than I had imagined I could have.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How I Learned Agile All Wrong and Still Ended Up Liking it.]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2011/04/13/how-i-learned-agile-all-wrong-and-still-ended-up-liking-it/"/>
+    <updated>2011-04-13T00:16:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2011/04/13/how-i-learned-agile-all-wrong-and-still-ended-up-liking-it</id>
+    <content type="html"><![CDATA[<h2 id="history">History</h2>
+
+<p>Up until several years ago I only knew one way to do a software project.
+The “usual” way: Requirements document; bunch of coding; deadlines which
+were basically impossible; throwing the app at QA; thrashing to “improve
+quality”; sending it to the customer and then “firefighting” to fix the
+fact that it didn’t meet the requirements.  Sure there were glimpse of
+other ways; small changes to the process etc.; but generally the same.</p>
+
+<p>Then I learned about “Agile”. (I fully intend those quotes). The company
+I worked for was bought by another larger company. That company seems to
+have had a team which “went Agile” from the bottom up and the company
+decided that it was going to be the “new way”. I was one of the
+“important people” who was on the new project which was going to be one
+of the flagship “Agile” projects.</p>
+
+<h2 id="what-i-was-taught">What I Was Taught</h2>
+
+<p>We got two(ish) days of consulting. We were taught story writing,
+planning poker, iterations, QA in-iteration, and some TDD examples (damn
+Bowling Game). The impression I <em>got</em> was that we’d be working in close
+teams, prioritizing every iteration (because requirements are always
+changing), working hard to produce only the code we need (and do it
+cleanly), release this frequently to get quick feedback. I also was
+“taught” the “don’t do design” idea.  I know several of my team members
+feel they heard the same.</p>
+
+<p>I thought this was <strong>AWESOME</strong>. I drank the Kool-Aid and then went back for
+a second cup.</p>
+
+<p>I worked to learn more and more. The company sent me to Agile2008, and I
+I took myself to Agile2009. I went to other conferences, I read books,
+blogs, I went to meetups and talked with people.</p>
+
+<h2 id="what-i-learned">What I Learned</h2>
+
+<p>I learned many things, sometimes the hard way, not all direct lessons.</p>
+
+<p>I learned that “going Agile” isn’t going to work unless people want to
+give it a try. Imposing “Agile” from above won’t work. The people
+involved need to want to at least try it. Most important of course is
+the by-in from management in and above the team.</p>
+
+<p>I learned, and am still learning, ways to help teach and learn from my
+coworkers. At first, being very gung-ho about it, I came off a bit too
+“you’re doing it wrong!” and that turned people off and probably burned
+a few bridges that could have been useful later.</p>
+
+<p>I learned that having QA in-iteration, or even better, “pairing” with QA
+on the tests (automated or manual) for a story is very powerful and can
+flush out issues (potential or realized) quickly.</p>
+
+<p>I learned that the “don’t design” idea doesn’t work. (I probably wasn’t
+intentionally taught that, but I really feel that it came out during our
+training. Perhaps an overemphasis on not getting attached to an up-front
+design and letting TDD take its course.)  I initially tried it, while my
+coworkers rejected it, and TDD, without trying it.  I think by trying -
+and not succeeding - at it I have become better at what amount of design
+is needed, and how TDD can lead to good designs (at least at the micro
+level).</p>
+
+<p>I learned that my ideas about OO design were not good. I was mostly
+just doing imperative programming in big bags of loosely related things
+I called <em>classes</em>.</p>
+
+<p>I learned that clean code is flexible and can be easy to understand and
+make changes to. I learned that I had a LOT more to learn about writing
+clean code.</p>
+
+<h2 id="what-i-like">What I Like</h2>
+
+<p>I love the idea of transparency. This was not taught. I learned it own
+my own and I feel it is one of the most important things about “Agile”
+and wonder why it is not presented more.  It can be scary, very scary,
+not to be able to hide behind the buffered schedule, or the layers of
+management, but in the end I think it is better to be open and up-front
+about everything going on in a project.  If there are problems it is
+best to get them out in the open earlier, so that they can be addressed
+earlier (when it is generally easier to address them).</p>
+
+<p>I like working incrementally. Working on small stories in time-boxed
+iterations help me to keep focused.  Each iteration I have to make sure
+that we have a (at least potentially) releasable product. I learned long
+ago that today’s new product is tomorrow’s maintenance product. So
+bringing out the maintenance problems by practicing the release every
+iteration brings out the maintenance problems sooner.</p>
+
+<p>I like working with in-iteration QA. Being able to work with these
+professionals closely helps me ensure my code does what it needs to do,
+does what it should, and most importantly doesn’t do anything else. It
+also gives me quick feedback.</p>
+
+<p>I like quick feedback, always have (but I had forgotten over
+time). Quick feedback helps me focus on what is needed and keep the aim
+true. If the aim is off we know faster and adjustments can be made. Also
+obviously easier to fix issues found sooner than later.</p>
+
+<p>I love TDD. Plain and simple. It took me a little while, but after being
+taught the TDD technique, I realized I knew it. I used to call that sort
+of programming “exploratory”. When I had a REPL, I coded by trying
+something out, testing, playing; then I’d save it and test the larger
+chunk. This would be repeated. Without a REPL I’d do it in a larger
+slower edit-compile-debug cycles.</p>
+
+<p>Finally, I like how what I have learned has moved me to much produce
+much cleaner code. I still have much to learn here. But the “stressors”
+of repeated frequent releases, evolving requirements, and TDD have
+pushed me to write, IMHO, much better code. It has also driven me to
+think outside the imperative and OO paradigms.</p>
+
+<h2 id="what-i-still-want-to-learn">What I Still Want to Learn</h2>
+
+<p>I do still need to learn much more about producing the best code I
+can. Also to keep in mind that the “best code” must also be the “right
+code” - it must provide the features needed.</p>
+
+<p>I still need to learn some “people” things. I need to learn how to
+better learn from, and teach people.</p>
+
+<p>And most importantly I have learned I need to learn much more.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Change your organization or change your organization]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2011/04/08/change-your-organization-or-change-your-organization/"/>
+    <updated>2011-04-08T22:42:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2011/04/08/change-your-organization-or-change-your-organization</id>
+    <content type="html"><![CDATA[<p>Several years ago I was pointed to Martin Fowler’s quote.
+For the next few years I tried the first half of the quote. It was hard 
+bit I didn’t really have much luck. Sometimes I felt like giving up; 
+quitting or worse - going with the flow. I sometimes wanted to let the 
+people and company do what it wanted and let the chips fall - at least I 
+would be able to say “I told you so”.</p>
+
+<p>Finally I decided to follow the second part of the quote; and that is 
+what I’ve done. In some ways it feels a little like quitting or giving 
+up. But trying to change the organization that doesn’t want to change is 
+very tiring.</p>
+
+<p>I hope that the new organization will be a better fit for me.</p>
+
+<p>Fit. I think that is the key. The company <em>was</em> a good fit for me, but not 
+any more. We no longer fit; and so since I cannot work to change them, 
+I’ll do the changing.</p>
+
+<p>Hope I’ll get over feeling like I’ve failed.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Change is Scary]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2011/04/04/change-is-scary/"/>
+    <updated>2011-04-04T22:30:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2011/04/04/change-is-scary</id>
+    <content type="html"><![CDATA[<p>Today I did something that was hard for me - something I haven’t done 
+for a decade - I quit my job and accepted another one. It hasn’t been a 
+decade because my current job was so great, as people who I have talked 
+with over the last couple years know, but because I was scared.
+Change is not easy for me - especially change which seems big to me - 
+like changing my job. I pay my mortgage with that paycheck after all, 
+thus I put a lot of importance upon it, probably too much.</p>
+
+<p>But now change is happening. My new position may not be my “dream job”, 
+I don’t even know what that might be frankly, but I think it has a good 
+chance of being a better job. I’ll be working with some great people 
+and I am sure I’ll learn a lot.</p>
+
+<p>I’ll be put in the position where people are going to expect I’ll know a 
+lot of things - and I’m simply not going to. I’m going to try to deal 
+with those situations, when they arise, without running away screaming.</p>
+
+<p>This change has been long overdue, but I am finally taking it.</p>
+
+<p>Here’s to change.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

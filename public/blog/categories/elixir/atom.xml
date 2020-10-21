@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: elixir | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/elixir/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Writing Mix tasks for fun and profit.]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2017/03/10/how-to-write-a-mix-task/"/>
+    <updated>2017-03-10T07:11:29-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2017/03/10/how-to-write-a-mix-task</id>
+    <content type="html"><![CDATA[<p>I’m beginning to learn a little Elixir &amp; Phoenix and I ran into a case
+where I wish I had a Mix task for something. Specifically I wanted to
+run <code>npm</code> scripts with mix so I’d only have one command to run instead
+of both <code>mix</code> and <code>npm</code> for my toy Phoenix project.</p>
+
+<p>Writing a Mix task is reasonably straightforward with only a few
+steps:</p>
+
+<ol>
+  <li>If you want to create a mix task called “echo” then create a module
+called <code>Mix.Tasks.Echo</code>. The task name seen in <code>mix help</code> is based
+upon the name of the module minus <code>Mix.Tasks</code>. (The module needs to
+be called <code>Mix.Tasks.Something</code> otherwise <code>mix</code> will not see it.)</li>
+  <li>Add <code>use Mix.Task</code> to this module.</li>
+  <li>Write a public method called <code>run</code>. It has the type signature:
+<code>run([binary]) :: any</code>. That means that it will get a list of
+strings (the command line arguments) and can return anything.</li>
+  <li>Add a <code>@shortdoc</code>. This will be used as the text in <code>mix
+help</code>. Without this your task will not appear in <code>mix help</code> but
+will still be usable.</li>
+  <li>Optionally add a <code>@moduledoc</code>. This will be used if you run <code>mix
+help YOURTASK</code></li>
+</ol>
+
+<p>You can put this module where ever you want in <code>lib</code> but typically you
+would put it into <code>lib/mix/tasks</code>.</p>
+
+<p>That’s it.</p>
+
+<p>An interesting thing I found was that step #2 was not actually needed.
+That behaviour defines <code>@shortdoc</code> so without it you cannot use
+<code>@shortdoc</code> to add the task to <code>mix help</code> output.</p>
+
+<p>Since I was creating a mix task for use in a build I needed to make
+sure that if the task was not successful that <code>mix</code> would return an
+error code so that the shell could see the error and fail a build. At
+first I assumed that the return value of the task was how that would
+be done; however I didn’t find much documentation about this. I
+experimented with some likely return values like <code>:error</code> or <code>{:error,
+"something"}</code> but that had no effect, it always returned a zero exit
+status to the shell. Ultimately I choose to raise an error when the
+task didn’t work and that definitely caused a non-zero exit status.</p>
+
+<p>If you want to see the end of result of this experimentation you can
+check out my <em>first ever hex package</em>:
+<a href="https://hex.pm/packages/mix_npm">mix-npm</a>. The source can be found
+in the GitHub repository:
+<a href="https://github.com/verdammelt/mix_npm">verdammelt/mix_npm</a>.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

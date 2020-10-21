@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: branch | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/branch/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-10-21T08:38:14-04:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[OMG Git is scary and amazing]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2012/05/28/omg-git-is-scary-and-amazing/"/>
+    <updated>2012-05-28T19:13:00-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2012/05/28/omg-git-is-scary-and-amazing</id>
+    <content type="html"><![CDATA[<blockquote>
+  <p>I just bought a chainsaw - my problems are solved</p>
+</blockquote>
+
+<p>I created a modification to <a href="https://github.com/marick/lein-midje">lein-midje</a>
+which allowed it to be a <code>lein new</code> template to help people get started with
+Midje. I submitted a <a href="https://github.com/marick/lein-midje/pull/24">pull
+request</a> and in doing so
+realized that I really ought to have done my work on a branch.  <em>ugh</em>.</p>
+
+<p>Knowing that Git is super-awesome(TM) I thought there must be some necromatic
+incantation to take previous commit and put them on a branch. I was
+surprised/horrified to find out how <a href="http://stackoverflow.com/questions/1628563/git-move-recent-commit-to-a-new-branch">easy it was</a>! (the first answer, at the time of this posting, is the important one).</p>
+
+<p>For the record this is all you need to do:</p>
+
+<pre><code>git branch &lt;newbranch&gt;
+git reset --hard HEAD~2 # or however far back you want to go
+git co &lt;new branch&gt;
+</code></pre>
+
+<p>It seemed to easy to I tested it out. I created a new repository with a file
+which was empty on the initial commit. I modified it two times committing each
+time. Then did the above steps. Then on the master branch I committed a
+different change.  Now <code>git log --all</code> looks like this (my personal formatting
+stolen from
+<a href="https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs">garybernhardt</a>):</p>
+
+<pre><code>virgil:foo(abranch)&gt; git lg --all
+* 0d4d369    (8 minutes)   &lt;Mark Simpson&gt;   (master) after branch
+| * f0101f4  (9 minutes)   &lt;Mark Simpson&gt;   (HEAD, abranch) third co
+| * d8160bf  (9 minutes)   &lt;Mark Simpson&gt;   second commit
+|/  
+* cceb15b    (10 minutes)  &lt;Mark Simpson&gt;   initial commit
+</code></pre>
+
+<p>Git is scary and cool at the same time. It is a serious chainsaw and you can
+get stuff done, but you could also chop your leg clean off.</p>
+
+]]></content>
+  </entry>
+  
+</feed>
