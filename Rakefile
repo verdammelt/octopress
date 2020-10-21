@@ -252,7 +252,7 @@ desc "deploy public directory to github pages"
 multitask :push do
   puts "## Deploying branch to Github Pages "
   puts "## Pulling any updates from Github Pages "
-  cd "#{deploy_dir}" do 
+  cd "#{deploy_dir}" do
     Bundler.with_clean_env { system "git pull" }
   end
   (Dir["#{deploy_dir}/*"]).each { |f| rm_rf(f) }
@@ -406,10 +406,15 @@ end
 
 desc "push to heroku"
 task :heroku do
+    puts "## Re-generating..."
+    Rake::Task["generate"].invoke
+
+    puts "## Committing new generated blog..."
+    message = "Blog updated at #{Time.now.utc}"
+    system "git commit -am '#{message}'"
+
+    puts "## Pushing blog to Heroku..."
     system "git push heroku master"
-    puts "---"
-    puts "if that was successful now go and remigrate discqus threads"
-    system "open http://codeandcocktails.disqus.com/admin/tools/migrate/"
-    puts "click through to webcrawler"
-    puts "---"
+
+    puts "## Heroku deploy complete"
 end
