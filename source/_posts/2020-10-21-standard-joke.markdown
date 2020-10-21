@@ -3,7 +3,7 @@ layout: post
 title: "Standard Joke"
 date: 2020-10-21 09:10:18 -0400
 comments: true
-categories: commonlisp
+categories: commonlisp lisp
 ---
 
 Arabic-to-Roman number conversion is a common programming exercise,

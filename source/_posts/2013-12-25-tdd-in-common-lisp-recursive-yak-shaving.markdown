@@ -3,7 +3,7 @@ layout: post
 title: "TDD in Common Lisp: recursive yak-shaving"
 date: 2013-12-25 17:34:59 -0500
 comments: true
-categories: lisp tdd yakshaving
+categories: commonlisp lisp tdd yakshaving
 ---
 
 While avoiding family this Christmas-day I started trying to figure out way

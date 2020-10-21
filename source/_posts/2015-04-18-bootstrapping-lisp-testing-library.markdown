@@ -3,7 +3,7 @@ layout: post
 title: "Bootstrapping a Testing Library"
 date: 2015-04-18 14:43:22 -0400
 comments: true
-categories: tdd lisp
+categories: tdd lisp commonlisp
 ---
 
 ## Abstract ##
