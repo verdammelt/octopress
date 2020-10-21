@@ -4,7 +4,7 @@
   <title><![CDATA[Code And Cocktails]]></title>
   <link href="http://code-and-cocktails.heroku.com/atom.xml" rel="self"/>
   <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-10-21T09:03:10-04:00</updated>
+  <updated>2020-10-21T10:10:43-04:00</updated>
   <id>http://code-and-cocktails.heroku.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
@@ -12,6 +12,107 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Standard Joke]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2020/10/21/standard-joke/"/>
+    <updated>2020-10-21T09:10:18-04:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2020/10/21/standard-joke</id>
+    <content type="html"><![CDATA[<p>Arabic-to-Roman number conversion is a common programming exercise,
+often used as a TDD exercise. It is an exercise on many
+Exercism.IO<sup id="fnref:i"><a href="#fn:i" class="footnote">1</a></sup> language tracks including my own track for Common
+Lisp<sup id="fnref:ii"><a href="#fn:ii" class="footnote">2</a></sup>.</p>
+
+<p>So how do you solve this in some arbitrary programming language?</p>
+
+<p>Typically people write some code to loop through a mapping of numeric
+values to roman numeral digits and do repeated decrements while
+accumulating the roman numeral digits. That is to say if you start
+with <code>1970</code> and your mapping contains <code>1000 =&gt; "M"; 900 =&gt; "CM"; 500 =
+"D"</code> you decrement by 1000 and accumulate <code>"M"</code>, then since the
+resulting number is under 1000 you try the next mapping, decrement by
+900 and accumulate <code>"CM"</code> etc.</p>
+
+<p>How do you do this in Common Lisp?</p>
+
+<p><code>(format t "~@r" 1970)</code></p>
+
+<p>Yes: Built. In. To. The. Language. (In fact using <code>~@:r</code> will provide
+output as using the alternate roman numeral format which does not have
+special cases for numbers like 4. <em>i.e.</em> it will output “IIII” rather
+than “IV”.)</p>
+
+<p>Common Lisp<sup id="fnref:iii"><a href="#fn:iii" class="footnote">3</a></sup> is a language with an ANSI specification<sup id="fnref:iv"><a href="#fn:iv" class="footnote">4</a></sup>. The
+specification process went from the early-to-mid 1980’s to the
+mid-1990s. Its goal was to create a single “common” Lisp collecting
+the good bits from all the splintered Lisp languages used at the time.
+I’ve heard that it involved a good amount of “horse-trading” as each
+interested party tried to get the resulting language to contain their
+special or idiosyncratic feature. So how did it come to have this odd
+feature?</p>
+
+<p>With a little digging I have found the real story: It was a <em>joke</em>.</p>
+
+<p>In “The Evolution of Lisp”<sup id="fnref:v"><a href="#fn:v" class="footnote">5</a></sup> Richard Gabriel explains that in 1974
+Guy Steele Jr put roman numeral handling into MacLisp<sup id="fnref:vi"><a href="#fn:vi" class="footnote">6</a></sup> as a hack.
+<code>BASE</code> and <code>IBASE</code> were variables which specified the output and input
+bases for numbers. Before his hack they were limited to vales between
+2 and 36. Steele added the ability for them to be set to <code>ROMAN</code>. Thus
+if set code like <code>(+ i 1)</code> would evaluate to <code>ii</code> since the expression
+would have been read in as the equivalent of <code>(+ 1 1)</code> and upon output
+the value <code>2</code> would be represented in roman numerals. (It seems in the
+original announcement of this ‘feature’ that you could also set <code>BASE</code>
+and <code>IBASE</code> to <code>CUNEIFORM</code> which would cause your Lisp to become
+wedged. Oh so witty.)</p>
+
+<p>From that time this feature became a bit of a traditional hack - being
+ported to ZetaLisp<sup id="fnref:vii"><a href="#fn:vii" class="footnote">7</a></sup> as part of <code>FORMAT</code>.</p>
+
+<p>Thus when Common Lisp was being created this feature was included in
+<code>FORMAT</code><sup id="fnref:viii"><a href="#fn:viii" class="footnote">8</a></sup> as it was a normal feature of that function in the Lisps
+that Common Lisp was being aggregated from.</p>
+
+<p>Since then this feature also found its way into Clojure<sup id="fnref:ix"><a href="#fn:ix" class="footnote">9</a></sup> as part
+of its <code>cl-format</code><sup id="fnref:x"><a href="#fn:x" class="footnote">10</a></sup> function.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:i">
+      <p>https://exercism.io/my/tracks <a href="#fnref:i" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:ii">
+      <p>https://exercism.io/my/tracks/common-lisp <a href="#fnref:ii" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:iii">
+      <p>https://en.wikipedia.org/wiki/Common_Lisp <a href="#fnref:iii" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:iv">
+      <p>https://webstore.ansi.org/Standards/INCITS/INCITS2261994S2008 <a href="#fnref:iv" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:v">
+      <p>https://www.dreamsongs.com/Files/HOPL2-Uncut.pdf p80 <a href="#fnref:v" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:vi">
+      <p>https://en.wikipedia.org/wiki/Maclisp <a href="#fnref:vi" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:vii">
+      <p>https://en.wikipedia.org/wiki/Lisp_Machine_Lisp <a href="#fnref:vii" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:viii">
+      <p>http://l1sp.org/cl/format <a href="#fnref:viii" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:ix">
+      <p>https://clojure.org <a href="#fnref:ix" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:x">
+      <p>https://clojuredocs.org/clojure.pprint/cl-format <a href="#fnref:x" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Writing Mix Tasks for Fun and Profit.]]></title>
@@ -1771,121 +1872,6 @@ symbols that the package doesn’t export. I will experiment with that. <a href
     <li id="fn:9">
       <p>since they look up the defintion by looking for a file with the same
 name as the system <a href="#fnref:9" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[On Reading Code]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2013/11/25/on-reading-code/"/>
-    <updated>2013-11-25T22:51:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2013/11/25/on-reading-code</id>
-    <content type="html"><![CDATA[<h2 id="how-it-ought-to-be-done">(How It Ought To Be Done)</h2>
-
-<p>IMNSHO<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>.</p>
-
-<p>Being able to read source code<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> is very important. So how does
-one do it well?</p>
-
-<p>Just like reading any other material - first decide why is one reading it.
-Why is one reading the listing? Is one debugging a problem or trying to gain
-specific knowedge?; or reading to get general or pleasure? One takes different
-approaches depending upon the desired goal.</p>
-
-<p>The first step is to find an interesting spot to start.</p>
-
-<h3 id="for-debugging-or-to-gain-specific-knowledge">For Debugging (or to Gain Specific Knowledge)</h3>
-
-<p>Start by skimming of the code, <code>grep</code><sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> and <code>tags</code><sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> tables are useful for
-this. This will help one find the right, or at least likely entry point.
-There is a lot of <em>instinct</em><sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> involved in this step. One gets better at it
-the more one needs to do it<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>.</p>
-
-<h3 id="to-get-general-knowledge-or-for-pleasure">To Get General Knowledge (or for Pleasure)</h3>
-
-<p>Code is for reading<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup> so read it. Skim the code (<em>including</em> the tests<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup>).
-Look for something interesting, get the lay of the land, the shape of the
-code. Note the <em>Dramatis Personæ</em>. Perhaps the code seems to be about widgets
-and frobbing, oh and here’s something about twiddling that looks interesting.</p>
-
-<p>Pick one of these that is most intriguing (e.g. One wonders what happens when
-a widget is frobbed.) and use that as one’s entry point. This is a matter of
-personal taste/fetish<sup id="fnref:9"><a href="#fn:9" class="footnote">9</a></sup>.</p>
-
-<h3 id="now-that-one-has-ones-entry-point">Now that One has One’s Entry Point…</h3>
-
-<p>Now that one is staring in the face a chunk, hopefully a small chunk, of code;
-how does one read it?</p>
-
-<p><strong>Top Down</strong>. It is as simple as that<sup id="fnref:10"><a href="#fn:10" class="footnote">10</a></sup>.</p>
-
-<p>Read the first line of code, what does it say? Believe it. That can be risky -
-but at this point one must do it. What does the next line say, and so on.
-Follow function calls<sup id="fnref:11"><a href="#fn:11" class="footnote">11</a></sup> if they seem interesting. Skip over things that are
-not, or do not seem relevant.  If one’s interest is in frobbing ignore code
-about tweaking or twiddling.  Perhaps one makes a note that frobbing seems to
-involve tweaking or twiddling; but one must know about frobbing now so those
-are <strong>not relevant</strong>. This is also very tied to instinct.</p>
-
-<p>It is this point here which I think is most important. One must gain a sense
-of what is relevant when reading code. One cannot read every code path and
-think that will lead to understanding. That would be like reading the
-dictionary and assuming one knows the language. This is where I have seen
-programmers fail in their reading.</p>
-
-<p>This is a very good reason why naming is so important<sup id="fnref:12"><a href="#fn:12" class="footnote">12</a></sup>.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>It has occurred to me that my style of reading code is not the same as
-some other’s. I have been told by a person I think highly of that they 
-feel my way is the/a right way. I have finally gotten around to writing it 
-up as a quick blog post. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>Is it time for us to stop calling it ‘code’ given its implications of
-obfuscation? I think it is still appropriate as long as we remember that 
-the definition is not about obfuscation <em>per se</em> but about using a set of 
-symbols to mean other words/letters/symbols. This is, IMNSHO, exactly what 
-we are doing. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>Or its ilk (<em>e.g.</em> <code>ack</code>) <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:4">
-      <p>New fangled IDEs keep the equivalent of tags tables. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:5">
-      <p>Gut feeling, hunch, guess work, randomness, luck <em>&amp;c.</em> <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:6">
-      <p>Especially when at the client site, trying to figure out why the trades
-are not going through. Take my word on it. <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:7">
-      <p>Most often code is for reading (and evaluating/compiling) by the
-computer; but also for oneself and one’s fellow humans. (Apologies for
-being speciest.) <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:8">
-      <p>Why do we keep referring to code <em>and</em> test? Tests <em>are</em> code. <a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:9">
-      <p><a href="https://www.google.com/search?q=cat+photobomb">Go ahead.</a> <a href="#fnref:9" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:10">
-      <p>Of course it is not that simple. <a href="#fnref:10" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:11">
-      <p>And other sorts of papered over <code>goto</code> statements. <a href="#fnref:11" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:12">
-      <p>Perhaps a post/rant for another day. <a href="#fnref:12" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

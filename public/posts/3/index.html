@@ -9,8 +9,8 @@
   <meta name="author" content="Mark Simpson">
 
   
-  <meta name="description" content="Experts Don’t Know what they Know This year’s SCNA Conference seemed to have several talks which touched upon
-the idea of experts having implicit &hellip;">
+  <meta name="description" content="(How It Ought To Be Done) IMNSHO1. Being able to read source code2 is very important. So how does
+one do it well? Just like reading any other &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -99,6 +99,144 @@ the idea of experts having implicit &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/11/25/on-reading-code/">On Reading Code</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2013/11/25/on-reading-code/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2013/11/25/on-reading-code/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="how-it-ought-to-be-done">(How It Ought To Be Done)</h2>
+
+<p>IMNSHO<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>.</p>
+
+<p>Being able to read source code<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> is very important. So how does
+one do it well?</p>
+
+<p>Just like reading any other material - first decide why is one reading it.
+Why is one reading the listing? Is one debugging a problem or trying to gain
+specific knowedge?; or reading to get general or pleasure? One takes different
+approaches depending upon the desired goal.</p>
+
+<p>The first step is to find an interesting spot to start.</p>
+
+<h3 id="for-debugging-or-to-gain-specific-knowledge">For Debugging (or to Gain Specific Knowledge)</h3>
+
+<p>Start by skimming of the code, <code>grep</code><sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> and <code>tags</code><sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> tables are useful for
+this. This will help one find the right, or at least likely entry point.
+There is a lot of <em>instinct</em><sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> involved in this step. One gets better at it
+the more one needs to do it<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>.</p>
+
+<h3 id="to-get-general-knowledge-or-for-pleasure">To Get General Knowledge (or for Pleasure)</h3>
+
+<p>Code is for reading<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup> so read it. Skim the code (<em>including</em> the tests<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup>).
+Look for something interesting, get the lay of the land, the shape of the
+code. Note the <em>Dramatis Personæ</em>. Perhaps the code seems to be about widgets
+and frobbing, oh and here’s something about twiddling that looks interesting.</p>
+
+<p>Pick one of these that is most intriguing (e.g. One wonders what happens when
+a widget is frobbed.) and use that as one’s entry point. This is a matter of
+personal taste/fetish<sup id="fnref:9"><a href="#fn:9" class="footnote">9</a></sup>.</p>
+
+<h3 id="now-that-one-has-ones-entry-point">Now that One has One’s Entry Point…</h3>
+
+<p>Now that one is staring in the face a chunk, hopefully a small chunk, of code;
+how does one read it?</p>
+
+<p><strong>Top Down</strong>. It is as simple as that<sup id="fnref:10"><a href="#fn:10" class="footnote">10</a></sup>.</p>
+
+<p>Read the first line of code, what does it say? Believe it. That can be risky -
+but at this point one must do it. What does the next line say, and so on.
+Follow function calls<sup id="fnref:11"><a href="#fn:11" class="footnote">11</a></sup> if they seem interesting. Skip over things that are
+not, or do not seem relevant.  If one’s interest is in frobbing ignore code
+about tweaking or twiddling.  Perhaps one makes a note that frobbing seems to
+involve tweaking or twiddling; but one must know about frobbing now so those
+are <strong>not relevant</strong>. This is also very tied to instinct.</p>
+
+<p>It is this point here which I think is most important. One must gain a sense
+of what is relevant when reading code. One cannot read every code path and
+think that will lead to understanding. That would be like reading the
+dictionary and assuming one knows the language. This is where I have seen
+programmers fail in their reading.</p>
+
+<p>This is a very good reason why naming is so important<sup id="fnref:12"><a href="#fn:12" class="footnote">12</a></sup>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>It has occurred to me that my style of reading code is not the same as
+some other’s. I have been told by a person I think highly of that they 
+feel my way is the/a right way. I have finally gotten around to writing it 
+up as a quick blog post. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Is it time for us to stop calling it ‘code’ given its implications of
+obfuscation? I think it is still appropriate as long as we remember that 
+the definition is not about obfuscation <em>per se</em> but about using a set of 
+symbols to mean other words/letters/symbols. This is, IMNSHO, exactly what 
+we are doing. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Or its ilk (<em>e.g.</em> <code>ack</code>) <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>New fangled IDEs keep the equivalent of tags tables. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>Gut feeling, hunch, guess work, randomness, luck <em>&amp;c.</em> <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>Especially when at the client site, trying to figure out why the trades
+are not going through. Take my word on it. <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>Most often code is for reading (and evaluating/compiling) by the
+computer; but also for oneself and one’s fellow humans. (Apologies for
+being speciest.) <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:8">
+      <p>Why do we keep referring to code <em>and</em> test? Tests <em>are</em> code. <a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:9">
+      <p><a href="https://www.google.com/search?q=cat+photobomb">Go ahead.</a> <a href="#fnref:9" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:10">
+      <p>Of course it is not that simple. <a href="#fnref:10" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:11">
+      <p>And other sorts of papered over <code>goto</code> statements. <a href="#fnref:11" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:12">
+      <p>Perhaps a post/rant for another day. <a href="#fnref:12" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -857,75 +995,6 @@ still pretty young).</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/18/goos-review-ch-14-and-15/">GOOS Review Ch 14 &amp; 15</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-        
-           | <a href="/blog/2012/11/18/goos-review-ch-14-and-15/#disqus_thread"
-             data-disqus-identifier="http://code-and-cocktails.heroku.com/blog/2012/11/18/goos-review-ch-14-and-15/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>(Just a quick post about chapters 14 &amp; 15 of GOOS to get myself back into the
-swing of things after a while…)</p>
-
-<p>A few points hit me during these two chapters. Things which I <em>know</em> but which
-perhaps are not entirely second nature to me yet (even after all these years)</p>
-
-<ul>
-  <li>In chapter 14 new features were added with little fuss - the relatively
-clean design allowed for this.</li>
-  <li>Chapter 15 showed doing refactorings bit by bit - it kept tests red for a
-while but they got done. Just because it will take a while doesn’t mean not
-    to do it.</li>
-  <li>Chapter 15 also saw the developers thinking about how to continue down the
-path they were one was going to be pretty annoying/boring. They took this
-to mean that they were doing something wrong. They stopped and thought
-about it and found a better design which allowed their needed changes to be
-easier.</li>
-</ul>
-
-<p>These are three important things to internalize:</p>
-
-<ul>
-  <li>Good clean design leads to ease in implementing new features.</li>
-  <li>A refactoring might be hard - but that is not a reason not to do it.</li>
-  <li>If the change you need to do is hard / annoying - step back and figure out
-why (see the first point).</li>
-</ul>
-
-<p>These are all things I <em>know</em>; but in the heat of the moment will tend to
-forget. I need to really get them internalized; then I can <em>choose</em> to ignore
-them at certain circumstances, but then I’ll do it more explicitly and know
-the pros and cons.</p>
-
-<p>Also as a side note there were some good points where the OO design skills
-shone through. For example the addition of Java <code>enum</code> objects which quickly
-became feature-ful objects which caused cleaner code elsewhere (<code>Column</code> and
-<code>SniperState</code>)</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -948,6 +1017,10 @@ time.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2020/10/21/standard-joke/">Standard Joke</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/03/10/how-to-write-a-mix-task/">Writing Mix Tasks for Fun and Profit.</a>
       </li>
     
@@ -963,15 +1036,11 @@ time.</p>
         <a href="/blog/2016/02/28/the-craftsperson-and-their-tools/">The Craftsperson and Their Tools</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2016/01/10/gotcha-of-using-youtubeplayerfragment-at-viewpager-for-android/">Gotcha of Using YouTubePlayerFragment and ViewPager for Android</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/-boston-sc' style='font-size: 103.07692307692308%'>@boston_sc(4)</a> <a href='/blog/categories/ad-d' style='font-size: 102.3076923076923%'>AD&D(3)</a> <a href='/blog/categories/agile' style='font-size: 104.61538461538461%'>agile(6)</a> <a href='/blog/categories/alcohol' style='font-size: 100.76923076923077%'>alcohol(1)</a> <a href='/blog/categories/android' style='font-size: 100.76923076923077%'>android(1)</a> <a href='/blog/categories/bicycle' style='font-size: 104.61538461538461%'>bicycle(6)</a> <a href='/blog/categories/blog' style='font-size: 101.53846153846153%'>blog(2)</a> <a href='/blog/categories/bostonrb' style='font-size: 100.76923076923077%'>bostonrb(1)</a> <a href='/blog/categories/branch' style='font-size: 100.76923076923077%'>branch(1)</a> <a href='/blog/categories/bugs' style='font-size: 100.76923076923077%'>bugs(1)</a> <a href='/blog/categories/cat' style='font-size: 100.76923076923077%'>cat(1)</a> <a href='/blog/categories/century' style='font-size: 103.84615384615384%'>century(5)</a> <a href='/blog/categories/cleancode' style='font-size: 100.76923076923077%'>cleancode(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.76923076923077%'>Clojure(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.76923076923077%'>clojure(1)</a> <a href='/blog/categories/cocktail' style='font-size: 103.84615384615384%'>cocktail(5)</a> <a href='/blog/categories/cocktails' style='font-size: 100.76923076923077%'>cocktails(1)</a> <a href='/blog/categories/code' style='font-size: 103.84615384615384%'>code(5)</a> <a href='/blog/categories/codekata' style='font-size: 100.76923076923077%'>codekata(1)</a> <a href='/blog/categories/coderetreat' style='font-size: 101.53846153846153%'>coderetreat(2)</a> <a href='/blog/categories/coding' style='font-size: 100.76923076923077%'>coding(1)</a> <a href='/blog/categories/coffeescript' style='font-size: 100.76923076923077%'>coffeescript(1)</a> <a href='/blog/categories/comic' style='font-size: 100.76923076923077%'>comic(1)</a> <a href='/blog/categories/concert' style='font-size: 100.76923076923077%'>concert(1)</a> <a href='/blog/categories/craft' style='font-size: 100.76923076923077%'>craft(1)</a> <a href='/blog/categories/craftsmanship' style='font-size: 100.76923076923077%'>craftsmanship(1)</a> <a href='/blog/categories/cube' style='font-size: 100.76923076923077%'>cube(1)</a> <a href='/blog/categories/design' style='font-size: 106.15384615384616%'>design(8)</a> <a href='/blog/categories/desk' style='font-size: 100.76923076923077%'>desk(1)</a> <a href='/blog/categories/developer' style='font-size: 100.76923076923077%'>developer(1)</a> <a href='/blog/categories/domain' style='font-size: 100.76923076923077%'>domain(1)</a> <a href='/blog/categories/elixir' style='font-size: 100.76923076923077%'>elixir(1)</a> <a href='/blog/categories/emacs' style='font-size: 103.84615384615384%'>emacs(5)</a> <a href='/blog/categories/estimation' style='font-size: 100.76923076923077%'>estimation(1)</a> <a href='/blog/categories/express' style='font-size: 100.76923076923077%'>express(1)</a> <a href='/blog/categories/food' style='font-size: 101.53846153846153%'>food(2)</a> <a href='/blog/categories/gin' style='font-size: 100.76923076923077%'>gin(1)</a> <a href='/blog/categories/git' style='font-size: 100.76923076923077%'>git(1)</a> <a href='/blog/categories/gnus' style='font-size: 103.07692307692308%'>gnus(4)</a> <a href='/blog/categories/goos' style='font-size: 104.61538461538461%'>goos(6)</a> <a href='/blog/categories/goosreview' style='font-size: 104.61538461538461%'>goosreview(6)</a> <a href='/blog/categories/grapefruit' style='font-size: 100.76923076923077%'>grapefruit(1)</a> <a href='/blog/categories/gwendolyn' style='font-size: 100.76923076923077%'>gwendolyn(1)</a> <a href='/blog/categories/heroku' style='font-size: 100.76923076923077%'>heroku(1)</a> <a href='/blog/categories/jeckyll' style='font-size: 100.76923076923077%'>jeckyll(1)</a> <a href='/blog/categories/kraftwerk' style='font-size: 100.76923076923077%'>kraftwerk(1)</a> <a href='/blog/categories/latex' style='font-size: 102.3076923076923%'>LaTeX(3)</a> <a href='/blog/categories/learning' style='font-size: 101.53846153846153%'>learning(2)</a> <a href='/blog/categories/life' style='font-size: 100.76923076923077%'>life(1)</a> <a href='/blog/categories/lisp' style='font-size: 103.07692307692308%'>lisp(4)</a> <a href='/blog/categories/listening' style='font-size: 100.76923076923077%'>listening(1)</a> <a href='/blog/categories/maintenance' style='font-size: 100.76923076923077%'>maintenance(1)</a> <a href='/blog/categories/markdown' style='font-size: 100.76923076923077%'>markdown(1)</a> <a href='/blog/categories/meetup' style='font-size: 100.76923076923077%'>meetup(1)</a> <a href='/blog/categories/metrics' style='font-size: 100.76923076923077%'>metrics(1)</a> <a href='/blog/categories/midje' style='font-size: 100.76923076923077%'>midje(1)</a> <a href='/blog/categories/mistakes' style='font-size: 100.76923076923077%'>mistakes(1)</a> <a href='/blog/categories/mix' style='font-size: 100.76923076923077%'>mix(1)</a> <a href='/blog/categories/mockito' style='font-size: 100.76923076923077%'>mockito(1)</a> <a href='/blog/categories/moma' style='font-size: 100.76923076923077%'>moma(1)</a> <a href='/blog/categories/monad' style='font-size: 100.76923076923077%'>monad(1)</a> <a href='/blog/categories/naming' style='font-size: 100.76923076923077%'>naming(1)</a> <a href='/blog/categories/node' style='font-size: 100.76923076923077%'>node(1)</a> <a href='/blog/categories/objects' style='font-size: 100.76923076923077%'>objects(1)</a> <a href='/blog/categories/octopress' style='font-size: 102.3076923076923%'>octopress(3)</a> <a href='/blog/categories/office' style='font-size: 100.76923076923077%'>office(1)</a> <a href='/blog/categories/oo' style='font-size: 104.61538461538461%'>oo(6)</a> <a href='/blog/categories/opinion' style='font-size: 100.76923076923077%'>opinion(1)</a> <a href='/blog/categories/pairprogramming' style='font-size: 100.76923076923077%'>pairprogramming(1)</a> <a href='/blog/categories/patterns' style='font-size: 101.53846153846153%'>patterns(2)</a> <a href='/blog/categories/pdf' style='font-size: 100.76923076923077%'>pdf(1)</a> <a href='/blog/categories/personal' style='font-size: 103.07692307692308%'>personal(4)</a> <a href='/blog/categories/photos' style='font-size: 100.76923076923077%'>photos(1)</a> <a href='/blog/categories/picture' style='font-size: 101.53846153846153%'>picture(2)</a> <a href='/blog/categories/posterous' style='font-size: 101.53846153846153%'>posterous(2)</a> <a href='/blog/categories/presentation' style='font-size: 100.76923076923077%'>presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 103.07692307692308%'>programming(4)</a> <a href='/blog/categories/python' style='font-size: 100.76923076923077%'>python(1)</a> <a href='/blog/categories/quality' style='font-size: 100.76923076923077%'>quality(1)</a> <a href='/blog/categories/react' style='font-size: 100.76923076923077%'>react(1)</a> <a href='/blog/categories/reactnative' style='font-size: 100.76923076923077%'>reactnative(1)</a> <a href='/blog/categories/recipe' style='font-size: 102.3076923076923%'>recipe(3)</a> <a href='/blog/categories/refactoring' style='font-size: 100.76923076923077%'>refactoring(1)</a> <a href='/blog/categories/repl' style='font-size: 100.76923076923077%'>repl(1)</a> <a href='/blog/categories/retro' style='font-size: 100.76923076923077%'>retro(1)</a> <a href='/blog/categories/retrospective' style='font-size: 102.3076923076923%'>retrospective(3)</a> <a href='/blog/categories/ruby' style='font-size: 102.3076923076923%'>ruby(3)</a> <a href='/blog/categories/scna' style='font-size: 103.07692307692308%'>scna(4)</a> <a href='/blog/categories/scna2013' style='font-size: 100.76923076923077%'>scna2013(1)</a> <a href='/blog/categories/sicp' style='font-size: 100.76923076923077%'>sicp(1)</a> <a href='/blog/categories/sin' style='font-size: 100.76923076923077%'>sin(1)</a> <a href='/blog/categories/skill' style='font-size: 100.76923076923077%'>skill(1)</a> <a href='/blog/categories/slides' style='font-size: 100.76923076923077%'>slides(1)</a> <a href='/blog/categories/software' style='font-size: 100.76923076923077%'>software(1)</a> <a href='/blog/categories/softwarecraftsmanship' style='font-size: 103.84615384615384%'>softwarecraftsmanship(5)</a> <a href='/blog/categories/tdd' style='font-size: 110.0%'>tdd(13)</a> <a href='/blog/categories/tools' style='font-size: 100.76923076923077%'>tools(1)</a> <a href='/blog/categories/training' style='font-size: 100.76923076923077%'>training(1)</a> <a href='/blog/categories/vermouth' style='font-size: 100.76923076923077%'>vermouth(1)</a> <a href='/blog/categories/viking' style='font-size: 100.76923076923077%'>viking(1)</a> <a href='/blog/categories/work' style='font-size: 103.07692307692308%'>work(4)</a> <a href='/blog/categories/yakshaving' style='font-size: 100.76923076923077%'>yakshaving(1)</a> <a href='/blog/categories/yarlisp' style='font-size: 100.76923076923077%'>yarlisp(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/-boston-sc' style='font-size: 103.07692307692308%'>@boston_sc(4)</a> <a href='/blog/categories/ad-d' style='font-size: 102.3076923076923%'>AD&D(3)</a> <a href='/blog/categories/agile' style='font-size: 104.61538461538461%'>agile(6)</a> <a href='/blog/categories/alcohol' style='font-size: 100.76923076923077%'>alcohol(1)</a> <a href='/blog/categories/android' style='font-size: 100.76923076923077%'>android(1)</a> <a href='/blog/categories/bicycle' style='font-size: 104.61538461538461%'>bicycle(6)</a> <a href='/blog/categories/blog' style='font-size: 101.53846153846153%'>blog(2)</a> <a href='/blog/categories/bostonrb' style='font-size: 100.76923076923077%'>bostonrb(1)</a> <a href='/blog/categories/branch' style='font-size: 100.76923076923077%'>branch(1)</a> <a href='/blog/categories/bugs' style='font-size: 100.76923076923077%'>bugs(1)</a> <a href='/blog/categories/cat' style='font-size: 100.76923076923077%'>cat(1)</a> <a href='/blog/categories/century' style='font-size: 103.84615384615384%'>century(5)</a> <a href='/blog/categories/cleancode' style='font-size: 100.76923076923077%'>cleancode(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.76923076923077%'>Clojure(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.76923076923077%'>clojure(1)</a> <a href='/blog/categories/cocktail' style='font-size: 103.84615384615384%'>cocktail(5)</a> <a href='/blog/categories/cocktails' style='font-size: 100.76923076923077%'>cocktails(1)</a> <a href='/blog/categories/code' style='font-size: 103.84615384615384%'>code(5)</a> <a href='/blog/categories/codekata' style='font-size: 100.76923076923077%'>codekata(1)</a> <a href='/blog/categories/coderetreat' style='font-size: 101.53846153846153%'>coderetreat(2)</a> <a href='/blog/categories/coding' style='font-size: 100.76923076923077%'>coding(1)</a> <a href='/blog/categories/coffeescript' style='font-size: 100.76923076923077%'>coffeescript(1)</a> <a href='/blog/categories/comic' style='font-size: 100.76923076923077%'>comic(1)</a> <a href='/blog/categories/commonlisp' style='font-size: 102.3076923076923%'>commonlisp(3)</a> <a href='/blog/categories/concert' style='font-size: 100.76923076923077%'>concert(1)</a> <a href='/blog/categories/craft' style='font-size: 100.76923076923077%'>craft(1)</a> <a href='/blog/categories/craftsmanship' style='font-size: 100.76923076923077%'>craftsmanship(1)</a> <a href='/blog/categories/cube' style='font-size: 100.76923076923077%'>cube(1)</a> <a href='/blog/categories/design' style='font-size: 106.15384615384616%'>design(8)</a> <a href='/blog/categories/desk' style='font-size: 100.76923076923077%'>desk(1)</a> <a href='/blog/categories/developer' style='font-size: 100.76923076923077%'>developer(1)</a> <a href='/blog/categories/domain' style='font-size: 100.76923076923077%'>domain(1)</a> <a href='/blog/categories/elixir' style='font-size: 100.76923076923077%'>elixir(1)</a> <a href='/blog/categories/emacs' style='font-size: 103.84615384615384%'>emacs(5)</a> <a href='/blog/categories/estimation' style='font-size: 100.76923076923077%'>estimation(1)</a> <a href='/blog/categories/express' style='font-size: 100.76923076923077%'>express(1)</a> <a href='/blog/categories/food' style='font-size: 101.53846153846153%'>food(2)</a> <a href='/blog/categories/gin' style='font-size: 100.76923076923077%'>gin(1)</a> <a href='/blog/categories/git' style='font-size: 100.76923076923077%'>git(1)</a> <a href='/blog/categories/gnus' style='font-size: 103.07692307692308%'>gnus(4)</a> <a href='/blog/categories/goos' style='font-size: 104.61538461538461%'>goos(6)</a> <a href='/blog/categories/goosreview' style='font-size: 104.61538461538461%'>goosreview(6)</a> <a href='/blog/categories/grapefruit' style='font-size: 100.76923076923077%'>grapefruit(1)</a> <a href='/blog/categories/gwendolyn' style='font-size: 100.76923076923077%'>gwendolyn(1)</a> <a href='/blog/categories/heroku' style='font-size: 100.76923076923077%'>heroku(1)</a> <a href='/blog/categories/jeckyll' style='font-size: 100.76923076923077%'>jeckyll(1)</a> <a href='/blog/categories/kraftwerk' style='font-size: 100.76923076923077%'>kraftwerk(1)</a> <a href='/blog/categories/latex' style='font-size: 102.3076923076923%'>LaTeX(3)</a> <a href='/blog/categories/learning' style='font-size: 101.53846153846153%'>learning(2)</a> <a href='/blog/categories/life' style='font-size: 100.76923076923077%'>life(1)</a> <a href='/blog/categories/lisp' style='font-size: 103.84615384615384%'>lisp(5)</a> <a href='/blog/categories/listening' style='font-size: 100.76923076923077%'>listening(1)</a> <a href='/blog/categories/maintenance' style='font-size: 100.76923076923077%'>maintenance(1)</a> <a href='/blog/categories/markdown' style='font-size: 100.76923076923077%'>markdown(1)</a> <a href='/blog/categories/meetup' style='font-size: 100.76923076923077%'>meetup(1)</a> <a href='/blog/categories/metrics' style='font-size: 100.76923076923077%'>metrics(1)</a> <a href='/blog/categories/midje' style='font-size: 100.76923076923077%'>midje(1)</a> <a href='/blog/categories/mistakes' style='font-size: 100.76923076923077%'>mistakes(1)</a> <a href='/blog/categories/mix' style='font-size: 100.76923076923077%'>mix(1)</a> <a href='/blog/categories/mockito' style='font-size: 100.76923076923077%'>mockito(1)</a> <a href='/blog/categories/moma' style='font-size: 100.76923076923077%'>moma(1)</a> <a href='/blog/categories/monad' style='font-size: 100.76923076923077%'>monad(1)</a> <a href='/blog/categories/naming' style='font-size: 100.76923076923077%'>naming(1)</a> <a href='/blog/categories/node' style='font-size: 100.76923076923077%'>node(1)</a> <a href='/blog/categories/objects' style='font-size: 100.76923076923077%'>objects(1)</a> <a href='/blog/categories/octopress' style='font-size: 102.3076923076923%'>octopress(3)</a> <a href='/blog/categories/office' style='font-size: 100.76923076923077%'>office(1)</a> <a href='/blog/categories/oo' style='font-size: 104.61538461538461%'>oo(6)</a> <a href='/blog/categories/opinion' style='font-size: 100.76923076923077%'>opinion(1)</a> <a href='/blog/categories/pairprogramming' style='font-size: 100.76923076923077%'>pairprogramming(1)</a> <a href='/blog/categories/patterns' style='font-size: 101.53846153846153%'>patterns(2)</a> <a href='/blog/categories/pdf' style='font-size: 100.76923076923077%'>pdf(1)</a> <a href='/blog/categories/personal' style='font-size: 103.07692307692308%'>personal(4)</a> <a href='/blog/categories/photos' style='font-size: 100.76923076923077%'>photos(1)</a> <a href='/blog/categories/picture' style='font-size: 101.53846153846153%'>picture(2)</a> <a href='/blog/categories/posterous' style='font-size: 101.53846153846153%'>posterous(2)</a> <a href='/blog/categories/presentation' style='font-size: 100.76923076923077%'>presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 103.07692307692308%'>programming(4)</a> <a href='/blog/categories/python' style='font-size: 100.76923076923077%'>python(1)</a> <a href='/blog/categories/quality' style='font-size: 100.76923076923077%'>quality(1)</a> <a href='/blog/categories/react' style='font-size: 100.76923076923077%'>react(1)</a> <a href='/blog/categories/reactnative' style='font-size: 100.76923076923077%'>reactnative(1)</a> <a href='/blog/categories/recipe' style='font-size: 102.3076923076923%'>recipe(3)</a> <a href='/blog/categories/refactoring' style='font-size: 100.76923076923077%'>refactoring(1)</a> <a href='/blog/categories/repl' style='font-size: 100.76923076923077%'>repl(1)</a> <a href='/blog/categories/retro' style='font-size: 100.76923076923077%'>retro(1)</a> <a href='/blog/categories/retrospective' style='font-size: 102.3076923076923%'>retrospective(3)</a> <a href='/blog/categories/ruby' style='font-size: 102.3076923076923%'>ruby(3)</a> <a href='/blog/categories/scna' style='font-size: 103.07692307692308%'>scna(4)</a> <a href='/blog/categories/scna2013' style='font-size: 100.76923076923077%'>scna2013(1)</a> <a href='/blog/categories/sicp' style='font-size: 100.76923076923077%'>sicp(1)</a> <a href='/blog/categories/sin' style='font-size: 100.76923076923077%'>sin(1)</a> <a href='/blog/categories/skill' style='font-size: 100.76923076923077%'>skill(1)</a> <a href='/blog/categories/slides' style='font-size: 100.76923076923077%'>slides(1)</a> <a href='/blog/categories/software' style='font-size: 100.76923076923077%'>software(1)</a> <a href='/blog/categories/softwarecraftsmanship' style='font-size: 103.84615384615384%'>softwarecraftsmanship(5)</a> <a href='/blog/categories/tdd' style='font-size: 110.0%'>tdd(13)</a> <a href='/blog/categories/tools' style='font-size: 100.76923076923077%'>tools(1)</a> <a href='/blog/categories/training' style='font-size: 100.76923076923077%'>training(1)</a> <a href='/blog/categories/vermouth' style='font-size: 100.76923076923077%'>vermouth(1)</a> <a href='/blog/categories/viking' style='font-size: 100.76923076923077%'>viking(1)</a> <a href='/blog/categories/work' style='font-size: 103.07692307692308%'>work(4)</a> <a href='/blog/categories/yakshaving' style='font-size: 100.76923076923077%'>yakshaving(1)</a> <a href='/blog/categories/yarlisp' style='font-size: 100.76923076923077%'>yarlisp(1)</a> </span>
 </section>
 
 <section>
