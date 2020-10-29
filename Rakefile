@@ -411,7 +411,8 @@ task :heroku do
 
     puts "## Committing new generated blog..."
     message = "Blog updated at #{Time.now.utc}"
-    system "git commit -am '#{message}'"
+    system "git add ."
+    system "git commit -m '#{message}'"
 
     puts "## Pushing blog to Heroku..."
     system "git push heroku master"

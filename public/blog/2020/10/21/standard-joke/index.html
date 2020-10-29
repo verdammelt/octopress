@@ -141,12 +141,12 @@ resulting number is under 1000 you try the next mapping, decrement by
 
 <p><code>(format t "~@r" 1970)</code></p>
 
-<p>Yes: Built. In. To. The. Language. (In fact using <code>~@:r</code> will provide
+<p>Yes: Built. In. To. The. Language.<sup id="fnref:iii"><a href="#fn:iii" class="footnote">3</a></sup> (In fact using <code>~@:r</code> will provide
 output as using the alternate roman numeral format which does not have
 special cases for numbers like 4. <em>i.e.</em> it will output “IIII” rather
 than “IV”.)</p>
 
-<p>Common Lisp<sup id="fnref:iii"><a href="#fn:iii" class="footnote">3</a></sup> is a language with an ANSI specification<sup id="fnref:iv"><a href="#fn:iv" class="footnote">4</a></sup>. The
+<p>Common Lisp<sup id="fnref:iv"><a href="#fn:iv" class="footnote">4</a></sup> is a language with an ANSI specification<sup id="fnref:v"><a href="#fn:v" class="footnote">5</a></sup>. The
 specification process went from the early-to-mid 1980’s to the
 mid-1990s. Its goal was to create a single “common” Lisp collecting
 the good bits from all the splintered Lisp languages used at the time.
@@ -157,8 +157,8 @@ feature?</p>
 
 <p>With a little digging I have found the real story: It was a <em>joke</em>.</p>
 
-<p>In “The Evolution of Lisp”<sup id="fnref:v"><a href="#fn:v" class="footnote">5</a></sup> Richard Gabriel explains that in 1974
-Guy Steele Jr put roman numeral handling into MacLisp<sup id="fnref:vi"><a href="#fn:vi" class="footnote">6</a></sup> as a hack.
+<p>In “The Evolution of Lisp”<sup id="fnref:vi"><a href="#fn:vi" class="footnote">6</a></sup> Richard Gabriel explains that in 1974
+Guy Steele Jr put roman numeral handling into MacLisp<sup id="fnref:vii"><a href="#fn:vii" class="footnote">7</a></sup> as a hack.
 <code>BASE</code> and <code>IBASE</code> were variables which specified the output and input
 bases for numbers. Before his hack they were limited to vales between
 2 and 36. Steele added the ability for them to be set to <code>ROMAN</code>. Thus
@@ -170,14 +170,14 @@ and <code>IBASE</code> to <code>CUNEIFORM</code> which would cause your Lisp to 
 wedged. Oh so witty.)</p>
 
 <p>From that time this feature became a bit of a traditional hack - being
-ported to ZetaLisp<sup id="fnref:vii"><a href="#fn:vii" class="footnote">7</a></sup> as part of <code>FORMAT</code>.</p>
+ported to ZetaLisp<sup id="fnref:viii"><a href="#fn:viii" class="footnote">8</a></sup> as part of <code>FORMAT</code>.</p>
 
 <p>Thus when Common Lisp was being created this feature was included in
-<code>FORMAT</code><sup id="fnref:viii"><a href="#fn:viii" class="footnote">8</a></sup> as it was a normal feature of that function in the Lisps
+<code>FORMAT</code><sup id="fnref:ix"><a href="#fn:ix" class="footnote">9</a></sup> as it was a normal feature of that function in the Lisps
 that Common Lisp was being aggregated from.</p>
 
-<p>Since then this feature also found its way into Clojure<sup id="fnref:ix"><a href="#fn:ix" class="footnote">9</a></sup> as part
-of its <code>cl-format</code><sup id="fnref:x"><a href="#fn:x" class="footnote">10</a></sup> function.</p>
+<p>Since then this feature also found its way into Clojure<sup id="fnref:x"><a href="#fn:x" class="footnote">10</a></sup> as part
+of its <code>cl-format</code><sup id="fnref:xi"><a href="#fn:xi" class="footnote">11</a></sup> function.</p>
 
 <hr />
 
@@ -190,28 +190,31 @@ of its <code>cl-format</code><sup id="fnref:x"><a href="#fn:x" class="footnote">
       <p>https://exercism.io/my/tracks/common-lisp <a href="#fnref:ii" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:iii">
-      <p>https://en.wikipedia.org/wiki/Common_Lisp <a href="#fnref:iii" class="reversefootnote">&#8617;</a></p>
+      <p>http//l1sp.org/cl/~r <a href="#fnref:iii" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:iv">
-      <p>https://webstore.ansi.org/Standards/INCITS/INCITS2261994S2008 <a href="#fnref:iv" class="reversefootnote">&#8617;</a></p>
+      <p>https://en.wikipedia.org/wiki/Common_Lisp <a href="#fnref:iv" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:v">
-      <p>https://www.dreamsongs.com/Files/HOPL2-Uncut.pdf p80 <a href="#fnref:v" class="reversefootnote">&#8617;</a></p>
+      <p>https://webstore.ansi.org/Standards/INCITS/INCITS2261994S2008 <a href="#fnref:v" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:vi">
-      <p>https://en.wikipedia.org/wiki/Maclisp <a href="#fnref:vi" class="reversefootnote">&#8617;</a></p>
+      <p>https://www.dreamsongs.com/Files/HOPL2-Uncut.pdf p80 <a href="#fnref:vi" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:vii">
-      <p>https://en.wikipedia.org/wiki/Lisp_Machine_Lisp <a href="#fnref:vii" class="reversefootnote">&#8617;</a></p>
+      <p>https://en.wikipedia.org/wiki/Maclisp <a href="#fnref:vii" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:viii">
-      <p>http://l1sp.org/cl/format <a href="#fnref:viii" class="reversefootnote">&#8617;</a></p>
+      <p>https://en.wikipedia.org/wiki/Lisp_Machine_Lisp <a href="#fnref:viii" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:ix">
-      <p>https://clojure.org <a href="#fnref:ix" class="reversefootnote">&#8617;</a></p>
+      <p>http://l1sp.org/cl/format <a href="#fnref:ix" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:x">
-      <p>https://clojuredocs.org/clojure.pprint/cl-format <a href="#fnref:x" class="reversefootnote">&#8617;</a></p>
+      <p>https://clojure.org <a href="#fnref:x" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:xi">
+      <p>https://clojuredocs.org/clojure.pprint/cl-format <a href="#fnref:xi" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
