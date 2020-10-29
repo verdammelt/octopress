@@ -65,25 +65,25 @@ of its `cl-format`[^xi] function.
 
 ---
 
-[^i]:  https://exercism.io/my/tracks
+[^i]:  <https://exercism.io/my/tracks>
 
-[^ii]:  https://exercism.io/my/tracks/common-lisp
+[^ii]:  <https://exercism.io/my/tracks/common-lisp>
 
-[^iii]: http//l1sp.org/cl/~r
+[^iii]: <http://l1sp.org/cl/~r>
 
-[^iv]:  https://en.wikipedia.org/wiki/Common_Lisp
+[^iv]:  <https://en.wikipedia.org/wiki/Common_Lisp>
 
-[^v]:  https://webstore.ansi.org/Standards/INCITS/INCITS2261994S2008
+[^v]:  <https://webstore.ansi.org/Standards/INCITS/INCITS2261994S2008>
 
-[^vi]:  https://www.dreamsongs.com/Files/HOPL2-Uncut.pdf p80
+[^vi]:  <https://www.dreamsongs.com/Files/HOPL2-Uncut.pdf> p80
 
-[^vii]:  https://en.wikipedia.org/wiki/Maclisp
+[^vii]:  <https://en.wikipedia.org/wiki/Maclisp>
 
-[^viii]:  https://en.wikipedia.org/wiki/Lisp_Machine_Lisp
+[^viii]:  <https://en.wikipedia.org/wiki/Lisp_Machine_Lisp>
 
-[^ix]:  http://l1sp.org/cl/format
+[^ix]:  <http://l1sp.org/cl/format>
 
-[^x]:  https://clojure.org
+[^x]:  <https://clojure.org>
 
-[^xi]:  https://clojuredocs.org/clojure.pprint/cl-format
+[^xi]:  <https://clojuredocs.org/clojure.pprint/cl-format>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: commonlisp | Code And Cocktails]]></title>
   <link href="http://code-and-cocktails.heroku.com/blog/categories/commonlisp/atom.xml" rel="self"/>
   <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-10-29T14:29:22-04:00</updated>
+  <updated>2020-10-29T15:21:17-04:00</updated>
   <id>http://code-and-cocktails.heroku.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
@@ -80,37 +80,37 @@ of its <code>cl-format</code><sup id="fnref:xi"><a href="#fn:xi" class="footnote
 <div class="footnotes">
   <ol>
     <li id="fn:i">
-      <p>https://exercism.io/my/tracks <a href="#fnref:i" class="reversefootnote">&#8617;</a></p>
+      <p><a href="https://exercism.io/my/tracks">https://exercism.io/my/tracks</a> <a href="#fnref:i" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:ii">
-      <p>https://exercism.io/my/tracks/common-lisp <a href="#fnref:ii" class="reversefootnote">&#8617;</a></p>
+      <p><a href="https://exercism.io/my/tracks/common-lisp">https://exercism.io/my/tracks/common-lisp</a> <a href="#fnref:ii" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:iii">
-      <p>http//l1sp.org/cl/~r <a href="#fnref:iii" class="reversefootnote">&#8617;</a></p>
+      <p><a href="http://l1sp.org/cl/~r">http://l1sp.org/cl/~r</a> <a href="#fnref:iii" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:iv">
-      <p>https://en.wikipedia.org/wiki/Common_Lisp <a href="#fnref:iv" class="reversefootnote">&#8617;</a></p>
+      <p><a href="https://en.wikipedia.org/wiki/Common_Lisp">https://en.wikipedia.org/wiki/Common_Lisp</a> <a href="#fnref:iv" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:v">
-      <p>https://webstore.ansi.org/Standards/INCITS/INCITS2261994S2008 <a href="#fnref:v" class="reversefootnote">&#8617;</a></p>
+      <p><a href="https://webstore.ansi.org/Standards/INCITS/INCITS2261994S2008">https://webstore.ansi.org/Standards/INCITS/INCITS2261994S2008</a> <a href="#fnref:v" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:vi">
-      <p>https://www.dreamsongs.com/Files/HOPL2-Uncut.pdf p80 <a href="#fnref:vi" class="reversefootnote">&#8617;</a></p>
+      <p><a href="https://www.dreamsongs.com/Files/HOPL2-Uncut.pdf">https://www.dreamsongs.com/Files/HOPL2-Uncut.pdf</a> p80 <a href="#fnref:vi" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:vii">
-      <p>https://en.wikipedia.org/wiki/Maclisp <a href="#fnref:vii" class="reversefootnote">&#8617;</a></p>
+      <p><a href="https://en.wikipedia.org/wiki/Maclisp">https://en.wikipedia.org/wiki/Maclisp</a> <a href="#fnref:vii" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:viii">
-      <p>https://en.wikipedia.org/wiki/Lisp_Machine_Lisp <a href="#fnref:viii" class="reversefootnote">&#8617;</a></p>
+      <p><a href="https://en.wikipedia.org/wiki/Lisp_Machine_Lisp">https://en.wikipedia.org/wiki/Lisp_Machine_Lisp</a> <a href="#fnref:viii" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:ix">
-      <p>http://l1sp.org/cl/format <a href="#fnref:ix" class="reversefootnote">&#8617;</a></p>
+      <p><a href="http://l1sp.org/cl/format">http://l1sp.org/cl/format</a> <a href="#fnref:ix" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:x">
-      <p>https://clojure.org <a href="#fnref:x" class="reversefootnote">&#8617;</a></p>
+      <p><a href="https://clojure.org">https://clojure.org</a> <a href="#fnref:x" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:xi">
-      <p>https://clojuredocs.org/clojure.pprint/cl-format <a href="#fnref:xi" class="reversefootnote">&#8617;</a></p>
+      <p><a href="https://clojuredocs.org/clojure.pprint/cl-format">https://clojuredocs.org/clojure.pprint/cl-format</a> <a href="#fnref:xi" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
