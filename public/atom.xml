@@ -4,7 +4,7 @@
   <title><![CDATA[Code And Cocktails]]></title>
   <link href="http://code-and-cocktails.heroku.com/atom.xml" rel="self"/>
   <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-10-29T15:21:17-04:00</updated>
+  <updated>2020-11-13T10:13:50-05:00</updated>
   <id>http://code-and-cocktails.heroku.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
@@ -12,6 +12,117 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to Write a Heroku Buildpack for Fun and / or Profit]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2020/11/13/heroku-buildpack-for-fun-and-profit/"/>
+    <updated>2020-11-13T08:55:15-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2020/11/13/heroku-buildpack-for-fun-and-profit</id>
+    <content type="html"><![CDATA[<p>Heroku buildpacks are used to prepare (/e.g./ build/compile) an application to allow it to be run by Heroku on their dynos. There are many that exist so it is not likely that you will need to write your own. And that is quite true for the one I wrote. But I wrote one partly to find out how to do it, so let me share what I learned.</p>
+
+<p>The <a href="https://devcenter.heroku.com/articles/buildpack-api">API for Buildpacks</a> is pretty simple and it can be easy to write one. The API is three scripts that will be run by Heroku when it runs the buildpack: <code>detect</code>, <code>compile</code>, <code>release</code>. Buildpacks are <a href="https://git-scm.com">git</a> repositories so it is common to host them on <a href="https://www.github.com">GitHub</a> (but that is not <em>required</em>).</p>
+
+<p>While I say that the API is simple, I hope it is useful to summarize details of the API here. Perhaps restating it with my own words will help others (or just me in the future).</p>
+
+<h2 id="environment-that-the-buildpack-is-run-in">Environment that the buildpack is run in</h2>
+
+<p>Buildpacks are run on the same <a href="https://devcenter.heroku.com/articles/stack">stack</a> as the application is.</p>
+
+<p>Buildpacks are run in their own directory. This is <em>not</em> the directory where the application code is. Also this buildpack directory is not available to later buildpacks nor the application. So if the buildpack creates build artifacts those must be put somewhere else.</p>
+
+<p>Besides the buildpack directory there are three other directories available to the buildpack:</p>
+
+<ul>
+  <li><code>BUILD_DIR</code>: this is the directory where the application code is.</li>
+  <li><code>CACHE_DIR</code>: this is a directory which can be used to cache build artifacts (see below).</li>
+  <li><code>ENV_DIR</code>: this is a directory which contains information about the [Heroku Config Vars][heroku-confi-vars] (see blow).</li>
+</ul>
+
+<h2 id="bindetect"><code>bin/detect</code></h2>
+
+<p>This script’s job is to decide if this buildpack should be run. It is passed a single argument, the <code>BUILD_DIR</code>. This script typically will work by checking for a particular file in <code>BUILD_DIR</code>. If the buildpack should not run the script should return a non-zero value. If the buildpack should run then besides a zero return value it must also print to standard output a “human readable” name. This will show up in the build logs and shows that the buildpack is chosen.</p>
+
+<h2 id="bincompile"><code>bin/compile</code></h2>
+
+<p>This script is a huge part of a build pack. It has the job of compiling/preparing the application. It is passed three arguments: <code>BUILD_DIR</code>, <code>CACHE_DIR</code> and <code>ENV_DIR</code>.</p>
+
+<p>There are two environment variables available to the compile script:</p>
+
+<ul>
+  <li><code>STACK</code>: which <a href="https://devcenter.heroku.com/articles/stack">stack</a> the buildpack is running on</li>
+  <li><code>SOURCE_VERSION</code>: the “version”. For applications deployed via git pushes that will be a commit SHA.</li>
+</ul>
+
+<p><a href="https://devcenter.heroku.com/articles/config-vars">Heroku Config Vars</a> <em>are not</em> available as environment variables to the buildpack. But they are available via the <code>ENV_DIR</code> (see below).</p>
+
+<p>Any output to standard output will appear in the build log. It is recommended that buildpacks output messages in ways that fit the style of the other parts of the build logs (see below for some shell script functions to help with this).</p>
+
+<p>If a buildpack needs to communicate environment to next buildpack it can write a script <code>export</code> in the buildpack’s directory which will be executed before the next buildpack is run.</p>
+
+<p>If a buildpack needs to communicate environment to the application (<em>e.g.</em> <code>PATH</code>) it can write shell scripts to <code>BUILD_DIR/.profile.d</code>. These will be run during dyno startup. They will be run <em>after</em> the <a href="https://devcenter.heroku.com/articles/config-vars">Heroku Config Vars</a> are set in the environment. Each script should be named with a <code>.sh</code> suffix. There is no guarantee to the ordering which these files will be executed.</p>
+
+<h2 id="binrelease"><code>bin/release</code></h2>
+
+<p>The release script is run after compilation and returns meta data back to the build process. It is passed a single argument, the <code>BUILD_DIR</code>.</p>
+
+<p>It must return, on standard output, a YAML formatted hash with upt to two keys: <code>addons</code> and <code>default_process_types</code>.</p>
+
+<p>Any <code>addons</code> specified will be added to the application the first time it is deployed. The <code>default_process_types</code> key defines default <code>Procfile</code> entries to use.</p>
+
+<p>A good start is with the following script which creates an empty YAML hash. It can be expanded with the required keys when needed:</p>
+
+<pre><code class="language-sh">#!/bin/sh
+
+cat &lt;&lt; EOF
+---
+EOF
+</code></pre>
+
+<h2 id="cache_dir"><code>CACHE_DIR</code></h2>
+
+<p>The <code>CACHE_DIR</code> is a directory that can be used to store build artifacts between builds. For example if a buildpack downloads and installs some software, it can store that in <code>CACHE_DIR</code> and then skip the download and install the next time.</p>
+
+<p>Note, the API specifies that the <code>CACHE_DIR</code> may not exist, so if <code>bin/compile</code> wants to use it it should ensure it exists before doing so.</p>
+
+<h2 id="env_dir"><code>ENV_DIR</code></h2>
+
+<p>This directory contains files for each <a href="https://devcenter.heroku.com/articles/config-vars">Heroku config var</a>. For a <a href="https://devcenter.heroku.com/articles/config-vars">config var</a> <code>FOO=bar</code> there will be a file <code>FOO</code> with the contents <code>bar</code>.</p>
+
+<h2 id="bincompile-logging-helpers"><code>bin/compile</code> logging helpers</h2>
+
+<p>Since the compile script <em>should</em> use output format that is similar to the rest of the build process the following shell functions may be useful</p>
+
+<pre><code class="language-sh">log_header() {
+  echo "-----&gt; " $*
+}
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+log() {
+  echo $* | indent
+}
+</code></pre>
+
+<p>They can be used like this:</p>
+
+<pre><code class="language-sh">log_header "Staring Build..."
+
+cat output.txt | indent
+
+log "Build complete."
+</code></pre>
+
+<p>which will produce:</p>
+
+<pre><code>-----&gt; Starting Build...
+       ...contents of output.txt...
+       Build complete.
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Standard Joke]]></title>
@@ -1665,216 +1776,6 @@ Randall B and Ungar, David</li>
   <ol>
     <li id="fn:1">
       <p>Or perhaps that is not what they said, but what we heard. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[TDD in Common Lisp: Recursive Yak-shaving]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving/"/>
-    <updated>2013-12-25T17:34:59-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving</id>
-    <content type="html"><![CDATA[<p>While avoiding family this Christmas-day I started trying to figure out way
-for me to do TDD in Common Lisp (as one does…). That led to SLIME<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> and
-    QuickLisp<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> and lisp-unit<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> and asdf<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> (<em>&amp;c. &amp;c</em>).</p>
-
-<h2 id="its-yaks-the-whole-way-down">…it’s yaks the whole way down.</h2>
-
-<p>The hardest part for me was to find a simple way to load my code and run the
-tests. ASDF ships with <code>asdf:test-system</code> defined but it does nothing by
-default<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>. So I did some digging around and saw some other’s solutions and
-synthesized my version.</p>
-
-<p>Here is an example ASDF system definition for a Game of Life<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>
-implementation.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-</pre></td><td class="code"><pre><code class="common-lisp"><span class="line"><span class="p">(</span><span class="nv">asdf:defsystem</span> <span class="ss">#:gol</span>
-</span><span class="line">  <span class="ss">:description</span> <span class="s">&quot;Conways Game of Life in Lisp&quot;</span>
-</span><span class="line">  <span class="ss">:author</span> <span class="s">&quot;Mark Simpson &lt;verdammelt@gmail.com&gt;&quot;</span>
-</span><span class="line">  <span class="ss">:version</span> <span class="s">&quot;0.0.0&quot;</span>
-</span><span class="line">  <span class="ss">:depends-on</span> <span class="p">(</span><span class="s">&quot;lisp-unit&quot;</span><span class="p">)</span>
-</span><span class="line">  <span class="ss">:components</span> <span class="p">((</span><span class="ss">:module</span> <span class="s">&quot;src&quot;</span>
-</span><span class="line">			<span class="ss">:serial</span> <span class="no">t</span>
-</span><span class="line">			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="s">&quot;package&quot;</span><span class="p">)</span>
-</span><span class="line">				     <span class="p">(</span><span class="ss">:file</span> <span class="s">&quot;gol&quot;</span><span class="p">))</span>
-</span><span class="line">                <span class="p">(</span><span class="ss">:module</span> <span class="s">&quot;test&quot;</span>
-</span><span class="line">			<span class="ss">:serial</span> <span class="no">t</span>
-</span><span class="line">            <span class="ss">:depends-on</span> <span class="p">(</span><span class="s">&quot;src&quot;</span><span class="p">)</span>
-</span><span class="line">			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="s">&quot;package&quot;</span><span class="p">)</span>
-</span><span class="line">				     <span class="p">(</span><span class="ss">:file</span> <span class="s">&quot;gol-test&quot;</span><span class="p">))))</span>
-</span><span class="line">  <span class="ss">:in-order-to</span> <span class="p">((</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">load-op</span> <span class="ss">:gol</span><span class="p">)))</span>
-</span><span class="line">  <span class="ss">:perform</span> <span class="p">(</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">o</span> <span class="nv">c</span><span class="p">)</span>
-</span><span class="line">		    <span class="p">(</span><span class="k">progv</span>
-</span><span class="line">			<span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">intern</span> <span class="s">&quot;*PRINT-ERRORS*&quot;</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
-</span><span class="line">			      <span class="p">(</span><span class="nb">intern</span> <span class="s">&quot;*PRINT-FAILURES*&quot;</span> <span class="ss">:lisp-unit</span><span class="p">))</span>
-</span><span class="line">			<span class="o">&#39;</span><span class="p">(</span><span class="no">t</span> <span class="no">t</span><span class="p">)</span>
-</span><span class="line">		      <span class="p">(</span><span class="nb">funcall</span> <span class="p">(</span><span class="nb">find-symbol</span> <span class="s">&quot;RUN-TESTS&quot;</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
-</span><span class="line">			       <span class="ss">:all</span> <span class="ss">:gol-test</span><span class="p">))))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="my-god-its-full-of-yaks">My God… it’s full of yaks</h2>
-
-<p>I’m just going to let that sink in for a bit while I get some coffee.</p>
-
-<p>Ok, now that I’m back I will explain each part. The first interesting bit is
-on line 6:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>depends-on </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="common-lisp"><span class="line">  <span class="ss">:depends-on</span> <span class="p">(</span><span class="s">&quot;lisp-unit&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This line tells ASDF that it should find and load a system called <code>lisp-unit</code>
-because our system depends upon it. This is where QuickLisp makes things
-simple since that is its job and it does a fine one at that.</p>
-
-<p>Next is the definition of our components:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Defining the Components </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="common-lisp"><span class="line">  <span class="ss">:components</span> <span class="p">((</span><span class="ss">:module</span> <span class="s">&quot;src&quot;</span>
-</span><span class="line">			<span class="ss">:serial</span> <span class="no">t</span>
-</span><span class="line">			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="s">&quot;package&quot;</span><span class="p">)</span>
-</span><span class="line">				     <span class="p">(</span><span class="ss">:file</span> <span class="s">&quot;gol&quot;</span><span class="p">))</span>
-</span><span class="line">                <span class="p">(</span><span class="ss">:module</span> <span class="s">&quot;test&quot;</span>
-</span><span class="line">			<span class="ss">:serial</span> <span class="no">t</span>
-</span><span class="line">            <span class="ss">:depends-on</span> <span class="p">(</span><span class="s">&quot;src&quot;</span><span class="p">)</span>
-</span><span class="line">			<span class="ss">:components</span> <span class="p">((</span><span class="ss">:file</span> <span class="s">&quot;package&quot;</span><span class="p">)</span>
-</span><span class="line">				     <span class="p">(</span><span class="ss">:file</span> <span class="s">&quot;gol-test&quot;</span><span class="p">))))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I’ve decided that my project should have two main directories, one to contain
-all the production source code and one for all the test source code. Each one
-will be in their own packages, with the <code>:gol-test</code> package <code>:use</code>-ing the
-<code>:gol</code> package. <code>:serial t</code> by the way tells ASDF that each item in the
-component list depends upon the one before it.</p>
-
-<p>Now the hairier parts which tell ASDF to run our tests:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Telling ASDF How to Test Our System </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="common-lisp"><span class="line">  <span class="ss">:in-order-to</span> <span class="p">((</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">load-op</span> <span class="ss">:gol</span><span class="p">)))</span>
-</span><span class="line">  <span class="ss">:perform</span> <span class="p">(</span><span class="nv">test-op</span> <span class="p">(</span><span class="nv">o</span> <span class="nv">c</span><span class="p">)</span>
-</span><span class="line">		    <span class="p">(</span><span class="k">progv</span>
-</span><span class="line">			<span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">intern</span> <span class="s">&quot;*PRINT-ERRORS*&quot;</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
-</span><span class="line">			      <span class="p">(</span><span class="nb">intern</span> <span class="s">&quot;*PRINT-FAILURES*&quot;</span> <span class="ss">:lisp-unit</span><span class="p">))</span>
-</span><span class="line">			<span class="o">&#39;</span><span class="p">(</span><span class="no">t</span> <span class="no">t</span><span class="p">)</span>
-</span><span class="line">		      <span class="p">(</span><span class="nb">funcall</span> <span class="p">(</span><span class="nb">find-symbol</span> <span class="s">&quot;RUN-TESTS&quot;</span> <span class="ss">:lisp-unit</span><span class="p">)</span>
-</span><span class="line">			       <span class="ss">:all</span> <span class="ss">:gol-test</span><span class="p">))))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The first line is simply stating that in order to do <code>test-op</code> ASDF needs to
-perform <code>load-op</code> on the <code>:gol</code> system. This way every time we run the tests
-we’ll reload the system if needed.</p>
-
-<p>Now… this next bit probably shows how rusty my Lisp is. Maybe there is an
-easier way. Basically we want to run <code>(lisp-unit:run-tests :all :gol-test)</code>
-with <code>lisp-unit:*print-errors*</code> and <code>lisp-unit:*print-failures*</code> both bound to
-<code>t</code> (they default to <code>nil</code> and that doesn’t give enough info IMNSHO). However
-when Lisp is reading and evaluating this code <code>lisp-unit</code> has probably not yet
-been loaded - so we have to be crafty and find the symbol by name in the
-package then <code>funcall</code> it. Binding the variables was trickier but I stumbled
-upon <code>progv</code><sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup> and that seems to be just what I needed.</p>
-
-<p><code>progv</code> creates new dynamic bindings for the symbols in the list which is its
-first argument. These symbols are determined at runtime. That means we can use
-<code>intern</code> to find or create these symbols in the right package<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup>. <code>progv</code>
-binds these symbols to the values in the list which is its second parameter
-and then finally executes the sexp which is its third argument in an
-environment which contains these new bindings.</p>
-
-<p>With this work done I can now type in <code>(asdf:test-system 'gol)</code> into my REPL
-and it loads and runs my tests and gives me useful output of those tests. I
-might go so far as to bind that to a very short function name, or even a key
-in Emacs.</p>
-
-<h2 id="there-are-still-more-yaks-to-shave">There are still more yaks to shave.</h2>
-
-<p>What is left to be determined is if this is the best way to do things.</p>
-
-<p>Some documentation/blogs I read lead me to believe that putting the tests in
-the same system with the production code is <em>verboten</em> (or at least a
-<em>no-no</em>). I tried having the tests be in their own system definition
-(depending upon the production code) but then ASDF &amp; QuickLisp both strongly
-pushed me to have that definition it its own <code>.asd</code> file<sup id="fnref:9"><a href="#fn:9" class="footnote">9</a></sup> which seemed
-awkward to me. I personally have no problem shipping tests with the production
-code, and I believe that if needed all the symbols of the test package could
-be <code>unintern</code>-ed before an image was saved if desired.</p>
-
-<p>I’ll play around with this setup and see how things go.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>http://www.common-lisp.net/project/slime/ <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>http://www.quicklisp.org/ <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>https://github.com/OdonataResearchLLC/lisp-unit <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:4">
-      <p>http://common-lisp.net/project/asdf/ <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:5">
-      <p>http://common-lisp.net/project/asdf/asdf/Predefined-operations-of-ASDF.html#test_002dop <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:6">
-      <p>Really? You don’t know what this is already and you had to look in the 
-footnotes? Go look it upon Wikipedia already! <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:7">
-      <p>http://www.lispworks.com/documentation/HyperSpec/Body/s_progv.htm#progv <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:8">
-      <p>Perhaps I should use <code>find-symbol</code> instead so that I don’t create
-symbols that the package doesn’t export. I will experiment with that. <a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:9">
-      <p>since they look up the defintion by looking for a file with the same
-name as the system <a href="#fnref:9" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

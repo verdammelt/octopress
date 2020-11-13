@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: buildpack | Code And Cocktails]]></title>
+  <link href="http://code-and-cocktails.heroku.com/blog/categories/buildpack/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.heroku.com/"/>
+  <updated>2020-11-13T10:13:50-05:00</updated>
+  <id>http://code-and-cocktails.heroku.com/</id>
+  <author>
+    <name><![CDATA[Mark Simpson]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to write a Heroku Buildpack for Fun and / or Profit]]></title>
+    <link href="http://code-and-cocktails.heroku.com/blog/2020/11/13/heroku-buildpack-for-fun-and-profit/"/>
+    <updated>2020-11-13T08:55:15-05:00</updated>
+    <id>http://code-and-cocktails.heroku.com/blog/2020/11/13/heroku-buildpack-for-fun-and-profit</id>
+    <content type="html"><![CDATA[<p>Heroku buildpacks are used to prepare (/e.g./ build/compile) an application to allow it to be run by Heroku on their dynos. There are many that exist so it is not likely that you will need to write your own. And that is quite true for the one I wrote. But I wrote one partly to find out how to do it, so let me share what I learned.</p>
+
+<p>The <a href="https://devcenter.heroku.com/articles/buildpack-api">API for Buildpacks</a> is pretty simple and it can be easy to write one. The API is three scripts that will be run by Heroku when it runs the buildpack: <code>detect</code>, <code>compile</code>, <code>release</code>. Buildpacks are <a href="https://git-scm.com">git</a> repositories so it is common to host them on <a href="https://www.github.com">GitHub</a> (but that is not <em>required</em>).</p>
+
+<p>While I say that the API is simple, I hope it is useful to summarize details of the API here. Perhaps restating it with my own words will help others (or just me in the future).</p>
+
+<h2 id="environment-that-the-buildpack-is-run-in">Environment that the buildpack is run in</h2>
+
+<p>Buildpacks are run on the same <a href="https://devcenter.heroku.com/articles/stack">stack</a> as the application is.</p>
+
+<p>Buildpacks are run in their own directory. This is <em>not</em> the directory where the application code is. Also this buildpack directory is not available to later buildpacks nor the application. So if the buildpack creates build artifacts those must be put somewhere else.</p>
+
+<p>Besides the buildpack directory there are three other directories available to the buildpack:</p>
+
+<ul>
+  <li><code>BUILD_DIR</code>: this is the directory where the application code is.</li>
+  <li><code>CACHE_DIR</code>: this is a directory which can be used to cache build artifacts (see below).</li>
+  <li><code>ENV_DIR</code>: this is a directory which contains information about the [Heroku Config Vars][heroku-confi-vars] (see blow).</li>
+</ul>
+
+<h2 id="bindetect"><code>bin/detect</code></h2>
+
+<p>This script’s job is to decide if this buildpack should be run. It is passed a single argument, the <code>BUILD_DIR</code>. This script typically will work by checking for a particular file in <code>BUILD_DIR</code>. If the buildpack should not run the script should return a non-zero value. If the buildpack should run then besides a zero return value it must also print to standard output a “human readable” name. This will show up in the build logs and shows that the buildpack is chosen.</p>
+
+<h2 id="bincompile"><code>bin/compile</code></h2>
+
+<p>This script is a huge part of a build pack. It has the job of compiling/preparing the application. It is passed three arguments: <code>BUILD_DIR</code>, <code>CACHE_DIR</code> and <code>ENV_DIR</code>.</p>
+
+<p>There are two environment variables available to the compile script:</p>
+
+<ul>
+  <li><code>STACK</code>: which <a href="https://devcenter.heroku.com/articles/stack">stack</a> the buildpack is running on</li>
+  <li><code>SOURCE_VERSION</code>: the “version”. For applications deployed via git pushes that will be a commit SHA.</li>
+</ul>
+
+<p><a href="https://devcenter.heroku.com/articles/config-vars">Heroku Config Vars</a> <em>are not</em> available as environment variables to the buildpack. But they are available via the <code>ENV_DIR</code> (see below).</p>
+
+<p>Any output to standard output will appear in the build log. It is recommended that buildpacks output messages in ways that fit the style of the other parts of the build logs (see below for some shell script functions to help with this).</p>
+
+<p>If a buildpack needs to communicate environment to next buildpack it can write a script <code>export</code> in the buildpack’s directory which will be executed before the next buildpack is run.</p>
+
+<p>If a buildpack needs to communicate environment to the application (<em>e.g.</em> <code>PATH</code>) it can write shell scripts to <code>BUILD_DIR/.profile.d</code>. These will be run during dyno startup. They will be run <em>after</em> the <a href="https://devcenter.heroku.com/articles/config-vars">Heroku Config Vars</a> are set in the environment. Each script should be named with a <code>.sh</code> suffix. There is no guarantee to the ordering which these files will be executed.</p>
+
+<h2 id="binrelease"><code>bin/release</code></h2>
+
+<p>The release script is run after compilation and returns meta data back to the build process. It is passed a single argument, the <code>BUILD_DIR</code>.</p>
+
+<p>It must return, on standard output, a YAML formatted hash with upt to two keys: <code>addons</code> and <code>default_process_types</code>.</p>
+
+<p>Any <code>addons</code> specified will be added to the application the first time it is deployed. The <code>default_process_types</code> key defines default <code>Procfile</code> entries to use.</p>
+
+<p>A good start is with the following script which creates an empty YAML hash. It can be expanded with the required keys when needed:</p>
+
+<pre><code class="language-sh">#!/bin/sh
+
+cat &lt;&lt; EOF
+---
+EOF
+</code></pre>
+
+<h2 id="cache_dir"><code>CACHE_DIR</code></h2>
+
+<p>The <code>CACHE_DIR</code> is a directory that can be used to store build artifacts between builds. For example if a buildpack downloads and installs some software, it can store that in <code>CACHE_DIR</code> and then skip the download and install the next time.</p>
+
+<p>Note, the API specifies that the <code>CACHE_DIR</code> may not exist, so if <code>bin/compile</code> wants to use it it should ensure it exists before doing so.</p>
+
+<h2 id="env_dir"><code>ENV_DIR</code></h2>
+
+<p>This directory contains files for each <a href="https://devcenter.heroku.com/articles/config-vars">Heroku config var</a>. For a <a href="https://devcenter.heroku.com/articles/config-vars">config var</a> <code>FOO=bar</code> there will be a file <code>FOO</code> with the contents <code>bar</code>.</p>
+
+<h2 id="bincompile-logging-helpers"><code>bin/compile</code> logging helpers</h2>
+
+<p>Since the compile script <em>should</em> use output format that is similar to the rest of the build process the following shell functions may be useful</p>
+
+<pre><code class="language-sh">log_header() {
+  echo "-----&gt; " $*
+}
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+log() {
+  echo $* | indent
+}
+</code></pre>
+
+<p>They can be used like this:</p>
+
+<pre><code class="language-sh">log_header "Staring Build..."
+
+cat output.txt | indent
+
+log "Build complete."
+</code></pre>
+
+<p>which will produce:</p>
+
+<pre><code>-----&gt; Starting Build...
+       ...contents of output.txt...
+       Build complete.
+</code></pre>
+
+]]></content>
+  </entry>
+  
+</feed>
