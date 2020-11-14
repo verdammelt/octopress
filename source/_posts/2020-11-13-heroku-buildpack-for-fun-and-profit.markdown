@@ -2,6 +2,7 @@
 layout: post
 title: How to write a Heroku Buildpack for Fun and / or Profit
 date: 2020-11-13 08:55:15 -0500
+descrxiption: Summary of how to write a Heroku Buildpack
 comments: true
 categories: heroku buildpack
 ---
