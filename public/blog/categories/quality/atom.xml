@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: quality | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/quality/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/quality/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Delivery vs. Code Quality: Any Corners Safe To Cut?]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/11/13/delivery-vs-code-quality-any-corners-safe-to-cut/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/11/13/delivery-vs-code-quality-any-corners-safe-to-cut/"/>
     <updated>2012-11-13T20:32:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/11/13/delivery-vs-code-quality-any-corners-safe-to-cut</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/11/13/delivery-vs-code-quality-any-corners-safe-to-cut</id>
     <content type="html"><![CDATA[<p>The balancing act between delivering vs. code quality has been on my mind
 lately. It seems to me that there are times when delivery trumps code quality.
 But sacrificing code quality for delivery speed results in slower delivery of

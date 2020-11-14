@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: gin | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/gin/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/gin/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[The Palm Beach Special]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/07/26/the-palm-beach-special/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/07/26/the-palm-beach-special/"/>
     <updated>2012-07-26T19:13:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/07/26/the-palm-beach-special</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/07/26/the-palm-beach-special</id>
     <content type="html"><![CDATA[<p>(It was noted to me that for a blog called ‘code and cocktails’ that I
 don’t have many cocktail related posts - so here we go:)</p>
 

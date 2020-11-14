@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: recipe | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/recipe/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/recipe/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Cooking Chicken Soup]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2013/05/12/cooking-chicken-soup/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2013/05/12/cooking-chicken-soup/"/>
     <updated>2013-05-12T19:49:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2013/05/12/cooking-chicken-soup</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2013/05/12/cooking-chicken-soup</id>
     <content type="html"><![CDATA[<p>In the interest in breaking my current blogging writing block I’ll record for
 posterity my ‘recipe’ for chicken soup.</p>
 
@@ -77,9 +77,9 @@ could be used instead.</p>
   
   <entry>
     <title type="html"><![CDATA[Recipe: Mama Simpson's Kartoffelsalat]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/11/23/recipe-sofie-simpsons-kartoffelsalat/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/11/23/recipe-sofie-simpsons-kartoffelsalat/"/>
     <updated>2012-11-23T15:49:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/11/23/recipe-sofie-simpsons-kartoffelsalat</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/11/23/recipe-sofie-simpsons-kartoffelsalat</id>
     <content type="html"><![CDATA[<p>My <a href="http://www.flickr.com/photos/verdammelt/4309417102/">Mother’s</a> Kartoffelsalat (Potato Salad) recipe is a German style
 potato salad; not one with mayonnaise. This is the type I grew up with and I
 think the other type is just <em>wrong</em>.</p>
@@ -122,9 +122,9 @@ still pretty young).</p>
   
   <entry>
     <title type="html"><![CDATA[Recipe: Washabinaro Chili]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/11/02/wasabinaro-chili-recipe/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/11/02/wasabinaro-chili-recipe/"/>
     <updated>2012-11-02T20:33:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/11/02/wasabinaro-chili-recipe</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/11/02/wasabinaro-chili-recipe</id>
     <content type="html"><![CDATA[<p>The following is the recipe for “Washabinaros Chili”, we found it on
 <a href="http://allrecipes.com/recipe/washabinaros-chili">All Recipes</a>. It
 serves 8.</p>

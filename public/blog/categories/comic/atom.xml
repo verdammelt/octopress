@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: comic | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/comic/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/comic/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ride Bikes Everyday]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/11/27/ride-bikes-everyday/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/11/27/ride-bikes-everyday/"/>
     <updated>2011-11-27T23:24:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/11/27/ride-bikes-everyday</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/11/27/ride-bikes-everyday</id>
     <content type="html"><![CDATA[<p><img src="http://www.explosm.net/db/files/Comics/Rob/gottaStudy.png" alt="Ride Bikes Everyday" /></p>
 
 ]]></content>

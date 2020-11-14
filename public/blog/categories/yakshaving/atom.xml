@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: yakshaving | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/yakshaving/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/yakshaving/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[TDD in Common Lisp: recursive yak-shaving]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving/"/>
     <updated>2013-12-25T17:34:59-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving</id>
     <content type="html"><![CDATA[<p>While avoiding family this Christmas-day I started trying to figure out way
 for me to do TDD in Common Lisp (as one does…). That led to SLIME<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> and
     QuickLisp<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> and lisp-unit<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> and asdf<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> (<em>&amp;c. &amp;c</em>).</p>

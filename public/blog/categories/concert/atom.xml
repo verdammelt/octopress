@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: concert | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/concert/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/concert/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Kraftwerk @ MoMA]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/04/14/kraftwerk-at-moma/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/04/14/kraftwerk-at-moma/"/>
     <updated>2012-04-14T10:59:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/04/14/kraftwerk-at-moma</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/04/14/kraftwerk-at-moma</id>
     <content type="html"><![CDATA[<div align="center"><a href="http://www.flickr.com/photos/verdammelt/7076702975/" title="We arrived by verdammelt, on Flickr"><img src="http://farm8.staticflickr.com/7262/7076702975_aa72f9797f_z.jpg" width="640" height="361" alt="We arrived" /></a></div>
 
 <p>We were going to see Kraftwerk at MoMA and the trip didn’t start well as we

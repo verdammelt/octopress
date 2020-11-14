@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: naming | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/naming/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/naming/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[To Name a Thing is to have Power Over It.]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/08/02/to-name-a-thing-is-to-have-power-over-it/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/08/02/to-name-a-thing-is-to-have-power-over-it/"/>
     <updated>2011-08-02T00:00:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/08/02/to-name-a-thing-is-to-have-power-over-it</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/08/02/to-name-a-thing-is-to-have-power-over-it</id>
     <content type="html"><![CDATA[<p>(warning: an odd half-formed thought is contained herein[1])</p>
 
 <ol>

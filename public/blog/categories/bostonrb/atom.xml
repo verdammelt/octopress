@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: bostonrb | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/bostonrb/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/bostonrb/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[My thoughts derived from the talk given by @chadfowler at @bostonrb 2012-02-21]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/02/21/my-thoughts-derived-from-the-talk-given-by-at-chadfowler-at-at-bostonrb-2012-02-21/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/02/21/my-thoughts-derived-from-the-talk-given-by-at-chadfowler-at-at-bostonrb-2012-02-21/"/>
     <updated>2012-02-21T22:36:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/02/21/my-thoughts-derived-from-the-talk-given-by-at-chadfowler-at-at-bostonrb-2012-02-21</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/02/21/my-thoughts-derived-from-the-talk-given-by-at-chadfowler-at-at-bostonrb-2012-02-21</id>
     <content type="html"><![CDATA[<h2 id="overview">Overview</h2>
 
 <p>(I finally went to <em>another</em> Boston Ruby meetup.  Only my second -

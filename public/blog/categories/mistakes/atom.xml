@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: mistakes | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/mistakes/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/mistakes/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[My problems bootstrapping Midje]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/04/24/my-problems-bootstrapping-midje/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/04/24/my-problems-bootstrapping-midje/"/>
     <updated>2012-04-24T20:23:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/04/24/my-problems-bootstrapping-midje</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/04/24/my-problems-bootstrapping-midje</id>
     <content type="html"><![CDATA[<h2 id="a-tragedy-of-my-own-devising">(<em>A Tragedy of My Own Devising</em>)</h2>
 
 <h2 id="abstract">Abstract</h2>

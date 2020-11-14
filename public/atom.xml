@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to Write a Heroku Buildpack for Fun and / or Profit]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2020/11/13/heroku-buildpack-for-fun-and-profit/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2020/11/13/heroku-buildpack-for-fun-and-profit/"/>
     <updated>2020-11-13T08:55:15-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2020/11/13/heroku-buildpack-for-fun-and-profit</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2020/11/13/heroku-buildpack-for-fun-and-profit</id>
     <content type="html"><![CDATA[<p>Heroku buildpacks are used to prepare (/e.g./ build/compile) an application to allow it to be run by Heroku on their dynos. There are many that exist so it is not likely that you will need to write your own. And that is quite true for the one I wrote. But I wrote one partly to find out how to do it, so let me share what I learned.</p>
 
 <p>The <a href="https://devcenter.heroku.com/articles/buildpack-api">API for Buildpacks</a> is pretty simple and it can be easy to write one. The API is three scripts that will be run by Heroku when it runs the buildpack: <code>detect</code>, <code>compile</code>, <code>release</code>. Buildpacks are <a href="https://git-scm.com">git</a> repositories so it is common to host them on <a href="https://www.github.com">GitHub</a> (but that is not <em>required</em>).</p>
@@ -126,9 +126,9 @@ log "Build complete."
   
   <entry>
     <title type="html"><![CDATA[Standard Joke]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2020/10/21/standard-joke/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2020/10/21/standard-joke/"/>
     <updated>2020-10-21T09:10:18-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2020/10/21/standard-joke</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2020/10/21/standard-joke</id>
     <content type="html"><![CDATA[<p>Arabic-to-Roman number conversion is a common programming exercise,
 often used as a TDD exercise. It is an exercise on many
 Exercism.IO<sup id="fnref:i"><a href="#fn:i" class="footnote">1</a></sup> language tracks including my own track for Common
@@ -230,9 +230,9 @@ of its <code>cl-format</code><sup id="fnref:xi"><a href="#fn:xi" class="footnote
   
   <entry>
     <title type="html"><![CDATA[Writing Mix Tasks for Fun and Profit.]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2017/03/10/how-to-write-a-mix-task/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2017/03/10/how-to-write-a-mix-task/"/>
     <updated>2017-03-10T07:11:29-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2017/03/10/how-to-write-a-mix-task</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2017/03/10/how-to-write-a-mix-task</id>
     <content type="html"><![CDATA[<p>I’m beginning to learn a little Elixir &amp; Phoenix and I ran into a case
 where I wish I had a Mix task for something. Specifically I wanted to
 run <code>npm</code> scripts with mix so I’d only have one command to run instead
@@ -287,9 +287,9 @@ in the GitHub repository:
   
   <entry>
     <title type="html"><![CDATA[Learning From My Apprentice]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2016/05/24/learning-from-my-apprentice/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2016/05/24/learning-from-my-apprentice/"/>
     <updated>2016-05-24T19:43:37-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2016/05/24/learning-from-my-apprentice</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2016/05/24/learning-from-my-apprentice</id>
     <content type="html"><![CDATA[<p>My company, Cyrus Innovation, has started an Apprenticeship program.
 This program involves bringing on people who are brand new to
 programming and pair them with a Senior developer to train them in
@@ -328,9 +328,9 @@ know I’m learning something from her.</p>
   
   <entry>
     <title type="html"><![CDATA[Quickie: Less Columns on Your Board]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2016/04/25/quickie-less-columns-on-your-board/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2016/04/25/quickie-less-columns-on-your-board/"/>
     <updated>2016-04-25T20:52:08-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2016/04/25/quickie-less-columns-on-your-board</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2016/04/25/quickie-less-columns-on-your-board</id>
     <content type="html"><![CDATA[<p>So you have a “Agile Board”(TM) congratulations! If you are like any
 of the people I’ve worked with recently you’ve got lots of columns to
 keep track of all the possible states a story card could be in.</p>
@@ -383,9 +383,9 @@ anymore.</p>
   
   <entry>
     <title type="html"><![CDATA[The Craftsperson and Their Tools]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2016/02/28/the-craftsperson-and-their-tools/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2016/02/28/the-craftsperson-and-their-tools/"/>
     <updated>2016-02-28T14:20:42-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2016/02/28/the-craftsperson-and-their-tools</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2016/02/28/the-craftsperson-and-their-tools</id>
     <content type="html"><![CDATA[<p>When I think of how “Craftspeople” do their work I think of
 tools. Good tools. They pick good tools because they know that it is
 easier to get the job done when you have the right tool, and it is
@@ -422,9 +422,9 @@ hand? Do you make special tools for the work?</p>
   
   <entry>
     <title type="html"><![CDATA[Gotcha of Using YouTubePlayerFragment and ViewPager for Android]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2016/01/10/gotcha-of-using-youtubeplayerfragment-at-viewpager-for-android/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2016/01/10/gotcha-of-using-youtubeplayerfragment-at-viewpager-for-android/"/>
     <updated>2016-01-10T17:19:50-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2016/01/10/gotcha-of-using-youtubeplayerfragment-at-viewpager-for-android</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2016/01/10/gotcha-of-using-youtubeplayerfragment-at-viewpager-for-android</id>
     <content type="html"><![CDATA[<p><small>(Cross posted to the <a href="http://www.cyrusinnovation.com/gotcha-of-using-youtubeplayerfragment-and-viewpager-for-android/">Cyrus Innovation Blog</a>)</small></p>
 
 <p>Recently I learned some Android programming by writing a simple app
@@ -504,9 +504,9 @@ with a physical device tethered to my machine. Like a savage. <a href="#fnref:1
   
   <entry>
     <title type="html"><![CDATA[Initial Emacs Setup for React/ReactNative]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2016/01/10/emacs-setup-for-react-slash-reactnative/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2016/01/10/emacs-setup-for-react-slash-reactnative/"/>
     <updated>2016-01-10T16:09:42-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2016/01/10/emacs-setup-for-react-slash-reactnative</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2016/01/10/emacs-setup-for-react-slash-reactnative</id>
     <content type="html"><![CDATA[<p><small>(Cross posted to the <a href="http://www.cyrusinnovation.com/initial-emacs-setup-for-reactreactnative/">Cyrus Innovation Blog</a>)</small></p>
 
 <p>It looks likely that I’ll be doing some ReactNative work soon so I
@@ -608,9 +608,9 @@ environment will even look like.</p>
   
   <entry>
     <title type="html"><![CDATA[Software Life Span]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2015/12/28/software-life-span/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2015/12/28/software-life-span/"/>
     <updated>2015-12-28T08:28:18-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2015/12/28/software-life-span</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2015/12/28/software-life-span</id>
     <content type="html"><![CDATA[<p><small>(Cross posted to the <a href="http://www.cyrusinnovation.com/software-life-span/">Cyrus Innovation Blog</a>)</small></p>
 
 <blockquote>
@@ -683,9 +683,9 @@ Press, 1979. pp325-361. Print. <a href="#fnref:1" class="reversefootnote">&#861
   
   <entry>
     <title type="html"><![CDATA[Is Your Retro Done?]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2015/11/05/is-your-retro-done/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2015/11/05/is-your-retro-done/"/>
     <updated>2015-11-05T16:36:31-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2015/11/05/is-your-retro-done</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2015/11/05/is-your-retro-done</id>
     <content type="html"><![CDATA[<p><small>(Cross posted to the <a href="http://www.cyrusinnovation.com/is-your-retro-done/">Cyrus Innovation Blog</a>)</small></p>
 
 <p>Retrospective meetings are an important part of any sort of “Agile”
@@ -735,9 +735,9 @@ become even more effective.</p>
   
   <entry>
     <title type="html"><![CDATA[Reminder: Agile Is Risk Management]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2015/06/21/agile-is-risk-management/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2015/06/21/agile-is-risk-management/"/>
     <updated>2015-06-21T12:18:20-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2015/06/21/agile-is-risk-management</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2015/06/21/agile-is-risk-management</id>
     <content type="html"><![CDATA[<p>In a note of the References section of “Waltzing with Bears” (DeMarco
 &amp; Lister 2003), there is a note on “Planning Extreme Programming”
 (Beck &amp; Fowler 2001) which says “When viewed as a set of
@@ -773,9 +773,9 @@ take to deliver value in shorter and shorter iterations is valuable.</p>
   
   <entry>
     <title type="html"><![CDATA[Bootstrapping a Testing Library]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2015/04/18/bootstrapping-lisp-testing-library/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2015/04/18/bootstrapping-lisp-testing-library/"/>
     <updated>2015-04-18T14:43:22-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2015/04/18/bootstrapping-lisp-testing-library</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2015/04/18/bootstrapping-lisp-testing-library</id>
     <content type="html"><![CDATA[<h2 id="abstract">Abstract</h2>
 
 <p>What’s a person to do when one prefers developing in a TDD style and
@@ -976,9 +976,9 @@ project: yakshave<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>.
   
   <entry>
     <title type="html"><![CDATA[Clojure Project 'Reloaded' Pattern Gotcha]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2015/03/19/clojure-project-reloaded-pattern-gotcha/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2015/03/19/clojure-project-reloaded-pattern-gotcha/"/>
     <updated>2015-03-19T11:04:01-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2015/03/19/clojure-project-reloaded-pattern-gotcha</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2015/03/19/clojure-project-reloaded-pattern-gotcha</id>
     <content type="html"><![CDATA[<h2 id="abstract">Abstract</h2>
 
 <p>Ensure that <code>user.clj</code> does not contain dependencies (even transitive)
@@ -1080,9 +1080,9 @@ the REPL is starting. I set it to <code>(load "reloaded")</code>.</p>
   
   <entry>
     <title type="html"><![CDATA[Mocking Class Constructor in Python With Mockito]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2015/01/18/mocking-class-constructor-in-python-with-mockito/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2015/01/18/mocking-class-constructor-in-python-with-mockito/"/>
     <updated>2015-01-18T20:08:59-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2015/01/18/mocking-class-constructor-in-python-with-mockito</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2015/01/18/mocking-class-constructor-in-python-with-mockito</id>
     <content type="html"><![CDATA[<p>In the current code I’m working on we once and a while want to mock
 the constructor of a class. It is only really needed because we have a
 few classes who sadly do heavy-lifting in their constructors.</p>
@@ -1168,9 +1168,9 @@ print Foo()
   
   <entry>
     <title type="html"><![CDATA[The Cocktail Pattern Language]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2014/11/01/cocktail-pattern-language/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2014/11/01/cocktail-pattern-language/"/>
     <updated>2014-11-01T15:20:08-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2014/11/01/cocktail-pattern-language</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2014/11/01/cocktail-pattern-language</id>
     <content type="html"><![CDATA[<h2 id="abstract">Abstract</h2>
 
 <p>The idea of a “Pattern Language” is well known and well received in
@@ -1314,9 +1314,9 @@ solutions to it and to find new areas of discovery.</p>
   
   <entry>
     <title type="html"><![CDATA[To Estimating Bugs or Not: The Definitive Answer]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2014/08/03/estimating-bugs/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2014/08/03/estimating-bugs/"/>
     <updated>2014-08-03T16:31:11-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2014/08/03/estimating-bugs</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2014/08/03/estimating-bugs</id>
     <content type="html"><![CDATA[<p>I was recently re-reading the XP books and in <em>Extreme Programming
 Installed</em><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> I came upon a section where the authors say that bugs
 should be estimated and planned into iterations like other stories.
@@ -1401,9 +1401,9 @@ Daiquiri<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>.)</p>
   
   <entry>
     <title type="html"><![CDATA[What I Have (Re)-learned From SICP]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2014/07/06/what-i-have-re-learned-from-sicp/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2014/07/06/what-i-have-re-learned-from-sicp/"/>
     <updated>2014-07-06T14:14:33-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2014/07/06/what-i-have-re-learned-from-sicp</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2014/07/06/what-i-have-re-learned-from-sicp</id>
     <content type="html"><![CDATA[<p>After about two years of slowly working through Structure and
 Interpretation of Computer Programs (SICP)<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> I finally completed it.
 I didn’t do every exercise but I did many of them<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>.</p>
@@ -1536,9 +1536,9 @@ however, that is always a danger with this sort of thing.</p>
   
   <entry>
     <title type="html"><![CDATA[Thoughts About the Domain Model]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2014/04/29/thoughts-about-the-domain-model/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2014/04/29/thoughts-about-the-domain-model/"/>
     <updated>2014-04-29T20:39:27-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2014/04/29/thoughts-about-the-domain-model</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2014/04/29/thoughts-about-the-domain-model</id>
     <content type="html"><![CDATA[<p>The
 <a href="http://c2.com/ppr/checks.html">CHECKS Pattern Language paper</a>(Cunningham
 1994) has some good ideas about what they call “Information
@@ -1602,9 +1602,9 @@ things to think about.</p>
   
   <entry>
     <title type="html"><![CDATA[Serving Coffee With Express]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2014/04/13/serving-coffee-with-express/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2014/04/13/serving-coffee-with-express/"/>
     <updated>2014-04-13T19:45:58-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2014/04/13/serving-coffee-with-express</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2014/04/13/serving-coffee-with-express</id>
     <content type="html"><![CDATA[<p>A few weeks ago I was playing around with a new stack:
 Node-Express-Angular all in CoffeeScript<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. I found it quite easy to
 have the Express server compile my CoffeeScript files and then return
@@ -1726,9 +1726,9 @@ it.)).</p>
   
   <entry>
     <title type="html"><![CDATA[Only One Way of Doing Things...]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2014/01/20/one-way-to-do-things/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2014/01/20/one-way-to-do-things/"/>
     <updated>2014-01-20T19:42:43-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2014/01/20/one-way-to-do-things</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2014/01/20/one-way-to-do-things</id>
     <content type="html"><![CDATA[<blockquote><p>When there is only one way of doing things, it is easier to<br />	 modify and reuse code. When code is reused, programs are easier<br />	 to change and most importantly, shrink. When a program shrinks<br />	 its construction and maintenance requires fewer people which<br />	 allows for more opportunities for reuse to be found. Consistency<br />	 leads to reuse, reuse leads to conciseness, conciseness leads to<br />	 understanding.</p><footer><strong>Programming as Experience: The Inspiration of Self (1995)</strong></footer></blockquote>
 
 <h2 id="resuse">Resuse</h2>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: domain | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/domain/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/domain/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Thoughts about the Domain Model]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2014/04/29/thoughts-about-the-domain-model/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2014/04/29/thoughts-about-the-domain-model/"/>
     <updated>2014-04-29T20:39:27-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2014/04/29/thoughts-about-the-domain-model</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2014/04/29/thoughts-about-the-domain-model</id>
     <content type="html"><![CDATA[<p>The
 <a href="http://c2.com/ppr/checks.html">CHECKS Pattern Language paper</a>(Cunningham
 1994) has some good ideas about what they call “Information

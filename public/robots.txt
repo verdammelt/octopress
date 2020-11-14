@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://code-and-cocktails.heroku.com/sitemap.xml 
+Sitemap: http://code-and-cocktails.herokuapp.com/sitemap.xml 

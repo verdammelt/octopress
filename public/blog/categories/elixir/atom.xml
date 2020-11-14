@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: elixir | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/elixir/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/elixir/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Writing Mix tasks for fun and profit.]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2017/03/10/how-to-write-a-mix-task/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2017/03/10/how-to-write-a-mix-task/"/>
     <updated>2017-03-10T07:11:29-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2017/03/10/how-to-write-a-mix-task</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2017/03/10/how-to-write-a-mix-task</id>
     <content type="html"><![CDATA[<p>I’m beginning to learn a little Elixir &amp; Phoenix and I ran into a case
 where I wish I had a Mix task for something. Specifically I wanted to
 run <code>npm</code> scripts with mix so I’d only have one command to run instead

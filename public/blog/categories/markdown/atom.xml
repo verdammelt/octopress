@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: markdown | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/markdown/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/markdown/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[\LaTeX blog posting - a test post.]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/11/30/slash-latex-blog-posting-a-test-post/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/11/30/slash-latex-blog-posting-a-test-post/"/>
     <updated>2011-11-30T07:40:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/11/30/slash-latex-blog-posting-a-test-post</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/11/30/slash-latex-blog-posting-a-test-post</id>
     <content type="html"><![CDATA[<p>I have had some annoying problems recently making <a href="http://posterous.com">posterous</a>
 blog posts via <a href="http://en.wikipedia.org/wiki/Email">email</a> using <a href="http://daringfireball.net/projects/markdown/">markdown</a>.</p>
 

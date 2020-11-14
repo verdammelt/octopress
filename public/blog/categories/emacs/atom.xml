@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: emacs | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/emacs/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/emacs/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Initial Emacs Setup for React/ReactNative]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2016/01/10/emacs-setup-for-react-slash-reactnative/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2016/01/10/emacs-setup-for-react-slash-reactnative/"/>
     <updated>2016-01-10T16:09:42-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2016/01/10/emacs-setup-for-react-slash-reactnative</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2016/01/10/emacs-setup-for-react-slash-reactnative</id>
     <content type="html"><![CDATA[<p><small>(Cross posted to the <a href="http://www.cyrusinnovation.com/initial-emacs-setup-for-reactreactnative/">Cyrus Innovation Blog</a>)</small></p>
 
 <p>It looks likely that I’ll be doing some ReactNative work soon so I
@@ -119,9 +119,9 @@ environment will even look like.</p>
   
   <entry>
     <title type="html"><![CDATA[Gnus configuration (2.5 of N) - Spam Splitting]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/12/07/gnus-configuration-25-of-n-spam-splitting/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/12/07/gnus-configuration-25-of-n-spam-splitting/"/>
     <updated>2011-12-07T00:00:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/12/07/gnus-configuration-25-of-n-spam-splitting</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/12/07/gnus-configuration-25-of-n-spam-splitting</id>
     <content type="html"><![CDATA[<p>An addendum to follow up on how to fix an item that was giving me a
 problem before.</p>
 
@@ -160,9 +160,9 @@ doing anything.  I don&rsquo;t see any evidence that it is being called in the
   
   <entry>
     <title type="html"><![CDATA[Gnus configuration (2 of N) - Spam splitting]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/12/06/gnus-configuration-2-of-n-spam-splitting/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/12/06/gnus-configuration-2-of-n-spam-splitting/"/>
     <updated>2011-12-06T00:00:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/12/06/gnus-configuration-2-of-n-spam-splitting</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/12/06/gnus-configuration-2-of-n-spam-splitting</id>
     <content type="html"><![CDATA[<h2>Setting up Splitting</h2>
 
 <p>The next thing I felt I needed to set up was spam splitting.  I didn&rsquo;t
@@ -225,9 +225,9 @@ and <code>gmane.emacs.gnus.user</code> (maybe also <code>gmane.emacs.bbdb.user</
   
   <entry>
     <title type="html"><![CDATA[There comes a time in every Emacs-user's life when...]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/12/02/there-comes-a-time-in-every-emacs-users-life/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/12/02/there-comes-a-time-in-every-emacs-users-life/"/>
     <updated>2011-12-02T00:00:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/12/02/there-comes-a-time-in-every-emacs-users-life</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/12/02/there-comes-a-time-in-every-emacs-users-life</id>
     <content type="html"><![CDATA[<p>&hellip;you just need to nuke-and-pave your configuration.</p>
 
 <p>That time has come for me &ndash; especially with respect to my <a href="http://gnus.org">GNUS</a>
@@ -256,9 +256,9 @@ interesting bits I discover along the way.</p>
   
   <entry>
     <title type="html"><![CDATA[GNUS configuration note 1 (of N)]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/12/02/gnus-configuration-note-1-of-n/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/12/02/gnus-configuration-note-1-of-n/"/>
     <updated>2011-12-02T00:00:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/12/02/gnus-configuration-note-1-of-n</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/12/02/gnus-configuration-note-1-of-n</id>
     <content type="html"><![CDATA[<p>So far I have flailed around moving my email to a different structure.
 I have been using <code>nnmail-use-long-file-names</code> set to <code>t</code> up until now.
 But I decided to try it out with the default value of <code>nil</code>.</p>

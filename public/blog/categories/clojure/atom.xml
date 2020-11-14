@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Clojure | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/clojure/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/clojure/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Clojure Project 'Reloaded' Pattern Gotcha]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2015/03/19/clojure-project-reloaded-pattern-gotcha/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2015/03/19/clojure-project-reloaded-pattern-gotcha/"/>
     <updated>2015-03-19T11:04:01-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2015/03/19/clojure-project-reloaded-pattern-gotcha</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2015/03/19/clojure-project-reloaded-pattern-gotcha</id>
     <content type="html"><![CDATA[<h2 id="abstract">Abstract</h2>
 
 <p>Ensure that <code>user.clj</code> does not contain dependencies (even transitive)

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: AD&D | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/ad-and-d/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/ad-and-d/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[It has occurred to me that D&D is opposite of normal mythology]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/08/25/it-has-occurred-to-me-that-dd-is-opposite-of/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/08/25/it-has-occurred-to-me-that-dd-is-opposite-of/"/>
     <updated>2011-08-25T00:00:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/08/25/it-has-occurred-to-me-that-dd-is-opposite-of</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/08/25/it-has-occurred-to-me-that-dd-is-opposite-of</id>
     <content type="html"><![CDATA[<p>In normal mythology the far past golden-age was an age when people were <br />stronger, more beautiful and intelligent than they are now. We have <br />diminished over time. <p /> With D&amp;D it is the opposite:</p>
 <p>&nbsp;</p>
 <p>* In 1974 D&amp;D heroes had +1 bonuses if they were lucky. You got d6 hit <br /> points and you were happy (pretty good for the magic user actually). <br /> Everything did d6 damage. Magic was smaller and rarer - there was no <br /> such thing as Magic Missile. Clerics didn't even get a spell until <br /> second level and getting to second level was hard! <p />  * In AD&amp;D they could get +3, or even the the amazing +3/+6 with 18/00 <br /> STR. Fighters got d10 hit points and it was amazing! Magic was more awesome, but still not everyone had it. <p />  * In 2nd edition characters got SKILLS! Clerics had powers <p />  * In 3rd edition characters had /FEATS/! It was like everyone got a <br /> bit of magic now! And people started talking about BUYING magic <br /> items - those things were for sale now in game worlds! <p />  * In 4th edition - this is the golden age. First level characters have <br /> double digit hip points and do massive damage. There are lots of <br /> 'magical' abilities for everyone. I'm sure the local beggars have <br /> some sort of daily begging powers or something. Everyone is studly <br /> and puissant. <p /> Thus D&amp;D is the opposite of mythology in a way. But also in a way I <br />think we may have still diminished a little along the way.</p>
@@ -26,18 +26,18 @@
   
   <entry>
     <title type="html"><![CDATA[Second successful DMing! A character death, treasure and XP]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2010/09/08/second-successful-dming-a-character-death-tre/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2010/09/08/second-successful-dming-a-character-death-tre/"/>
     <updated>2010-09-08T00:00:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2010/09/08/second-successful-dming-a-character-death-tre</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2010/09/08/second-successful-dming-a-character-death-tre</id>
     <content type="html"><![CDATA[<p>The characters, two from last time and two new ones went off the <br />moathouse (/FINALLY/). They hired Kobort &amp; Turoko to come along. I <br />haven’t decided just when/if those two will double cross the group, but <br />so far the time has not been right. &lt;p /&gt; They encountered the infamous Giant Frogs in front the moathouse. The <br />Giant Frogs which are well know to TPK plenty of groups did not roll too <br />well and there were no deaths. One halfling swallowed but managed to <br />get out, and couple people brought to near 0 HP. &lt;p /&gt; They quickly scampered back to town and I was kind and allowed the <br />Cleric from the player who could not make it to do some Cure Light <br />Wounds so they only lost a day in town. &lt;p /&gt; Again they went back, and again they took their sweet time doing <br />anything - but they found the Spider! or more like it found them and <br />started to gnaw on a halfling’s head (same halfling as above). Finally <br />before getting killed itself it managed to sink is fangs into the Magic <br />User who succumbed to its poison. Poor magic user, never actually cast any spells in this game. &lt;p /&gt; So then back again to town, a smidge of loot dispersal and Players had <br />to go home early so we called it there. &lt;p /&gt; Fun was had. Dice were rolled. Monsters killed. It was successful.</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Well that went well - DMing AD&D1e for the first time in years...]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2010/08/25/well-that-went-well-dming-add1e-for-the-first/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2010/08/25/well-that-went-well-dming-add1e-for-the-first/"/>
     <updated>2010-08-25T00:00:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2010/08/25/well-that-went-well-dming-add1e-for-the-first</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2010/08/25/well-that-went-well-dming-add1e-for-the-first</id>
     <content type="html"><![CDATA[<p>In my normal gaming group the usual suspects of who runs the games <br />didn’t have any big ideas and/or were busy with real life to put the <br />work into a big story. So I took a risk and said I’d run a AD&amp;D 1e <br />game, some module I had, just to keep the dice rolling. &lt;p /&gt; Well, my first session was tonight, the two main people in our gaming <br />group showed up and with their 4 characters total they met most of the <br />important people in the quaint Village of Hommlet. The players seemed <br />to enjoy themselves, and I did as well. &lt;p /&gt; I had too much fun over-acting several NPCs and also kept them on their <br />toes a bit when the young hobbit thief wanted to do some <br />extra-curricular activities the minute he entered town. &lt;p /&gt; Next session they will be heading to the moat house and we’ll see how <br />well they will survive that. It would be smart of them to take on some <br />help, hirelings or just let some of the NPCs join them. But who to <br />trust?! Zert the smooth talking fighter? Turuko &amp; his big, dumb friend <br />Kobort? Or maybe Elmo the fall down drunk son of the Captain of the <br />Guard? &lt;p /&gt; I know who they should and should not pick, and am pleased to see that <br />they may be making some poor decisions… its more fun that way :).</p>
 ]]></content>
   </entry>

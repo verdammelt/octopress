@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: scna2013 | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/scna2013/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/scna2013/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SCNA 2013 - Effortful vs. Automatic Brain]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2013/11/09/scna-2013-effortful-vs-automatic-brain/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2013/11/09/scna-2013-effortful-vs-automatic-brain/"/>
     <updated>2013-11-09T19:07:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2013/11/09/scna-2013-effortful-vs-automatic-brain</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2013/11/09/scna-2013-effortful-vs-automatic-brain</id>
     <content type="html"><![CDATA[<h2 id="experts-dont-know-what-they-know">Experts Don’t Know what they Know</h2>
 
 <p>This year’s SCNA Conference seemed to have several talks which touched upon

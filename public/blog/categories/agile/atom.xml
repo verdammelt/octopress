@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: agile | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/agile/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/agile/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Quickie: Less Columns on Your Board]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2016/04/25/quickie-less-columns-on-your-board/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2016/04/25/quickie-less-columns-on-your-board/"/>
     <updated>2016-04-25T20:52:08-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2016/04/25/quickie-less-columns-on-your-board</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2016/04/25/quickie-less-columns-on-your-board</id>
     <content type="html"><![CDATA[<p>So you have a “Agile Board”(TM) congratulations! If you are like any
 of the people I’ve worked with recently you’ve got lots of columns to
 keep track of all the possible states a story card could be in.</p>
@@ -70,9 +70,9 @@ anymore.</p>
   
   <entry>
     <title type="html"><![CDATA[Is your retro done?]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2015/11/05/is-your-retro-done/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2015/11/05/is-your-retro-done/"/>
     <updated>2015-11-05T16:36:31-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2015/11/05/is-your-retro-done</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2015/11/05/is-your-retro-done</id>
     <content type="html"><![CDATA[<p><small>(Cross posted to the <a href="http://www.cyrusinnovation.com/is-your-retro-done/">Cyrus Innovation Blog</a>)</small></p>
 
 <p>Retrospective meetings are an important part of any sort of “Agile”
@@ -122,9 +122,9 @@ become even more effective.</p>
   
   <entry>
     <title type="html"><![CDATA[Reminder: Agile is Risk Management]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2015/06/21/agile-is-risk-management/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2015/06/21/agile-is-risk-management/"/>
     <updated>2015-06-21T12:18:20-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2015/06/21/agile-is-risk-management</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2015/06/21/agile-is-risk-management</id>
     <content type="html"><![CDATA[<p>In a note of the References section of “Waltzing with Bears” (DeMarco
 &amp; Lister 2003), there is a note on “Planning Extreme Programming”
 (Beck &amp; Fowler 2001) which says “When viewed as a set of
@@ -160,9 +160,9 @@ take to deliver value in shorter and shorter iterations is valuable.</p>
   
   <entry>
     <title type="html"><![CDATA[To Estimating Bugs or Not: The Definitive Answer]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2014/08/03/estimating-bugs/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2014/08/03/estimating-bugs/"/>
     <updated>2014-08-03T16:31:11-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2014/08/03/estimating-bugs</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2014/08/03/estimating-bugs</id>
     <content type="html"><![CDATA[<p>I was recently re-reading the XP books and in <em>Extreme Programming
 Installed</em><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> I came upon a section where the authors say that bugs
 should be estimated and planned into iterations like other stories.
@@ -247,9 +247,9 @@ Daiquiri<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>.)</p>
   
   <entry>
     <title type="html"><![CDATA[Reflections Upon the Art of Agile Training]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/04/28/reflections-upon-the-art-of-agile-training/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/04/28/reflections-upon-the-art-of-agile-training/"/>
     <updated>2012-04-28T16:00:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/04/28/reflections-upon-the-art-of-agile-training</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/04/28/reflections-upon-the-art-of-agile-training</id>
     <content type="html"><![CDATA[<h2 id="what">What</h2>
 
 <p>I am returning home from the <a href="http://www.cyrusinnovation.com/index.php/art-of-agile-nyc">Art of Agile Boot Camp</a> presented by

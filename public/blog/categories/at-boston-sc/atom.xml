@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: @boston_sc | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/at-boston-sc/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/at-boston-sc/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Seven Deadly Sins of Programming]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/05/14/seven-deadly-sins-of-programming/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/05/14/seven-deadly-sins-of-programming/"/>
     <updated>2012-05-14T22:14:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/05/14/seven-deadly-sins-of-programming</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/05/14/seven-deadly-sins-of-programming</id>
     <content type="html"><![CDATA[<p>At tonight’s Boston Software Craftstmanship meetup I presented my lightning
 talk: Seven Deadly Sins of Programming. It is a half baked idea - take it with
 a grain of salt.</p>
@@ -32,18 +32,18 @@ a grain of salt.</p>
   
   <entry>
     <title type="html"><![CDATA[Writing a Unit Test Framework in a Language You are Trying to Learn]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/04/11/writing-a-unit-test-framework-in-a-language-y/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/04/11/writing-a-unit-test-framework-in-a-language-y/"/>
     <updated>2011-04-11T00:00:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/04/11/writing-a-unit-test-framework-in-a-language-y</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/04/11/writing-a-unit-test-framework-in-a-language-y</id>
     <content type="html"><![CDATA[<p>Tonight's session of the Boston Software Craftsmanship[1] meetup was about <br />playing with the Io language[2]. I didn't know anything about it before <br />it was announced as the topic for the next meeting. <p /> A couple weeks ago I started googling and trying to learn the language. <br />I tried finding a unit testing framework given my interest in TDD, but <br />didn't find anything (my lack of ability to search for anything was a <br />trend here). So I decide to try writing one on my own. Perhaps I was <br />remembering Kent Beck's example of this in his book[3]. <p /> Even with my lack of search skills I feel that I learned some <br />interesting things about the language. I think if I spent more than <br />one and a half hours at it, and if my searching had been useful, I could <br />have gotten farther. <p /> I think that I will make this a pattern for me. Right after "Hello <br />World" I'll play with a unit testing framework. <p /> At the session tonight we ended up ganging up on my little framework and <br />taking some of the next steps to improve it. It may not grow anymore - <br />but it has served its purpose. <p /> My basic unit test framework for the Io language can be found on <br />github[4]. (But Io does seem to have its own unit test framework built <br />in, but it is hard to find (.../libs/iovm/io/UnitTest.io). <br />It is built right into the VM, use it instead of mine please). <p />  <br />Footnotes: [1] <a href="http://groups.google.com/group/boston-software-craftsmanship">http://groups.google.com/group/boston-software-craftsmanship</a> <p /> [2] <a href="http://iolanguage.com">http://iolanguage.com</a> <p /> [3] <a href="http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530">http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530</a> <p /> [4] <a href="https://github.com/verdammelt/iounit">https://github.com/verdammelt/iounit</a></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[@nashjain at @boston_sc - Clean Code vs. Sufficient Design]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/02/09/nashjain-at-bostonsc-clean-code-vs-sufficient/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/02/09/nashjain-at-bostonsc-clean-code-vs-sufficient/"/>
     <updated>2011-02-09T00:00:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/02/09/nashjain-at-bostonsc-clean-code-vs-sufficient</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/02/09/nashjain-at-bostonsc-clean-code-vs-sufficient</id>
     <content type="html"><![CDATA[<p>I kept wanting to say something to the effect: "But no... you gotta make <br />the code clean..." (and I probably pretty much DID say that several <br />times).[1] <p /> But the point Naresh[2] made is valid: Spending lots of time on making sure <br />your code is clean may not be the best/most profitable way to spend your <br />time. <p /> I think a good way to summarize his point is: "If you have a good team <br />(which you trust), with smart people and tight collaboration with <br />customers, then the code is not important and will take care if itself". <br />He suggests an approach of building apps/features quickly (and perhaps <br />not entirely cleanly) so that you can get feedback from customers <br />quickly to determine if it is worth spending more time on it. This <br />makes sense - and if the app/feature is worth it you go back and make it <br />better. But if it is not worth it - you don't bother; it would be a <br />waste of time/money. <p /> The important issue here is what 'good enough' means. Naresh says that <br />you make this app/feature 'good enough'. He gives two different <br />examples: 1) a feature that they put together quickly and the <br />customer didn't care about so nothing more was done and 2) an app which <br />is being slowly and carefully crafted because the initial release needs <br />to be awesome. Both are "good enough" but "good enough" is very <br />different in each case. <p /> If the team doesn't agree on what "good enough" means then you have <br />problem there. Which brings up that this idea that the code will take <br />care of itself seems to be predicated on the fact you have a great team <br />with high customer collaboration. <p /> So what if you don't? <p /> Naresh answered this by asking if pushing strict TDD or Clean Code (TM) <br />was a good way to fix that situation. I can't say it is[3]. Education <br />seems to be the best thing. <p /> Educating my coworkers is something I realize I need to do - but I am <br />not sure how to go about doing it. We don't pair program - so I can't <br />directly "show". I need to find a way to do this. <p /> ----- <p /> Footnotes:</p>
 <p>[1] I feel that my disagreements with Naresh's points are not entirely <br />logical and are based around my current lack of trust (and opinion <br />mismatch) with my current team. I agree that his approach is pragmatic - <br />I worry that 'pragmatism' can be the cover for lots of dumb stuff which <br />cause pain in the end. Again this goes back to a trust in the team - I <br />do not currently have trust in my current team and that is coloring my <br />opinion of how I think his suggestions could work. For them to work in <br />my current situation would involve a large change, not only of myself, <br />but of the organization and its members - which I don't think is likely <br />to happen (but is this opinion too just because I do not trust the <br />team?). <p /> [2] @nashjain <p /> [3] Although as Zach[4] pointed out: in my current situation, doing TDD <br />and making the code Clean(TM) is sort of a defensive strategy for me. <p /> [4] @zdsbs</p>
 ]]></content>
@@ -51,9 +51,9 @@ a grain of salt.</p>
   
   <entry>
     <title type="html"><![CDATA[#bostonsc July 28 2010 meeting notes]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2010/07/28/bostonsc-july-28-2010-meeting-notes/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2010/07/28/bostonsc-july-28-2010-meeting-notes/"/>
     <updated>2010-07-28T00:00:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2010/07/28/bostonsc-july-28-2010-meeting-notes</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2010/07/28/bostonsc-july-28-2010-meeting-notes</id>
     <content type="html"><![CDATA[<h1>In Summary:</h1>
 
 <p><em>Awesome!</em></p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: octopress | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/octopress/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Problems deploying to Heroku after upgrading Octopress]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/06/24/problems-deploying-to-heroku-after-upgrading-octopress/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/06/24/problems-deploying-to-heroku-after-upgrading-octopress/"/>
     <updated>2012-06-24T20:10:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/06/24/problems-deploying-to-heroku-after-upgrading-octopress</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/06/24/problems-deploying-to-heroku-after-upgrading-octopress</id>
     <content type="html"><![CDATA[<p>Just a note (perhaps for my future self).</p>
 
 <p>I had considerable problems after upgrading Octopress and then trying
@@ -48,9 +48,9 @@ keep my blog up and running while I tried to figure out the problem.
   
   <entry>
     <title type="html"><![CDATA[Fixing python/pygments.rb problem in Octopress]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/04/26/fixing-python-slash-pygments-dot-rb-problem-in-octopress/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/04/26/fixing-python-slash-pygments-dot-rb-problem-in-octopress/"/>
     <updated>2012-04-26T22:38:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/04/26/fixing-python-slash-pygments-dot-rb-problem-in-octopress</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/04/26/fixing-python-slash-pygments-dot-rb-problem-in-octopress</id>
     <content type="html"><![CDATA[<p>After I posted my last blog post it was reported to me that my code blocks
 were no displaying properly. The readers were seeing an error like: <code>"Liquid
 error: Could not open library ‘/usr/local/lib/libpython2.7.a’: ...".</code></p>
@@ -74,9 +74,9 @@ actually important).</li>
   
   <entry>
     <title type="html"><![CDATA[Old Blog Posts Migrated]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/04/12/old-blog-posts-migrated/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/04/12/old-blog-posts-migrated/"/>
     <updated>2012-04-12T22:48:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/04/12/old-blog-posts-migrated</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/04/12/old-blog-posts-migrated</id>
     <content type="html"><![CDATA[<p>Using <a href="https://gist.github.com/2143368">this</a> updated migrator for <a href="https://github.com/mojombo/Jekyll">Jekyll</a> I have managed to
 get all my old Posterous blog posts loaded into this Octopress blog.</p>
 

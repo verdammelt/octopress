@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: reactnative | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/reactnative/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/reactnative/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Initial Emacs Setup for React/ReactNative]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2016/01/10/emacs-setup-for-react-slash-reactnative/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2016/01/10/emacs-setup-for-react-slash-reactnative/"/>
     <updated>2016-01-10T16:09:42-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2016/01/10/emacs-setup-for-react-slash-reactnative</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2016/01/10/emacs-setup-for-react-slash-reactnative</id>
     <content type="html"><![CDATA[<p><small>(Cross posted to the <a href="http://www.cyrusinnovation.com/initial-emacs-setup-for-reactreactnative/">Cyrus Innovation Blog</a>)</small></p>
 
 <p>It looks likely that I’ll be doing some ReactNative work soon so I

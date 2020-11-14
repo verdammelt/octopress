@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: commonlisp | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/commonlisp/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/commonlisp/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Standard Joke]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2020/10/21/standard-joke/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2020/10/21/standard-joke/"/>
     <updated>2020-10-21T09:10:18-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2020/10/21/standard-joke</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2020/10/21/standard-joke</id>
     <content type="html"><![CDATA[<p>Arabic-to-Roman number conversion is a common programming exercise,
 often used as a TDD exercise. It is an exercise on many
 Exercism.IO<sup id="fnref:i"><a href="#fn:i" class="footnote">1</a></sup> language tracks including my own track for Common
@@ -119,9 +119,9 @@ of its <code>cl-format</code><sup id="fnref:xi"><a href="#fn:xi" class="footnote
   
   <entry>
     <title type="html"><![CDATA[Bootstrapping a Testing Library]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2015/04/18/bootstrapping-lisp-testing-library/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2015/04/18/bootstrapping-lisp-testing-library/"/>
     <updated>2015-04-18T14:43:22-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2015/04/18/bootstrapping-lisp-testing-library</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2015/04/18/bootstrapping-lisp-testing-library</id>
     <content type="html"><![CDATA[<h2 id="abstract">Abstract</h2>
 
 <p>What’s a person to do when one prefers developing in a TDD style and
@@ -322,9 +322,9 @@ project: yakshave<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>.
   
   <entry>
     <title type="html"><![CDATA[TDD in Common Lisp: recursive yak-shaving]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving/"/>
     <updated>2013-12-25T17:34:59-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2013/12/25/tdd-in-common-lisp-recursive-yak-shaving</id>
     <content type="html"><![CDATA[<p>While avoiding family this Christmas-day I started trying to figure out way
 for me to do TDD in Common Lisp (as one does…). That led to SLIME<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> and
     QuickLisp<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> and lisp-unit<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> and asdf<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> (<em>&amp;c. &amp;c</em>).</p>

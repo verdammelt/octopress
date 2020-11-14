@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: cocktail | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/cocktail/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/cocktail/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to stock a bar]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2013/03/11/how-to-stock-a-bar/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2013/03/11/how-to-stock-a-bar/"/>
     <updated>2013-03-11T22:48:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2013/03/11/how-to-stock-a-bar</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2013/03/11/how-to-stock-a-bar</id>
     <content type="html"><![CDATA[<h1 id="introduction">Introduction</h1>
 <p>As everyone that knows me knows, I have become enamored with <a href="http://en.wikipedia.org/wiki/Cocktail">cocktails</a>.</p>
 
@@ -97,9 +97,9 @@ that has a different ingredient you don’t have yet.</p>
   
   <entry>
     <title type="html"><![CDATA[Cocktail: Bijou]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/11/23/cocktail-bijou/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/11/23/cocktail-bijou/"/>
     <updated>2012-11-23T16:17:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/11/23/cocktail-bijou</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/11/23/cocktail-bijou</id>
     <content type="html"><![CDATA[<p>I visited <a href="https://twitter.com/BrickMortarLtd">Brick and Mortar</a> before Thanksgiving for a Sazerac
 and to let Lisa know that I’d be in on Monday with the
 <a href="https://twitter.com/codeandcocktail">Code-and-Cocktails</a> group. She pointed to a cocktail on
@@ -129,9 +129,9 @@ going to continue to explore.</p>
   
   <entry>
     <title type="html"><![CDATA[The Palm Beach Special]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/07/26/the-palm-beach-special/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/07/26/the-palm-beach-special/"/>
     <updated>2012-07-26T19:13:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/07/26/the-palm-beach-special</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/07/26/the-palm-beach-special</id>
     <content type="html"><![CDATA[<p>(It was noted to me that for a blog called ‘code and cocktails’ that I
 don’t have many cocktail related posts - so here we go:)</p>
 
@@ -166,9 +166,9 @@ purpose of <code>(defdrink)</code> is to be a vehicle for me to learn <a href="h
   
   <entry>
     <title type="html"><![CDATA[The Lotus Eaters]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/05/15/the-lotus-eaters/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/05/15/the-lotus-eaters/"/>
     <updated>2012-05-15T20:14:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/05/15/the-lotus-eaters</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/05/15/the-lotus-eaters</id>
     <content type="html"><![CDATA[<p>From the <a href="http://en.wikipedia.org/wiki/Odyssey">Odyssey</a>:</p>
 
 <blockquote>
@@ -183,9 +183,9 @@ purpose of <code>(defdrink)</code> is to be a vehicle for me to learn <a href="h
   
   <entry>
     <title type="html"><![CDATA[Code'n'Cocktails - crazy idea?]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/01/15/coden-cocktails-crazy-idea/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/01/15/coden-cocktails-crazy-idea/"/>
     <updated>2012-01-15T19:20:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/01/15/coden-cocktails-crazy-idea</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/01/15/coden-cocktails-crazy-idea</id>
     <content type="html"><![CDATA[<p>I jokingly I mentioned the idea of Code’n’Cocktails on Twitter…</p>
 
 <p>https://twitter.com/#!/verdammelt/status/158292007981289472</p>

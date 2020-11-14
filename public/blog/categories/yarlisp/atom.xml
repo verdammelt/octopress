@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: yarlisp | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/yarlisp/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/yarlisp/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[On Implementing a Lisp]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/08/13/on-implementing-a-lisp/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/08/13/on-implementing-a-lisp/"/>
     <updated>2012-08-13T07:37:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/08/13/on-implementing-a-lisp</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/08/13/on-implementing-a-lisp</id>
     <content type="html"><![CDATA[<h2 id="0-background">0. Background</h2>
 
 <p>About a year ago I read McCarthy’s paper <a href="http://www-formal.stanford.edu/jmc/recursive.pdf">“Recursive Functions of Symbolic

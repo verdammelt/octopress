@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: heroku | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/heroku/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/heroku/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to write a Heroku Buildpack for Fun and / or Profit]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2020/11/13/heroku-buildpack-for-fun-and-profit/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2020/11/13/heroku-buildpack-for-fun-and-profit/"/>
     <updated>2020-11-13T08:55:15-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2020/11/13/heroku-buildpack-for-fun-and-profit</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2020/11/13/heroku-buildpack-for-fun-and-profit</id>
     <content type="html"><![CDATA[<p>Heroku buildpacks are used to prepare (/e.g./ build/compile) an application to allow it to be run by Heroku on their dynos. There are many that exist so it is not likely that you will need to write your own. And that is quite true for the one I wrote. But I wrote one partly to find out how to do it, so let me share what I learned.</p>
 
 <p>The <a href="https://devcenter.heroku.com/articles/buildpack-api">API for Buildpacks</a> is pretty simple and it can be easy to write one. The API is three scripts that will be run by Heroku when it runs the buildpack: <code>detect</code>, <code>compile</code>, <code>release</code>. Buildpacks are <a href="https://git-scm.com">git</a> repositories so it is common to host them on <a href="https://www.github.com">GitHub</a> (but that is not <em>required</em>).</p>
@@ -126,9 +126,9 @@ log "Build complete."
   
   <entry>
     <title type="html"><![CDATA[Problems deploying to Heroku after upgrading Octopress]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/06/24/problems-deploying-to-heroku-after-upgrading-octopress/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/06/24/problems-deploying-to-heroku-after-upgrading-octopress/"/>
     <updated>2012-06-24T20:10:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/06/24/problems-deploying-to-heroku-after-upgrading-octopress</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/06/24/problems-deploying-to-heroku-after-upgrading-octopress</id>
     <content type="html"><![CDATA[<p>Just a note (perhaps for my future self).</p>
 
 <p>I had considerable problems after upgrading Octopress and then trying

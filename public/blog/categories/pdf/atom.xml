@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: pdf | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/pdf/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/pdf/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Seven Deadly Sins of Programming]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/05/14/seven-deadly-sins-of-programming/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/05/14/seven-deadly-sins-of-programming/"/>
     <updated>2012-05-14T22:14:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/05/14/seven-deadly-sins-of-programming</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/05/14/seven-deadly-sins-of-programming</id>
     <content type="html"><![CDATA[<p>At tonight’s Boston Software Craftstmanship meetup I presented my lightning
 talk: Seven Deadly Sins of Programming. It is a half baked idea - take it with
 a grain of salt.</p>

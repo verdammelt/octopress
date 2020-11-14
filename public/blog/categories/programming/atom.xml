@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: programming | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/programming/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/programming/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Quick Review of 20 years of 'Professional' programming]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/06/20/quick-review-of-20-years-of-professional-programming/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/06/20/quick-review-of-20-years-of-professional-programming/"/>
     <updated>2012-06-20T21:00:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/06/20/quick-review-of-20-years-of-professional-programming</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/06/20/quick-review-of-20-years-of-professional-programming</id>
     <content type="html"><![CDATA[<p>In May 1992 I graduated with a Bachelor of Science in Computer Science from
 <a href="http://www.wpi.edu/" title="My alma mater">WPI</a>. That means that I’ve been a ‘<em>professional</em>’ programmer for a little
 bit over 20 years.  I have to say that while on the whole it has been good I
@@ -67,9 +67,9 @@ always for pay) until I die) will not find myself falling into another rut…</p
   
   <entry>
     <title type="html"><![CDATA[Seven Deadly Sins of Programming]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/05/14/seven-deadly-sins-of-programming/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/05/14/seven-deadly-sins-of-programming/"/>
     <updated>2012-05-14T22:14:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/05/14/seven-deadly-sins-of-programming</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/05/14/seven-deadly-sins-of-programming</id>
     <content type="html"><![CDATA[<p>At tonight’s Boston Software Craftstmanship meetup I presented my lightning
 talk: Seven Deadly Sins of Programming. It is a half baked idea - take it with
 a grain of salt.</p>
@@ -84,9 +84,9 @@ a grain of salt.</p>
   
   <entry>
     <title type="html"><![CDATA[To Name a Thing is to have Power Over It.]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/08/02/to-name-a-thing-is-to-have-power-over-it/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/08/02/to-name-a-thing-is-to-have-power-over-it/"/>
     <updated>2011-08-02T00:00:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/08/02/to-name-a-thing-is-to-have-power-over-it</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/08/02/to-name-a-thing-is-to-have-power-over-it</id>
     <content type="html"><![CDATA[<p>(warning: an odd half-formed thought is contained herein[1])</p>
 
 <ol>
@@ -124,9 +124,9 @@ I thought I could expand it slightly here.</p>
   
   <entry>
     <title type="html"><![CDATA[Writing a Unit Test Framework in a Language You are Trying to Learn]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/04/11/writing-a-unit-test-framework-in-a-language-y/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/04/11/writing-a-unit-test-framework-in-a-language-y/"/>
     <updated>2011-04-11T00:00:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/04/11/writing-a-unit-test-framework-in-a-language-y</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/04/11/writing-a-unit-test-framework-in-a-language-y</id>
     <content type="html"><![CDATA[<p>Tonight's session of the Boston Software Craftsmanship[1] meetup was about <br />playing with the Io language[2]. I didn't know anything about it before <br />it was announced as the topic for the next meeting. <p /> A couple weeks ago I started googling and trying to learn the language. <br />I tried finding a unit testing framework given my interest in TDD, but <br />didn't find anything (my lack of ability to search for anything was a <br />trend here). So I decide to try writing one on my own. Perhaps I was <br />remembering Kent Beck's example of this in his book[3]. <p /> Even with my lack of search skills I feel that I learned some <br />interesting things about the language. I think if I spent more than <br />one and a half hours at it, and if my searching had been useful, I could <br />have gotten farther. <p /> I think that I will make this a pattern for me. Right after "Hello <br />World" I'll play with a unit testing framework. <p /> At the session tonight we ended up ganging up on my little framework and <br />taking some of the next steps to improve it. It may not grow anymore - <br />but it has served its purpose. <p /> My basic unit test framework for the Io language can be found on <br />github[4]. (But Io does seem to have its own unit test framework built <br />in, but it is hard to find (.../libs/iovm/io/UnitTest.io). <br />It is built right into the VM, use it instead of mine please). <p />  <br />Footnotes: [1] <a href="http://groups.google.com/group/boston-software-craftsmanship">http://groups.google.com/group/boston-software-craftsmanship</a> <p /> [2] <a href="http://iolanguage.com">http://iolanguage.com</a> <p /> [3] <a href="http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530">http://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530</a> <p /> [4] <a href="https://github.com/verdammelt/iounit">https://github.com/verdammelt/iounit</a></p>
 ]]></content>
   </entry>

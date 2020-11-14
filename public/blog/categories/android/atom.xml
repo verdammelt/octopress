@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: android | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/android/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Gotcha of using YouTubePlayerFragment and ViewPager for Android]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2016/01/10/gotcha-of-using-youtubeplayerfragment-at-viewpager-for-android/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2016/01/10/gotcha-of-using-youtubeplayerfragment-at-viewpager-for-android/"/>
     <updated>2016-01-10T17:19:50-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2016/01/10/gotcha-of-using-youtubeplayerfragment-at-viewpager-for-android</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2016/01/10/gotcha-of-using-youtubeplayerfragment-at-viewpager-for-android</id>
     <content type="html"><![CDATA[<p><small>(Cross posted to the <a href="http://www.cyrusinnovation.com/gotcha-of-using-youtubeplayerfragment-and-viewpager-for-android/">Cyrus Innovation Blog</a>)</small></p>
 
 <p>Recently I learned some Android programming by writing a simple app

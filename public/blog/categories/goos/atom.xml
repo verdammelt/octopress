@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: goos | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/goos/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/goos/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[GOOS Review ch 14 &amp; 15]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/11/18/goos-review-ch-14-and-15/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/11/18/goos-review-ch-14-and-15/"/>
     <updated>2012-11-18T19:13:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/11/18/goos-review-ch-14-and-15</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/11/18/goos-review-ch-14-and-15</id>
     <content type="html"><![CDATA[<p>(Just a quick post about chapters 14 &amp; 15 of GOOS to get myself back into the
 swing of things after a while…)</p>
 
@@ -61,9 +61,9 @@ became feature-ful objects which caused cleaner code elsewhere (<code>Column</co
   
   <entry>
     <title type="html"><![CDATA[GOOS Review Chapter 13: Not done if the code is messy]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/07/26/goos-review-chapter-13-not-done-if-the-code-is-messy/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/07/26/goos-review-chapter-13-not-done-if-the-code-is-messy/"/>
     <updated>2012-07-26T22:24:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/07/26/goos-review-chapter-13-not-done-if-the-code-is-messy</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/07/26/goos-review-chapter-13-not-done-if-the-code-is-messy</id>
     <content type="html"><![CDATA[<p>(This post is long overdue… sorry about that).</p>
 
 <p>This chapter was not to long but had some points that were interesting to me.</p>
@@ -88,9 +88,9 @@ prematurely.</p>
   
   <entry>
     <title type="html"><![CDATA[goos review chapter 12]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/07/02/goos-review-chapter-12/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/07/02/goos-review-chapter-12/"/>
     <updated>2012-07-02T21:25:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/07/02/goos-review-chapter-12</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/07/02/goos-review-chapter-12</id>
     <content type="html"><![CDATA[<p>In this chapter we implement our first <em>real</em> acceptance test. It is an
 end-to-end test of a real user feature.</p>
 
@@ -154,9 +154,9 @@ this in Ruby or at least Groovy sooner rather than later.</p>
   
   <entry>
     <title type="html"><![CDATA[GOOS - The Walking Skeleton starts Walking]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/06/05/goos-the-walking-skeleton-starts-walking/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/06/05/goos-the-walking-skeleton-starts-walking/"/>
     <updated>2012-06-05T23:00:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/06/05/goos-the-walking-skeleton-starts-walking</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/06/05/goos-the-walking-skeleton-starts-walking</id>
     <content type="html"><![CDATA[<p>Just a quick post to ensure I keep this moving along.</p>
 
 <p>I have completed my review of Chapters 9-11 of GOOS.  These chapters cover the
@@ -196,9 +196,9 @@ that is keeping me from just jumping into the next chapters!)</p>
   
   <entry>
     <title type="html"><![CDATA[GOOS guide to Testing and Designing]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/05/19/goos-guide-to-testing-and-designing/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/05/19/goos-guide-to-testing-and-designing/"/>
     <updated>2012-05-19T19:52:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/05/19/goos-guide-to-testing-and-designing</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/05/19/goos-guide-to-testing-and-designing</id>
     <content type="html"><![CDATA[<p>(The second in a <a href="/blog/categories/goosreview">series</a> in which I reread
 Growing Object Oriented Systems and try to digest it better. Overall this
 section, Chapters 4-8, is filled with timely reminders to me about several

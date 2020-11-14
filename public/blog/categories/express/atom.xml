@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: express | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/express/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/express/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Serving Coffee with Express]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2014/04/13/serving-coffee-with-express/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2014/04/13/serving-coffee-with-express/"/>
     <updated>2014-04-13T19:45:58-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2014/04/13/serving-coffee-with-express</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2014/04/13/serving-coffee-with-express</id>
     <content type="html"><![CDATA[<p>A few weeks ago I was playing around with a new stack:
 Node-Express-Angular all in CoffeeScript<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. I found it quite easy to
 have the Express server compile my CoffeeScript files and then return

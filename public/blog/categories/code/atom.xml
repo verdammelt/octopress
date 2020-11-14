@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: code | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/code/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/code/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Make same things similar, different things dissimilar]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/11/24/make-same-things-similar/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/11/24/make-same-things-similar/"/>
     <updated>2012-11-24T14:46:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/11/24/make-same-things-similar</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/11/24/make-same-things-similar</id>
     <content type="html"><![CDATA[<h2 id="abstract">Abstract</h2>
 
 <p>Whilst fixing some bugs in data file parsing code I found that the bugs lie in
@@ -81,9 +81,9 @@ dissimilar to other code around it - and if that is correct or not.</p>
   
   <entry>
     <title type="html"><![CDATA[Delivery vs. Code Quality: Any Corners Safe To Cut?]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/11/13/delivery-vs-code-quality-any-corners-safe-to-cut/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/11/13/delivery-vs-code-quality-any-corners-safe-to-cut/"/>
     <updated>2012-11-13T20:32:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/11/13/delivery-vs-code-quality-any-corners-safe-to-cut</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/11/13/delivery-vs-code-quality-any-corners-safe-to-cut</id>
     <content type="html"><![CDATA[<p>The balancing act between delivering vs. code quality has been on my mind
 lately. It seems to me that there are times when delivery trumps code quality.
 But sacrificing code quality for delivery speed results in slower delivery of
@@ -115,9 +115,9 @@ thoughts on this.</p>
   
   <entry>
     <title type="html"><![CDATA[Having a conversation with your code]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/11/09/having-a-conversation-with-your-code/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/11/09/having-a-conversation-with-your-code/"/>
     <updated>2012-11-09T10:03:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/11/09/having-a-conversation-with-your-code</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/11/09/having-a-conversation-with-your-code</id>
     <content type="html"><![CDATA[<p>Just sat in on a talk by Cory Foy entitled “When Code Cries: Listening to What
 Your Code is Saying”.</p>
 
@@ -165,9 +165,9 @@ need to work on those skills for my code as well.</p>
   
   <entry>
     <title type="html"><![CDATA[My problems bootstrapping Midje]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/04/24/my-problems-bootstrapping-midje/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/04/24/my-problems-bootstrapping-midje/"/>
     <updated>2012-04-24T20:23:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/04/24/my-problems-bootstrapping-midje</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/04/24/my-problems-bootstrapping-midje</id>
     <content type="html"><![CDATA[<h2 id="a-tragedy-of-my-own-devising">(<em>A Tragedy of My Own Devising</em>)</h2>
 
 <h2 id="abstract">Abstract</h2>
@@ -346,9 +346,9 @@ hand through the first steps.</p>
   
   <entry>
     <title type="html"><![CDATA[Code'n'Cocktails - crazy idea?]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/01/15/coden-cocktails-crazy-idea/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/01/15/coden-cocktails-crazy-idea/"/>
     <updated>2012-01-15T19:20:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/01/15/coden-cocktails-crazy-idea</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/01/15/coden-cocktails-crazy-idea</id>
     <content type="html"><![CDATA[<p>I jokingly I mentioned the idea of Code’n’Cocktails on Twitter…</p>
 
 <p>https://twitter.com/#!/verdammelt/status/158292007981289472</p>

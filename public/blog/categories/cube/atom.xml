@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: cube | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/cube/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/cube/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[A Year Without a Office Desk]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/04/08/a-year-without-a-office-desk/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/04/08/a-year-without-a-office-desk/"/>
     <updated>2012-04-08T20:09:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/04/08/a-year-without-a-office-desk</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/04/08/a-year-without-a-office-desk</id>
     <content type="html"><![CDATA[<p>(Well not quite true I don’t have a desk at all… but effectively I don’t
 have one).</p>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: objects | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/objects/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/objects/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[quick thoughts about @david_a_black's presentation at @bostonrb 2012-07-10]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/07/10/quick-thoughts-about-at-david-a-blacks-presentation-at-at-bostonrb-2012-07-10/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/07/10/quick-thoughts-about-at-david-a-blacks-presentation-at-at-bostonrb-2012-07-10/"/>
     <updated>2012-07-10T21:35:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/07/10/quick-thoughts-about-at-david-a-blacks-presentation-at-at-bostonrb-2012-07-10</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/07/10/quick-thoughts-about-at-david-a-blacks-presentation-at-at-bostonrb-2012-07-10</id>
     <content type="html"><![CDATA[<h2 id="0-overview">0. Overview</h2>
 
 <p>David Black (<a href="http://www.twitter.com/david_a_black">@david_a_black</a>) presented his his “The

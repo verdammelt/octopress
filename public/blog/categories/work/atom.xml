@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: work | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/work/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/work/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[A Year Without a Office Desk]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/04/08/a-year-without-a-office-desk/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/04/08/a-year-without-a-office-desk/"/>
     <updated>2012-04-08T20:09:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/04/08/a-year-without-a-office-desk</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/04/08/a-year-without-a-office-desk</id>
     <content type="html"><![CDATA[<p>(Well not quite true I don’t have a desk at all… but effectively I don’t
 have one).</p>
 
@@ -59,9 +59,9 @@ have accepted the team-room setting more than I had imagined I could have.</p>
   
   <entry>
     <title type="html"><![CDATA[How I Learned Agile All Wrong and Still Ended Up Liking it.]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/04/13/how-i-learned-agile-all-wrong-and-still-ended-up-liking-it/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/04/13/how-i-learned-agile-all-wrong-and-still-ended-up-liking-it/"/>
     <updated>2011-04-13T00:16:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/04/13/how-i-learned-agile-all-wrong-and-still-ended-up-liking-it</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/04/13/how-i-learned-agile-all-wrong-and-still-ended-up-liking-it</id>
     <content type="html"><![CDATA[<h2 id="history">History</h2>
 
 <p>Up until several years ago I only knew one way to do a software project.
@@ -188,9 +188,9 @@ better learn from, and teach people.</p>
   
   <entry>
     <title type="html"><![CDATA[Change your organization or change your organization]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/04/08/change-your-organization-or-change-your-organization/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/04/08/change-your-organization-or-change-your-organization/"/>
     <updated>2011-04-08T22:42:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/04/08/change-your-organization-or-change-your-organization</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/04/08/change-your-organization-or-change-your-organization</id>
     <content type="html"><![CDATA[<p>Several years ago I was pointed to Martin Fowler’s quote.
 For the next few years I tried the first half of the quote. It was hard 
 bit I didn’t really have much luck. Sometimes I felt like giving up; 
@@ -215,9 +215,9 @@ I’ll do the changing.</p>
   
   <entry>
     <title type="html"><![CDATA[Change is Scary]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/04/04/change-is-scary/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/04/04/change-is-scary/"/>
     <updated>2011-04-04T22:30:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/04/04/change-is-scary</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/04/04/change-is-scary</id>
     <content type="html"><![CDATA[<p>Today I did something that was hard for me - something I haven’t done 
 for a decade - I quit my job and accepted another one. It hasn’t been a 
 decade because my current job was so great, as people who I have talked 

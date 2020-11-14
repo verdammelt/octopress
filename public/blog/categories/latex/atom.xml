@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: LaTeX | Code And Cocktails]]></title>
-  <link href="http://code-and-cocktails.heroku.com/blog/categories/latex/atom.xml" rel="self"/>
-  <link href="http://code-and-cocktails.heroku.com/"/>
-  <updated>2020-11-13T21:14:50-05:00</updated>
-  <id>http://code-and-cocktails.heroku.com/</id>
+  <link href="http://code-and-cocktails.herokuapp.com/blog/categories/latex/atom.xml" rel="self"/>
+  <link href="http://code-and-cocktails.herokuapp.com/"/>
+  <updated>2020-11-13T21:22:08-05:00</updated>
+  <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[test latex post]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/08/21/test-latex-post/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/08/21/test-latex-post/"/>
     <updated>2012-08-21T21:21:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/08/21/test-latex-post</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/08/21/test-latex-post</id>
     <content type="html"><![CDATA[<p>I was prompted by <a href="http://proctorit.wordpress.com/2012/08/21/latex-in-wordpress/">Steven Proctor’s post</a> about using
 <a href="http://www.latex-project.org/"><script type="math/tex">\LaTeX</script></a> on <a href="http://wordpress.org/">WordPress</a> to see if it could be done on
 <a href="http://octopress.org/docs/">Octopress</a>. Of course it can!</p>
@@ -59,9 +59,9 @@ needs to be updated… something left out of the other.</p>
   
   <entry>
     <title type="html"><![CDATA[Seven Deadly Sins of Programming]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2012/05/14/seven-deadly-sins-of-programming/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/05/14/seven-deadly-sins-of-programming/"/>
     <updated>2012-05-14T22:14:00-04:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2012/05/14/seven-deadly-sins-of-programming</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2012/05/14/seven-deadly-sins-of-programming</id>
     <content type="html"><![CDATA[<p>At tonight’s Boston Software Craftstmanship meetup I presented my lightning
 talk: Seven Deadly Sins of Programming. It is a half baked idea - take it with
 a grain of salt.</p>
@@ -76,9 +76,9 @@ a grain of salt.</p>
   
   <entry>
     <title type="html"><![CDATA[\LaTeX blog posting - a test post.]]></title>
-    <link href="http://code-and-cocktails.heroku.com/blog/2011/11/30/slash-latex-blog-posting-a-test-post/"/>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2011/11/30/slash-latex-blog-posting-a-test-post/"/>
     <updated>2011-11-30T07:40:00-05:00</updated>
-    <id>http://code-and-cocktails.heroku.com/blog/2011/11/30/slash-latex-blog-posting-a-test-post</id>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2011/11/30/slash-latex-blog-posting-a-test-post</id>
     <content type="html"><![CDATA[<p>I have had some annoying problems recently making <a href="http://posterous.com">posterous</a>
 blog posts via <a href="http://en.wikipedia.org/wiki/Email">email</a> using <a href="http://daringfireball.net/projects/markdown/">markdown</a>.</p>
 
