@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://code-and-cocktails.heroku.com
+url: http://code-and-cocktails.herokuapp.com
 title: Code And Cocktails
 subtitle: 
 author: Mark Simpson
