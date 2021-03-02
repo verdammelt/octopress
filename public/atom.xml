@@ -4,7 +4,7 @@
   <title><![CDATA[Code And Cocktails]]></title>
   <link href="http://code-and-cocktails.herokuapp.com/atom.xml" rel="self"/>
   <link href="http://code-and-cocktails.herokuapp.com/"/>
-  <updated>2020-11-13T21:22:08-05:00</updated>
+  <updated>2021-03-02T10:47:45-05:00</updated>
   <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[REPL Driven Development]]></title>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2021/03/02/repl-driven-development/"/>
+    <updated>2021-03-02T08:15:50-05:00</updated>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2021/03/02/repl-driven-development</id>
+    <content type="html"><![CDATA[<p>(As I was preparing to write this blog I see that 1) a few other people seem to be discussing around this topic (<em>e.g.</em> <a href="https://davidvujic.blogspot.com/2021/02/test-driven-development-deluxe.html">David Vujic</a>), <a href="https://erik-engheim.medium.com/test-driven-vs-repl-driven-development-809d3c7a681" title="Erik Engheim">Erik Engheim</a>, <em>et al.</em>) and 2) that <em>I</em> already discussed this some 10 years ago <a href="http://code-and-cocktails.herokuapp.com/blog/2011/04/13/tdd-and-repl-analogies/">TDD and REPL Analogies?</a>! Just adding this note to make it clear that this is nothing new, just my thoughts and experiences.)</p>
+
+<h2 id="background">Background</h2>
+
+<p>I am the author/maintainer of an <a href="https://exercism.io">Exericism</a> track for <a href="https://en.wikipedia.org/wiki/Common_Lisp">Common Lisp</a>. Currently we are doing a big push to prepare and release v3 of the platform. During this push I’ve been doing more Common Lisp coding than usual<sup id="fnref:0"><a href="#fn:0" class="footnote">1</a></sup> which has brought me back to <a href="https://en.wikipedia.org/wiki/Read–eval–print_loop">REPL</a> driven development.</p>
+
+<p>I personally find it very useful to be able to “play around” or explore a problem before sitting down to actual produce a software solution. Sometimes the code, as I explore and play, becomes the “real” code I will keep. Thus this is not a <a href="https://en.wikipedia.org/wiki/Prototype">prototype</a> or <a href="http://agiledictionary.com/209/spike/">spike</a> where the output would be thrown away, or at least not shipped to production<sup id="fnref:1"><a href="#fn:1" class="footnote">2</a></sup>.</p>
+
+<p>At the time of my earlier writing I was working in a language which did not have a strong REPL offering (or any at all) and found TDD to be a way for me to do this exploration in a reasonable fashion. I found, lacking a REPL, TDD provided me a fast feedback cycle which was necessary for my exploratory approach. Having a REPL shortens that feedback cycle for exploration.</p>
+
+<h2 id="what-is-repl-driven-development">What is REPL Driven development</h2>
+
+<p>A REPL with full editing features (such as <a href="https://common-lisp.net/project/slime/">SLIME</a> or <a href="https://github.com/joaotavora/sly">SLY</a> in <a href="https://www.gnu.org/software/emacs/">GNU Emacs</a>) combines the power of the language, the power of the editor/IDE, with fast feedback that allows me to explore and play with ideas.</p>
+
+<p>Like TDD, REPL Driven Development/Design lets me experiment with different interface designs of how my modules<sup id="fnref:2"><a href="#fn:2" class="footnote">3</a></sup> will fit together. It also allows me to quickly check that my most recent changes haven’ t caused any problem.</p>
+
+<p>I can also use it when I’m unclear on what the solution might even be. For example when consuming a JSON formatted configuration file for my <a href="https://raw.githubusercontent.com/exercism/common-lisp/main/config.json">exercism track</a>, and I want to better understand how the different parts of the data related to each other, where there may be inconsistencies or lacunae in the data.</p>
+
+<p>The general workflow is to work with some code in the REPL, testing and designing it and when it seems ‘right’, saving it to a source file. The workflow can also include working in source files and evaluating parts of the code to load them into the REPL. In a well integrated REPL there is little difference in the editing experience between the REPL and a source file.</p>
+
+<p>In Common Lisp the REPL includes a debugger with a sophisticated <a href="https://www.apress.com/gp/book/9781484261330">condition and restart system</a> which lets me write code I <em>wish</em> I had, then when I run it I am asked what to do about the undefined functions or variables. I can choose to quickly define them or stub them out and then continue, or I can quit the debugger to start the feedback loop again after making further changes.</p>
+
+<h2 id="what-it-is-not">What it is not</h2>
+
+<p>One thing that this cycle does not provide is a a set of tests which can be run repeatedly as you get with TDD. However the interactions at the REPL involve many of the same test cases you’d use in TDD - typical data, empty data, aberrant data, etc. So those can be collected, mixed with some assertions and used as the tests to save for later regression testing / documentation.</p>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>To be honest, adding bindings when stopped in the debugger is not part of my workflow because it is still not ‘natural’ for me to do, my fingers all too quickly dismiss the debugger from lots of habit. This workflow is my next experiment.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:0">
+      <p>I am a hobbyist programmer of the language at best… <a href="#fnref:0" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:1">
+      <p>That <em>never</em> happens. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>By module I mean any ‘building block’ of the software I am building. These might be functions, classes, packages, modules, sub-modules, all of the above. (<em>cf.</em> <a href="https://prl.ccs.neu.edu/img/p-tr-1971.pdf">Parnas</a>). <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Write a Heroku Buildpack for Fun and / or Profit]]></title>
@@ -1718,64 +1769,6 @@ it.)).</p>
   <a href="https://github.com/verdammelt/expressular-kit">expressular-kit</a>.
   The code here is not a direct copy of the code there in
   <code>app/server/app.coffee</code>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Only One Way of Doing Things...]]></title>
-    <link href="http://code-and-cocktails.herokuapp.com/blog/2014/01/20/one-way-to-do-things/"/>
-    <updated>2014-01-20T19:42:43-05:00</updated>
-    <id>http://code-and-cocktails.herokuapp.com/blog/2014/01/20/one-way-to-do-things</id>
-    <content type="html"><![CDATA[<blockquote><p>When there is only one way of doing things, it is easier to<br />	 modify and reuse code. When code is reused, programs are easier<br />	 to change and most importantly, shrink. When a program shrinks<br />	 its construction and maintenance requires fewer people which<br />	 allows for more opportunities for reuse to be found. Consistency<br />	 leads to reuse, reuse leads to conciseness, conciseness leads to<br />	 understanding.</p><footer><strong>Programming as Experience: The Inspiration of Self (1995)</strong></footer></blockquote>
-
-<h2 id="resuse">Resuse</h2>
-
-<p>I like the meaning of ‘reuse’ in this quote. This is not the ‘reuse’
-promised by early OO proponents. They promised<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>: that one would be
-able to create objects which would be reused from one project to
-another. This is the reuse which means that code is reused <em>in</em> a
-project. This is the reuse which I believe to be attainable.</p>
-
-<p>It is like a inward-spiral: the more reuse of code the fewer ways to
-do a thing there will be which leads to only one way.</p>
-
-<p>The sentence about fewer people is a bit odd - but I feel it is does
-make sense. The fewer people on the team the more likey there will be
-only one way to do things which means there is by definition more
-reuse.</p>
-
-<h2 id="consistency">Consistency</h2>
-
-<p>Perhaps more important than reuse though is consistency. If code is
-consistent I have found it to be easier to reason about, because
-reasonable assumptions can be made when reading it. Being able to make
-reasonable assumptions, and have those borne out, is very important to
-me when reading code.</p>
-
-<h2 id="conciseness-and-understanding">Conciseness and Understanding</h2>
-
-<p>And it follows that with reuse and consistency one will get
-consiceness. But does that necessarily lead to underderstanding? That
-is something I <em>feel</em> is right, but I have seen some concise code
-which is hard to understand.</p>
-
-<hr />
-<p><em>References:</em></p>
-
-<ul>
-  <li>“Programming as Experience: The Inspiration of Self”, 1995, Smith,
-Randall B and Ungar, David</li>
-</ul>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>Or perhaps that is not what they said, but what we heard. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

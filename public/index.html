@@ -9,7 +9,7 @@
   <meta name="author" content="Mark Simpson">
 
   
-  <meta name="description" content="Heroku buildpacks are used to prepare (/e.g./ build/compile) an application to allow it to be run by Heroku on their dynos. There are many that exist &hellip;">
+  <meta name="description" content="(As I was preparing to write this blog I see that 1) a few other people seem to be discussing around this topic (e.g. David Vujic), Erik Engheim, et &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -118,6 +118,80 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2021/03/02/repl-driven-development/">REPL Driven Development</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="/blog/2021/03/02/repl-driven-development/#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.herokuapp.com/blog/2021/03/02/repl-driven-development/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>(As I was preparing to write this blog I see that 1) a few other people seem to be discussing around this topic (<em>e.g.</em> <a href="https://davidvujic.blogspot.com/2021/02/test-driven-development-deluxe.html">David Vujic</a>), <a href="https://erik-engheim.medium.com/test-driven-vs-repl-driven-development-809d3c7a681" title="Erik Engheim">Erik Engheim</a>, <em>et al.</em>) and 2) that <em>I</em> already discussed this some 10 years ago <a href="http://code-and-cocktails.herokuapp.com/blog/2011/04/13/tdd-and-repl-analogies/">TDD and REPL Analogies?</a>! Just adding this note to make it clear that this is nothing new, just my thoughts and experiences.)</p>
+
+<h2 id="background">Background</h2>
+
+<p>I am the author/maintainer of an <a href="https://exercism.io">Exericism</a> track for <a href="https://en.wikipedia.org/wiki/Common_Lisp">Common Lisp</a>. Currently we are doing a big push to prepare and release v3 of the platform. During this push I’ve been doing more Common Lisp coding than usual<sup id="fnref:0"><a href="#fn:0" class="footnote">1</a></sup> which has brought me back to <a href="https://en.wikipedia.org/wiki/Read–eval–print_loop">REPL</a> driven development.</p>
+
+<p>I personally find it very useful to be able to “play around” or explore a problem before sitting down to actual produce a software solution. Sometimes the code, as I explore and play, becomes the “real” code I will keep. Thus this is not a <a href="https://en.wikipedia.org/wiki/Prototype">prototype</a> or <a href="http://agiledictionary.com/209/spike/">spike</a> where the output would be thrown away, or at least not shipped to production<sup id="fnref:1"><a href="#fn:1" class="footnote">2</a></sup>.</p>
+
+<p>At the time of my earlier writing I was working in a language which did not have a strong REPL offering (or any at all) and found TDD to be a way for me to do this exploration in a reasonable fashion. I found, lacking a REPL, TDD provided me a fast feedback cycle which was necessary for my exploratory approach. Having a REPL shortens that feedback cycle for exploration.</p>
+
+<h2 id="what-is-repl-driven-development">What is REPL Driven development</h2>
+
+<p>A REPL with full editing features (such as <a href="https://common-lisp.net/project/slime/">SLIME</a> or <a href="https://github.com/joaotavora/sly">SLY</a> in <a href="https://www.gnu.org/software/emacs/">GNU Emacs</a>) combines the power of the language, the power of the editor/IDE, with fast feedback that allows me to explore and play with ideas.</p>
+
+<p>Like TDD, REPL Driven Development/Design lets me experiment with different interface designs of how my modules<sup id="fnref:2"><a href="#fn:2" class="footnote">3</a></sup> will fit together. It also allows me to quickly check that my most recent changes haven’ t caused any problem.</p>
+
+<p>I can also use it when I’m unclear on what the solution might even be. For example when consuming a JSON formatted configuration file for my <a href="https://raw.githubusercontent.com/exercism/common-lisp/main/config.json">exercism track</a>, and I want to better understand how the different parts of the data related to each other, where there may be inconsistencies or lacunae in the data.</p>
+
+<p>The general workflow is to work with some code in the REPL, testing and designing it and when it seems ‘right’, saving it to a source file. The workflow can also include working in source files and evaluating parts of the code to load them into the REPL. In a well integrated REPL there is little difference in the editing experience between the REPL and a source file.</p>
+
+<p>In Common Lisp the REPL includes a debugger with a sophisticated <a href="https://www.apress.com/gp/book/9781484261330">condition and restart system</a> which lets me write code I <em>wish</em> I had, then when I run it I am asked what to do about the undefined functions or variables. I can choose to quickly define them or stub them out and then continue, or I can quit the debugger to start the feedback loop again after making further changes.</p>
+
+<h2 id="what-it-is-not">What it is not</h2>
+
+<p>One thing that this cycle does not provide is a a set of tests which can be run repeatedly as you get with TDD. However the interactions at the REPL involve many of the same test cases you’d use in TDD - typical data, empty data, aberrant data, etc. So those can be collected, mixed with some assertions and used as the tests to save for later regression testing / documentation.</p>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>To be honest, adding bindings when stopped in the debugger is not part of my workflow because it is still not ‘natural’ for me to do, my fingers all too quickly dismiss the debugger from lots of habit. This workflow is my next experiment.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:0">
+      <p>I am a hobbyist programmer of the language at best… <a href="#fnref:0" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:1">
+      <p>That <em>never</em> happens. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>By module I mean any ‘building block’ of the software I am building. These might be functions, classes, packages, modules, sub-modules, all of the above. (<em>cf.</em> <a href="https://prl.ccs.neu.edu/img/p-tr-1971.pdf">Parnas</a>). <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -994,81 +1068,6 @@ Press, 1979. pp325-361. Print. <a href="#fnref:1" class="reversefootnote">&#861
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/11/05/is-your-retro-done/">Is Your Retro Done?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-        
-           | <a href="/blog/2015/11/05/is-your-retro-done/#disqus_thread"
-             data-disqus-identifier="http://code-and-cocktails.herokuapp.com/blog/2015/11/05/is-your-retro-done/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><small>(Cross posted to the <a href="http://www.cyrusinnovation.com/is-your-retro-done/">Cyrus Innovation Blog</a>)</small></p>
-
-<p>Retrospective meetings are an important part of any sort of “Agile”
-process. I have a rule about when a retrospective meeting is over.</p>
-
-<ol>
-  <li>Everyone that wants to talk has talked.</li>
-  <li>There is at least one action item.</li>
-  <li>There is at least one volunteer for each action item.</li>
-</ol>
-
-<p>A good retrospective meetings can help a team achieve what they need
-and want. Often, however, these meetings tend toward directionless
-discussion and complaining. While <em>sometimes</em> a ‘complaining’
-retrospective can be good and cathartic, these should not be the usual
-meeting.</p>
-
-<p>Recently a client’s retrospective meetings had fallen by the wayside.
-Even when they had them they were mostly at the complaining end of the
-spectrum. We had helped them get back into regular retrospectives,
-weekly actually, but they were still not very good.</p>
-
-<p>At the end of one retrospective the team member playing the
-facilitator role tried to wrap the long ramble up by asking <em>“Retro
-Complete?”</em>. I cut off the murmured agreements with another question:
-<em>“Do we have some action items?”</em>.</p>
-
-<p>A retrospective meeting should result in action items. These might be
-a new story/ticket/card, a task, a new process, or an experiment to
-try. Without these the meeting was just discussion.</p>
-
-<p>Also important is that the action items have volunteers. If no one
-wants to do or ‘champion’ an action item then find out why. Perhaps
-the action item just isn’t that important to the team; then drop it.
-Perhaps it is too big and amorphous; then break it down to a single
-next action. Or perhaps it is scary; if this is the case then
-this scariness is something for more discussion.</p>
-
-<p>In the end the team discussed what actions to take on the topics they
-had discussed and created a short list. They even had volunteer for at
-least one. Still not the most successful retrospective, but better
-than the last. Hopefully they’ll keep this habit and their retros will
-become even more effective.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -1089,6 +1088,10 @@ time.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2021/03/02/repl-driven-development/">REPL Driven Development</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2020/11/13/heroku-buildpack-for-fun-and-profit/">How to Write a Heroku Buildpack for Fun and / or Profit</a>
       </li>
     
@@ -1104,15 +1107,11 @@ time.</p>
         <a href="/blog/2016/05/24/learning-from-my-apprentice/">Learning From My Apprentice</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2016/04/25/quickie-less-columns-on-your-board/">Quickie: Less Columns on Your Board</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Tag Cloud</h1>
-    <span id="tag-cloud"><a href='/blog/categories/-boston-sc' style='font-size: 103.07692307692308%'>@boston_sc(4)</a> <a href='/blog/categories/ad-d' style='font-size: 102.3076923076923%'>AD&D(3)</a> <a href='/blog/categories/agile' style='font-size: 104.61538461538461%'>agile(6)</a> <a href='/blog/categories/alcohol' style='font-size: 100.76923076923077%'>alcohol(1)</a> <a href='/blog/categories/android' style='font-size: 100.76923076923077%'>android(1)</a> <a href='/blog/categories/bicycle' style='font-size: 104.61538461538461%'>bicycle(6)</a> <a href='/blog/categories/blog' style='font-size: 101.53846153846153%'>blog(2)</a> <a href='/blog/categories/bostonrb' style='font-size: 100.76923076923077%'>bostonrb(1)</a> <a href='/blog/categories/branch' style='font-size: 100.76923076923077%'>branch(1)</a> <a href='/blog/categories/bugs' style='font-size: 100.76923076923077%'>bugs(1)</a> <a href='/blog/categories/buildpack' style='font-size: 100.76923076923077%'>buildpack(1)</a> <a href='/blog/categories/cat' style='font-size: 100.76923076923077%'>cat(1)</a> <a href='/blog/categories/century' style='font-size: 103.84615384615384%'>century(5)</a> <a href='/blog/categories/cleancode' style='font-size: 100.76923076923077%'>cleancode(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.76923076923077%'>Clojure(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.76923076923077%'>clojure(1)</a> <a href='/blog/categories/cocktail' style='font-size: 103.84615384615384%'>cocktail(5)</a> <a href='/blog/categories/cocktails' style='font-size: 100.76923076923077%'>cocktails(1)</a> <a href='/blog/categories/code' style='font-size: 103.84615384615384%'>code(5)</a> <a href='/blog/categories/codekata' style='font-size: 100.76923076923077%'>codekata(1)</a> <a href='/blog/categories/coderetreat' style='font-size: 101.53846153846153%'>coderetreat(2)</a> <a href='/blog/categories/coding' style='font-size: 100.76923076923077%'>coding(1)</a> <a href='/blog/categories/coffeescript' style='font-size: 100.76923076923077%'>coffeescript(1)</a> <a href='/blog/categories/comic' style='font-size: 100.76923076923077%'>comic(1)</a> <a href='/blog/categories/commonlisp' style='font-size: 102.3076923076923%'>commonlisp(3)</a> <a href='/blog/categories/concert' style='font-size: 100.76923076923077%'>concert(1)</a> <a href='/blog/categories/craft' style='font-size: 100.76923076923077%'>craft(1)</a> <a href='/blog/categories/craftsmanship' style='font-size: 100.76923076923077%'>craftsmanship(1)</a> <a href='/blog/categories/cube' style='font-size: 100.76923076923077%'>cube(1)</a> <a href='/blog/categories/design' style='font-size: 106.15384615384616%'>design(8)</a> <a href='/blog/categories/desk' style='font-size: 100.76923076923077%'>desk(1)</a> <a href='/blog/categories/developer' style='font-size: 100.76923076923077%'>developer(1)</a> <a href='/blog/categories/domain' style='font-size: 100.76923076923077%'>domain(1)</a> <a href='/blog/categories/elixir' style='font-size: 100.76923076923077%'>elixir(1)</a> <a href='/blog/categories/emacs' style='font-size: 103.84615384615384%'>emacs(5)</a> <a href='/blog/categories/estimation' style='font-size: 100.76923076923077%'>estimation(1)</a> <a href='/blog/categories/express' style='font-size: 100.76923076923077%'>express(1)</a> <a href='/blog/categories/food' style='font-size: 101.53846153846153%'>food(2)</a> <a href='/blog/categories/gin' style='font-size: 100.76923076923077%'>gin(1)</a> <a href='/blog/categories/git' style='font-size: 100.76923076923077%'>git(1)</a> <a href='/blog/categories/gnus' style='font-size: 103.07692307692308%'>gnus(4)</a> <a href='/blog/categories/goos' style='font-size: 104.61538461538461%'>goos(6)</a> <a href='/blog/categories/goosreview' style='font-size: 104.61538461538461%'>goosreview(6)</a> <a href='/blog/categories/grapefruit' style='font-size: 100.76923076923077%'>grapefruit(1)</a> <a href='/blog/categories/gwendolyn' style='font-size: 100.76923076923077%'>gwendolyn(1)</a> <a href='/blog/categories/heroku' style='font-size: 101.53846153846153%'>heroku(2)</a> <a href='/blog/categories/jeckyll' style='font-size: 100.76923076923077%'>jeckyll(1)</a> <a href='/blog/categories/kraftwerk' style='font-size: 100.76923076923077%'>kraftwerk(1)</a> <a href='/blog/categories/latex' style='font-size: 102.3076923076923%'>LaTeX(3)</a> <a href='/blog/categories/learning' style='font-size: 101.53846153846153%'>learning(2)</a> <a href='/blog/categories/life' style='font-size: 100.76923076923077%'>life(1)</a> <a href='/blog/categories/lisp' style='font-size: 103.84615384615384%'>lisp(5)</a> <a href='/blog/categories/listening' style='font-size: 100.76923076923077%'>listening(1)</a> <a href='/blog/categories/maintenance' style='font-size: 100.76923076923077%'>maintenance(1)</a> <a href='/blog/categories/markdown' style='font-size: 100.76923076923077%'>markdown(1)</a> <a href='/blog/categories/meetup' style='font-size: 100.76923076923077%'>meetup(1)</a> <a href='/blog/categories/metrics' style='font-size: 100.76923076923077%'>metrics(1)</a> <a href='/blog/categories/midje' style='font-size: 100.76923076923077%'>midje(1)</a> <a href='/blog/categories/mistakes' style='font-size: 100.76923076923077%'>mistakes(1)</a> <a href='/blog/categories/mix' style='font-size: 100.76923076923077%'>mix(1)</a> <a href='/blog/categories/mockito' style='font-size: 100.76923076923077%'>mockito(1)</a> <a href='/blog/categories/moma' style='font-size: 100.76923076923077%'>moma(1)</a> <a href='/blog/categories/monad' style='font-size: 100.76923076923077%'>monad(1)</a> <a href='/blog/categories/naming' style='font-size: 100.76923076923077%'>naming(1)</a> <a href='/blog/categories/node' style='font-size: 100.76923076923077%'>node(1)</a> <a href='/blog/categories/objects' style='font-size: 100.76923076923077%'>objects(1)</a> <a href='/blog/categories/octopress' style='font-size: 102.3076923076923%'>octopress(3)</a> <a href='/blog/categories/office' style='font-size: 100.76923076923077%'>office(1)</a> <a href='/blog/categories/oo' style='font-size: 104.61538461538461%'>oo(6)</a> <a href='/blog/categories/opinion' style='font-size: 100.76923076923077%'>opinion(1)</a> <a href='/blog/categories/pairprogramming' style='font-size: 100.76923076923077%'>pairprogramming(1)</a> <a href='/blog/categories/patterns' style='font-size: 101.53846153846153%'>patterns(2)</a> <a href='/blog/categories/pdf' style='font-size: 100.76923076923077%'>pdf(1)</a> <a href='/blog/categories/personal' style='font-size: 103.07692307692308%'>personal(4)</a> <a href='/blog/categories/photos' style='font-size: 100.76923076923077%'>photos(1)</a> <a href='/blog/categories/picture' style='font-size: 101.53846153846153%'>picture(2)</a> <a href='/blog/categories/posterous' style='font-size: 101.53846153846153%'>posterous(2)</a> <a href='/blog/categories/presentation' style='font-size: 100.76923076923077%'>presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 103.07692307692308%'>programming(4)</a> <a href='/blog/categories/python' style='font-size: 100.76923076923077%'>python(1)</a> <a href='/blog/categories/quality' style='font-size: 100.76923076923077%'>quality(1)</a> <a href='/blog/categories/react' style='font-size: 100.76923076923077%'>react(1)</a> <a href='/blog/categories/reactnative' style='font-size: 100.76923076923077%'>reactnative(1)</a> <a href='/blog/categories/recipe' style='font-size: 102.3076923076923%'>recipe(3)</a> <a href='/blog/categories/refactoring' style='font-size: 100.76923076923077%'>refactoring(1)</a> <a href='/blog/categories/repl' style='font-size: 100.76923076923077%'>repl(1)</a> <a href='/blog/categories/retro' style='font-size: 100.76923076923077%'>retro(1)</a> <a href='/blog/categories/retrospective' style='font-size: 102.3076923076923%'>retrospective(3)</a> <a href='/blog/categories/ruby' style='font-size: 102.3076923076923%'>ruby(3)</a> <a href='/blog/categories/scna' style='font-size: 103.07692307692308%'>scna(4)</a> <a href='/blog/categories/scna2013' style='font-size: 100.76923076923077%'>scna2013(1)</a> <a href='/blog/categories/sicp' style='font-size: 100.76923076923077%'>sicp(1)</a> <a href='/blog/categories/sin' style='font-size: 100.76923076923077%'>sin(1)</a> <a href='/blog/categories/skill' style='font-size: 100.76923076923077%'>skill(1)</a> <a href='/blog/categories/slides' style='font-size: 100.76923076923077%'>slides(1)</a> <a href='/blog/categories/software' style='font-size: 100.76923076923077%'>software(1)</a> <a href='/blog/categories/softwarecraftsmanship' style='font-size: 103.84615384615384%'>softwarecraftsmanship(5)</a> <a href='/blog/categories/tdd' style='font-size: 110.0%'>tdd(13)</a> <a href='/blog/categories/tools' style='font-size: 100.76923076923077%'>tools(1)</a> <a href='/blog/categories/training' style='font-size: 100.76923076923077%'>training(1)</a> <a href='/blog/categories/vermouth' style='font-size: 100.76923076923077%'>vermouth(1)</a> <a href='/blog/categories/viking' style='font-size: 100.76923076923077%'>viking(1)</a> <a href='/blog/categories/work' style='font-size: 103.07692307692308%'>work(4)</a> <a href='/blog/categories/yakshaving' style='font-size: 100.76923076923077%'>yakshaving(1)</a> <a href='/blog/categories/yarlisp' style='font-size: 100.76923076923077%'>yarlisp(1)</a> </span>
+    <span id="tag-cloud"><a href='/blog/categories/-boston-sc' style='font-size: 102.85714285714286%'>@boston_sc(4)</a> <a href='/blog/categories/ad-d' style='font-size: 102.14285714285714%'>AD&D(3)</a> <a href='/blog/categories/agile' style='font-size: 104.28571428571429%'>agile(6)</a> <a href='/blog/categories/alcohol' style='font-size: 100.71428571428571%'>alcohol(1)</a> <a href='/blog/categories/android' style='font-size: 100.71428571428571%'>android(1)</a> <a href='/blog/categories/bicycle' style='font-size: 104.28571428571429%'>bicycle(6)</a> <a href='/blog/categories/blog' style='font-size: 101.42857142857143%'>blog(2)</a> <a href='/blog/categories/bostonrb' style='font-size: 100.71428571428571%'>bostonrb(1)</a> <a href='/blog/categories/branch' style='font-size: 100.71428571428571%'>branch(1)</a> <a href='/blog/categories/bugs' style='font-size: 100.71428571428571%'>bugs(1)</a> <a href='/blog/categories/buildpack' style='font-size: 100.71428571428571%'>buildpack(1)</a> <a href='/blog/categories/cat' style='font-size: 100.71428571428571%'>cat(1)</a> <a href='/blog/categories/century' style='font-size: 103.57142857142857%'>century(5)</a> <a href='/blog/categories/cleancode' style='font-size: 100.71428571428571%'>cleancode(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.71428571428571%'>clojure(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.71428571428571%'>Clojure(1)</a> <a href='/blog/categories/cocktail' style='font-size: 103.57142857142857%'>cocktail(5)</a> <a href='/blog/categories/cocktails' style='font-size: 100.71428571428571%'>cocktails(1)</a> <a href='/blog/categories/code' style='font-size: 103.57142857142857%'>code(5)</a> <a href='/blog/categories/codekata' style='font-size: 100.71428571428571%'>codekata(1)</a> <a href='/blog/categories/coderetreat' style='font-size: 101.42857142857143%'>coderetreat(2)</a> <a href='/blog/categories/coding' style='font-size: 100.71428571428571%'>coding(1)</a> <a href='/blog/categories/coffeescript' style='font-size: 100.71428571428571%'>coffeescript(1)</a> <a href='/blog/categories/comic' style='font-size: 100.71428571428571%'>comic(1)</a> <a href='/blog/categories/commonlisp' style='font-size: 102.14285714285714%'>commonlisp(3)</a> <a href='/blog/categories/concert' style='font-size: 100.71428571428571%'>concert(1)</a> <a href='/blog/categories/craft' style='font-size: 100.71428571428571%'>craft(1)</a> <a href='/blog/categories/craftsmanship' style='font-size: 100.71428571428571%'>craftsmanship(1)</a> <a href='/blog/categories/cube' style='font-size: 100.71428571428571%'>cube(1)</a> <a href='/blog/categories/design' style='font-size: 105.71428571428571%'>design(8)</a> <a href='/blog/categories/desk' style='font-size: 100.71428571428571%'>desk(1)</a> <a href='/blog/categories/developer' style='font-size: 100.71428571428571%'>developer(1)</a> <a href='/blog/categories/domain' style='font-size: 100.71428571428571%'>domain(1)</a> <a href='/blog/categories/elixir' style='font-size: 100.71428571428571%'>elixir(1)</a> <a href='/blog/categories/emacs' style='font-size: 103.57142857142857%'>emacs(5)</a> <a href='/blog/categories/estimation' style='font-size: 100.71428571428571%'>estimation(1)</a> <a href='/blog/categories/express' style='font-size: 100.71428571428571%'>express(1)</a> <a href='/blog/categories/food' style='font-size: 101.42857142857143%'>food(2)</a> <a href='/blog/categories/gin' style='font-size: 100.71428571428571%'>gin(1)</a> <a href='/blog/categories/git' style='font-size: 100.71428571428571%'>git(1)</a> <a href='/blog/categories/gnus' style='font-size: 102.85714285714286%'>gnus(4)</a> <a href='/blog/categories/goos' style='font-size: 104.28571428571429%'>goos(6)</a> <a href='/blog/categories/goosreview' style='font-size: 104.28571428571429%'>goosreview(6)</a> <a href='/blog/categories/grapefruit' style='font-size: 100.71428571428571%'>grapefruit(1)</a> <a href='/blog/categories/gwendolyn' style='font-size: 100.71428571428571%'>gwendolyn(1)</a> <a href='/blog/categories/heroku' style='font-size: 101.42857142857143%'>heroku(2)</a> <a href='/blog/categories/jeckyll' style='font-size: 100.71428571428571%'>jeckyll(1)</a> <a href='/blog/categories/kraftwerk' style='font-size: 100.71428571428571%'>kraftwerk(1)</a> <a href='/blog/categories/latex' style='font-size: 102.14285714285714%'>LaTeX(3)</a> <a href='/blog/categories/learning' style='font-size: 101.42857142857143%'>learning(2)</a> <a href='/blog/categories/life' style='font-size: 100.71428571428571%'>life(1)</a> <a href='/blog/categories/lisp' style='font-size: 103.57142857142857%'>lisp(5)</a> <a href='/blog/categories/listening' style='font-size: 100.71428571428571%'>listening(1)</a> <a href='/blog/categories/maintenance' style='font-size: 100.71428571428571%'>maintenance(1)</a> <a href='/blog/categories/markdown' style='font-size: 100.71428571428571%'>markdown(1)</a> <a href='/blog/categories/meetup' style='font-size: 100.71428571428571%'>meetup(1)</a> <a href='/blog/categories/metrics' style='font-size: 100.71428571428571%'>metrics(1)</a> <a href='/blog/categories/midje' style='font-size: 100.71428571428571%'>midje(1)</a> <a href='/blog/categories/mistakes' style='font-size: 100.71428571428571%'>mistakes(1)</a> <a href='/blog/categories/mix' style='font-size: 100.71428571428571%'>mix(1)</a> <a href='/blog/categories/mockito' style='font-size: 100.71428571428571%'>mockito(1)</a> <a href='/blog/categories/moma' style='font-size: 100.71428571428571%'>moma(1)</a> <a href='/blog/categories/monad' style='font-size: 100.71428571428571%'>monad(1)</a> <a href='/blog/categories/naming' style='font-size: 100.71428571428571%'>naming(1)</a> <a href='/blog/categories/node' style='font-size: 100.71428571428571%'>node(1)</a> <a href='/blog/categories/objects' style='font-size: 100.71428571428571%'>objects(1)</a> <a href='/blog/categories/octopress' style='font-size: 102.14285714285714%'>octopress(3)</a> <a href='/blog/categories/office' style='font-size: 100.71428571428571%'>office(1)</a> <a href='/blog/categories/oo' style='font-size: 104.28571428571429%'>oo(6)</a> <a href='/blog/categories/opinion' style='font-size: 100.71428571428571%'>opinion(1)</a> <a href='/blog/categories/pairprogramming' style='font-size: 100.71428571428571%'>pairprogramming(1)</a> <a href='/blog/categories/patterns' style='font-size: 101.42857142857143%'>patterns(2)</a> <a href='/blog/categories/pdf' style='font-size: 100.71428571428571%'>pdf(1)</a> <a href='/blog/categories/personal' style='font-size: 102.85714285714286%'>personal(4)</a> <a href='/blog/categories/photos' style='font-size: 100.71428571428571%'>photos(1)</a> <a href='/blog/categories/picture' style='font-size: 101.42857142857143%'>picture(2)</a> <a href='/blog/categories/posterous' style='font-size: 101.42857142857143%'>posterous(2)</a> <a href='/blog/categories/presentation' style='font-size: 100.71428571428571%'>presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 102.85714285714286%'>programming(4)</a> <a href='/blog/categories/python' style='font-size: 100.71428571428571%'>python(1)</a> <a href='/blog/categories/quality' style='font-size: 100.71428571428571%'>quality(1)</a> <a href='/blog/categories/react' style='font-size: 100.71428571428571%'>react(1)</a> <a href='/blog/categories/reactnative' style='font-size: 100.71428571428571%'>reactnative(1)</a> <a href='/blog/categories/recipe' style='font-size: 102.14285714285714%'>recipe(3)</a> <a href='/blog/categories/refactoring' style='font-size: 100.71428571428571%'>refactoring(1)</a> <a href='/blog/categories/repl' style='font-size: 100.71428571428571%'>repl(1)</a> <a href='/blog/categories/repl-' style='font-size: 100.71428571428571%'>repl,(1)</a> <a href='/blog/categories/retro' style='font-size: 100.71428571428571%'>retro(1)</a> <a href='/blog/categories/retrospective' style='font-size: 102.14285714285714%'>retrospective(3)</a> <a href='/blog/categories/ruby' style='font-size: 102.14285714285714%'>ruby(3)</a> <a href='/blog/categories/scna' style='font-size: 102.85714285714286%'>scna(4)</a> <a href='/blog/categories/scna2013' style='font-size: 100.71428571428571%'>scna2013(1)</a> <a href='/blog/categories/sicp' style='font-size: 100.71428571428571%'>sicp(1)</a> <a href='/blog/categories/sin' style='font-size: 100.71428571428571%'>sin(1)</a> <a href='/blog/categories/skill' style='font-size: 100.71428571428571%'>skill(1)</a> <a href='/blog/categories/slides' style='font-size: 100.71428571428571%'>slides(1)</a> <a href='/blog/categories/software' style='font-size: 100.71428571428571%'>software(1)</a> <a href='/blog/categories/softwarecraftsmanship' style='font-size: 103.57142857142857%'>softwarecraftsmanship(5)</a> <a href='/blog/categories/tdd' style='font-size: 110.0%'>tdd(14)</a> <a href='/blog/categories/tools' style='font-size: 100.71428571428571%'>tools(1)</a> <a href='/blog/categories/training' style='font-size: 100.71428571428571%'>training(1)</a> <a href='/blog/categories/vermouth' style='font-size: 100.71428571428571%'>vermouth(1)</a> <a href='/blog/categories/viking' style='font-size: 100.71428571428571%'>viking(1)</a> <a href='/blog/categories/work' style='font-size: 102.85714285714286%'>work(4)</a> <a href='/blog/categories/yakshaving' style='font-size: 100.71428571428571%'>yakshaving(1)</a> <a href='/blog/categories/yarlisp' style='font-size: 100.71428571428571%'>yarlisp(1)</a> </span>
 </section>
 
 <section>
@@ -1177,7 +1176,7 @@ time.</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2020 - Mark Simpson -
+  Copyright &copy; 2021 - Mark Simpson -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

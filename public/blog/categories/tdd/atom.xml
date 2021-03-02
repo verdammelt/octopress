@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tdd | Code And Cocktails]]></title>
   <link href="http://code-and-cocktails.herokuapp.com/blog/categories/tdd/atom.xml" rel="self"/>
   <link href="http://code-and-cocktails.herokuapp.com/"/>
-  <updated>2020-11-13T21:22:08-05:00</updated>
+  <updated>2021-03-02T10:47:45-05:00</updated>
   <id>http://code-and-cocktails.herokuapp.com/</id>
   <author>
     <name><![CDATA[Mark Simpson]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[REPL Driven Development]]></title>
+    <link href="http://code-and-cocktails.herokuapp.com/blog/2021/03/02/repl-driven-development/"/>
+    <updated>2021-03-02T08:15:50-05:00</updated>
+    <id>http://code-and-cocktails.herokuapp.com/blog/2021/03/02/repl-driven-development</id>
+    <content type="html"><![CDATA[<p>(As I was preparing to write this blog I see that 1) a few other people seem to be discussing around this topic (<em>e.g.</em> <a href="https://davidvujic.blogspot.com/2021/02/test-driven-development-deluxe.html">David Vujic</a>), <a href="https://erik-engheim.medium.com/test-driven-vs-repl-driven-development-809d3c7a681" title="Erik Engheim">Erik Engheim</a>, <em>et al.</em>) and 2) that <em>I</em> already discussed this some 10 years ago <a href="http://code-and-cocktails.herokuapp.com/blog/2011/04/13/tdd-and-repl-analogies/">TDD and REPL Analogies?</a>! Just adding this note to make it clear that this is nothing new, just my thoughts and experiences.)</p>
+
+<h2 id="background">Background</h2>
+
+<p>I am the author/maintainer of an <a href="https://exercism.io">Exericism</a> track for <a href="https://en.wikipedia.org/wiki/Common_Lisp">Common Lisp</a>. Currently we are doing a big push to prepare and release v3 of the platform. During this push I’ve been doing more Common Lisp coding than usual<sup id="fnref:0"><a href="#fn:0" class="footnote">1</a></sup> which has brought me back to <a href="https://en.wikipedia.org/wiki/Read–eval–print_loop">REPL</a> driven development.</p>
+
+<p>I personally find it very useful to be able to “play around” or explore a problem before sitting down to actual produce a software solution. Sometimes the code, as I explore and play, becomes the “real” code I will keep. Thus this is not a <a href="https://en.wikipedia.org/wiki/Prototype">prototype</a> or <a href="http://agiledictionary.com/209/spike/">spike</a> where the output would be thrown away, or at least not shipped to production<sup id="fnref:1"><a href="#fn:1" class="footnote">2</a></sup>.</p>
+
+<p>At the time of my earlier writing I was working in a language which did not have a strong REPL offering (or any at all) and found TDD to be a way for me to do this exploration in a reasonable fashion. I found, lacking a REPL, TDD provided me a fast feedback cycle which was necessary for my exploratory approach. Having a REPL shortens that feedback cycle for exploration.</p>
+
+<h2 id="what-is-repl-driven-development">What is REPL Driven development</h2>
+
+<p>A REPL with full editing features (such as <a href="https://common-lisp.net/project/slime/">SLIME</a> or <a href="https://github.com/joaotavora/sly">SLY</a> in <a href="https://www.gnu.org/software/emacs/">GNU Emacs</a>) combines the power of the language, the power of the editor/IDE, with fast feedback that allows me to explore and play with ideas.</p>
+
+<p>Like TDD, REPL Driven Development/Design lets me experiment with different interface designs of how my modules<sup id="fnref:2"><a href="#fn:2" class="footnote">3</a></sup> will fit together. It also allows me to quickly check that my most recent changes haven’ t caused any problem.</p>
+
+<p>I can also use it when I’m unclear on what the solution might even be. For example when consuming a JSON formatted configuration file for my <a href="https://raw.githubusercontent.com/exercism/common-lisp/main/config.json">exercism track</a>, and I want to better understand how the different parts of the data related to each other, where there may be inconsistencies or lacunae in the data.</p>
+
+<p>The general workflow is to work with some code in the REPL, testing and designing it and when it seems ‘right’, saving it to a source file. The workflow can also include working in source files and evaluating parts of the code to load them into the REPL. In a well integrated REPL there is little difference in the editing experience between the REPL and a source file.</p>
+
+<p>In Common Lisp the REPL includes a debugger with a sophisticated <a href="https://www.apress.com/gp/book/9781484261330">condition and restart system</a> which lets me write code I <em>wish</em> I had, then when I run it I am asked what to do about the undefined functions or variables. I can choose to quickly define them or stub them out and then continue, or I can quit the debugger to start the feedback loop again after making further changes.</p>
+
+<h2 id="what-it-is-not">What it is not</h2>
+
+<p>One thing that this cycle does not provide is a a set of tests which can be run repeatedly as you get with TDD. However the interactions at the REPL involve many of the same test cases you’d use in TDD - typical data, empty data, aberrant data, etc. So those can be collected, mixed with some assertions and used as the tests to save for later regression testing / documentation.</p>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>To be honest, adding bindings when stopped in the debugger is not part of my workflow because it is still not ‘natural’ for me to do, my fingers all too quickly dismiss the debugger from lots of habit. This workflow is my next experiment.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:0">
+      <p>I am a hobbyist programmer of the language at best… <a href="#fnref:0" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:1">
+      <p>That <em>never</em> happens. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>By module I mean any ‘building block’ of the software I am building. These might be functions, classes, packages, modules, sub-modules, all of the above. (<em>cf.</em> <a href="https://prl.ccs.neu.edu/img/p-tr-1971.pdf">Parnas</a>). <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Bootstrapping a Testing Library]]></title>
@@ -495,72 +546,6 @@ refactoring decisions until you can see/feel what the problems are. But to do
 this you must know that you will take the time to refactor when you know that
 refactoring is right. If you don’t have confidence - you will refactor
 prematurely.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[goos review chapter 12]]></title>
-    <link href="http://code-and-cocktails.herokuapp.com/blog/2012/07/02/goos-review-chapter-12/"/>
-    <updated>2012-07-02T21:25:00-04:00</updated>
-    <id>http://code-and-cocktails.herokuapp.com/blog/2012/07/02/goos-review-chapter-12</id>
-    <content type="html"><![CDATA[<p>In this chapter we implement our first <em>real</em> acceptance test. It is an
-end-to-end test of a real user feature.</p>
-
-<p>I tend to run my tests repeatedly as I write them - so I hit a problem before
-the Authors revealed it. It was the <em>surprise</em> problem of the connection
-needing to be closed. I guess my running of tests often led me to find it
-earlier than others might - so I’ll take that as a win. It was annoying to
-hit it before the Author’s intended though - I thought I had a broken OpenFire
-installation.</p>
-
-<p>There were four things that stood out for me in this chapter:</p>
-
-<ol>
-  <li>
-    <p>Their note about using the same value in test code and production code
-(<em>e.g.</em> JOIN_MESSAGE_FORMAT) on p109.  This is a problem that I struggle
-with in my testing. Sometimes I feel that it is cheating - or not really
-testing anything. Other times I think it is the “Right Thing To Do(TM)”. I
-am glad/disappointed that they have conclusive word on if it is good/bad.</p>
-  </li>
-  <li>
-    <p>They start implementation of the new feature by first refactoring the
-existing code into one that will make the needed change easy. This is
-something I’d like to internalize but I haven’t yet. I usually start by
-implementing what I need (even if hard/ugly) and then refactoring until it
-is nice and clean. But this often leads to 
-<a href="http://bible.cc/matthew/13-42.htm">wailing and gnashing of teeth</a>. I also think, in retrospect that
-I have missed the target of the really nice design, which no longer can
-really see, but I <em>feel</em> is still out there.</p>
-  </li>
-  <li>
-    <p>There was a phrase on p113 which I think is a good feel for how I usually
-am thinking when I am implementing: “…our immediate concern is to get
-message translation to work, the rest can wait.” It is this focusing on the
-immediate problem and ‘faking-till-you-make-it’ that I do a lot. I like to
-commit often - so I am always working hard to get small bits working and
-committed instead of trying to do bigger chunks of work (although I can’t
-say I am always successful in this).</p>
-  </li>
-  <li>
-    <p>On p116 the Authors say that the expectation is the most important line of
-the test. However I find that it is hidden in the Java code needed to
-create it. Perhaps it is because I always look at a test in the ‘arrange,
-act, assert’ way; so I don’t expect to see an expectation in the ‘arrange’
-section but in the ‘assert’ section (as it would be with Spock, Mockito, or
-Moq for example). I wonder how else it could be made more visible?</p>
-  </li>
-  <li>
-    <p>Finally they point out the importance of writing the ‘first draft’ code and
-then refactoring it after the tests are working. I don’t think I could
-agree with this more strongly.</p>
-  </li>
-</ol>
-
-<p>On the whole a good chapter for the first real user-feature. I am still
-annoyed with plain old Java code. Maybe I’ll need to start re-implementing
-this in Ruby or at least Groovy sooner rather than later.</p>
 
 ]]></content>
   </entry>

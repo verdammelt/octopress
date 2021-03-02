@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>REPL Driven Development - Code And Cocktails</title>
+  <meta name="author" content="Mark Simpson">
+
+  
+  <meta name="description" content="Experience report of REPL driven development.">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://code-and-cocktails.herokuapp.com/blog/2021/03/02/repl-driven-development">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Code And Cocktails" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$', '$$'], ["\\[", "\\]"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+  
+  <script type="text/javascript">
+    if (window.location.hostname !== "octopress.dev") {
+      console.log("load gaq")
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30682469-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+
+
+  <meta content="Code And Cocktails" property="og:site_name">
+
+  <meta content="REPL Driven Development" property="og:title">
+
+
+  <meta content="article" property="og:type">
+
+
+  <meta content="Experience report of REPL driven development." property="og:description">
+
+
+  <meta content="http://code-and-cocktails.herokuapp.com/blog/2021/03/02/repl-driven-development/" property="og:url">
+
+
+  <meta content="2021-03-02T08:15:50-05:00" property="article:published_time">
+  <meta content="http://code-and-cocktails.herokuapp.com/about/" property="article:author">
+
+
+  <meta content="http://code-and-cocktails.herokuapp.com/images/me.jpg" property="og:image">
+
+
+  
+  <meta content="repl," property="article:section">
+  
+
+
+  
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Code And Cocktails</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:code-and-cocktails.herokuapp.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/assets/resume.pdf">R&eacute;sum&eacute;</a></li>
+  <li><a href="/publickey">Public Key</a></li>
+  <li><a href="http://www.flickr.com/photos/verdammelt/">My Photographs</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">REPL Driven Development</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://code-and-cocktails.herokuapp.com">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>(As I was preparing to write this blog I see that 1) a few other people seem to be discussing around this topic (<em>e.g.</em> <a href="https://davidvujic.blogspot.com/2021/02/test-driven-development-deluxe.html">David Vujic</a>), <a href="https://erik-engheim.medium.com/test-driven-vs-repl-driven-development-809d3c7a681" title="Erik Engheim">Erik Engheim</a>, <em>et al.</em>) and 2) that <em>I</em> already discussed this some 10 years ago <a href="http://code-and-cocktails.herokuapp.com/blog/2011/04/13/tdd-and-repl-analogies/">TDD and REPL Analogies?</a>! Just adding this note to make it clear that this is nothing new, just my thoughts and experiences.)</p>
+
+<h2 id="background">Background</h2>
+
+<p>I am the author/maintainer of an <a href="https://exercism.io">Exericism</a> track for <a href="https://en.wikipedia.org/wiki/Common_Lisp">Common Lisp</a>. Currently we are doing a big push to prepare and release v3 of the platform. During this push I’ve been doing more Common Lisp coding than usual<sup id="fnref:0"><a href="#fn:0" class="footnote">1</a></sup> which has brought me back to <a href="https://en.wikipedia.org/wiki/Read–eval–print_loop">REPL</a> driven development.</p>
+
+<p>I personally find it very useful to be able to “play around” or explore a problem before sitting down to actual produce a software solution. Sometimes the code, as I explore and play, becomes the “real” code I will keep. Thus this is not a <a href="https://en.wikipedia.org/wiki/Prototype">prototype</a> or <a href="http://agiledictionary.com/209/spike/">spike</a> where the output would be thrown away, or at least not shipped to production<sup id="fnref:1"><a href="#fn:1" class="footnote">2</a></sup>.</p>
+
+<p>At the time of my earlier writing I was working in a language which did not have a strong REPL offering (or any at all) and found TDD to be a way for me to do this exploration in a reasonable fashion. I found, lacking a REPL, TDD provided me a fast feedback cycle which was necessary for my exploratory approach. Having a REPL shortens that feedback cycle for exploration.</p>
+
+<h2 id="what-is-repl-driven-development">What is REPL Driven development</h2>
+
+<p>A REPL with full editing features (such as <a href="https://common-lisp.net/project/slime/">SLIME</a> or <a href="https://github.com/joaotavora/sly">SLY</a> in <a href="https://www.gnu.org/software/emacs/">GNU Emacs</a>) combines the power of the language, the power of the editor/IDE, with fast feedback that allows me to explore and play with ideas.</p>
+
+<p>Like TDD, REPL Driven Development/Design lets me experiment with different interface designs of how my modules<sup id="fnref:2"><a href="#fn:2" class="footnote">3</a></sup> will fit together. It also allows me to quickly check that my most recent changes haven’ t caused any problem.</p>
+
+<p>I can also use it when I’m unclear on what the solution might even be. For example when consuming a JSON formatted configuration file for my <a href="https://raw.githubusercontent.com/exercism/common-lisp/main/config.json">exercism track</a>, and I want to better understand how the different parts of the data related to each other, where there may be inconsistencies or lacunae in the data.</p>
+
+<p>The general workflow is to work with some code in the REPL, testing and designing it and when it seems ‘right’, saving it to a source file. The workflow can also include working in source files and evaluating parts of the code to load them into the REPL. In a well integrated REPL there is little difference in the editing experience between the REPL and a source file.</p>
+
+<p>In Common Lisp the REPL includes a debugger with a sophisticated <a href="https://www.apress.com/gp/book/9781484261330">condition and restart system</a> which lets me write code I <em>wish</em> I had, then when I run it I am asked what to do about the undefined functions or variables. I can choose to quickly define them or stub them out and then continue, or I can quit the debugger to start the feedback loop again after making further changes.</p>
+
+<h2 id="what-it-is-not">What it is not</h2>
+
+<p>One thing that this cycle does not provide is a a set of tests which can be run repeatedly as you get with TDD. However the interactions at the REPL involve many of the same test cases you’d use in TDD - typical data, empty data, aberrant data, etc. So those can be collected, mixed with some assertions and used as the tests to save for later regression testing / documentation.</p>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>To be honest, adding bindings when stopped in the debugger is not part of my workflow because it is still not ‘natural’ for me to do, my fingers all too quickly dismiss the debugger from lots of habit. This workflow is my next experiment.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:0">
+      <p>I am a hobbyist programmer of the language at best… <a href="#fnref:0" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:1">
+      <p>That <em>never</em> happens. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>By module I mean any ‘building block’ of the software I am building. These might be functions, classes, packages, modules, sub-modules, all of the above. (<em>cf.</em> <a href="https://prl.ccs.neu.edu/img/p-tr-1971.pdf">Parnas</a>). <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+<span class="byline author vcard">Posted by <span class="fn">Mark Simpson</span></span>
+
+      
+
+
+
+
+
+      
+
+<span class="categories">
+  
+    repl,tdd
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://code-and-cocktails.herokuapp.com/blog/2021/03/02/repl-driven-development/" data-via="verdammelt" data-counturl="http://code-and-cocktails.herokuapp.com/blog/2021/03/02/repl-driven-development/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2020/11/13/heroku-buildpack-for-fun-and-profit/" title="Previous Post: How to write a Heroku Buildpack for Fun and / or Profit">&laquo; How to write a Heroku Buildpack for Fun and / or Profit</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+<img src="/images/me.jpg">
+<p>Hello, I'm Mark and I like cocktails and programming.  Sometimes at the same
+time.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2021/03/02/repl-driven-development/">REPL Driven Development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2020/11/13/heroku-buildpack-for-fun-and-profit/">How to Write a Heroku Buildpack for Fun and / or Profit</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2020/10/21/standard-joke/">Standard Joke</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/03/10/how-to-write-a-mix-task/">Writing Mix Tasks for Fun and Profit.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/05/24/learning-from-my-apprentice/">Learning From My Apprentice</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><a href='/blog/categories/-boston-sc' style='font-size: 102.85714285714286%'>@boston_sc(4)</a> <a href='/blog/categories/ad-d' style='font-size: 102.14285714285714%'>AD&D(3)</a> <a href='/blog/categories/agile' style='font-size: 104.28571428571429%'>agile(6)</a> <a href='/blog/categories/alcohol' style='font-size: 100.71428571428571%'>alcohol(1)</a> <a href='/blog/categories/android' style='font-size: 100.71428571428571%'>android(1)</a> <a href='/blog/categories/bicycle' style='font-size: 104.28571428571429%'>bicycle(6)</a> <a href='/blog/categories/blog' style='font-size: 101.42857142857143%'>blog(2)</a> <a href='/blog/categories/bostonrb' style='font-size: 100.71428571428571%'>bostonrb(1)</a> <a href='/blog/categories/branch' style='font-size: 100.71428571428571%'>branch(1)</a> <a href='/blog/categories/bugs' style='font-size: 100.71428571428571%'>bugs(1)</a> <a href='/blog/categories/buildpack' style='font-size: 100.71428571428571%'>buildpack(1)</a> <a href='/blog/categories/cat' style='font-size: 100.71428571428571%'>cat(1)</a> <a href='/blog/categories/century' style='font-size: 103.57142857142857%'>century(5)</a> <a href='/blog/categories/cleancode' style='font-size: 100.71428571428571%'>cleancode(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.71428571428571%'>clojure(1)</a> <a href='/blog/categories/clojure' style='font-size: 100.71428571428571%'>Clojure(1)</a> <a href='/blog/categories/cocktail' style='font-size: 103.57142857142857%'>cocktail(5)</a> <a href='/blog/categories/cocktails' style='font-size: 100.71428571428571%'>cocktails(1)</a> <a href='/blog/categories/code' style='font-size: 103.57142857142857%'>code(5)</a> <a href='/blog/categories/codekata' style='font-size: 100.71428571428571%'>codekata(1)</a> <a href='/blog/categories/coderetreat' style='font-size: 101.42857142857143%'>coderetreat(2)</a> <a href='/blog/categories/coding' style='font-size: 100.71428571428571%'>coding(1)</a> <a href='/blog/categories/coffeescript' style='font-size: 100.71428571428571%'>coffeescript(1)</a> <a href='/blog/categories/comic' style='font-size: 100.71428571428571%'>comic(1)</a> <a href='/blog/categories/commonlisp' style='font-size: 102.14285714285714%'>commonlisp(3)</a> <a href='/blog/categories/concert' style='font-size: 100.71428571428571%'>concert(1)</a> <a href='/blog/categories/craft' style='font-size: 100.71428571428571%'>craft(1)</a> <a href='/blog/categories/craftsmanship' style='font-size: 100.71428571428571%'>craftsmanship(1)</a> <a href='/blog/categories/cube' style='font-size: 100.71428571428571%'>cube(1)</a> <a href='/blog/categories/design' style='font-size: 105.71428571428571%'>design(8)</a> <a href='/blog/categories/desk' style='font-size: 100.71428571428571%'>desk(1)</a> <a href='/blog/categories/developer' style='font-size: 100.71428571428571%'>developer(1)</a> <a href='/blog/categories/domain' style='font-size: 100.71428571428571%'>domain(1)</a> <a href='/blog/categories/elixir' style='font-size: 100.71428571428571%'>elixir(1)</a> <a href='/blog/categories/emacs' style='font-size: 103.57142857142857%'>emacs(5)</a> <a href='/blog/categories/estimation' style='font-size: 100.71428571428571%'>estimation(1)</a> <a href='/blog/categories/express' style='font-size: 100.71428571428571%'>express(1)</a> <a href='/blog/categories/food' style='font-size: 101.42857142857143%'>food(2)</a> <a href='/blog/categories/gin' style='font-size: 100.71428571428571%'>gin(1)</a> <a href='/blog/categories/git' style='font-size: 100.71428571428571%'>git(1)</a> <a href='/blog/categories/gnus' style='font-size: 102.85714285714286%'>gnus(4)</a> <a href='/blog/categories/goos' style='font-size: 104.28571428571429%'>goos(6)</a> <a href='/blog/categories/goosreview' style='font-size: 104.28571428571429%'>goosreview(6)</a> <a href='/blog/categories/grapefruit' style='font-size: 100.71428571428571%'>grapefruit(1)</a> <a href='/blog/categories/gwendolyn' style='font-size: 100.71428571428571%'>gwendolyn(1)</a> <a href='/blog/categories/heroku' style='font-size: 101.42857142857143%'>heroku(2)</a> <a href='/blog/categories/jeckyll' style='font-size: 100.71428571428571%'>jeckyll(1)</a> <a href='/blog/categories/kraftwerk' style='font-size: 100.71428571428571%'>kraftwerk(1)</a> <a href='/blog/categories/latex' style='font-size: 102.14285714285714%'>LaTeX(3)</a> <a href='/blog/categories/learning' style='font-size: 101.42857142857143%'>learning(2)</a> <a href='/blog/categories/life' style='font-size: 100.71428571428571%'>life(1)</a> <a href='/blog/categories/lisp' style='font-size: 103.57142857142857%'>lisp(5)</a> <a href='/blog/categories/listening' style='font-size: 100.71428571428571%'>listening(1)</a> <a href='/blog/categories/maintenance' style='font-size: 100.71428571428571%'>maintenance(1)</a> <a href='/blog/categories/markdown' style='font-size: 100.71428571428571%'>markdown(1)</a> <a href='/blog/categories/meetup' style='font-size: 100.71428571428571%'>meetup(1)</a> <a href='/blog/categories/metrics' style='font-size: 100.71428571428571%'>metrics(1)</a> <a href='/blog/categories/midje' style='font-size: 100.71428571428571%'>midje(1)</a> <a href='/blog/categories/mistakes' style='font-size: 100.71428571428571%'>mistakes(1)</a> <a href='/blog/categories/mix' style='font-size: 100.71428571428571%'>mix(1)</a> <a href='/blog/categories/mockito' style='font-size: 100.71428571428571%'>mockito(1)</a> <a href='/blog/categories/moma' style='font-size: 100.71428571428571%'>moma(1)</a> <a href='/blog/categories/monad' style='font-size: 100.71428571428571%'>monad(1)</a> <a href='/blog/categories/naming' style='font-size: 100.71428571428571%'>naming(1)</a> <a href='/blog/categories/node' style='font-size: 100.71428571428571%'>node(1)</a> <a href='/blog/categories/objects' style='font-size: 100.71428571428571%'>objects(1)</a> <a href='/blog/categories/octopress' style='font-size: 102.14285714285714%'>octopress(3)</a> <a href='/blog/categories/office' style='font-size: 100.71428571428571%'>office(1)</a> <a href='/blog/categories/oo' style='font-size: 104.28571428571429%'>oo(6)</a> <a href='/blog/categories/opinion' style='font-size: 100.71428571428571%'>opinion(1)</a> <a href='/blog/categories/pairprogramming' style='font-size: 100.71428571428571%'>pairprogramming(1)</a> <a href='/blog/categories/patterns' style='font-size: 101.42857142857143%'>patterns(2)</a> <a href='/blog/categories/pdf' style='font-size: 100.71428571428571%'>pdf(1)</a> <a href='/blog/categories/personal' style='font-size: 102.85714285714286%'>personal(4)</a> <a href='/blog/categories/photos' style='font-size: 100.71428571428571%'>photos(1)</a> <a href='/blog/categories/picture' style='font-size: 101.42857142857143%'>picture(2)</a> <a href='/blog/categories/posterous' style='font-size: 101.42857142857143%'>posterous(2)</a> <a href='/blog/categories/presentation' style='font-size: 100.71428571428571%'>presentation(1)</a> <a href='/blog/categories/programming' style='font-size: 102.85714285714286%'>programming(4)</a> <a href='/blog/categories/python' style='font-size: 100.71428571428571%'>python(1)</a> <a href='/blog/categories/quality' style='font-size: 100.71428571428571%'>quality(1)</a> <a href='/blog/categories/react' style='font-size: 100.71428571428571%'>react(1)</a> <a href='/blog/categories/reactnative' style='font-size: 100.71428571428571%'>reactnative(1)</a> <a href='/blog/categories/recipe' style='font-size: 102.14285714285714%'>recipe(3)</a> <a href='/blog/categories/refactoring' style='font-size: 100.71428571428571%'>refactoring(1)</a> <a href='/blog/categories/repl' style='font-size: 100.71428571428571%'>repl(1)</a> <a href='/blog/categories/repl-' style='font-size: 100.71428571428571%'>repl,(1)</a> <a href='/blog/categories/retro' style='font-size: 100.71428571428571%'>retro(1)</a> <a href='/blog/categories/retrospective' style='font-size: 102.14285714285714%'>retrospective(3)</a> <a href='/blog/categories/ruby' style='font-size: 102.14285714285714%'>ruby(3)</a> <a href='/blog/categories/scna' style='font-size: 102.85714285714286%'>scna(4)</a> <a href='/blog/categories/scna2013' style='font-size: 100.71428571428571%'>scna2013(1)</a> <a href='/blog/categories/sicp' style='font-size: 100.71428571428571%'>sicp(1)</a> <a href='/blog/categories/sin' style='font-size: 100.71428571428571%'>sin(1)</a> <a href='/blog/categories/skill' style='font-size: 100.71428571428571%'>skill(1)</a> <a href='/blog/categories/slides' style='font-size: 100.71428571428571%'>slides(1)</a> <a href='/blog/categories/software' style='font-size: 100.71428571428571%'>software(1)</a> <a href='/blog/categories/softwarecraftsmanship' style='font-size: 103.57142857142857%'>softwarecraftsmanship(5)</a> <a href='/blog/categories/tdd' style='font-size: 110.0%'>tdd(14)</a> <a href='/blog/categories/tools' style='font-size: 100.71428571428571%'>tools(1)</a> <a href='/blog/categories/training' style='font-size: 100.71428571428571%'>training(1)</a> <a href='/blog/categories/vermouth' style='font-size: 100.71428571428571%'>vermouth(1)</a> <a href='/blog/categories/viking' style='font-size: 100.71428571428571%'>viking(1)</a> <a href='/blog/categories/work' style='font-size: 102.85714285714286%'>work(4)</a> <a href='/blog/categories/yakshaving' style='font-size: 100.71428571428571%'>yakshaving(1)</a> <a href='/blog/categories/yarlisp' style='font-size: 100.71428571428571%'>yarlisp(1)</a> </span>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/verdammelt">@verdammelt</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'verdammelt',
+            count: 5,
+            skip_forks: false,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/verdammelt" data-widget-id="485216270623596545">Tweets by @verdammelt</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:verdammelt">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "verdammelt"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2021 - Mark Simpson -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'codeandcocktails';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://code-and-cocktails.herokuapp.com/blog/2021/03/02/repl-driven-development/';
+        var disqus_url = 'http://code-and-cocktails.herokuapp.com/blog/2021/03/02/repl-driven-development/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    if (window.location.hostname !== "octopress.dev") {
+      console.log("load gaq")
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30682469-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+
+
+
+
+</body>
+</html>
